@@ -1,0 +1,4 @@
+{
+  "_docs": "Vagas cadastradas manualmente (empresas sem ATS público automatizável, ou correções pontuais). Mesmo formato de data/vagas.json. Em caso de 'id' repetido, uma entrada aqui sobrescreve a coletada automaticamente.",
+  "vagas": []
+}

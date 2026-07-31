@@ -200,6 +200,24 @@
   .tracker-cta span{font-size:14px;color:var(--ink-2)}
   @media(max-width:640px){.tr{grid-template-columns:1.6fr .9fr 1fr}.tr > div:nth-child(3),.tr > div:nth-child(4){display:none}}
 
+  /* ---------- Radar de vagas ---------- */
+  .vagas-filters{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:12px;margin-bottom:20px}
+  .vagas-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .vaga-card{display:flex;flex-direction:column;gap:10px}
+  .vaga-card .vc-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+  .vaga-card .vc-empresa{font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+  .vaga-card h4{font-size:17px;font-weight:700;letter-spacing:-.01em;line-height:1.3}
+  .vaga-card .vc-meta{display:flex;flex-wrap:wrap;gap:6px}
+  .vaga-card .vc-meta span{font-size:12px;font-weight:500;color:var(--ink-2);background:var(--surface-2);border:1px solid var(--line);padding:4px 10px;border-radius:999px}
+  .vaga-card .vc-foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:10px;padding-top:8px;border-top:1px solid var(--line)}
+  .vaga-card .vc-fonte{font-size:11.5px;color:var(--muted)}
+  .tag.tipo-estagio{background:var(--accent-soft);color:var(--accent-ink)}
+  .tag.tipo-trainee{background:#e7f7ee;color:var(--ok)}
+  .tag.tipo-junior{background:var(--surface-2);color:var(--ink-2);border:1px solid var(--line)}
+  .vagas-empty{grid-column:1/-1;text-align:center;padding:44px 24px;color:var(--muted);font-size:14.5px;border:1px dashed var(--line);border-radius:var(--radius);line-height:1.6}
+  @media(max-width:900px){.vagas-filters{grid-template-columns:1fr}.vagas-grid{grid-template-columns:1fr 1fr}}
+  @media(max-width:640px){.vagas-grid{grid-template-columns:1fr}}
+
   /* ---------- Indique fields ---------- */
   .field{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:12px;font-family:inherit;font-size:15px;color:var(--ink);background:var(--surface-2);transition:border-color .15s, box-shadow .15s, background .15s}
   .field:focus{outline:none;border-color:var(--accent);background:#fff;box-shadow:0 0 0 3px rgba(79,70,229,.14)}
@@ -333,6 +351,7 @@
     <nav class="nav-links" id="navLinks">
       <a href="#sobre" data-nav>Sobre</a>
       <a href="#aulas" data-nav>Aulas</a>
+      <a href="#processos" data-nav>Vagas</a>
       <a href="#conteudo" data-nav>Conteúdo</a>
       <a href="#oneone" data-nav>Serviços</a>
       <a href="#oneone" class="btn btn-accent" data-cal>Agendar 30 min</a>
@@ -374,6 +393,7 @@
         <div class="hub-grid">
           <a href="#sobre" data-nav class="card hub-card reveal"><div class="hk">Sobre</div><h3>O que é o Estágio Zero</h3><p>A ideia, para quem é e como pode te ajudar.</p><div class="arw">Ver →</div></a>
           <a href="#aulas" data-nav class="card hub-card reveal"><div class="hk">Aulas</div><h3>As matérias da faculdade</h3><p><b>Insper</b> (disponível) · <b>FGV</b> (em breve). Foco em resolução de provas.</p><div class="arw">Ver →</div></a>
+          <a href="#processos" data-nav class="card hub-card reveal"><div class="hk">Vagas</div><h3>Radar de vagas</h3><p>Estágio e trainee em bancos, gestoras, fundos e corretoras, num lugar só.</p><div class="arw">Ver →</div></a>
           <a href="#conteudo" data-nav class="card hub-card reveal"><div class="hk">Conteúdo</div><h3>Conteúdo grátis</h3><p>Leituras e histórias de carreira para você se aproximar do lado de lá.</p><div class="arw">Ver →</div></a>
           <a href="#oneone" data-nav class="card hub-card reveal"><div class="hk">1:1</div><h3>Pergunte o que quiser</h3><p>30 minutos, 1 a 1, sobre o que você quiser.</p><div class="arw">Ver →</div></a>
           <a href="#contato" data-nav class="card hub-card reveal"><div class="hk">Preparação · em breve</div><h3>Processos seletivos</h3><p>Foco na parte técnica de finanças — testes, cases e entrevista. Em produção.</p><div class="arw">Em breve</div></a>
@@ -670,27 +690,47 @@
     </section>
   </section>
 
-  <!-- ===== PROCESSOS ===== -->
+  <!-- ===== PROCESSOS (Radar de vagas) ===== -->
   <section class="view" id="view-processos">
     <section class="band">
       <div class="wrap">
         <a class="back" data-nav href="#home">← Início</a>
         <div class="sec-head reveal">
-          <div class="kicker">Vagas &amp; Prazos · em construção</div>
-          <h2>Um radar das <span class="hl">vagas de estágio</span>.</h2>
-          <p>Saber <b>quais vagas estão abertas</b> e <b>quando fecham</b> já é metade da batalha. A ideia é reunir os programas de estágio num radar só: vagas, prazos e alertas. Abaixo, uma prévia do formato.</p>
+          <div class="kicker">Vagas &amp; Prazos</div>
+          <h2>Um radar das <span class="hl">vagas de estágio e trainee</span> no mercado financeiro.</h2>
+          <p>Vagas de bancos, corretoras, fintechs, gestoras, fundos de VC/PE, real estate/infra e casas de research — reunidas num lugar só. Cada card leva direto para a vaga original na empresa.</p>
         </div>
-        <div class="card reveal" style="padding:0;overflow:hidden">
-          <div class="tracker">
-            <div class="tr th"><div>Empresa / Programa</div><div>Área</div><div>Abre</div><div>Fecha</div><div>Status</div></div>
-            <div class="tr"><div>Banco de investimento <span class="ex">(exemplo)</span></div><div>IB / M&amp;A</div><div>Ago</div><div>Set</div><div><span class="badge open">Aberto</span></div></div>
-            <div class="tr"><div>Asset / Gestora <span class="ex">(exemplo)</span></div><div>Equities</div><div>Set</div><div>Out</div><div><span class="badge soon">Em breve</span></div></div>
-            <div class="tr"><div>Consultoria <span class="ex">(exemplo)</span></div><div>Estratégia</div><div>Jul</div><div>Ago</div><div><span class="badge closed">Encerrado</span></div></div>
-            <div class="tr"><div>Programa de trainee <span class="ex">(exemplo)</span></div><div>Finanças</div><div>Out</div><div>Nov</div><div><span class="badge soon">Em breve</span></div></div>
-          </div>
+
+        <div class="vagas-filters reveal">
+          <input class="field" id="vagasSearch" placeholder="Buscar por empresa ou cargo…">
+          <select class="field" id="vagasTipo">
+            <option value="">Todos os tipos</option>
+            <option value="estagio">Estágio</option>
+            <option value="trainee">Trainee</option>
+            <option value="junior">Júnior / Analista</option>
+          </select>
+          <select class="field" id="vagasArea">
+            <option value="">Todas as áreas</option>
+            <option value="banco">Bancos</option>
+            <option value="corretora-fintech">Corretoras &amp; Fintechs</option>
+            <option value="asset">Gestoras &amp; Hedge Funds</option>
+            <option value="vc-pe">VC &amp; Private Equity</option>
+            <option value="real-estate-infra">Real Estate &amp; Infra</option>
+            <option value="research">Research</option>
+          </select>
         </div>
+
+        <div id="vagasStatus" class="mini-note reveal" style="margin-bottom:14px"></div>
+        <div id="vagasList" class="vagas-grid reveal"></div>
+
+        <p class="mini-note reveal" style="margin-top:18px">As vagas são coletadas periodicamente de páginas públicas de carreira das empresas, além de curadoria manual — não copiamos a vaga inteira, o botão "Ver vaga" sempre leva para a página oficial, onde estão os requisitos e o prazo real de inscrição. Encontrou uma vaga desatualizada ou quer sugerir uma empresa? <a href="#contato" data-nav style="color:var(--accent);font-weight:600">avisa a gente</a>.</p>
+      </div>
+    </section>
+
+    <section class="band band--soft">
+      <div class="wrap">
         <div class="tracker-cta reveal">
-          <div><b>Quer ser avisado quando o radar entrar no ar?</b><span>Entre na lista e receba os processos e prazos assim que ele lançar.</span></div>
+          <div><b>Quer receber por e-mail quando abrir uma vaga nova?</b><span>Entre na lista e a gente avisa assim que um programa novo entrar no radar.</span></div>
           <a href="#contato" data-nav class="btn btn-accent">Quero ser avisado</a>
         </div>
       </div>
@@ -965,6 +1005,7 @@
           <h5>Explorar</h5>
           <a href="#sobre" data-nav>Sobre</a>
           <a href="#aulas" data-nav>Aulas</a>
+          <a href="#processos" data-nav>Vagas</a>
           <a href="#conteudo" data-nav>Conteúdo</a>
         </div>
         <div class="foot-col">
@@ -1012,7 +1053,7 @@
     var fi = document.getElementById('fIndicado'); if(fi) fi.value = REF;
   }
 
-  var VALID = ['home','sobre','oneone','aulas','materia-cf','pacote-pi','conteudo','contato','termos','privacidade'];
+  var VALID = ['home','sobre','oneone','aulas','materia-cf','pacote-pi','processos','conteudo','contato','termos','privacidade'];
   function showView(name){
     if(VALID.indexOf(name) < 0) name = 'home';
     document.querySelectorAll('.view').forEach(function(v){ v.classList.remove('active'); });
@@ -1091,6 +1132,57 @@
         .catch(function(){ out.textContent = "Não consegui agora. Tente de novo em instantes."; out.style.color = "#b91c1c"; });
     });
   }
+
+  // ---- Radar de vagas ----
+  var VAGAS_DATA = [];
+  var TIPO_LABEL = {estagio:'Estágio', trainee:'Trainee', junior:'Júnior/Analista'};
+  var AREA_LABEL = {'banco':'Banco','corretora-fintech':'Corretora/Fintech','asset':'Gestora/Hedge Fund','vc-pe':'VC/PE','real-estate-infra':'Real Estate/Infra','research':'Research'};
+  function escapeHtml(s){ return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+  function renderVagas(){
+    var list = document.getElementById('vagasList');
+    var status = document.getElementById('vagasStatus');
+    if(!list || !status) return;
+    var searchEl = document.getElementById('vagasSearch'), tipoEl = document.getElementById('vagasTipo'), areaEl = document.getElementById('vagasArea');
+    var q = (searchEl.value || '').trim().toLowerCase();
+    var tipo = tipoEl.value, area = areaEl.value;
+    var filtered = VAGAS_DATA.filter(function(v){
+      if(tipo && v.tipo !== tipo) return false;
+      if(area && v.area !== area) return false;
+      if(q && ((v.empresa || '') + ' ' + (v.programa || '')).toLowerCase().indexOf(q) < 0) return false;
+      return true;
+    });
+    if(!VAGAS_DATA.length){
+      status.textContent = '';
+      list.innerHTML = '<div class="vagas-empty">O radar de vagas está sendo montado. Em breve, vagas reais de bancos, corretoras, gestoras, fundos e casas de research vão aparecer aqui automaticamente.<br>Quer indicar uma vaga ou uma empresa? <a href="#contato" data-nav style="color:var(--accent);font-weight:600">fala com a gente</a>.</div>';
+      return;
+    }
+    status.textContent = filtered.length + (filtered.length === 1 ? ' vaga encontrada' : ' vagas encontradas');
+    if(!filtered.length){
+      list.innerHTML = '<div class="vagas-empty">Nenhuma vaga com esse filtro agora. Tente limpar a busca ou volte em breve — o radar é atualizado periodicamente.</div>';
+      return;
+    }
+    list.innerHTML = filtered.map(function(v){
+      var tipoCls = 'tipo-' + (v.tipo || '');
+      return '<div class="card vaga-card">' +
+        '<div class="vc-top"><span class="vc-empresa">' + escapeHtml(v.empresa) + '</span><span class="tag ' + tipoCls + '">' + escapeHtml(TIPO_LABEL[v.tipo] || v.tipo) + '</span></div>' +
+        '<h4>' + escapeHtml(v.programa) + '</h4>' +
+        '<div class="vc-meta"><span>' + escapeHtml(AREA_LABEL[v.area] || v.area) + '</span>' + (v.cidade ? '<span>' + escapeHtml(v.cidade) + '</span>' : '') + '</div>' +
+        '<div class="vc-foot"><span class="vc-fonte">' + (v.coletado_em ? 'Coletado em ' + escapeHtml(v.coletado_em) : '') + '</span><a href="' + encodeURI(v.link || '#') + '" target="_blank" rel="noopener" class="btn btn-ghost">Ver vaga →</a></div>' +
+      '</div>';
+    }).join('');
+  }
+  fetch('data/vagas.json').then(function(r){ if(!r.ok) throw new Error('http ' + r.status); return r.json(); })
+    .then(function(data){ VAGAS_DATA = (data && data.vagas) || []; renderVagas(); })
+    .catch(function(){
+      var status = document.getElementById('vagasStatus');
+      var list = document.getElementById('vagasList');
+      if(status) status.textContent = '';
+      if(list) list.innerHTML = '<div class="vagas-empty">Não consegui carregar as vagas agora. Se você abriu este arquivo direto no navegador (file://), rode um servidor local — o fetch de data/vagas.json não funciona por file://.</div>';
+    });
+  ['vagasSearch','vagasTipo','vagasArea'].forEach(function(id){
+    var el = document.getElementById(id);
+    if(el) el.addEventListener('input', renderVagas);
+  });
 
   setTimeout(function(){ document.querySelectorAll('.view.active .reveal').forEach(function(el){ el.classList.add('in'); }); }, 1500);
   route();

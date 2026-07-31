@@ -1,0 +1,49 @@
+{
+  "_docs": "Fontes automatizáveis confirmadas por pesquisa manual em 2026-07-31 (ver histórico da conversa). Só entram aqui empresas com ATS público, sem login, sem robots.txt bloqueando o path de vagas. Empresas sem ATS público (recrutamento só por e-mail/indicação) foram deliberadamente deixadas de fora — não têm fonte automatizável.",
+  "greenhouse": [
+    { "token": "xpinc", "area": "corretora-fintech", "empresa": "XP Inc.", "nota": "Funil único também para as marcas Rico e Clear" },
+    { "token": "btgpactual", "area": "banco", "empresa": "BTG Pactual" },
+    { "token": "nubank", "area": "corretora-fintech", "empresa": "Nubank", "nota": "Programa sazonal — costuma zerar entre ciclos" },
+    { "token": "inter", "area": "corretora-fintech", "empresa": "Banco Inter" },
+    { "token": "c6bank", "area": "corretora-fintech", "empresa": "C6 Bank" },
+    { "token": "generalatlantic", "area": "vc-pe", "empresa": "General Atlantic", "nota": "Board global — raramente tem vaga no Brasil" }
+  ],
+  "gupy": [
+    { "subdomain": "vemproitau", "area": "banco", "empresa": "Itaú Unibanco" },
+    { "subdomain": "venhasersafra", "area": "banco", "empresa": "Banco Safra" },
+    { "subdomain": "kinea", "area": "asset", "empresa": "Kinea Investimentos" },
+    { "subdomain": "jgpcarreira", "area": "asset", "empresa": "JGP Gestão de Recursos" },
+    { "subdomain": "vincipartners", "area": "asset", "empresa": "Vinci Partners" },
+    { "subdomain": "sunojobs", "area": "research", "empresa": "Suno Research" },
+    { "subdomain": "modalmais", "area": "corretora-fintech", "empresa": "Modalmais" },
+    { "subdomain": "picpay", "area": "corretora-fintech", "empresa": "PicPay" }
+  ],
+  "bloqueadas_para_ia": {
+    "_docs": "Domínios cujo robots.txt bloqueia explicitamente bots de IA (ClaudeBot/GPTBot). Nunca coletar automaticamente, mesmo que uma vaga pareça acessível.",
+    "dominios": ["monashees.com.br", "warren.inhire.app"]
+  },
+  "sem_ats_publico": {
+    "_docs": "Pesquisadas e confirmadas sem ATS público (recrutamento por e-mail/indicação). Fora do escopo de automação — não incluir sem checar de novo antes.",
+    "empresas": [
+      "Verde Asset Management", "Ibiuna Investimentos", "Adam Capital", "Squadra Investimentos",
+      "Absolute Investimentos", "Legacy Capital", "Kapitalo Investimentos",
+      "Redpoint eventures", "Canary", "IG4 Capital", "Astella Investimentos (só portfólio)",
+      "Kaszek Ventures (board é do portfólio, não da gestora)", "Valor Capital Group (board é do portfólio)",
+      "Hedge Investments", "Eleven Financial Research", "Levante Ideias de Investimento",
+      "Gávea Investimentos (bloqueio WAF de infraestrutura)"
+    ]
+  },
+  "candidatos_fase_2": {
+    "_docs": "Têm ATS, mas exigem mais engenharia (auth, POST, formato não confirmado) ou têm confiança menor. Avaliar depois.",
+    "empresas": [
+      "SPX Capital (Zoho Recruit)",
+      "Pátria Investimentos (Teamtailor geral + Across para estágio, programa anual formal)",
+      "RBR Asset Management (Quickin)",
+      "Santander Brasil (Workday — institucional bloqueou fetch, checar sitemap.xml do board Workday)",
+      "Bradesco (Cornerstone OnDemand + microsite sazonal Eureca, URL muda todo ano)",
+      "Banco do Brasil (via CIEE + editais de concurso — não é ATS tradicional)",
+      "Advent International Brasil (Workday, extração exige POST)",
+      "CPP Investments (atrás de AWS WAF — respeitar, não contornar)"
+    ]
+  }
+}
