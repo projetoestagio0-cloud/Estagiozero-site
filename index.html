@@ -96,6 +96,100 @@
   .hub-card .arw{color:var(--accent);font-weight:600;font-size:14px;margin-top:2px}
   @media(max-width:900px){.hub-grid{grid-template-columns:1fr 1fr}}
 
+  /* ---------- Carreiras: cores dos lados ---------- */
+  :root{--buy:#4f46e5;--buy-soft:#eef0ff;--buy-ink:#4338ca;--sell:#0d9488;--sell-soft:#e6f6f3;--sell-ink:#0f766e;--outras:#d97706;--outras-soft:#fef3e2;--outras-ink:#b45309}
+
+  /* caixa de entrada na seção Conteúdo */
+  .carreiras-box{display:grid;grid-template-columns:230px 1fr;gap:0;overflow:hidden;padding:0;cursor:pointer;transition:transform .18s,box-shadow .18s,border-color .18s}
+  .carreiras-box:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:#d6d9e0}
+  .cb-map{background:linear-gradient(150deg,var(--buy),var(--sell));display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:28px 20px;position:relative}
+  .cb-map .cb-side{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:14px;color:#fff;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);padding:8px 16px;border-radius:10px;backdrop-filter:blur(2px)}
+  .cb-map .cb-conn{width:2px;height:16px;background:rgba(255,255,255,.5)}
+  .cb-txt{padding:26px 30px;display:flex;flex-direction:column;justify-content:center}
+  .cb-txt h3{font-size:20px;font-weight:700;letter-spacing:-.01em;margin-bottom:8px}
+  .cb-txt p{font-size:14.5px;color:var(--muted);margin-bottom:14px}
+  .cb-cta{font-size:14px;font-weight:600;color:var(--accent)}
+  @media(max-width:640px){.carreiras-box{grid-template-columns:1fr}.cb-map{flex-direction:row;padding:22px}}
+
+  /* régua buy x sell */
+  .ruler{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:40px auto 0;max-width:900px;text-align:left}
+  .ruler .r-side{border-radius:var(--radius);padding:24px 26px}
+  .ruler .r-buy{background:var(--buy-soft)}
+  .ruler .r-sell{background:var(--sell-soft)}
+  .ruler .r-tag{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:5px 12px;border-radius:999px;margin-bottom:12px}
+  .ruler .r-buy .r-tag{background:var(--buy);color:#fff}
+  .ruler .r-sell .r-tag{background:var(--sell);color:#fff}
+  .ruler h3{font-size:20px;font-weight:700;margin-bottom:6px}
+  .ruler .r-buy h3{color:var(--buy-ink)}
+  .ruler .r-sell h3{color:var(--sell-ink)}
+  .ruler p{font-size:14.5px;color:var(--ink-2);line-height:1.55}
+  @media(max-width:760px){.ruler{grid-template-columns:1fr}}
+
+  /* esquema de blocos (lado + cards) */
+  .market{margin-top:34px}
+  .market + .market{margin-top:26px}
+  .m-row{display:grid;grid-template-columns:230px 1fr;gap:22px;align-items:stretch}
+  .side-block{border-radius:20px;padding:28px 24px;display:flex;flex-direction:column;justify-content:center;color:#fff;position:relative;overflow:hidden;min-height:100%}
+  .side-block::after{content:"";position:absolute;right:-40px;bottom:-40px;width:170px;height:170px;border-radius:50%;background:rgba(255,255,255,.10)}
+  .side-block.buy{background:linear-gradient(150deg,var(--buy),#6366f1)}
+  .side-block.sell{background:linear-gradient(150deg,var(--sell),#14b8a6)}
+  .side-block.outras{background:linear-gradient(150deg,var(--outras),#f59e0b)}
+  .side-block .sb-k{font-size:11.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;opacity:.85}
+  .side-block h3{font-size:28px;font-weight:700;letter-spacing:-.02em;margin:6px 0 10px;line-height:1.05}
+  .side-block p{font-size:13.5px;line-height:1.5;color:rgba(255,255,255,.9)}
+  .side-block .sb-verb{margin-top:14px;font-size:12px;font-weight:600;background:rgba(255,255,255,.18);padding:6px 12px;border-radius:999px;align-self:flex-start}
+  .cards-col{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .mkt-card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px;display:flex;flex-direction:column;cursor:pointer;transition:transform .18s,border-color .18s,box-shadow .18s;border-top:3px solid var(--line);text-align:left;font:inherit;color:inherit}
+  .mkt-card.buy{border-top-color:var(--buy)}
+  .mkt-card.sell{border-top-color:var(--sell)}
+  .mkt-card.outras{border-top-color:var(--outras)}
+  .mkt-card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+  .mkt-card:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .mkt-card .ic{font-size:22px;margin-bottom:8px}
+  .mkt-card h4{font-size:15px;font-weight:700;letter-spacing:-.01em;margin-bottom:6px;line-height:1.2}
+  .mkt-card p{font-size:13px;color:var(--muted);line-height:1.5;flex:1}
+  .mkt-card .open-hint{margin-top:12px;font-size:12px;font-weight:600;display:inline-flex;align-items:center;gap:5px}
+  .mkt-card.buy .open-hint{color:var(--buy-ink)}
+  .mkt-card.sell .open-hint{color:var(--sell-ink)}
+  .mkt-card.outras .open-hint{color:var(--outras-ink)}
+  .mkt-more{grid-column:1/-1;font-size:13px;color:var(--ink-2);background:var(--surface-2);border:1px dashed var(--line);border-radius:12px;padding:12px 16px;text-align:center}
+  .mkt-more b{color:var(--ink)}
+  @media(max-width:900px){.cards-col{grid-template-columns:1fr 1fr}}
+  @media(max-width:760px){.m-row{grid-template-columns:1fr}.side-block{min-height:auto;flex-direction:row;align-items:center;gap:16px;flex-wrap:wrap}.side-block h3{margin:0}.side-block .sb-verb{margin-top:0}}
+  @media(max-width:560px){.cards-col{grid-template-columns:1fr}}
+
+  /* modal / pop-up */
+  .modal-overlay{position:fixed;inset:0;z-index:100;background:rgba(14,17,22,.55);backdrop-filter:blur(3px);display:flex;align-items:flex-start;justify-content:center;padding:40px 20px;opacity:0;visibility:hidden;transition:opacity .22s ease,visibility .22s ease;overflow-y:auto}
+  .modal-overlay.open{opacity:1;visibility:visible}
+  .modal{background:var(--surface);border-radius:22px;max-width:640px;width:100%;box-shadow:0 24px 60px rgba(16,24,40,.28);transform:translateY(14px) scale(.98);transition:transform .24s cubic-bezier(.2,.8,.2,1);overflow:hidden;margin:auto}
+  .modal-overlay.open .modal{transform:none}
+  .modal-head{position:relative;padding:30px 30px 24px;color:#fff;overflow:hidden}
+  .modal-head::after{content:"";position:absolute;right:-50px;top:-50px;width:180px;height:180px;border-radius:50%;background:rgba(255,255,255,.12)}
+  .modal-head.buy{background:linear-gradient(150deg,var(--buy),#6366f1)}
+  .modal-head.sell{background:linear-gradient(150deg,var(--sell),#14b8a6)}
+  .modal-head.outras{background:linear-gradient(150deg,var(--outras),#f59e0b)}
+  .modal-side-tag{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;background:rgba(255,255,255,.2);padding:5px 12px;border-radius:999px;margin-bottom:14px;position:relative;z-index:1}
+  .modal-head .m-ic{font-size:34px;position:relative;z-index:1}
+  .modal-head h3{font-size:26px;font-weight:700;letter-spacing:-.02em;margin:6px 0 4px;position:relative;z-index:1}
+  .modal-head .m-sub{font-size:14px;color:rgba(255,255,255,.9);position:relative;z-index:1;font-family:'Inter',sans-serif}
+  .modal-close{position:absolute;top:20px;right:20px;z-index:2;width:36px;height:36px;border-radius:50%;border:none;background:rgba(255,255,255,.22);color:#fff;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .15s}
+  .modal-close:hover{background:rgba(255,255,255,.35)}
+  .modal-body{padding:26px 30px 30px;max-height:58vh;overflow-y:auto}
+  .dd-block{margin-bottom:20px}
+  .dd-block:last-child{margin-bottom:0}
+  .dd-block h4{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:7px;display:flex;align-items:center;gap:7px}
+  .modal-head.sell ~ .modal-body .dd-block h4{color:var(--sell-ink)}
+  .modal-head.outras ~ .modal-body .dd-block h4{color:var(--outras-ink)}
+  .dd-block p{font-size:14.5px;color:var(--ink-2);line-height:1.6}
+  .dd-chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:3px}
+  .dd-chips span{font-size:12.5px;font-weight:500;background:var(--surface-2);border:1px solid var(--line);color:var(--ink-2);padding:5px 11px;border-radius:999px}
+  .dd-match{background:var(--surface-2);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+  .dd-match p{font-size:14px;color:var(--ink);margin:0}
+  .modal-foot{border-top:1px solid var(--line);padding:18px 30px;display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;background:var(--surface-2)}
+  .modal-foot span{font-size:13.5px;color:var(--ink-2)}
+  body.modal-lock{overflow:hidden}
+  @media(max-width:560px){.modal-head{padding:24px 22px 20px}.modal-body{padding:22px;max-height:none}.modal-foot{padding:16px 22px}.modal-overlay{padding:0}.modal{border-radius:0;min-height:100%}}
+
   /* ---------- Pacotes ---------- */
   .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
   .pkg{display:flex;flex-direction:column;transition:transform .18s, border-color .18s, box-shadow .18s}
@@ -859,6 +953,22 @@
         </div>
 
         <div class="course-group reveal">
+          <div class="group-head"><span class="group-name">Trilhas de carreira</span><span class="group-tag">Novo</span></div>
+          <a href="#carreiras" data-nav class="card carreiras-box">
+            <div class="cb-map" aria-hidden="true">
+              <span class="cb-side cb-buy">Buy-side</span>
+              <span class="cb-conn"></span>
+              <span class="cb-side cb-sell">Sell-side</span>
+            </div>
+            <div class="cb-txt">
+              <h3>O mapa do mercado financeiro</h3>
+              <p>Buy-side, sell-side e os outros caminhos possíveis — o que cada área faz, como é o dia a dia e como entrar.</p>
+              <span class="cb-cta">Explorar o mapa →</span>
+            </div>
+          </a>
+        </div>
+
+        <div class="course-group reveal">
           <div class="group-head"><span class="group-name">Entrevistas</span><span class="group-tag soon">Em breve</span></div>
           <div class="card" style="text-align:center;border-style:dashed">
             <div style="font-size:26px;margin-bottom:8px">🎙️</div>
@@ -868,6 +978,90 @@
           </div>
         </div>
 
+      </div>
+    </section>
+  </section>
+
+  <!-- ===== CARREIRAS (buy-side x sell-side) ===== -->
+  <section class="view" id="view-carreiras">
+    <section class="hero" style="text-align:center">
+      <div class="wrap" style="max-width:820px;padding-bottom:24px">
+        <a class="back" data-nav href="#conteudo">← Conteúdo</a>
+        <p class="eyebrow reveal">Conteúdo · Carreiras</p>
+        <h1 class="reveal" style="font-size:clamp(32px,5vw,52px);font-weight:700;letter-spacing:-.03em;line-height:1.06;margin:18px 0 20px">O mapa do mercado financeiro, <span class="hl">sem mistério</span>.</h1>
+        <p class="lead reveal" style="font-size:clamp(16px,2.1vw,19px);color:var(--ink-2);max-width:60ch;margin:0 auto">Quase toda carreira em finanças cai em um de dois lados: o <b>buy-side</b>, que decide onde o dinheiro é investido, e o <b>sell-side</b>, que presta os serviços que fazem o mercado girar. Entender esse mapa é o primeiro passo pra saber pra onde você quer ir.</p>
+
+        <div class="ruler reveal">
+          <div class="r-side r-buy">
+            <span class="r-tag">Buy-side</span>
+            <h3>"Compra" investimentos</h3>
+            <p>Capta dinheiro de investidores e decide onde alocá-lo pra gerar retorno, cobrando uma taxa sobre o que administra e/ou sobre o lucro. É quem <b>toma a decisão de investir</b>.</p>
+          </div>
+          <div class="r-side r-sell">
+            <span class="r-tag">Sell-side</span>
+            <h3>"Vende" serviços</h3>
+            <p>Presta os serviços que viabilizam as transações do buy-side e das empresas: assessoria, captação de recursos, execução e análise. É quem <b>conecta, executa e assessora</b>.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="band band--soft">
+      <div class="wrap">
+        <div class="sec-head center reveal" style="margin-bottom:24px">
+          <div class="kicker">As áreas</div>
+          <h2>Quem faz o quê, dos dois lados.</h2>
+          <p style="margin-left:auto;margin-right:auto">Cada lado se divide em áreas com perfis, rotinas e portas de entrada diferentes. Clique em qualquer card pra ver o mergulho completo.</p>
+        </div>
+
+        <div class="market reveal">
+          <div class="m-row">
+            <div class="side-block buy">
+              <span class="sb-k">O lado que investe</span>
+              <h3>Buy-side</h3>
+              <p>Gere capital de terceiros e decide onde investir pra gerar retorno.</p>
+              <span class="sb-verb">Decide onde o dinheiro vai →</span>
+            </div>
+            <div class="cards-col" id="buyCards"></div>
+          </div>
+        </div>
+
+        <div class="market reveal">
+          <div class="m-row">
+            <div class="side-block sell">
+              <span class="sb-k">O lado que executa</span>
+              <h3>Sell-side</h3>
+              <p>Presta os serviços que fazem as transações do mercado acontecerem.</p>
+              <span class="sb-verb">Conecta, executa e assessora →</span>
+            </div>
+            <div class="cards-col" id="sellCards"></div>
+          </div>
+        </div>
+
+        <div class="market reveal">
+          <div class="m-row">
+            <div class="side-block outras">
+              <span class="sb-k">Caminhos próximos</span>
+              <h3>Outras carreiras</h3>
+              <p>Trajetórias fora do eixo buy/sell que também levam a — ou dialogam com — o mercado.</p>
+              <span class="sb-verb">Caminhos relacionados →</span>
+            </div>
+            <div class="cards-col" id="outrasCards"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="band" style="padding-top:0">
+      <div class="wrap">
+        <div class="cta-final reveal">
+          <h2>Ainda na dúvida de qual lado combina com <span class="hl">você</span>?</h2>
+          <p>Em uma conversa de 30 minutos, analisamos as áreas, o seu perfil e os caminhos possíveis de forma direta e objetiva.</p>
+          <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap">
+            <a href="#oneone" class="btn btn-primary" data-cal>Agendar um 1:1</a>
+            <a href="#aulas" class="btn btn-ghost" data-nav>Ver as aulas</a>
+          </div>
+        </div>
       </div>
     </section>
   </section>
@@ -991,6 +1185,24 @@
     </section>
   </section>
 
+  <!-- ===== MODAL de carreira (deep dive) ===== -->
+  <div class="modal-overlay" id="ddModal" role="dialog" aria-modal="true" aria-labelledby="ddTitle">
+    <div class="modal">
+      <div class="modal-head" id="ddHead">
+        <button class="modal-close" id="ddClose" aria-label="Fechar">✕</button>
+        <div class="m-ic" id="ddIcon">📊</div>
+        <span class="modal-side-tag" id="ddTag">Buy-side</span>
+        <h3 id="ddTitle">Título</h3>
+        <div class="m-sub" id="ddSub">Subtítulo</div>
+      </div>
+      <div class="modal-body" id="ddBody"></div>
+      <div class="modal-foot">
+        <span>Quer conversar sobre essa área?</span>
+        <a href="#oneone" data-cal class="btn btn-accent">Agendar um 1:1</a>
+      </div>
+    </div>
+  </div>
+
 </main>
 
 <footer>
@@ -1053,7 +1265,7 @@
     var fi = document.getElementById('fIndicado'); if(fi) fi.value = REF;
   }
 
-  var VALID = ['home','sobre','oneone','aulas','materia-cf','pacote-pi','processos','conteudo','contato','termos','privacidade'];
+  var VALID = ['home','sobre','oneone','aulas','materia-cf','pacote-pi','processos','conteudo','carreiras','contato','termos','privacidade'];
   function showView(name){
     if(VALID.indexOf(name) < 0) name = 'home';
     document.querySelectorAll('.view').forEach(function(v){ v.classList.remove('active'); });
@@ -1182,6 +1394,194 @@
   ['vagasSearch','vagasTipo','vagasArea'].forEach(function(id){
     var el = document.getElementById(id);
     if(el) el.addEventListener('input', renderVagas);
+  });
+
+  // ---- Carreiras: buy-side / sell-side / outras ----
+  var CARR = {
+    buy: [
+      {id:'vc', ic:'🚀', name:'Venture Capital', side:'buy', sub:'Investimento em empresas de alto crescimento',
+        short:'Investe em estágios iniciais de startups, com participação minoritária, buscando empresas de crescimento acelerado.',
+        oque:'O Venture Capital financia empresas jovens — em geral startups de tecnologia — antes de elas atingirem lucratividade. O fundo adquire uma participação minoritária (tipicamente entre 10% e 25%) na expectativa de que, dentro de um portfólio diversificado de investimentos, um número reduzido de empresas cresça o suficiente para compensar o conjunto. O retorno é realizado quando a empresa é vendida ou abre capital, normalmente num horizonte de 5 a 10 anos.',
+        dia:'A rotina envolve intenso relacionamento com fundadores e uma taxa alta de seletividade. O trabalho combina originação (identificação de empresas), análise da tese de investimento, do mercado e do time, e acompanhamento do portfólio já investido. Há menos modelagem financeira que em Private Equity, com maior ênfase em leitura de mercado, produto e capacidade de execução dos empreendedores.',
+        skills:['Leitura de mercado e produto','Avaliação de times fundadores','Networking no ecossistema','Construção de tese de investimento','Métricas SaaS (LTV/CAC, churn)'],
+        empresas:'No Brasil, destacam-se casas como <a href="https://www.monashees.com.br/" target="_blank" rel="noopener">monashees</a>, <a href="https://www.kaszek.com/" target="_blank" rel="noopener">Kaszek</a>, <a href="https://www.valorcapitalgroup.com/" target="_blank" rel="noopener">Valor Capital</a>, <a href="https://www.canary.com.br/" target="_blank" rel="noopener">Canary</a> (early stage) e <a href="https://astella.com.br/" target="_blank" rel="noopener">Astella</a>. Entre os investidores internacionais com atuação relevante no país estão <a href="https://www.sequoiacap.com/" target="_blank" rel="noopener">Sequoia</a>, <a href="https://a16z.com/" target="_blank" rel="noopener">Andreessen Horowitz</a>, <a href="https://www.tigerglobal.com/" target="_blank" rel="noopener">Tiger Global</a> e <a href="https://www.softbank.jp/en/" target="_blank" rel="noopener">SoftBank</a>, este último com fundo dedicado à América Latina.',
+        entrada:'As portas de entrada incluem posições de análise em fundos, experiência prévia em startups (áreas de BizOps, produto ou estratégia), consultoria ou bancos de investimento. A imersão no ecossistema de startups é um diferencial relevante.',
+        match:'Tem interesse por tecnologia e inovação, aprecia o contato próximo com empreendedores e está confortável com risco elevado e retorno de longo prazo.'},
+      {id:'pe', ic:'📈', name:'Private Equity', side:'buy', sub:'Aquisição e transformação de empresas maduras',
+        short:'Adquire empresas maduras, com frequência assumindo o controle, combinando dívida e capital próprio para gerar valor.',
+        oque:'O Private Equity adquire participações relevantes — com frequência o controle — em empresas já maduras, normalmente combinando capital próprio e dívida numa estrutura conhecida como LBO (leveraged buyout). A tese central consiste em adquirir a empresa em condições adequadas, aprimorar sua gestão, expandir os resultados e realizar a venda por um múltiplo superior alguns anos depois. No Brasil, em razão do patamar historicamente elevado dos juros, a alavancagem tende a ser mais moderada do que nos Estados Unidos, raramente superando 3x dívida/EBITDA.',
+        dia:'A rotina combina modelagem financeira (LBO), diligência e, após o investimento, acompanhamento próximo das empresas do portfólio, muitas vezes com participação em conselhos. É um trabalho que une análise quantitativa aprofundada e envolvimento na gestão. Os ciclos são longos: uma transação pode levar meses até ser concluída.',
+        skills:['Modelagem financeira (LBO)','Valuation','Due diligence','Visão de negócio e operação','Negociação'],
+        empresas:'Entre as casas brasileiras destacam-se <a href="https://www.patria.com/" target="_blank" rel="noopener">Pátria</a>, <a href="https://www.vincicompass.com/" target="_blank" rel="noopener">Vinci Partners</a>, <a href="https://www.kinea.com.br/" target="_blank" rel="noopener">Kinea</a> e a área de Private Equity do <a href="https://www.btgpactual.com/" target="_blank" rel="noopener">BTG Pactual</a>. Entre os fundos internacionais com forte presença no Brasil estão <a href="https://www.adventinternational.com/" target="_blank" rel="noopener">Advent International</a>, <a href="https://www.generalatlantic.com/" target="_blank" rel="noopener">General Atlantic</a> e <a href="https://warburgpincus.com/" target="_blank" rel="noopener">Warburg Pincus</a>. Casos conhecidos incluem o Burger King Brasil (Vinci) e o Grupo Boticário (Advent).',
+        entrada:'A trajetória mais comum passa por dois a três anos de investment banking ou consultoria estratégica. O processo de recrutamento é bastante concorrido e as equipes costumam ser enxutas.',
+        match:'Aprecia análise aprofundada, tem interesse em compreender empresas em detalhe e pensa no longo prazo. Tem afinidade com modelagem financeira.'},
+      {id:'hf', ic:'🐂', name:'Hedge Fund', side:'buy', sub:'Estratégias long e short no mercado público',
+        short:'Opera no mercado público com posições compradas e vendidas simultaneamente. Perfil dinâmico e de maior risco.',
+        oque:'O hedge fund — frequentemente estruturado no Brasil como fundo multimercado — investe no mercado público (ações, juros, moedas e crédito) com ampla liberdade de estratégia. A principal distinção em relação a um fundo tradicional é a possibilidade de manter posições compradas (long, apostando na valorização) e vendidas (short, apostando na desvalorização) simultaneamente. Isso permite proteger a carteira — o "hedge" — e buscar retorno mesmo em cenários de mercado estável.',
+        dia:'O ritmo é acelerado e acompanha o mercado de perto. A rotina inclui o monitoramento de notícias, indicadores econômicos, resultados de empresas e movimentos de preços. Os analistas desenvolvem teses e os gestores definem posições e exposição a risco. A cobrança por desempenho é constante e mensurada de forma praticamente contínua.',
+        skills:['Análise macroeconômica e/ou de empresas','Gestão de risco','Convicção associada a disciplina','Agilidade na leitura de mercado','Controle emocional'],
+        empresas:'Entre as gestoras brasileiras de referência estão <a href="https://www.verdeasset.com.br/" target="_blank" rel="noopener">Verde Asset</a> (de Luis Stuhlberger), <a href="https://www.spxcapital.com/" target="_blank" rel="noopener">SPX</a>, <a href="https://www.kapitalo.com.br/" target="_blank" rel="noopener">Kapitalo</a>, <a href="https://www.adamcapital.com.br/" target="_blank" rel="noopener">Adam</a>, <a href="https://www.ibiunainvestimentos.com.br/" target="_blank" rel="noopener">Ibiúna</a> e <a href="https://www.gaveainvest.com.br/" target="_blank" rel="noopener">Gávea</a>. Gestoras globais como <a href="https://www.bridgewater.com/" target="_blank" rel="noopener">Bridgewater</a> e <a href="https://www.man.com/" target="_blank" rel="noopener">Man Group</a> atuam no mercado internacional e servem de referência para o setor.',
+        entrada:'O ingresso costuma ocorrer em posições de análise, com frequência após passagem por research, bancos ou formação em economia. As casas tendem a ser pequenas e seletivas, com elevado padrão técnico.',
+        match:'Acompanha o mercado com regularidade, tolera volatilidade e valoriza a formação de opinião própria, fundamentada em dados.'},
+      {id:'asset', ic:'🏛️', name:'Asset Management', side:'buy', sub:'Gestão de recursos no mercado público',
+        short:'Gestora que administra recursos no mercado público, tipicamente long-only. É o buy-side clássico.',
+        oque:'O asset management corresponde à gestão tradicional de recursos de terceiros no mercado público. Diferentemente do hedge fund, o foco costuma ser long-only — a aquisição e manutenção de bons ativos —, por meio de fundos de ações, multimercado e renda fixa. O objetivo é entregar retorno consistente ao cotista ao longo do tempo, superando um índice de referência, como o CDI ou o Ibovespa.',
+        dia:'Os analistas acompanham setores e empresas de forma aprofundada, constroem modelos e recomendam posições, enquanto os gestores estruturam a carteira. Em comparação com o hedge fund, o horizonte tende a ser mais longo e o ritmo menos intenso, com peso significativo na pesquisa fundamentalista.',
+        skills:['Análise fundamentalista','Valuation','Construção de tese de longo prazo','Modelagem financeira','Disciplina de portfólio'],
+        empresas:'Entre as gestoras independentes de ações destacam-se <a href="https://www.dynamo.com.br/" target="_blank" rel="noopener">Dynamo</a>, <a href="https://www.atmoscapital.com.br/" target="_blank" rel="noopener">Atmos</a>, <a href="https://www.alaskaasset.com.br/" target="_blank" rel="noopener">Alaska</a> e <a href="https://www.bogaricapital.com.br/" target="_blank" rel="noopener">Bogari</a>, além dos braços de asset de bancos como <a href="https://www.itau.com.br/" target="_blank" rel="noopener">Itaú</a>, <a href="https://www.btgpactual.com/" target="_blank" rel="noopener">BTG</a> e <a href="https://www.bradesco.com.br/" target="_blank" rel="noopener">Bradesco</a>. Entre as gestoras globais com atuação no país estão <a href="https://www.blackrock.com/br" target="_blank" rel="noopener">BlackRock</a> e <a href="https://www.jpmorgan.com/" target="_blank" rel="noopener">JP Morgan Asset Management</a>.',
+        entrada:'As portas de entrada incluem estágio de research na própria gestora ou migração a partir de equity research em bancos. O perfil analítico e paciente é valorizado.',
+        match:'Aprecia o estudo aprofundado de empresas, tem paciência de investidor e prefere convicção de longo prazo à rotatividade de curto prazo.'},
+      {id:'infra', ic:'🏗️', name:'Infraestrutura', side:'buy', sub:'Ativos reais de longo prazo',
+        short:'Investe em ativos reais de longo prazo — energia, rodovias, saneamento —, com fluxos estáveis e horizonte extenso.',
+        oque:'Os fundos de infraestrutura investem em ativos reais de longuíssimo prazo, como energia, rodovias, saneamento, transmissão e telecomunicações. A lógica difere da renda variável tradicional: o retorno provém de fluxos de caixa estáveis e previsíveis, com frequência indexados à inflação, ao longo de décadas. No Brasil, parte relevante desse mercado se organiza em torno das debêntures incentivadas de infraestrutura.',
+        dia:'A rotina envolve análise de projetos, contratos, concessões e do arcabouço regulatório. É um trabalho que combina finanças, engenharia e leitura do marco regulatório, com ciclos longos, diligência detalhada e menor volatilidade de curto prazo.',
+        skills:['Project finance','Modelagem de fluxo de caixa de longo prazo','Leitura de contratos e regulação','Análise de risco de crédito','Conhecimento setorial (energia, transporte)'],
+        empresas:'A <a href="https://www.patria.com/" target="_blank" rel="noopener">Pátria Infraestrutura</a> atua há quase duas décadas na área; <a href="https://www.kinea.com.br/" target="_blank" rel="noopener">Kinea</a> e <a href="https://www.vincicompass.com/" target="_blank" rel="noopener">Vinci</a> mantêm fundos e debêntures de infraestrutura relevantes. Entre os investidores internacionais, gestoras globais de ativos reais como <a href="https://www.brookfield.com/" target="_blank" rel="noopener">Brookfield</a> têm presença expressiva no país.',
+        entrada:'A trajetória costuma partir de formação em engenharia associada a finanças, de áreas de project finance em bancos (o Itaú BBA é referência) ou de crédito. O perfil é técnico e orientado ao longo prazo.',
+        match:'Aprecia ativos tangíveis, raciocina em horizontes longos e tem interesse na interseção entre finanças, engenharia e regulação.'},
+      {id:'credito', ic:'💳', name:'Crédito', side:'buy', sub:'Financiamento via dívida a empresas',
+        short:'Concede crédito a empresas — dívida privada, direct lending, distressed —, com retorno via juros e estruturação.',
+        oque:'Em vez de adquirir participação societária, o investidor de crédito concede empréstimos às empresas e obtém retorno por meio dos juros. A área abrange desde crédito de baixo risco (high grade, de empresas sólidas) até dívida estruturada e de maior risco. No Brasil, o segmento cresceu de forma significativa com o desenvolvimento do mercado de capitais e com o patamar elevado de juros, que torna o crédito privado atrativo.',
+        dia:'O núcleo do trabalho é a análise de risco de crédito: a capacidade de pagamento da empresa, as garantias e os cenários de estresse. Há também a estruturação das operações e o acompanhamento da carteira, com decisões submetidas a comitês de crédito nos quais as teses são defendidas.',
+        skills:['Análise de crédito','Modelagem de cenários','Leitura de balanço e covenants','Estruturação de operações','Atenção a garantias e risco'],
+        empresas:'<a href="https://www.vincicompass.com/" target="_blank" rel="noopener">Vinci</a> e <a href="https://www.kinea.com.br/" target="_blank" rel="noopener">Kinea</a> mantêm áreas de crédito estruturado, e há diversas gestoras especializadas em crédito privado e FIDCs. Os grandes bancos também possuem mesas e áreas robustas de crédito. No mercado internacional, gestoras como <a href="https://www.oaktreecapital.com/" target="_blank" rel="noopener">Oaktree</a> são referência em crédito e situações especiais.',
+        entrada:'A trajetória costuma passar por análise de crédito em bancos, por research ou por áreas de risco. O perfil detalhista e conservador é bem recebido.',
+        match:'Prioriza a proteção do capital em relação ao potencial de ganho, aprecia a análise de balanços e avalia o risco como ponto de partida.'},
+      {id:'special', ic:'⚡', name:'Special Situations', side:'buy', sub:'Situações complexas e estruturadas sob medida',
+        short:'Investe em situações complexas — empresas em dificuldade, reestruturações e oportunidades pontuais.',
+        oque:'A área de special situations investe em contextos fora do padrão: empresas em dificuldade financeira, reestruturações, disputas e ativos estressados que a maior parte do mercado evita. Justamente por serem complexas e ilíquidas, essas oportunidades podem oferecer retorno assimétrico, mas exigem uma tese específica para cada caso. No Brasil, o segmento ganhou espaço com o patamar elevado de juros e a maior seletividade dos bancos.',
+        dia:'Cada operação constitui um caso particular, com análise jurídica e financeira aprofundada, negociação com credores e leitura de processos de recuperação judicial. É uma área menos padronizada que as demais, em que cada situação demanda uma abordagem própria.',
+        skills:['Análise financeira e jurídica integrada','Estruturação criativa','Negociação com credores','Tolerância à complexidade','Consistência em cenários de estresse'],
+        empresas:'A <a href="https://www.vincicompass.com/" target="_blank" rel="noopener">Vinci</a> ampliou sua atuação em special situations com a aquisição da SPS Capital, e há gestoras dedicadas a distressed e crédito estruturado, com frequência associadas a reestruturações relevantes. No mercado internacional, <a href="https://www.oaktreecapital.com/" target="_blank" rel="noopener">Oaktree</a> e <a href="https://www.apollo.com/" target="_blank" rel="noopener">Apollo</a> são referências no segmento.',
+        entrada:'A trajetória costuma partir de crédito, de restructuring em bancos ou boutiques, ou do Direito com sólida base financeira. O perfil combina capacidade analítica e criatividade.',
+        match:'Aprecia problemas complexos e não padronizados, mantém consistência em situações de tensão e tem interesse em estruturar soluções sob medida.'}
+    ],
+    sell: [
+      {id:'ib', ic:'🤝', name:'Investment Banking', side:'sell', sub:'Assessoria em M&A e reestruturação',
+        short:'Assessora empresas em fusões, aquisições e reestruturações. É a porta de entrada clássica da Faria Lima.',
+        oque:'O investment banking, na área específica de M&A, constitui o núcleo do banco de investimento. O banqueiro assessora empresas interessadas em adquirir, vender ou se fundir com outras, além de clientes em processos de reestruturação. O trabalho inclui construir modelos, avaliar empresas, preparar materiais e conduzir o processo do início ao fim. Trata-se, historicamente, da porta de entrada mais tradicional da Faria Lima.',
+        dia:'A rotina envolve modelagem financeira, elaboração de materiais de apresentação (os chamados pitchbooks) e prazos exigentes. O trabalho de analista é reconhecidamente intenso, com jornadas longas, sobretudo quando há transações em andamento. Em contrapartida, proporciona formação técnica sólida e abre acesso a diversas outras trajetórias, como Private Equity e hedge funds.',
+        skills:['Modelagem financeira','Valuation (DCF, múltiplos)','Elaboração de materiais','Atenção ao detalhe','Resiliência sob pressão e prazos'],
+        empresas:'No mercado local, destacam-se <a href="https://www.btgpactual.com/" target="_blank" rel="noopener">BTG Pactual</a> (o maior banco de investimento independente da América Latina), <a href="https://www.itau.com.br/itaubba-pt" target="_blank" rel="noopener">Itaú BBA</a>, <a href="https://www.bradescobbi.com.br/" target="_blank" rel="noopener">Bradesco BBI</a>, <a href="https://www.xpi.com.br/" target="_blank" rel="noopener">XP</a> e <a href="https://www.santander.com.br/" target="_blank" rel="noopener">Santander</a>. Entre os bancos globais com atuação no Brasil estão <a href="https://www.jpmorgan.com/" target="_blank" rel="noopener">JP Morgan</a>, <a href="https://www.goldmansachs.com/" target="_blank" rel="noopener">Goldman Sachs</a>, <a href="https://www.morganstanley.com/" target="_blank" rel="noopener">Morgan Stanley</a>, <a href="https://www.bofa.com/" target="_blank" rel="noopener">Bank of America</a> e <a href="https://www.citigroup.com/" target="_blank" rel="noopener">Citi</a>, além de boutiques especializadas em M&A e reestruturação.',
+        entrada:'O recrutamento é concorrido e voltado a alunos de destaque de universidades-alvo, tendo os programas de estágio como principal via de acesso. O networking exerce papel relevante.',
+        match:'Está confortável com ritmo intenso, busca formação técnica acelerada e enxerga o IB como base para a carreira em finanças.'},
+      {id:'ecm', ic:'💰', name:'Capital Markets', side:'sell', sub:'Captação via ações (ECM) e dívida (DCM)',
+        short:'Auxilia empresas a captar recursos por meio de ações (ECM) ou dívida (DCM): IPOs, follow-ons e emissões.',
+        oque:'Enquanto o M&A trata da compra e venda de empresas, o Capital Markets se dedica à captação de recursos para elas. A área se divide em ECM (equity capital markets — emissão de ações, como IPOs e follow-ons) e DCM (debt capital markets — emissão de dívida, como debêntures e bonds). Constitui a ligação direta entre a empresa que necessita de recursos e os investidores que a financiam.',
+        dia:'O trabalho é próximo dos investidores e do mercado: avaliação da janela de emissão, precificação da operação e coordenação do processo de oferta. Combina técnica de estruturação e sensibilidade de mercado, na qual o timing tem papel determinante.',
+        skills:['Estruturação de ofertas','Leitura de mercado e timing','Relacionamento com investidores','Fundamentos de valuation','Conhecimento regulatório (CVM)'],
+        empresas:'Os mesmos grandes bancos de IB — <a href="https://www.btgpactual.com/" target="_blank" rel="noopener">BTG</a>, <a href="https://www.itau.com.br/itaubba-pt" target="_blank" rel="noopener">Itaú BBA</a>, <a href="https://www.bradescobbi.com.br/" target="_blank" rel="noopener">Bradesco BBI</a>, <a href="https://www.xpi.com.br/" target="_blank" rel="noopener">XP</a>, <a href="https://www.santander.com.br/" target="_blank" rel="noopener">Santander</a> e os bancos globais — mantêm mesas robustas de ECM e DCM. O Itaú BBA, por exemplo, é referência em DCM e em debêntures de infraestrutura.',
+        entrada:'A via de acesso é semelhante à do IB, com frequência dentro da mesma divisão, por meio de programas de estágio e de trainee.',
+        match:'Aprecia a conexão com o mercado em tempo real, tem interesse na estruturação de operações e reúne perfil comunicativo além da base técnica.'},
+      {id:'st', ic:'💹', name:'Sales & Trading', side:'sell', sub:'A mesa de operações do banco',
+        short:'Executa compra e venda para clientes institucionais. Sales conduz o relacionamento; Trading executa as operações.',
+        oque:'A área de Sales & Trading constitui a mesa de operações do banco, conectando grandes clientes institucionais (gestoras e hedge funds) ao mercado. A equipe de Sales conduz o relacionamento e apresenta ideias e produtos aos clientes, enquanto a de Trading executa as operações e provê liquidez, assumindo posições. A cobertura abrange ações, renda fixa, câmbio e derivativos.',
+        dia:'As operações ocorrem em tempo real, ao longo do pregão. O ritmo é intenso, com decisões rápidas e intenso contato com clientes. Diferentemente do IB, a jornada é determinada mais pelo horário de funcionamento do mercado do que por prazos de transações.',
+        skills:['Raciocínio rápido','Consistência sob pressão','Comunicação e relacionamento (Sales)','Conhecimento de produtos e derivativos','Gestão de risco (Trading)'],
+        empresas:'<a href="https://www.btgpactual.com/" target="_blank" rel="noopener">BTG Pactual</a> e os grandes bancos (<a href="https://www.itau.com.br/" target="_blank" rel="noopener">Itaú</a>, <a href="https://www.bradesco.com.br/" target="_blank" rel="noopener">Bradesco</a>, <a href="https://www.santander.com.br/" target="_blank" rel="noopener">Santander</a>) mantêm mesas relevantes, assim como os bancos globais com operação em São Paulo. É uma área central em qualquer banco com atuação em mercados.',
+        entrada:'O acesso ocorre por programas de estágio e de trainee nas mesas. Testes de raciocínio rápido e lógica são frequentes no processo seletivo.',
+        match:'Tem interesse pelo mercado em tempo real, raciocina com agilidade, mantém consistência sob pressão e, em Sales, aprecia o contato constante com clientes.'},
+      {id:'research', ic:'🔍', name:'Research', side:'sell', sub:'Análise e recomendações de investimento',
+        short:'Analistas cobrem empresas e setores e publicam relatórios com teses e recomendações destinados ao buy-side.',
+        oque:'O sell-side research reúne analistas que acompanham empresas e setores de forma aprofundada e publicam relatórios com estimativas, teses e recomendações (comprar, manter ou vender). Esses relatórios apoiam as decisões dos investidores do buy-side. A área é reconhecida como uma das melhores escolas de análise e de conhecimento setorial do mercado.',
+        dia:'A rotina envolve leitura, modelagem e redação. O analista acompanha os resultados das empresas sob cobertura, atualiza modelos, interage com companhias e clientes e publica relatórios. No período de divulgação de resultados (earnings season), o ritmo se intensifica de maneira significativa.',
+        skills:['Análise fundamentalista','Modelagem financeira','Redação clara e objetiva','Conhecimento setorial','Comunicação com clientes'],
+        empresas:'<a href="https://www.itau.com.br/itaubba-pt" target="_blank" rel="noopener">Itaú BBA</a>, <a href="https://www.bradescobbi.com.br/" target="_blank" rel="noopener">Bradesco</a> e <a href="https://www.btgpactual.com/" target="_blank" rel="noopener">BTG Pactual</a> concentram parte relevante do research de ações no Brasil e figuram no topo dos rankings do Institutional Investor. Bancos globais como <a href="https://www.jpmorgan.com/" target="_blank" rel="noopener">JP Morgan</a> e <a href="https://www.goldmansachs.com/" target="_blank" rel="noopener">Goldman Sachs</a>, além de casas independentes, também mantêm equipes fortes.',
+        entrada:'O estágio em research é a via natural de acesso. O perfil analítico, curioso e com boa capacidade de redação se destaca, e a área constitui um caminho reconhecido para o buy-side.',
+        match:'Aprecia o estudo aprofundado de setores, tem boa redação e interesse em se tornar referência em um tema, enxergando o research como caminho para o buy-side.'}
+    ],
+    outras: [
+      {id:'consultoria', ic:'🧭', name:'Consultoria Estratégica', side:'outras', sub:'Resolução de problemas de negócio',
+        short:'Assessora a alta liderança de empresas na solução de problemas estratégicos complexos.',
+        oque:'A consultoria estratégica assessora executivos e conselhos na solução de problemas de negócio de alta complexidade: definição de estratégia, entrada em novos mercados, redução de custos, transformação organizacional e operacional. O consultor atua por projetos, com exposição a diferentes setores e a decisões de alto nível. É uma porta de entrada frequente para posições de liderança em empresas, fundos e no próprio mercado financeiro.',
+        dia:'O trabalho é organizado em projetos conduzidos por equipes reduzidas, com forte ênfase em estruturação de problemas, análise de dados e elaboração de recomendações. A rotina inclui entrevistas, construção de materiais e interação com o cliente, muitas vezes com deslocamentos. O ritmo é intenso e a curva de aprendizado, acentuada.',
+        skills:['Estruturação de problemas','Análise quantitativa','Comunicação e síntese','Construção de apresentações','Gestão de stakeholders'],
+        empresas:'As firmas de maior prestígio compõem o grupo conhecido como MBB: <a href="https://www.mckinsey.com/br" target="_blank" rel="noopener">McKinsey & Company</a>, <a href="https://www.bain.com/pt-br/" target="_blank" rel="noopener">Bain & Company</a> e <a href="https://www.bcg.com/pt-br" target="_blank" rel="noopener">Boston Consulting Group</a>. Há ainda firmas de segunda linha, como <a href="https://www.oliverwyman.com/" target="_blank" rel="noopener">Oliver Wyman</a> e <a href="https://www.kearney.com/" target="_blank" rel="noopener">Kearney</a>, e as áreas de consultoria das Big Four (<a href="https://www.deloitte.com/br/pt.html" target="_blank" rel="noopener">Deloitte</a>, <a href="https://www.pwc.com.br/" target="_blank" rel="noopener">PwC</a>, <a href="https://www.ey.com/pt_br" target="_blank" rel="noopener">EY</a> e <a href="https://kpmg.com/br/pt/home.html" target="_blank" rel="noopener">KPMG</a>).',
+        entrada:'O recrutamento é altamente seletivo e voltado a alunos de destaque de universidades-alvo, por meio de programas de estágio e de trainee. Processos de case interview são característicos da seleção.',
+        match:'Aprecia a resolução de problemas variados, tem boa comunicação e interesse em conhecer diferentes setores antes de definir uma especialização.'},
+      {id:'corp', ic:'📊', name:'Carreira Corporativa (FP&A)', side:'outras', sub:'Finanças dentro das empresas',
+        short:'Atua nas áreas financeiras das empresas — como FP&A —, apoiando planejamento e decisões de gestão.',
+        oque:'A carreira corporativa em finanças se desenvolve dentro das empresas, em áreas como FP&A (Financial Planning & Analysis), controladoria e tesouraria. O profissional de FP&A conduz o planejamento financeiro, elabora orçamentos, projeta resultados e apoia a gestão na tomada de decisão. É uma trajetória com melhor equilíbrio entre vida pessoal e profissional do que as áreas de mercado, e com visão abrangente do funcionamento do negócio.',
+        dia:'A rotina inclui a elaboração de orçamentos e projeções, o acompanhamento de resultados frente ao planejado, a preparação de análises para a liderança e o suporte a decisões de investimento. Há interação frequente com diversas áreas da empresa, o que proporciona visão integrada da operação.',
+        skills:['Planejamento e análise financeira','Modelagem de projeções','Domínio de Excel','Comunicação com áreas de negócio','Visão de negócio'],
+        empresas:'Trata-se de uma trajetória presente em empresas de todos os setores — de multinacionais de bens de consumo e indústrias a companhias de tecnologia. Programas de trainee de grandes corporações são uma porta de entrada frequente para essas áreas.',
+        entrada:'O acesso costuma ocorrer por programas de estágio e de trainee em grandes empresas, ou por transição a partir de áreas de auditoria e consultoria. Valoriza-se o perfil analítico associado à visão de negócio.',
+        match:'Tem interesse por finanças aplicadas à gestão, valoriza previsibilidade de rotina e prefere atuar na construção contínua de um negócio.'},
+      {id:'startup', ic:'🚀', name:'Startups (Produto e Tech)', side:'outras', sub:'Construção de produtos e negócios digitais',
+        short:'Atua na construção de empresas de tecnologia, em áreas como produto, dados, operações e estratégia.',
+        oque:'A carreira em startups envolve a construção de empresas de tecnologia a partir de áreas como produto, engenharia, dados, operações (BizOps) e estratégia. Em vez de analisar empresas de fora, o profissional participa diretamente da construção do negócio. É uma trajetória dinâmica, de aprendizado acelerado e com maior tolerância a risco, atrativa para quem deseja proximidade com tecnologia e execução.',
+        dia:'A rotina varia conforme a função e o estágio da empresa, mas costuma combinar ritmo acelerado, amplitude de responsabilidades e contato direto com o impacto das decisões. Em estágios iniciais, é comum acumular funções; em empresas mais maduras, há maior especialização.',
+        skills:['Orientação a produto e execução','Análise de dados','Adaptabilidade','Comunicação','Visão de negócio e de usuário'],
+        empresas:'O ecossistema brasileiro inclui empresas já consolidadas, como <a href="https://nubank.com.br/" target="_blank" rel="noopener">Nubank</a>, <a href="https://ifood.com.br/" target="_blank" rel="noopener">iFood</a>, <a href="https://www.mercadolivre.com.br/" target="_blank" rel="noopener">Mercado Livre</a> e <a href="https://www.stone.com.br/" target="_blank" rel="noopener">Stone</a>, além de um amplo conjunto de startups em estágios iniciais, com frequência apoiadas por fundos de Venture Capital.',
+        entrada:'O acesso ocorre por programas de estágio e de trainee em empresas de tecnologia, por posições específicas em produto ou dados, ou por transição a partir de consultoria e finanças. Valoriza-se a combinação de perfil analítico e orientação à execução.',
+        match:'Tem interesse por tecnologia e produto, aprecia ambientes dinâmicos e prefere participar da construção do negócio a analisá-lo de fora.'},
+      {id:'corpdev', ic:'🔗', name:'Novos Negócios / M&A Corporativo', side:'outras', sub:'M&A e estratégia dentro das empresas',
+        short:'Conduz aquisições, parcerias e novos negócios a partir de dentro das empresas (corporate development).',
+        oque:'A área de novos negócios ou corporate development conduz fusões, aquisições, parcerias e iniciativas de expansão a partir de dentro das empresas. Diferentemente do banqueiro, que assessora a transação externamente, o profissional de corporate development atua pelo lado da empresa, avaliando alvos, negociando e integrando as operações à estratégia de longo prazo. É uma trajetória que combina competências de M&A com visão estratégica do negócio.',
+        dia:'A rotina inclui a identificação e avaliação de oportunidades de aquisição ou parceria, a condução de diligências, o apoio às negociações e o acompanhamento da integração pós-transação. Há interação frequente com a alta liderança e com as diversas áreas da empresa.',
+        skills:['Valuation e modelagem','Visão estratégica','Negociação','Gestão de projetos e integração','Comunicação com a liderança'],
+        empresas:'É uma área presente em grandes grupos com estratégia ativa de aquisições, em setores como tecnologia, varejo, saúde e serviços financeiros. Empresas de tecnologia em expansão e companhias consolidadoras de seus setores costumam manter equipes estruturadas de corporate development.',
+        entrada:'A trajetória mais comum parte de experiência prévia em investment banking, consultoria ou Private Equity. Valoriza-se a combinação de competência técnica em M&A e visão de negócio.',
+        match:'Aprecia transações de M&A, mas prefere atuar pelo lado da empresa, com envolvimento na estratégia de longo prazo e na integração dos negócios.'}
+    ]
+  };
+  var CARR_MORE = {
+    buy:'E também: <b>Family Offices</b>, <b>Fundos Imobiliários</b>, <b>Endowments</b> e outros investidores institucionais.',
+    sell:'E também: <b>Structured Finance</b>, <b>Wealth &amp; Private Banking</b> e outras áreas de assessoria.',
+    outras:'E também: <b>Wealth Management</b>, <b>carreira acadêmica</b>, <b>setor público</b> e <b>terceiro setor</b>.'
+  };
+
+  function carrCard(v){
+    return '<button class="mkt-card '+v.side+'" data-carr="'+v.id+'">'
+      + '<div class="ic">'+v.ic+'</div><h4>'+v.name+'</h4><p>'+v.short+'</p>'
+      + '<span class="open-hint">Ver mergulho →</span></button>';
+  }
+  function carrRender(colId, list, side){
+    var col = document.getElementById(colId);
+    if(!col) return;
+    col.innerHTML = list.map(carrCard).join('') + '<div class="mkt-more">'+CARR_MORE[side]+'</div>';
+  }
+  carrRender('buyCards', CARR.buy, 'buy');
+  carrRender('sellCards', CARR.sell, 'sell');
+  carrRender('outrasCards', CARR.outras, 'outras');
+
+  var ddModal = document.getElementById('ddModal');
+  var ddLastFocus = null;
+  function carrFind(id){ return CARR.buy.concat(CARR.sell, CARR.outras).filter(function(x){return x.id===id;})[0]; }
+  function ddSec(label, icon, html){ return '<div class="dd-block"><h4>'+icon+' '+label+'</h4>'+html+'</div>'; }
+  function ddOpen(id){
+    var v = carrFind(id); if(!v) return;
+    ddLastFocus = document.activeElement;
+    document.getElementById('ddHead').className = 'modal-head '+v.side;
+    document.getElementById('ddIcon').textContent = v.ic;
+    document.getElementById('ddTag').textContent = v.side==='buy' ? 'Buy-side' : (v.side==='sell' ? 'Sell-side' : 'Outras carreiras');
+    document.getElementById('ddTitle').textContent = v.name;
+    document.getElementById('ddSub').textContent = v.sub;
+    var chips = v.skills.map(function(s){return '<span>'+s+'</span>';}).join('');
+    document.getElementById('ddBody').innerHTML = ''
+      + ddSec('O que é','📌','<p>'+v.oque+'</p>')
+      + ddSec('O dia a dia','⏱️','<p>'+v.dia+'</p>')
+      + ddSec('Skills que importam','🧠','<div class="dd-chips">'+chips+'</div>')
+      + ddSec('Exemplos no Brasil','🇧🇷','<p>'+v.empresas+'</p>')
+      + ddSec('Como se entra','🚪','<p>'+v.entrada+'</p>')
+      + '<div class="dd-block"><h4>✨ Combina com você se…</h4><div class="dd-match"><p>'+v.match+'</p></div></div>';
+    document.getElementById('ddBody').scrollTop = 0;
+    ddModal.classList.add('open');
+    document.body.classList.add('modal-lock');
+    document.getElementById('ddClose').focus();
+  }
+  function ddCloseFn(){
+    ddModal.classList.remove('open');
+    document.body.classList.remove('modal-lock');
+    if(ddLastFocus && ddLastFocus.focus) ddLastFocus.focus();
+  }
+  document.addEventListener('click', function(e){
+    var card = e.target.closest ? e.target.closest('.mkt-card') : null;
+    if(card && card.getAttribute('data-carr')){ ddOpen(card.getAttribute('data-carr')); return; }
+    if(e.target.id==='ddClose' || e.target===ddModal){ ddCloseFn(); }
+  });
+  document.addEventListener('keydown', function(e){
+    if(e.key==='Escape' && ddModal.classList.contains('open')) ddCloseFn();
   });
 
   setTimeout(function(){ document.querySelectorAll('.view.active .reveal').forEach(function(el){ el.classList.add('in'); }); }, 1500);
