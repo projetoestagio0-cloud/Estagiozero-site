@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-31T18:17:43.562Z",
+  "generated_at": "2026-08-01T12:18:39.880Z",
   "vagas": [
     {
       "id": "gh-c6bank-4303200005",
@@ -10,7 +10,7 @@
       "cidade": "São Paulo, Brazil",
       "link": "https://job-boards.greenhouse.io/c6bank/jobs/4303200005",
       "fonte": "scraper:greenhouse:c6bank",
-      "coletado_em": "2026-07-31"
+      "coletado_em": "2026-08-01"
     },
     {
       "id": "gh-c6bank-4706229005",
@@ -21,7 +21,7 @@
       "cidade": "São Paulo, Brazil",
       "link": "https://job-boards.greenhouse.io/c6bank/jobs/4706229005",
       "fonte": "scraper:greenhouse:c6bank",
-      "coletado_em": "2026-07-31"
+      "coletado_em": "2026-08-01"
     },
     {
       "id": "gh-c6bank-4712798005",
@@ -32,7 +32,7 @@
       "cidade": "São Paulo, Brazil",
       "link": "https://job-boards.greenhouse.io/c6bank/jobs/4712798005",
       "fonte": "scraper:greenhouse:c6bank",
-      "coletado_em": "2026-07-31"
+      "coletado_em": "2026-08-01"
     },
     {
       "id": "gh-c6bank-4718563005",
@@ -43,7 +43,7 @@
       "cidade": "São Paulo, Brazil",
       "link": "https://job-boards.greenhouse.io/c6bank/jobs/4718563005",
       "fonte": "scraper:greenhouse:c6bank",
-      "coletado_em": "2026-07-31"
+      "coletado_em": "2026-08-01"
     },
     {
       "id": "gh-xpinc-8622849002",
@@ -54,7 +54,7 @@
       "cidade": "São Paulo, SP",
       "link": "https://job-boards.greenhouse.io/xpinc/jobs/8622849002",
       "fonte": "scraper:greenhouse:xpinc",
-      "coletado_em": "2026-07-31"
+      "coletado_em": "2026-08-01"
     },
     {
       "id": "gh-xpinc-8639452002",
@@ -65,7 +65,7 @@
       "cidade": "São Paulo, SP",
       "link": "https://job-boards.greenhouse.io/xpinc/jobs/8639452002",
       "fonte": "scraper:greenhouse:xpinc",
-      "coletado_em": "2026-07-31"
+      "coletado_em": "2026-08-01"
     },
     {
       "id": "gh-xpinc-8632906002",
@@ -76,7 +76,7 @@
       "cidade": "São Paulo, SP",
       "link": "https://job-boards.greenhouse.io/xpinc/jobs/8632906002",
       "fonte": "scraper:greenhouse:xpinc",
-      "coletado_em": "2026-07-31"
+      "coletado_em": "2026-08-01"
     },
     {
       "id": "gh-xpinc-8635616002",
@@ -87,7 +87,7 @@
       "cidade": "São Paulo, SP",
       "link": "https://job-boards.greenhouse.io/xpinc/jobs/8635616002",
       "fonte": "scraper:greenhouse:xpinc",
-      "coletado_em": "2026-07-31"
+      "coletado_em": "2026-08-01"
     },
     {
       "id": "gh-xpinc-8618202002",
@@ -98,7 +98,7 @@
       "cidade": "São Paulo",
       "link": "https://job-boards.greenhouse.io/xpinc/jobs/8618202002",
       "fonte": "scraper:greenhouse:xpinc",
-      "coletado_em": "2026-07-31"
+      "coletado_em": "2026-08-01"
     },
     {
       "id": "gh-xpinc-8628968002",
@@ -109,7 +109,7 @@
       "cidade": "São Paulo, SP",
       "link": "https://job-boards.greenhouse.io/xpinc/jobs/8628968002",
       "fonte": "scraper:greenhouse:xpinc",
-      "coletado_em": "2026-07-31"
+      "coletado_em": "2026-08-01"
     },
     {
       "id": "gh-xpinc-8592526002",
@@ -120,7 +120,18 @@
       "cidade": "São Paulo, SP",
       "link": "https://job-boards.greenhouse.io/xpinc/jobs/8592526002",
       "fonte": "scraper:greenhouse:xpinc",
-      "coletado_em": "2026-07-31"
+      "coletado_em": "2026-08-01"
+    },
+    {
+      "id": "gh-xpinc-8575358002",
+      "empresa": "XP Inc.",
+      "programa": "Estagiario de Operações | Seguridade",
+      "tipo": "estagio",
+      "area": "corretora-fintech",
+      "cidade": "São Paulo, SP",
+      "link": "https://job-boards.greenhouse.io/xpinc/jobs/8575358002",
+      "fonte": "scraper:greenhouse:xpinc",
+      "coletado_em": "2026-08-01"
     },
     {
       "id": "gh-xpinc-8589211002",
@@ -131,7 +142,7 @@
       "cidade": "São Paulo, SP",
       "link": "https://job-boards.greenhouse.io/xpinc/jobs/8589211002",
       "fonte": "scraper:greenhouse:xpinc",
-      "coletado_em": "2026-07-31"
+      "coletado_em": "2026-08-01"
     },
     {
       "id": "gh-xpinc-8618232002",
@@ -142,7 +153,7 @@
       "cidade": "São Paulo, SP",
       "link": "https://job-boards.greenhouse.io/xpinc/jobs/8618232002",
       "fonte": "scraper:greenhouse:xpinc",
-      "coletado_em": "2026-07-31"
+      "coletado_em": "2026-08-01"
     }
   ]
 }
