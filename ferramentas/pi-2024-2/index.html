@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Estágio Zero — Ferramenta interativa · Contabilidade Financeira</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#F4F7F9; font-family:'Segoe UI',Arial,sans-serif; color:#22303a; padding:20px; }
+  .wrap { max-width:1000px; margin:0 auto; }
+  .brand { font-size:13px; font-weight:700; color:#F4A62A; letter-spacing:2px; text-transform:uppercase; }
+  h1 { font-size:23px; color:#0F2A3F; margin:2px 0 4px; }
+  .lead { font-size:14px; color:#5B6B76; margin-bottom:14px; }
+  .demo-banner{ display:none; background:#FDF1DD; border:1px solid #F0D28C; color:#8a5a12; font-size:13.5px; padding:10px 14px; border-radius:10px; margin-bottom:14px; }
+  .demo .demo-banner{ display:block; }
+  .demo-banner b{ color:#7a4f0f; }
+  .tabs { display:flex; gap:8px; margin-bottom:16px; }
+  .tab { flex:1; text-align:center; padding:11px; border-radius:10px 10px 0 0; background:#DCE6EA; color:#3a4a54; font-weight:700; font-size:14px; cursor:pointer; border:1px solid #DCE6EA; border-bottom:none; }
+  .tab.on { background:#1F4E5F; color:#fff; border-color:#1F4E5F; }
+  .panel { background:#fff; border:1px solid #E1E8EC; border-radius:0 10px 10px 10px; padding:20px; }
+  .hide { display:none; }
+  h2 { font-size:17px; color:#0F2A3F; margin-bottom:4px; }
+  .hint { font-size:13px; color:#5B6B76; margin-bottom:16px; }
+  table { border-collapse:collapse; width:100%; font-size:14.5px; }
+  th { background:#1F4E5F; color:#fff; padding:9px 12px; text-align:center; font-size:13px; }
+  th.l { text-align:left; }
+  td { padding:8px 12px; border-bottom:1px solid #EAF0F3; }
+  td.l { text-align:left; font-weight:600; color:#0F2A3F; }
+  td.c { text-align:center; }
+  input[type=number] { width:130px; padding:6px 8px; border:1px solid #C9D6DD; border-radius:6px; font-size:14px; text-align:right; }
+  select { padding:7px 9px; border:1px solid #C9D6DD; border-radius:6px; font-size:14px; }
+  .num { font-weight:700; font-variant-numeric:tabular-nums; }
+  .neg { color:#C0392B; } .pos { color:#0B7A63; } .zero { color:#9AA7B0; }
+  .grid2 { display:flex; gap:20px; flex-wrap:wrap; margin-bottom:16px; }
+  .col { flex:1; min-width:250px; background:#F8FBFC; border:1px solid #E1E8EC; border-radius:8px; padding:12px 14px; }
+  .col h3 { font-size:13px; color:#1C7293; text-transform:uppercase; letter-spacing:1px; margin-bottom:8px; }
+  .field { display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; }
+  .field label { font-size:13.5px; color:#3a4a54; }
+  .controls { display:flex; gap:20px; align-items:center; margin-bottom:8px; flex-wrap:wrap; }
+  .controls > span { font-size:13.5px; color:#3a4a54; display:inline-flex; align-items:center; gap:8px; }
+  .opts { display:flex; gap:18px; align-items:center; margin-bottom:14px; font-size:13.5px; color:#3a4a54; flex-wrap:wrap; }
+  .clab { font-size:13.5px; color:#3a4a54; }
+  .conds { display:inline-flex; gap:8px; flex-wrap:wrap; }
+  .conds label { display:inline-flex; align-items:center; gap:6px; background:#FBF0DE; border:1px solid #EAD6A9; border-radius:20px; padding:6px 14px; font-size:13.5px; cursor:pointer; user-select:none; }
+  .conds label.on { background:#F4A62A; color:#3d2600; border-color:#F4A62A; font-weight:700; }
+  #condrow { margin-bottom:14px; display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+  .dem3 { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:14px; }
+  .dem { border:1px solid #E1E8EC; border-radius:12px; overflow:hidden; }
+  .dem .dh { padding:9px 12px; font-size:12.5px; font-weight:700; letter-spacing:.5px; text-transform:uppercase; color:#fff; }
+  .dem.bp .dh{ background:#1F4E5F; } .dem.dre .dh{ background:#5B6B76; } .dem.dfc .dh{ background:#1C7293; }
+  .dem .drow { display:flex; justify-content:space-between; padding:8px 12px; border-bottom:1px solid #EEF3F5; font-size:14px; }
+  .dem .drow:last-child{ border-bottom:none; }
+  .dem .drow span:first-child{ color:#3a4a54; }
+  .dem .tot { background:#F8FBFC; font-weight:700; }
+  .check { margin:2px 0 14px; font-size:13.5px; font-weight:700; padding:8px 12px; border-radius:8px; background:#EAF6F1; color:#0B5563; border:1px solid #B9E2D3; }
+  .ans { background:#FDF1DD; border:1px solid #F0D28C; border-radius:8px; padding:12px 14px; font-size:14px; color:#0F2A3F; line-height:1.5; }
+  .ans b { color:#9A6A12; }
+  .foot { margin-top:14px; font-size:12px; color:#93a0a8; line-height:1.5; border-top:1px dashed #dce4e8; padding-top:10px; }
+  .hl td { background:#FFF6E6 !important; font-weight:700; }
+  /* ---- modo prévia (free) ---- */
+  .free-banner{ display:none; background:#EEF0FF; border:1px solid #cdd2f5; color:#3730a3; font-size:13.5px; padding:10px 14px; border-radius:10px; margin-bottom:14px; }
+  .free .free-banner{ display:block; }
+  .free .demo-banner{ display:none !important; }
+  .free #op{ background:#fff; }
+  .lock-tab{ position:relative; pointer-events:none; }
+  .lock-tab::after{ content:"🔒"; margin-left:6px; font-size:12px; }
+  .panel{ position:relative; }
+  .lock-ovl{ display:none; position:absolute; inset:0; z-index:5; background:rgba(244,247,249,.82); backdrop-filter:blur(3px); border-radius:0 10px 10px 10px; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:24px; }
+  .free .lock-ovl{ display:flex; }
+  .lock-ovl .lk{ font-size:34px; margin-bottom:8px; }
+  .lock-ovl b{ font-size:16px; color:#0F2A3F; }
+  .lock-ovl span{ font-size:13.5px; color:#5B6B76; max-width:340px; margin-top:4px; }
+  .free-hint{ display:none; font-size:12px; color:#6b73a8; margin:-4px 0 12px; }
+  .free .free-hint{ display:block; }
+  input[readonly]{ background:#F1F3F9; color:#8494a0; cursor:not-allowed; }
+  /* ---- alternância Δ / demonstrativo completo ---- */
+  .viewtog{ display:inline-flex; gap:6px; margin-bottom:14px; background:#EDF1F4; border-radius:9px; padding:4px; }
+  .viewtog .vt{ border:none; background:transparent; padding:7px 14px; border-radius:7px; font-size:13px; font-weight:700; color:#5B6B76; cursor:pointer; }
+  .viewtog .vt.on{ background:#1F4E5F; color:#fff; }
+  .demfull .grid-df{ display:grid; grid-template-columns:1.2fr 1fr; gap:14px; margin-bottom:14px; }
+  .demfull .stack-df{ display:flex; flex-direction:column; gap:14px; }
+  .demfull .stmt{ border:1px solid #E1E8EC; border-radius:12px; overflow:hidden; }
+  .demfull .stmt h3{ font-size:12px; text-transform:uppercase; letter-spacing:1px; color:#fff; padding:9px 12px; margin:0; }
+  .demfull .stmt.bp h3{ background:#1F4E5F; } .demfull .stmt.dre h3{ background:#5B6B76; } .demfull .stmt.dfc h3{ background:#1C7293; }
+  .demfull table{ border-collapse:collapse; width:100%; font-size:13.5px; }
+  .demfull td{ padding:5px 12px; border-bottom:1px solid #F0F4F6; }
+  .demfull thead td{ background:#F8FBFC; font-size:11px; text-transform:uppercase; letter-spacing:.5px; color:#8494a0; text-align:right; }
+  .demfull .lab{ color:#3a4a54; }
+  .demfull .ind{ padding-left:26px; }
+  .demfull .nm{ text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap; }
+  .demfull .grp{ font-weight:700; color:#0F2A3F; background:#FbFdFe; }
+  .demfull .sub{ font-weight:700; color:#0F2A3F; border-top:1px solid #DCE6EA; }
+  .demfull .tot{ font-weight:700; color:#0F2A3F; background:#F0F5F8; border-top:2px solid #1F4E5F; }
+  .demfull .chg{ background:#FFF6E6; }
+  .demfull .chg .nm{ font-weight:700; }
+  .demfull .neg{ color:#C0392B; }
+  @media(max-width:820px){ .demfull .grid-df{ grid-template-columns:1fr; } }
+</style></head>
+<body><div class="wrap">
+  <div class="brand">Estágio Zero</div>
+  <h1>Ferramenta interativa — Contabilidade Financeira</h1>
+  <div class="lead">Mude os números <b>e as condições</b> da operação e veja os três demonstrativos recalcularem na hora.</div>
+  <div class="demo-banner">🔓 <b>Versão demonstração.</b> Aqui vão algumas operações pra você sentir como funciona — a ferramenta <b>completa</b> (todas as operações e cenários) vem <b>dentro do curso</b>.</div>
+  <div class="free-banner">🔓 <b>Espia como funciona.</b> Toque em <b>à vista / a prazo</b> e veja os três demonstrativos mudarem na hora. As <b>demais operações</b>, os valores e o <b>ciclo de caixa</b> abrem <b>dentro do curso</b>.</div>
+
+  <div class="tabs">
+    <div class="tab on" data-t="t1" onclick="showTab('t1')">Impacto de eventos — Balanço · DRE · DFC</div>
+    <div class="tab" data-t="t2" onclick="showTab('t2')">Ciclo de caixa e capital de giro</div>
+  </div>
+
+  <!-- TOOL 1: eventos -->
+  <div class="panel" id="t1">
+    <h2>Impacto de um evento nos três demonstrativos</h2>
+    <div class="hint">Escolha a operação, a <b>condição</b> (à vista/a prazo, paga/provisiona…) e o valor. Veja o efeito no <b>Balanço</b>, na <b>DRE</b> e na <b>DFC</b> — a equação <b>Ativo = Passivo + PL</b> sempre fecha.</div>
+    <div class="controls">
+      <span>Operação: <select id="op" onchange="buildConds()" style="min-width:280px"></select></span>
+      <span>Valor (R$): <input type="number" id="val" value="100000" oninput="calc2()"></span>
+      <span id="cmvwrap">CMV (% da venda): <input type="number" id="cmv2" value="60" style="width:70px" oninput="calc2()">%</span>
+    </div>
+    <div id="condrow"><span class="clab">Condição:</span><div id="condwrap" class="conds"></div></div>
+    <div class="free-hint">🔒 Nesta amostra só a operação <b>Venda de mercadoria</b> está liberada. As outras aparecem na lista, mas abrem no curso.</div>
+    <div class="viewtog"><button type="button" class="vt on" data-v="delta" onclick="setView('delta')">Variação (Δ)</button><button type="button" class="vt" data-v="full" onclick="setView('full')">Demonstrativo completo</button></div>
+    <div class="dem3">
+      <div class="dem bp">
+        <div class="dh">Balanço Patrimonial (Δ)</div>
+        <div class="drow"><span>Ativo</span><span class="num" id="dA"></span></div>
+        <div class="drow"><span>Passivo</span><span class="num" id="dP"></span></div>
+        <div class="drow"><span>Patrimônio Líquido</span><span class="num" id="dPL"></span></div>
+      </div>
+      <div class="dem dre">
+        <div class="dh">DRE — Resultado (Δ)</div>
+        <div class="drow"><span>Receitas − Despesas</span><span class="num" id="dLuc"></span></div>
+        <div class="drow tot"><span>Lucro do período</span><span class="num" id="dLuc2"></span></div>
+      </div>
+      <div class="dem dfc">
+        <div class="dh">DFC — Fluxo de Caixa (Δ)</div>
+        <div class="drow"><span>Operacional (FCO)</span><span class="num" id="dFCO"></span></div>
+        <div class="drow"><span>Investimentos (FCI)</span><span class="num" id="dFCI"></span></div>
+        <div class="drow"><span>Financiamentos (FCF)</span><span class="num" id="dFCF"></span></div>
+        <div class="drow tot"><span>Δ Caixa</span><span class="num" id="dCx"></span></div>
+      </div>
+    </div>
+    <div class="demfull" style="display:none">
+      <div class="grid-df">
+        <div class="stmt bp"><h3>Balanço Patrimonial</h3><table><thead><tr><td class="lab" style="text-align:left">Contas</td><td class="nm">Início</td><td class="nm">Depois</td></tr></thead><tbody id="bpF"></tbody></table></div>
+        <div class="stack-df">
+          <div class="stmt dre"><h3>DRE — Resultado</h3><table><tbody id="dreF"></tbody></table></div>
+          <div class="stmt dfc"><h3>DFC — Fluxo de Caixa</h3><table><tbody id="dfcF"></tbody></table></div>
+        </div>
+      </div>
+    </div>
+    <div class="check" id="chk"></div>
+    <div class="ans" id="ans2"></div>
+    <div class="foot">Semelhante às questões de provas intermediárias passadas: leitura de DFC (por que sobra caixa mesmo com prejuízo), impacto de operações em ativo/lucro/passivo e montagem dos três demonstrativos. Regras de ouro: comprar/investir não gera lucro; competência ≠ caixa; dividendo reduz o PL, não o lucro; juros pagos vão em Financiamentos.</div>
+  </div>
+
+  <!-- TOOL 2: ciclo de caixa -->
+  <div class="panel hide" id="t2">
+    <div class="lock-ovl"><span class="lk">🔒</span><b>Ciclo de caixa e capital de giro</b><span>Esta parte fica liberada dentro do curso — junto com todas as outras operações.</span></div>
+    <h2>Ciclo de caixa e capital de giro</h2>
+    <div class="hint">CMV como proxy das compras. Ciclo = PMR + PME − PMP. Necessidade de Capital de Giro = Contas a Receber + Estoque − Fornecedores.</div>
+    <div class="opts">
+      <span>Base de dias: <select id="dias" onchange="calc3()"><option value="365">365</option><option value="360">360</option></select></span>
+      <span>CMV (% da receita): <input type="number" id="cmv" value="70" style="width:70px" oninput="calc3()">%</span>
+    </div>
+    <div class="grid2">
+      <div class="col"><h3>Antes</h3>
+        <div class="field"><label>Receita</label><input type="number" id="r_a" value="6000000" oninput="calc3()"></div>
+        <div class="field"><label>Contas a Receber</label><input type="number" id="cr_a" value="500000" oninput="calc3()"></div>
+        <div class="field"><label>Estoque</label><input type="number" id="es_a" value="800000" oninput="calc3()"></div>
+        <div class="field"><label>Fornecedores</label><input type="number" id="fo_a" value="400000" oninput="calc3()"></div>
+      </div>
+      <div class="col"><h3>Depois</h3>
+        <div class="field"><label>Receita</label><input type="number" id="r_d" value="7500000" oninput="calc3()"></div>
+        <div class="field"><label>Contas a Receber</label><input type="number" id="cr_d" value="700000" oninput="calc3()"></div>
+        <div class="field"><label>Estoque</label><input type="number" id="es_d" value="1200000" oninput="calc3()"></div>
+        <div class="field"><label>Fornecedores</label><input type="number" id="fo_d" value="600000" oninput="calc3()"></div>
+      </div>
+    </div>
+    <table>
+      <tr><th class="l">Indicador</th><th>Antes</th><th>Depois</th><th>Variação</th></tr>
+      <tr><td class="l">PMR (dias)</td><td class="c num" id="pmr_a"></td><td class="c num" id="pmr_d"></td><td class="c num" id="pmr_v"></td></tr>
+      <tr><td class="l">PME (dias)</td><td class="c num" id="pme_a"></td><td class="c num" id="pme_d"></td><td class="c num" id="pme_v"></td></tr>
+      <tr><td class="l">PMP (dias)</td><td class="c num" id="pmp_a"></td><td class="c num" id="pmp_d"></td><td class="c num" id="pmp_v"></td></tr>
+      <tr class="hl"><td class="l">Ciclo de Caixa (dias)</td><td class="c num" id="cic_a"></td><td class="c num" id="cic_d"></td><td class="c num" id="cic_v"></td></tr>
+      <tr class="hl"><td class="l">Necessidade de Capital de Giro</td><td class="c num" id="ncg_a"></td><td class="c num" id="ncg_d"></td><td class="c num" id="ncg_v"></td></tr>
+    </table>
+    <div class="ans" id="ans3" style="margin-top:14px"></div>
+    <div class="foot">Semelhante às questões de provas intermediárias passadas: ciclo de caixa e quanto uma expansão consome de capital de giro. Sinal negativo na variação = consumo de caixa (a empresa precisa aportar).</div>
+  </div>
+</div>
+
+<script>
+var DEMO = /[?&]demo\b/.test(location.search);
+if(DEMO){ document.body.classList.add('demo'); }
+var FREE = /[?&]free\b/.test(location.search);
+if(FREE){ document.body.classList.add('free'); }
+function showTab(t){
+  document.getElementById('t1').classList.toggle('hide', t!=='t1');
+  document.getElementById('t2').classList.toggle('hide', t!=='t2');
+  document.querySelectorAll('.tab').forEach(function(el){ el.classList.toggle('on', el.dataset.t===t); });
+}
+function m(v){ return 'R$ '+Math.abs(Math.round(v)).toLocaleString('pt-BR'); }
+function money(x){ if(Math.abs(x)<0.005) return '0'; return (x<0?'−':'+')+Math.abs(Math.round(x)).toLocaleString('pt-BR'); }
+function cls(x){ return x<-0.005?'neg':(x>0.005?'pos':'zero'); }
+function put(id,x){ var e=document.getElementById(id); if(e){ e.textContent=money(x); e.className='num '+cls(x); } }
+function n(id){ return +document.getElementById(id).value||0; }
+
+/* ---- TOOL 1: eventos ---- */
+var OPS = {
+  compra: { label:'Compra de estoque', cmv:false, demo:true, conds:[['vista','à vista'],['prazo','a prazo']], calc:function(v,c,k){
+      if(k==='vista') return {A:0,P:0,PL:0,Luc:0,FCO:-v,FCI:0,FCF:0, txt:'Estoque +'+m(v)+' e Caixa −'+m(v)+'. Comprar não gera lucro (vira CMV só na venda). À vista consome caixa operacional.'};
+      return {A:v,P:v,PL:0,Luc:0,FCO:0,FCI:0,FCF:0, txt:'Estoque +'+m(v)+' e Fornecedores +'+m(v)+'. A prazo: Ativo e Passivo sobem juntos; caixa e lucro não mudam agora.'};
+    }},
+  venda: { label:'Venda de mercadoria', cmv:true, demo:true, conds:[['vista','à vista'],['prazo','a prazo']], calc:function(v,c,k){ var lu=v*(1-c), cmv=v*c;
+      if(k==='vista') return {A:lu,P:0,PL:lu,Luc:lu,FCO:v,FCI:0,FCF:0, txt:'Caixa +'+m(v)+', Estoque −'+m(cmv)+'. Lucro +'+m(lu)+' e caixa operacional +'+m(v)+': vendeu e recebeu.'};
+      return {A:lu,P:0,PL:lu,Luc:lu,FCO:0,FCI:0,FCF:0, txt:'Contas a receber +'+m(v)+', Estoque −'+m(cmv)+'. Lucro +'+m(lu)+' pela competência, mas o caixa ainda não entrou (a prazo).'};
+    }},
+  despesa: { label:'Despesa operacional', cmv:false, demo:true, conds:[['paga','paga à vista'],['prov','a pagar (provisão)']], calc:function(v,c,k){
+      if(k==='paga') return {A:-v,P:0,PL:-v,Luc:-v,FCO:-v,FCI:0,FCF:0, txt:'Caixa −'+m(v)+' e lucro −'+m(v)+'. Despesa paga reduz resultado e caixa.'};
+      return {A:0,P:v,PL:-v,Luc:-v,FCO:0,FCI:0,FCF:0, txt:'Contas a pagar +'+m(v)+' e lucro −'+m(v)+'. Provisionada: reduz o lucro agora, mas o caixa só sai quando pagar.'};
+    }},
+  recebimento: { label:'Recebimento de cliente', cmv:false, demo:true, conds:[], calc:function(v){
+      return {A:0,P:0,PL:0,Luc:0,FCO:v,FCI:0,FCF:0, txt:'Caixa +'+m(v)+' e Contas a receber −'+m(v)+'. Entra caixa operacional; o lucro já foi reconhecido na venda.'};
+    }},
+  pagfor: { label:'Pagamento a fornecedor', cmv:false, demo:false, conds:[], calc:function(v){
+      return {A:-v,P:-v,PL:0,Luc:0,FCO:-v,FCI:0,FCF:0, txt:'Caixa −'+m(v)+' e Fornecedores −'+m(v)+'. Quita a compra; não é despesa (já era passivo).'};
+    }},
+  deprec: { label:'Depreciação do período', cmv:false, demo:false, conds:[], calc:function(v){
+      return {A:-v,P:0,PL:-v,Luc:-v,FCO:0,FCI:0,FCF:0, txt:'Imobilizado −'+m(v)+' e lucro −'+m(v)+'. Reduz o resultado, mas NÃO sai caixa (volta como ajuste no FCO).'};
+    }},
+  juros: { label:'Juros compostos (despesa do período)', cmv:false, demo:false, conds:[['prov','capitalizado (não pago)'],['pago','pago']], calc:function(v,c,k){
+      if(k==='prov') return {A:0,P:v,PL:-v,Luc:-v,FCO:0,FCI:0,FCF:0, txt:'Empréstimo +'+m(v)+' (juros capitalizados) e lucro −'+m(v)+'. É despesa do período, mas não sai caixa: soma ao saldo da dívida.'};
+      return {A:-v,P:0,PL:-v,Luc:-v,FCO:0,FCI:0,FCF:-v, txt:'Caixa −'+m(v)+' e lucro −'+m(v)+'. Juros pagos: despesa que sai em Financiamentos.'};
+    }},
+  imob: { label:'Aquisição de imobilizado', cmv:false, demo:false, conds:[['vista','à vista'],['fin','financiado']], calc:function(v,c,k){
+      if(k==='vista') return {A:0,P:0,PL:0,Luc:0,FCO:0,FCI:-v,FCF:0, txt:'Imobilizado +'+m(v)+' e Caixa −'+m(v)+'. Investimento: sai caixa de investimentos (FCI).'};
+      return {A:v,P:v,PL:0,Luc:0,FCO:0,FCI:0,FCF:0, txt:'Imobilizado +'+m(v)+' e Financiamento +'+m(v)+'. Financiado: não passa pelo caixa agora.'};
+    }},
+  lucro: { label:'Distribuição de lucro', cmv:false, demo:false, conds:[['paga','declara e paga'],['declara','só declara']], calc:function(v,c,k){
+      if(k==='paga') return {A:-v,P:0,PL:-v,Luc:0,FCO:0,FCI:0,FCF:-v, txt:'Caixa −'+m(v)+' e PL −'+m(v)+'. Dividendo reduz o PL, NÃO o lucro. Saída de financiamentos.'};
+      return {A:0,P:v,PL:-v,Luc:0,FCO:0,FCI:0,FCF:0, txt:'Dividendos a pagar +'+m(v)+' e PL −'+m(v)+'. Só declarado: cria a obrigação; o caixa só sai quando pagar.'};
+    }},
+  aporte: { label:'Aporte de capital', cmv:false, demo:false, conds:[], calc:function(v){
+      return {A:v,P:0,PL:v,Luc:0,FCO:0,FCI:0,FCF:v, txt:'Caixa +'+m(v)+' e Capital +'+m(v)+'. Aumenta o PL; não é receita. Entrada de financiamentos.'};
+    }}
+};
+/* ---- demonstrativos completos (formato contábil) ---- */
+var OPEN={caixa:100000,receber:50000,estoque:80000,imob:120000,fornec:40000,cpagar:0,div:0,emprest:60000,capital:200000,lucros:50000};
+function ff(x){ if(Math.abs(x)<0.5) return '\u2014'; var s=Math.abs(Math.round(x)).toLocaleString('pt-BR'); return x<0?'('+s+')':s; }
+function LN(){ return {caixa:0,receber:0,estoque:0,imob:0,fornec:0,cpagar:0,div:0,emprest:0,capital:0,lucros:0,receita:0,cmv:0,despop:0,despfin:0,fco:0,fci:0,fcf:0}; }
+function linesOf(key,k,V,c){
+  var d=LN();
+  if(key==='compra'){ if(k==='vista'){d.caixa=-V;d.estoque=V;d.fco=-V;} else {d.estoque=V;d.fornec=V;} }
+  else if(key==='venda'){ var lu=V*(1-c),cm=V*c; d.receita=V;d.cmv=-cm;d.estoque=-cm;d.lucros=lu; if(k==='vista'){d.caixa=V;d.fco=V;} else {d.receber=V;} }
+  else if(key==='despesa'){ d.despop=-V;d.lucros=-V; if(k==='paga'){d.caixa=-V;d.fco=-V;} else {d.cpagar=V;} }
+  else if(key==='recebimento'){ d.caixa=V;d.receber=-V;d.fco=V; }
+  else if(key==='pagfor'){ d.caixa=-V;d.fornec=-V;d.fco=-V; }
+  else if(key==='deprec'){ d.imob=-V;d.despop=-V;d.lucros=-V; }
+  else if(key==='juros'){ if(k==='pago'){d.caixa=-V;d.despfin=-V;d.lucros=-V;d.fcf=-V;} else {d.emprest=V;d.despfin=-V;d.lucros=-V;} }
+  else if(key==='imob'){ if(k==='vista'){d.caixa=-V;d.imob=V;d.fci=-V;} else {d.imob=V;d.emprest=V;} }
+  else if(key==='emprestimo'){ if(k==='capta'){d.caixa=V;d.emprest=V;d.fcf=V;} else if(k==='amort'){d.caixa=-V;d.emprest=-V;d.fcf=-V;} else {d.caixa=-V;d.despfin=-V;d.lucros=-V;d.fcf=-V;} }
+  else if(key==='lucro'){ d.lucros=-V; if(k==='paga'){d.caixa=-V;d.fcf=-V;} else {d.div=V;} }
+  else if(key==='aporte'){ d.caixa=V;d.capital=V;d.fcf=V; }
+  return d;
+}
+function aggFromLines(d){ return { A:d.caixa+d.receber+d.estoque+d.imob, P:d.fornec+d.cpagar+d.div+d.emprest, PL:d.capital+d.lucros, Luc:d.receita+d.cmv+d.despop+d.despfin, FCO:d.fco, FCI:d.fci, FCF:d.fcf }; }
+function rowF(lab,ini,dep,ind,cls){ var chg=(dep!=null&&ini!=null&&Math.abs(dep-ini)>0.5); var cc=(cls||'')+(chg?' chg':''); var ic=ini<0?'nm neg':'nm', dc=dep<0?'nm neg':'nm'; var iniCell=(ini==null)?'<td class="nm"></td>':'<td class="'+ic+'">'+ff(ini)+'</td>'; var depCell=(dep==null)?'<td class="nm"></td>':'<td class="'+dc+'">'+ff(dep)+'</td>'; return '<tr class="'+cc+'"><td class="lab '+(ind?'ind':'')+'">'+lab+'</td>'+iniCell+depCell+'</tr>'; }
+function lineF(lab,val,cls,ind){ var chg=(Math.abs(val)>0.5&&cls!=='tot'&&cls!=='sub'); var cc=(cls||'')+(chg?' chg':''); var vc=val<0?'nm neg':'nm'; return '<tr class="'+cc+'"><td class="lab '+(ind?'ind':'')+'">'+lab+'</td><td class="'+vc+'">'+ff(val)+'</td></tr>'; }
+function renderFull(){
+  if(!document.getElementById('bpF')) return;
+  var key=document.getElementById('op').value, V=(+document.getElementById('val').value||0);
+  var cmvEl=document.getElementById('cmv2'); var c=cmvEl?((+cmvEl.value||0)/100):0;
+  var sel=document.querySelector('input[name=cond]:checked'), k=sel?sel.value:null;
+  var d=linesOf(key,k,V,c);
+  var C={}; ['caixa','receber','estoque','imob','fornec','cpagar','div','emprest','capital','lucros'].forEach(function(a){ C[a]=OPEN[a]+d[a]; });
+  var a0=OPEN.caixa+OPEN.receber+OPEN.estoque+OPEN.imob, aF=C.caixa+C.receber+C.estoque+C.imob;
+  var p0=OPEN.fornec+OPEN.cpagar+OPEN.div+OPEN.emprest, pF=C.fornec+C.cpagar+C.div+C.emprest;
+  var pl0=OPEN.capital+OPEN.lucros, plF=C.capital+C.lucros;
+  var bp='';
+  bp+=rowF('ATIVO',null,null,false,'grp');
+  bp+=rowF('Ativo Circulante',null,null,false,'');
+  bp+=rowF('Caixa',OPEN.caixa,C.caixa,true);
+  bp+=rowF('Contas a receber',OPEN.receber,C.receber,true);
+  bp+=rowF('Estoques',OPEN.estoque,C.estoque,true);
+  bp+=rowF('Ativo N\u00e3o Circulante',null,null,false,'');
+  bp+=rowF('Imobilizado',OPEN.imob,C.imob,true);
+  bp+=rowF('TOTAL DO ATIVO',a0,aF,false,'tot');
+  bp+=rowF('PASSIVO + PL',null,null,false,'grp');
+  bp+=rowF('Passivo Circulante',null,null,false,'');
+  bp+=rowF('Fornecedores',OPEN.fornec,C.fornec,true);
+  bp+=rowF('Contas a pagar',OPEN.cpagar,C.cpagar,true);
+  bp+=rowF('Dividendos a pagar',OPEN.div,C.div,true);
+  bp+=rowF('Passivo N\u00e3o Circulante',null,null,false,'');
+  bp+=rowF('Empr\u00e9stimos',OPEN.emprest,C.emprest,true);
+  bp+=rowF('Patrim\u00f4nio L\u00edquido',null,null,false,'');
+  bp+=rowF('Capital social',OPEN.capital,C.capital,true);
+  bp+=rowF('Lucros acumulados',OPEN.lucros,C.lucros,true);
+  bp+=rowF('TOTAL DO PASSIVO + PL',p0+pl0,pF+plF,false,'tot');
+  document.getElementById('bpF').innerHTML=bp;
+  var lb=d.receita+d.cmv, ebit=lb+d.despop, ll=ebit+d.despfin;
+  document.getElementById('dreF').innerHTML=lineF('Receita de vendas',d.receita,'',false)+lineF('(\u2212) CMV',d.cmv,'',true)+lineF('(=) Lucro bruto',lb,'sub',false)+lineF('(\u2212) Despesas operacionais',d.despop,'',true)+lineF('(=) Resultado operacional (EBIT)',ebit,'sub',false)+lineF('(\u2212) Despesas financeiras',d.despfin,'',true)+lineF('(=) Lucro l\u00edquido',ll,'tot',false);
+  var dcx=d.fco+d.fci+d.fcf;
+  document.getElementById('dfcF').innerHTML=lineF('Fluxo das Opera\u00e7\u00f5es (FCO)',d.fco,'',false)+lineF('Fluxo dos Investimentos (FCI)',d.fci,'',false)+lineF('Fluxo dos Financiamentos (FCF)',d.fcf,'',false)+lineF('(=) Varia\u00e7\u00e3o de caixa',dcx,'sub',false)+lineF('Saldo inicial de caixa',OPEN.caixa,'',false)+lineF('(=) Saldo final de caixa',OPEN.caixa+dcx,'tot',false);
+}
+function setView(v){
+  document.querySelectorAll('.viewtog .vt').forEach(function(btn){ btn.classList.toggle('on', btn.dataset.v===v); });
+  var d3=document.querySelector('.dem3'), df=document.querySelector('.demfull');
+  if(d3) d3.style.display = (v==='full')?'none':'';
+  if(df) df.style.display = (v==='full')?'block':'none';
+  if(v==='full') renderFull();
+}
+function fillOps(){
+  var sel=document.getElementById('op');
+  if(FREE){
+    sel.innerHTML=Object.keys(OPS).map(function(k){
+      var lock=(k!=='venda');
+      return '<option value="'+k+'"'+(lock?' disabled':'')+'>'+(lock?'🔒 ':'')+OPS[k].label+'</option>';
+    }).join('');
+    sel.value='venda';
+    return;
+  }
+  sel.innerHTML=Object.keys(OPS).filter(function(k){ return !DEMO || OPS[k].demo; })
+    .map(function(k){ return '<option value="'+k+'">'+OPS[k].label+'</option>'; }).join('');
+}
+function buildConds(){
+  var o=OPS[document.getElementById('op').value];
+  var wrap=document.getElementById('condwrap'), row=document.getElementById('condrow');
+  if(!o.conds.length){ wrap.innerHTML=''; row.style.display='none'; }
+  else { row.style.display='flex';
+    wrap.innerHTML=o.conds.map(function(c,i){ return '<label class="'+(i===0?'on':'')+'"><input type="radio" name="cond" value="'+c[0]+'" '+(i===0?'checked':'')+' onchange="calc2()"> '+c[1]+'</label>'; }).join('');
+  }
+  document.getElementById('cmvwrap').style.display=o.cmv?'inline-flex':'none';
+  calc2();
+}
+function calc2(){
+  var o=OPS[document.getElementById('op').value], v=n('val'), c=n('cmv2')/100;
+  var sel=document.querySelector('input[name="cond"]:checked'); var k=sel?sel.value:null;
+  document.querySelectorAll('#condwrap label').forEach(function(l){ l.classList.toggle('on', l.querySelector('input').checked); });
+  var r=o.calc(v,c,k);
+  put('dA',r.A); put('dP',r.P); put('dPL',r.PL);
+  put('dLuc',r.Luc); put('dLuc2',r.Luc); put('dFCO',r.FCO); put('dFCI',r.FCI); put('dFCF',r.FCF);
+  put('dCx',r.FCO+r.FCI+r.FCF);
+  var ok=Math.abs(r.A-(r.P+r.PL))<0.01;
+  document.getElementById('chk').textContent = ok ? '✓ Ativo = Passivo + PL   ('+money(r.A)+' = '+money(r.P)+' + '+money(r.PL)+')' : '⚠ desbalanceado';
+  document.getElementById('ans2').innerHTML=r.txt;
+  renderFull();
+}
+
+/* ---- TOOL 2: ciclo de caixa ---- */
+function d1(x){ return (Math.round(x*10)/10).toLocaleString('pt-BR',{minimumFractionDigits:1,maximumFractionDigits:1}); }
+function putD(id,x){ document.getElementById(id).textContent=d1(x); }
+function putDsign(id,x){ var e=document.getElementById(id); e.textContent=(x>=0?'+':'−')+d1(Math.abs(x)); e.className='c num '+(x>0?'neg':(x<0?'pos':'zero')); }
+function putMoney(id,x){ document.getElementById(id).textContent=Math.round(x).toLocaleString('pt-BR'); }
+function putMoneySign(id,x){ var e=document.getElementById(id); e.textContent=(x>=0?'+':'−')+Math.abs(Math.round(x)).toLocaleString('pt-BR'); e.className='c num '+(x>0?'neg':(x<0?'pos':'zero')); }
+function calc3(){
+  var dias=+document.getElementById('dias').value, pct=(n('cmv'))/100;
+  function side(r,cr,es,fo){ var cmv=r*pct; var pmr=r?cr/r*dias:0, pme=cmv?es/cmv*dias:0, pmp=cmv?fo/cmv*dias:0; return {pmr:pmr,pme:pme,pmp:pmp,cic:pmr+pme-pmp,ncg:cr+es-fo}; }
+  var A=side(n('r_a'),n('cr_a'),n('es_a'),n('fo_a'));
+  var D=side(n('r_d'),n('cr_d'),n('es_d'),n('fo_d'));
+  putD('pmr_a',A.pmr); putD('pmr_d',D.pmr); putDsign('pmr_v',D.pmr-A.pmr);
+  putD('pme_a',A.pme); putD('pme_d',D.pme); putDsign('pme_v',D.pme-A.pme);
+  putD('pmp_a',A.pmp); putD('pmp_d',D.pmp); putDsign('pmp_v',D.pmp-A.pmp);
+  putD('cic_a',A.cic); putD('cic_d',D.cic); putDsign('cic_v',D.cic-A.cic);
+  putMoney('ncg_a',A.ncg); putMoney('ncg_d',D.ncg); putMoneySign('ncg_v',D.ncg-A.ncg);
+  var dcic=D.cic-A.cic, dncg=D.ncg-A.ncg;
+  document.getElementById('ans3').innerHTML='O ciclo '+(dcic>=0?'aumenta':'diminui')+' <b>'+d1(Math.abs(dcic))+' dias</b> e a necessidade de capital de giro '+(dncg>=0?'sobe':'cai')+' <b>R$ '+Math.abs(Math.round(dncg)).toLocaleString('pt-BR')+'</b> — a variação de capital de giro é <b>'+(dncg>=0?'−':'+')+Math.abs(Math.round(dncg)).toLocaleString('pt-BR')+'</b> em caixa.';
+}
+if(FREE){ var t2tab=document.querySelector('.tab[data-t="t2"]'); if(t2tab){ t2tab.insertAdjacentHTML('beforeend',' 🔒'); }
+  document.getElementById('val').readOnly=true; document.getElementById('cmv2').readOnly=true; }
+fillOps(); buildConds(); calc3();
+</script>
+</body></html>
