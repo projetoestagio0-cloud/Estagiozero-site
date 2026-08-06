@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Estágio Zero — Simulado Interativo · Prova Intermediária #2 (adaptativo)</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#F4F7F9;font-family:'Segoe UI',Arial,sans-serif;color:#22303a;padding:20px}
+  .wrap{max-width:880px;margin:0 auto}
+  .brand{font-size:13px;font-weight:700;color:#4f46e5;letter-spacing:2px;text-transform:uppercase}
+  h1{font-size:24px;color:#0F2A3F;margin:2px 0 4px}
+  .lead{font-size:14px;color:#5B6B76;margin-bottom:14px}
+  details.guide{background:#fff;border:1px solid #E1E8EC;border-radius:12px;padding:4px 18px;margin-bottom:14px}
+  details.guide summary{cursor:pointer;font-weight:700;color:#0F2A3F;font-size:14px;padding:12px 0;list-style:none}
+  details.guide summary::-webkit-details-marker{display:none}
+  details.guide summary::before{content:"▾  ";color:#4f46e5}
+  .guide .gg{display:grid;grid-template-columns:1fr 1fr;gap:6px 22px;padding:2px 0 14px;font-size:13px;color:#3a4a54;line-height:1.45}
+  .guide .gg span b{color:#0F2A3F}
+  @media(max-width:640px){.guide .gg{grid-template-columns:1fr}}
+  .bar{position:sticky;top:0;z-index:10;background:#0F2A3F;color:#fff;border-radius:12px;padding:12px 18px;display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;box-shadow:0 6px 18px rgba(15,42,63,.18)}
+  .bar .prog{font-size:13.5px;color:#c7d6e0} .bar .prog b{color:#fff}
+  .bar .timer{font-variant-numeric:tabular-nums;font-weight:700}
+  .card{background:#fff;border:1px solid #E1E8EC;border-radius:12px;padding:18px 20px;margin-bottom:14px;box-shadow:0 4px 14px rgba(15,42,63,.04)}
+  h2{font-size:16px;color:#0F2A3F;margin-bottom:8px}
+  .en{font-size:14px;line-height:1.55;color:#3a4a54;margin-bottom:10px}
+  table{border-collapse:collapse;width:100%;font-size:14px;margin-bottom:6px}
+  th{background:#1F4E5F;color:#fff;padding:8px 12px;font-size:12.5px;text-align:center} th.l{text-align:left}
+  td{padding:6px 12px;border-bottom:1px solid #EEF3F5} td.l{text-align:left;color:#0F2A3F} td.r{text-align:right;font-variant-numeric:tabular-nums}
+  .ev{display:flex;gap:10px;align-items:flex-start;padding:8px 0;border-bottom:1px solid #F0F4F6;font-size:14px;line-height:1.5}
+  .ev .num{font-weight:700;color:#4f46e5;flex-shrink:0}
+  .ev select{border:1px solid #C9D6DD;border-radius:6px;padding:2px 6px;font-size:13.5px;color:#0F2A3F;background:#F5F5FF;font-weight:600}
+  .tog{color:#4338ca;font-weight:700}
+  .nv{display:inline-flex;align-items:center;gap:8px;background:#EEF0FF;border:1px solid #cdd2f5;color:#3730a3;border-radius:10px;padding:8px 12px;font-size:13px;margin-top:10px}
+  .nv button{border:none;background:#4f46e5;color:#fff;border-radius:7px;padding:6px 12px;font-weight:700;cursor:pointer;font-size:13px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px} @media(max-width:640px){.grid2{grid-template-columns:1fr}}
+  .col h3{font-size:13px;color:#1C7293;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}
+  .frow{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:6px 0;border-bottom:1px solid #F0F4F6}
+  .frow label{font-size:14px;color:#0F2A3F} .frow input{width:130px;padding:7px 9px;border:1px solid #C9D6DD;border-radius:7px;font-size:14px;text-align:right}
+  .frow.ok input{border-color:#0B7A63;background:#EAF6F1} .frow.no input{border-color:#C0392B;background:#FDECEA}
+  .frow .corr{font-size:12px;color:#C0392B;font-weight:700;display:none} .frow.no .corr{display:inline}
+  .actions{display:flex;gap:12px;align-items:center;margin:6px 0 10px;flex-wrap:wrap}
+  .btn{border:none;border-radius:10px;padding:13px 22px;font-size:15px;font-weight:700;cursor:pointer}
+  .btn.p{background:#4f46e5;color:#fff}.btn.p:hover{background:#4338ca} .btn.g{background:#EDF1F4;color:#0F2A3F}
+  .result{background:#fff;border:1px solid #E1E8EC;border-radius:12px;padding:20px;margin-bottom:16px;display:none} .result.show{display:block}
+  .score{font-size:32px;font-weight:800;color:#4f46e5}
+  .reso{background:#FBFCFE;border:1px solid #E6EDF1;border-left:3px solid #4f46e5;border-radius:8px;padding:14px 16px;margin-top:8px;font-size:13.6px;line-height:1.55;color:#3a4a54;display:none} .reso.show{display:block}
+  .reso h4{font-size:14px;color:#0F2A3F;margin:2px 0 8px} .reso .estep{padding:5px 0;border-bottom:1px dashed #eef} .reso b{color:#0F2A3F}
+  .reso .close{margin-top:10px;background:#EAF6F1;border:1px solid #B9E2D3;border-radius:8px;padding:9px 12px;color:#0B5563;font-weight:700}
+  .foot{font-size:12px;color:#93a0a8;line-height:1.5;margin-top:8px}
+</style></head>
+<body><div class="wrap">
+  <div class="brand">Estágio Zero · Simulados</div>
+  <h1>Simulado Interativo — Prova Intermediária #2 <span style="font-size:14px;color:#9AA7B0">(adaptativo)</span></h1>
+  <div class="lead">Caso de <b>lançamento de eventos</b>. Você pode <b>mudar as condições</b> dos eventos (à vista/a prazo, juros pagos/capitalizados…) — o gabarito recalcula sozinho. Clique em <b>Nova variação</b> para treinar quantas vezes quiser.</div>
+
+  <details class="guide" open>
+    <summary>Guia rápido de siglas — leia antes de começar</summary>
+    <div class="gg">
+      <span><b>CMV</b> = Custo da Mercadoria Vendida</span>
+      <span><b>Margem bruta</b> = Lucro Bruto ÷ Receita (o custo é o resto)</span>
+      <span><b>Despesas Operacionais</b> = salários, aluguel, etc.</span>
+      <span><b>Despesas Financeiras</b> = juros de empréstimos</span>
+      <span><b>Patrimônio Líquido</b> = Capital + Reservas de lucro</span>
+      <span><b>Competência × caixa</b> = reconhecer no fato gerador, não no pagamento</span>
+    </div>
+  </details>
+
+  <div class="bar"><span class="prog"><b id="ansc">0</b> de <b>16</b> preenchidos</span><span class="timer" id="timer">00:00</span></div>
+  <div class="result" id="result"></div>
+
+  <div class="card">
+    <h2>Balanço de abertura</h2>
+    <table>
+      <tr><th class="l">Ativo</th><th>Saldo inicial</th><th class="l">Passivo + PL</th><th>Saldo inicial</th></tr>
+      <tr><td class="l">Caixa</td><td class="r">60.000</td><td class="l">Fornecedores</td><td class="r">30.000</td></tr>
+      <tr><td class="l">Contas a receber</td><td class="r">40.000</td><td class="l">Empréstimos</td><td class="r">40.000</td></tr>
+      <tr><td class="l">Estoque</td><td class="r">50.000</td><td class="l">Capital social</td><td class="r">120.000</td></tr>
+      <tr><td class="l">Imobilizado</td><td class="r">90.000</td><td class="l">Reservas de lucro</td><td class="r">50.000</td></tr>
+      <tr><td class="l"><b>Total do Ativo</b></td><td class="r"><b>240.000</b></td><td class="l"><b>Total Passivo + PL</b></td><td class="r"><b>240.000</b></td></tr>
+    </table>
+    <h2 style="margin-top:12px">Eventos do período <span style="font-size:12px;font-weight:400;color:#8494a0">(os que têm menu você pode mudar)</span></h2>
+    <div id="events"></div>
+    <div class="nv">🎲 <span>Quer outra versão do caso?</span> <button onclick="novaVariacao()">Nova variação</button></div>
+  </div>
+
+  <div class="card">
+    <h2>Saldos finais — informe cada um</h2>
+    <div class="grid2">
+      <div class="col"><h3>Balanço Patrimonial</h3><div id="bp"></div></div>
+      <div class="col"><h3>Demonstração do Resultado</h3><div id="dre"></div></div>
+    </div>
+  </div>
+
+  <div class="actions">
+    <button class="btn p" id="corrigir" onclick="corrigir()">Corrigir</button>
+    <button class="btn g" id="refazer" onclick="refazer()" style="display:none">Refazer (mesmo caso)</button>
+  </div>
+  <div class="reso" id="reso"></div>
+  <div class="foot">Simulado adaptativo do Estágio Zero. O gabarito é calculado a partir dos eventos e das condições escolhidas — o balanço fecha em qualquer combinação.</div>
+</div>
+
+<script>
+var OPEN={caixa:60000,receber:40000,estoque:50000,imob:90000,fornec:30000,cpagar:0,divp:0,emprest:40000,capital:120000,lucros:50000};
+var BALF=[["caixa","Caixa"],["receber","Contas a receber"],["estoque","Estoque"],["imob","Imobilizado"],
+ ["fornec","Fornecedores"],["cpagar","Contas a pagar"],["divp","Dividendos a pagar"],["emprest","Empréstimos"],
+ ["capital","Capital social"],["lucros","Reservas de lucro"]];
+var DREF=[["receita","Receita"],["cmv","(−) CMV"],["despop","(−) Despesas operacionais"],
+ ["despfin","(−) Despesas financeiras"],["ir","(−) Imposto de Renda"],["lucroliq","(=) Lucro líquido"]];
+
+var cfg, graded=false;
+function defaultCfg(){ return {
+  compra:'vista', venda:'vista', despesa:'paga', juros:'cap', dividendo:'declara',
+  Vcompra:50000, Vvenda:100000, cmvpct:0.40, Vreceb:15000, Vdespop:20000, Vjuros:4000, Vpagprinc:10000, Vaporte:20000, Vdiv:8000 }; }
+
+function solve(c){
+  var d={caixa:0,receber:0,estoque:0,imob:0,fornec:0,cpagar:0,divp:0,emprest:0,capital:0,lucros:0};
+  var receita=0,cmv=0,despop=0,despfin=0;
+  // 1 compra
+  d.estoque+=c.Vcompra; if(c.compra==='vista') d.caixa-=c.Vcompra; else d.fornec+=c.Vcompra;
+  // 2 venda
+  var cmvv=Math.round(c.Vvenda*c.cmvpct); receita+=c.Vvenda; cmv-=cmvv; d.estoque-=cmvv;
+  if(c.venda==='vista') d.caixa+=c.Vvenda; else d.receber+=c.Vvenda;
+  // 3 recebimento
+  d.caixa+=c.Vreceb; d.receber-=c.Vreceb;
+  // 4 despesa
+  despop-=c.Vdespop; if(c.despesa==='paga') d.caixa-=c.Vdespop; else d.cpagar+=c.Vdespop;
+  // 5 juros
+  despfin-=c.Vjuros; if(c.juros==='pago') d.caixa-=c.Vjuros; else d.emprest+=c.Vjuros;
+  // 6 pagamento principal
+  d.caixa-=c.Vpagprinc; d.emprest-=c.Vpagprinc;
+  // 7 aporte
+  d.caixa+=c.Vaporte; d.capital+=c.Vaporte;
+  // 8 IR
+  var lair=receita+cmv+despop+despfin; var ir=lair>0?Math.round(lair*0.34):0; d.caixa-=ir;
+  var lucroliq=lair-ir; d.lucros+=lucroliq;
+  // 9 dividendo
+  d.lucros-=c.Vdiv; if(c.dividendo==='paga') d.caixa-=c.Vdiv; else d.divp+=c.Vdiv;
+  var fin={}; for(var k in OPEN) fin[k]=OPEN[k]+d[k];
+  return {fin:fin, dre:{receita:receita,cmv:cmv,despop:despop,despfin:despfin,ir:-ir,lucroliq:lucroliq}, lair:lair, ir:ir};
+}
+function m(v){ return (v<0?'−':'')+'R$ '+Math.abs(Math.round(v)).toLocaleString('pt-BR'); }
+function mn(v){ return (v<0?'−':'')+Math.abs(Math.round(v)).toLocaleString('pt-BR'); }
+
+function sel(id,opts){ return '<select data-t="'+id+'" onchange="onTog()">'+opts.map(function(o){return '<option value="'+o[0]+'"'+(cfg[id]===o[0]?' selected':'')+'>'+o[1]+'</option>';}).join('')+'</select>'; }
+function renderEvents(){
+  var e=[];
+  e.push(['1','Compra de estoque de <b>'+m(cfg.Vcompra)+'</b>, '+sel('compra',[['vista','à vista'],['prazo','a prazo']])+'.']);
+  e.push(['2','Venda de <b>'+m(cfg.Vvenda)+'</b> '+sel('venda',[['vista','à vista'],['prazo','a prazo']])+', com margem bruta de <b>'+Math.round((1-cfg.cmvpct)*100)+'%</b>.']);
+  e.push(['3','Recebimento de <b>'+m(cfg.Vreceb)+'</b> de clientes (vendas a prazo anteriores).']);
+  e.push(['4','Despesas operacionais de <b>'+m(cfg.Vdespop)+'</b>, '+sel('despesa',[['paga','pagas à vista'],['prov','provisionadas (a pagar)']])+'.']);
+  e.push(['5','Juros de <b>'+m(cfg.Vjuros)+'</b> sobre o empréstimo, '+sel('juros',[['cap','capitalizados (não pagos)'],['pago','pagos no ano']])+'.']);
+  e.push(['6','Pagamento de <b>'+m(cfg.Vpagprinc)+'</b> do principal do empréstimo.']);
+  e.push(['7','Aporte dos sócios de <b>'+m(cfg.Vaporte)+'</b> em capital.']);
+  e.push(['8','Imposto de Renda de <b>34%</b> sobre o lucro antes do imposto, pago à vista.']);
+  e.push(['9','Dividendos de <b>'+m(cfg.Vdiv)+'</b>, '+sel('dividendo',[['declara','apenas declarados (a pagar)'],['paga','declarados e pagos']])+'.']);
+  document.getElementById('events').innerHTML=e.map(function(x){return '<div class="ev"><span class="num">'+x[0]+'.</span><span>'+x[1]+'</span></div>';}).join('');
+}
+function onTog(){ if(graded)return; document.querySelectorAll('[data-t]').forEach(function(s){ cfg[s.dataset.t]=s.value; }); }
+function buildInputs(){
+  document.getElementById('bp').innerHTML=BALF.map(function(x,i){return frow('bp'+i,x[1]);}).join('');
+  document.getElementById('dre').innerHTML=DREF.map(function(x,i){return frow('dre'+i,x[1]);}).join('');
+  pick();
+}
+function frow(id,label){ return '<div class="frow" id="'+id+'"><label>'+label+'</label><span><input type="text" inputmode="numeric" data-k="'+id+'" oninput="pick()" placeholder="R$"> <span class="corr"></span></span></div>'; }
+function parseNum(s){ s=String(s).trim().replace(/\s/g,''); if(s==='')return NaN; var neg=/[-−]/.test(s); s=s.replace(/[-−]/g,'');
+  if(s.indexOf(',')>=0){s=s.replace(/\./g,'').replace(',','.');} else if(/^\d{1,3}(\.\d{3})+$/.test(s)){s=s.replace(/\./g,'');}
+  var v=parseFloat(s); return neg?-v:v; }
+function pick(){ if(graded)return; var c=0; document.querySelectorAll('input[data-k]').forEach(function(i){if(i.value.trim()!=='')c++;}); document.getElementById('ansc').textContent=c; }
+
+function corrigir(){
+  if(graded)return; graded=true; stopTimer();
+  document.querySelectorAll('[data-t]').forEach(function(s){s.disabled=true;});
+  var R=solve(cfg), hits=0, tot=BALF.length+DREF.length;
+  BALF.forEach(function(x,i){ hits+=mark('bp'+i, R.fin[x[0]]); });
+  DREF.forEach(function(x,i){ hits+=mark('dre'+i, R.dre[x[0]]); });
+  var pct=Math.round(hits/tot*100);
+  var r=document.getElementById('result');
+  r.innerHTML='<h2>Resultado</h2><div class="score">'+hits+' / '+tot+'</div><p style="color:#5B6B76;font-size:14px;margin-top:4px">'+pct+'% · '+document.getElementById('timer').textContent+'. '+(pct>=80?'Mandou bem — o balanço fechou.':pct>=50?'Bom caminho; veja os saldos marcados e a resolução.':'Revise a resolução passo a passo abaixo.')+'</p>';
+  r.classList.add('show');
+  buildResolution(R);
+  document.getElementById('corrigir').style.display='none';
+  document.getElementById('refazer').style.display='inline-block';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function mark(id,ans){ var row=document.getElementById(id), inp=row.querySelector('input'); var v=parseNum(inp.value);
+  var ok=isFinite(v)&&Math.abs(v-ans)<1; inp.disabled=true; row.classList.add(ok?'ok':'no');
+  if(!ok) row.querySelector('.corr').textContent='= '+mn(ans); return ok?1:0; }
+
+function buildResolution(R){
+  var c=cfg, steps=[];
+  steps.push('<b>Evento 1 — compra '+(c.compra==='vista'?'à vista':'a prazo')+':</b> estoque sobe '+m(c.Vcompra)+'. '+(c.compra==='vista'?'O caixa cai '+m(c.Vcompra)+'.':'Cria fornecedores de '+m(c.Vcompra)+' (caixa não muda).')+' Comprar não gera despesa nem lucro.');
+  var cmvv=Math.round(c.Vvenda*c.cmvpct);
+  steps.push('<b>Evento 2 — venda '+(c.venda==='vista'?'à vista':'a prazo')+':</b> receita de '+m(c.Vvenda)+', CMV de '+m(cmvv)+' (o estoque cai). '+(c.venda==='vista'?'Entra caixa de '+m(c.Vvenda)+'.':'Vira contas a receber de '+m(c.Vvenda)+' — pela competência o lucro é reconhecido, mas o caixa ainda não entrou.'));
+  steps.push('<b>Evento 3 — recebimento:</b> caixa sobe '+m(c.Vreceb)+' e contas a receber caem '+m(c.Vreceb)+'. Não passa pelo resultado.');
+  steps.push('<b>Evento 4 — despesa '+(c.despesa==='paga'?'paga':'provisionada')+':</b> reduz o lucro em '+m(c.Vdespop)+'. '+(c.despesa==='paga'?'Sai caixa de '+m(c.Vdespop)+'.':'Vira contas a pagar de '+m(c.Vdespop)+' — o lucro cai agora, mas o caixa só sai quando pagar.'));
+  steps.push('<b>Evento 5 — juros '+(c.juros==='pago'?'pagos':'capitalizados')+':</b> despesa financeira de '+m(c.Vjuros)+' (reduz o lucro dos dois jeitos). '+(c.juros==='pago'?'Sai caixa de '+m(c.Vjuros)+'.':'Não sai caixa: soma ao saldo do empréstimo.'));
+  steps.push('<b>Evento 6 — pagamento do principal:</b> caixa e empréstimo caem '+m(c.Vpagprinc)+'. Não é despesa.');
+  steps.push('<b>Evento 7 — aporte:</b> caixa e capital sobem '+m(c.Vaporte)+'. Não é receita.');
+  steps.push('<b>Evento 8 — Imposto de Renda:</b> lucro antes do imposto = '+m(R.lair)+'; imposto de 34% = '+m(R.ir)+', pago à vista (sai caixa).');
+  steps.push('<b>Evento 9 — dividendos '+(c.dividendo==='paga'?'declarados e pagos':'apenas declarados')+':</b> reduzem o Patrimônio Líquido em '+m(c.Vdiv)+' (nunca o lucro). '+(c.dividendo==='paga'?'Sai caixa de '+m(c.Vdiv)+'.':'Viram dividendos a pagar de '+m(c.Vdiv)+' — o caixa só sai quando pagar.'));
+  var A=R.fin.caixa+R.fin.receber+R.fin.estoque+R.fin.imob;
+  var PPL=R.fin.fornec+R.fin.cpagar+R.fin.divp+R.fin.emprest+R.fin.capital+R.fin.lucros;
+  var html='<h4>Resolução passo a passo</h4>'+steps.map(function(s){return '<div class="estep">'+s+'</div>';}).join('');
+  html+='<div class="close">Lucro líquido do período = '+m(R.dre.lucroliq)+'. O balanço fecha: Ativo '+mn(A)+' = Passivo + Patrimônio Líquido '+mn(PPL)+'.</div>';
+  html+='<p style="margin-top:8px;font-size:12.5px;color:#8494a0">Repare: mudar as condições move o caixa e as contas do balanço, mas o <b>lucro</b> é o mesmo — pela competência, a despesa entra no resultado quer seja paga ou não.</p>';
+  var d=document.getElementById('reso'); d.innerHTML='<b>Resolução.</b>'+html; d.classList.add('show');
+}
+function novaVariacao(){
+  var r5=function(a,b){return (a+Math.floor(Math.random()*(b-a+1)))*5000;};
+  var pick2=function(o){return o[Math.floor(Math.random()*o.length)];};
+  cfg=defaultCfg();
+  cfg.compra=pick2(['vista','prazo']); cfg.venda=pick2(['vista','prazo']); cfg.despesa=pick2(['paga','prov']);
+  cfg.juros=pick2(['cap','pago']); cfg.dividendo=pick2(['declara','paga']);
+  cfg.Vcompra=r5(6,14); cfg.Vvenda=r5(16,28); cfg.cmvpct=pick2([0.40,0.45,0.50,0.55]);
+  cfg.Vreceb=r5(2,6); cfg.Vdespop=r5(3,7); cfg.Vjuros=r5(1,2); cfg.Vpagprinc=r5(1,3); cfg.Vaporte=r5(3,6); cfg.Vdiv=r5(1,3);
+  resetAll();
+}
+function resetAll(){ graded=false; document.getElementById('result').classList.remove('show');
+  document.getElementById('reso').classList.remove('show');
+  document.getElementById('corrigir').style.display='inline-block'; document.getElementById('refazer').style.display='none';
+  renderEvents(); buildInputs(); resetTimer(); }
+function refazer(){ resetAll(); }
+var secs=0,tid=null;
+function tick(){ secs++; var m=Math.floor(secs/60),s=secs%60; document.getElementById('timer').textContent=(m<10?'0':'')+m+':'+(s<10?'0':'')+s; }
+function startTimer(){ tid=setInterval(tick,1000); } function stopTimer(){ if(tid){clearInterval(tid);tid=null;} }
+function resetTimer(){ stopTimer(); secs=0; document.getElementById('timer').textContent='00:00'; startTimer(); }
+cfg=defaultCfg(); renderEvents(); buildInputs(); startTimer();
+</script>
+<script>(function(){
+  try{
+    var u=(new URLSearchParams(location.search).get('u')||'').trim();
+    var mark = (u ? u+' · ' : '') + 'ESTÁGIO ZERO · uso pessoal';
+    mark = mark.replace(/[<>&"]/g,'');
+    var svg='<svg xmlns="http://www.w3.org/2000/svg" width="360" height="200"><text x="10" y="110" transform="rotate(-30 180 100)" font-family="Arial" font-size="14" fill="rgba(15,42,63,0.055)">'+mark+'</text></svg>';
+    var d=document.createElement('div'); d.setAttribute('aria-hidden','true');
+    d.style.cssText='position:fixed;inset:0;z-index:99999;pointer-events:none;overflow:hidden';
+    d.style.backgroundImage='url("data:image/svg+xml;utf8,'+encodeURIComponent(svg)+'")';
+    d.style.backgroundRepeat='repeat';
+    document.body.appendChild(d);
+  }catch(e){}
+})();</script>
+</body></html>

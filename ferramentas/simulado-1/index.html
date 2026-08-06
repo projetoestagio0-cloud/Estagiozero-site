@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Estágio Zero — Simulado Interativo · Prova Intermediária #1</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#F4F7F9;font-family:'Segoe UI',Arial,sans-serif;color:#22303a;padding:20px}
+  .wrap{max-width:820px;margin:0 auto}
+  .brand{font-size:13px;font-weight:700;color:#4f46e5;letter-spacing:2px;text-transform:uppercase}
+  h1{font-size:24px;color:#0F2A3F;margin:2px 0 4px}
+  .lead{font-size:14px;color:#5B6B76;margin-bottom:14px}
+  .bar{position:sticky;top:0;z-index:10;background:#0F2A3F;color:#fff;border-radius:12px;padding:12px 18px;display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;box-shadow:0 6px 18px rgba(15,42,63,.18)}
+  .bar .prog{font-size:13.5px;color:#c7d6e0}
+  .bar .prog b{color:#fff}
+  .bar .timer{font-variant-numeric:tabular-nums;font-weight:700;font-size:15px}
+  .q{background:#fff;border:1px solid #E1E8EC;border-radius:12px;padding:18px 20px;margin-bottom:14px;box-shadow:0 4px 14px rgba(15,42,63,.04)}
+  .q .top{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:8px}
+  .q .n{font-weight:700;color:#0F2A3F;font-size:15px}
+  .tag{font-size:11px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:#4338ca;background:#EEF0FF;border-radius:20px;padding:3px 10px}
+  .stmt{font-size:15px;line-height:1.55;color:#22303a;margin-bottom:12px}
+  .stmt b{color:#0F2A3F}
+  .opts{display:flex;flex-direction:column;gap:8px}
+  .opt{display:flex;gap:10px;align-items:flex-start;border:1px solid #D9E2E7;border-radius:9px;padding:10px 13px;cursor:pointer;font-size:14.5px;line-height:1.4;transition:border-color .12s,background .12s}
+  .opt:hover{border-color:#4f46e5}
+  .opt input{margin-top:2px}
+  .opt.sel{border-color:#4f46e5;background:#F5F5FF}
+  .opt .lt{font-weight:700;color:#4338ca;margin-right:2px}
+  .numin{display:flex;align-items:center;gap:10px}
+  .numin input{width:180px;padding:9px 11px;border:1px solid #C9D6DD;border-radius:8px;font-size:15px;text-align:right}
+  .numin .u{font-size:13px;color:#5B6B76}
+  /* corrigido */
+  .q.ok{border-color:#0B7A63;box-shadow:0 0 0 2px rgba(11,122,99,.12)}
+  .q.no{border-color:#C0392B;box-shadow:0 0 0 2px rgba(192,57,43,.10)}
+  .opt.correct{border-color:#0B7A63;background:#EAF6F1}
+  .opt.wrong{border-color:#C0392B;background:#FDECEA}
+  .badge{font-size:12px;font-weight:700;padding:2px 9px;border-radius:20px}
+  .badge.g{background:#0B7A63;color:#fff}.badge.r{background:#C0392B;color:#fff}
+  .exp{margin-top:12px;background:#FBFCFE;border:1px solid #E6EDF1;border-left:3px solid #4f46e5;border-radius:8px;padding:11px 13px;font-size:13.8px;color:#3a4a54;line-height:1.55;display:none}
+  .exp.show{display:block}
+  .exp b{color:#0F2A3F}
+  .actions{display:flex;gap:12px;align-items:center;margin:20px 0 10px;flex-wrap:wrap}
+  .btn{border:none;border-radius:10px;padding:13px 22px;font-size:15px;font-weight:700;cursor:pointer}
+  .btn.p{background:#4f46e5;color:#fff}.btn.p:hover{background:#4338ca}
+  .btn.g{background:#EDF1F4;color:#0F2A3F}.btn.g:hover{background:#e2e8ec}
+  .result{background:#fff;border:1px solid #E1E8EC;border-radius:12px;padding:20px;margin-bottom:16px;display:none}
+  .result.show{display:block}
+  .result h2{font-size:20px;color:#0F2A3F;margin-bottom:6px}
+  .score{font-size:34px;font-weight:800;color:#4f46e5;font-variant-numeric:tabular-nums}
+  .result p{font-size:14px;color:#5B6B76;margin-top:4px}
+  .foot{font-size:12px;color:#93a0a8;line-height:1.5;margin-top:8px}
+  .guide{background:#fff;border:1px solid #E1E8EC;border-radius:12px;padding:4px 18px;margin-bottom:14px;box-shadow:0 4px 14px rgba(15,42,63,.04)}
+  .guide summary{cursor:pointer;font-weight:700;color:#0F2A3F;font-size:14px;padding:12px 0;list-style:none}
+  .guide summary::-webkit-details-marker{display:none}
+  .guide summary::before{content:"▸  ";color:#4f46e5}
+  .guide[open] summary::before{content:"▾  ";color:#4f46e5}
+  .guide .gg{display:grid;grid-template-columns:1fr 1fr;gap:6px 22px;padding:2px 0 14px;font-size:13px;color:#3a4a54;line-height:1.45}
+  .guide .gg span b{color:#0F2A3F}
+  @media(max-width:640px){.guide .gg{grid-template-columns:1fr}}
+</style></head>
+<body><div class="wrap">
+  <div class="brand">Estágio Zero · Simulados</div>
+  <h1>Simulado Interativo — Prova Intermediária #1</h1>
+  <div class="lead">Contabilidade Financeira (Insper). 12 questões no formato da Prova Intermediária, com números e contextos originais. Responda tudo e clique em <b>Corrigir</b> — a nota e a explicação de cada questão aparecem na hora.</div>
+
+  <details class="guide" open>
+    <summary>Guia rápido de siglas — leia antes de começar</summary>
+    <div class="gg">
+      <span><b>Liquidez Corrente</b> = Ativo Circulante ÷ Passivo Circulante</span>
+      <span><b>Liquidez Seca</b> = (Ativo Circulante − Estoques) ÷ Passivo Circulante</span>
+      <span><b>Liquidez Imediata</b> = Disponível ÷ Passivo Circulante</span>
+      <span><b>Margem Bruta</b> = Lucro Bruto ÷ Receita</span>
+      <span><b>Margem Operacional (EBIT)</b> = Resultado Operacional ÷ Receita</span>
+      <span><b>Ciclo de caixa</b> = prazo de estoque + prazo de recebimento − prazo de pagamento</span>
+      <span><b>Balanço · DRE · DFC</b> = Balanço Patrimonial · Demonstração do Resultado · Fluxo de Caixa</span>
+      <span><b>CMV</b> = Custo da Mercadoria Vendida</span>
+      <span><b>Patrimônio Líquido</b> = capital + lucros acumulados</span>
+      <span><b>Fluxo de Caixa das Operações</b> = caixa gerado pela atividade da empresa</span>
+      <span><b>Circulante / Não Circulante</b> = vence em até 12 meses / depois de 12 meses</span>
+    </div>
+  </details>
+
+  <div class="bar">
+    <span class="prog"><b id="ansc">0</b> de <b id="totq">12</b> respondidas</span>
+    <span class="timer" id="timer">00:00</span>
+  </div>
+
+  <div class="result" id="result"></div>
+  <div id="quiz"></div>
+
+  <div class="actions">
+    <button class="btn p" id="corrigir" onclick="corrigir()">Corrigir simulado</button>
+    <button class="btn g" id="refazer" onclick="refazer()" style="display:none">Refazer</button>
+  </div>
+  <div class="foot">Simulado preparatório do Estágio Zero. Questões originais, fiéis ao formato e aos conceitos da PI (Ciclos 0 a 3). Servem para treinar o tipo de questão — não são cópias de provas específicas.</div>
+</div>
+
+<script>
+var Q = [
+ { tag:"Liquidez", type:"mc",
+   stmt:"Uma empresa apresenta: Caixa <b>90.000</b>, Contas a receber <b>240.000</b>, Estoques <b>150.000</b> e Passivo Circulante <b>300.000</b>. O setor tem <b>Liquidez Corrente 1,30 · Liquidez Seca 0,90 · Liquidez Imediata 0,35</b>. Considere: (I) a liquidez corrente da empresa é maior que a do setor; (II) a empresa depende <i>menos</i> dos estoques que o setor para cobrir o passivo circulante; (III) a liquidez imediata da empresa é menor que a do setor; (IV) mesmo sem vender estoques, a empresa cobre todo o passivo circulante.",
+   opts:["Todas verdadeiras","Apenas I e II","I, III e IV","Apenas III","II e IV"], correct:2,
+   exp:"Ativo Circulante = 480.000. Liquidez Corrente = 480/300 = <b>1,60</b> (maior que 1,30 → I verdadeira). Liquidez Seca = 330/300 = <b>1,10</b> (≥ 1 → cobre o Passivo Circulante sem vender estoque → IV verdadeira). Liquidez Imediata = 90/300 = <b>0,30</b> (menor que 0,35 → III verdadeira). O ponto de atenção é a II: a diferença entre a corrente e a seca (0,50) é maior que a do setor (0,40), então a empresa depende <b>mais</b> de estoque, não menos → II falsa." },
+
+ { tag:"Margens", type:"mc",
+   stmt:"Quatro varejistas, com <b>margem bruta</b> e <b>margem operacional</b>: <b>A</b> (bruta 52% · operacional 14%), <b>B</b> (bruta 58% · operacional 9%), <b>C</b> (bruta 48% · operacional 11%), <b>D</b> (bruta 44% · operacional −1%). Considere: (I) a B, apesar da maior margem bruta, perde mais pontos entre a margem bruta e a operacional do que a A; (II) a D opera com prejuízo operacional; (III) a A é a mais eficiente na conversão de margem bruta em margem operacional.",
+   opts:["Todas","I e II","I e III","Apenas II","II e III"], correct:1,
+   exp:"Queda da margem bruta para a operacional (em pontos percentuais): A 38 · B 49 · C 37 · D 45. I: a B perde mais que a A (49 &gt; 38) → verdadeira. II: a D tem margem operacional −1% → prejuízo operacional → verdadeira. III: a mais eficiente (menor queda) é a <b>C</b> (37 pontos), não a A → falsa. Correta: I e II." },
+
+ { tag:"Impacto no PL", type:"mc",
+   stmt:"No período ocorrem três operações: <b>(1)</b> compra de estoque à vista de R$ 400.000; <b>(2)</b> venda a prazo de R$ 500.000 (recebimento em 60 dias), com CMV de R$ 300.000; <b>(3)</b> integralização de capital em dinheiro de R$ 250.000. Quais <b>aumentam o Patrimônio Líquido</b>?",
+   opts:["Apenas 1","Apenas 3","2 e 3","1 e 3","1, 2 e 3"], correct:2,
+   exp:"(1) compra à vista só troca caixa por estoque → PL inalterado. (2) venda com lucro (500−300 = 200.000) aumenta o PL via resultado. (3) integralização aumenta o capital (PL). Correta: <b>2 e 3</b>." },
+
+ { tag:"Reclassificação", type:"num", answer:2.5, tol:0.02, unit:"(índice, 2 casas — use vírgula)",
+   stmt:"Uma empresa tinha uma <b>dívida tributária de R$ 1.200.000</b>, integralmente no passivo circulante. Aderiu a um <b>parcelamento em 48 parcelas mensais iguais</b>. Antes disso tinha <b>Ativo Circulante de R$ 1.500.000</b> e <b>Passivo Circulante de R$ 1.500.000</b>. Qual a nova <b>Liquidez Corrente</b>?",
+   exp:"Parcela = 1.200.000/48 = 25.000. Ficam no circulante as 12 parcelas dos próximos 12 meses (300.000); as 36 restantes (900.000) vão para o não circulante. Novo PC = 1.500.000 − 1.200.000 + 300.000 = <b>600.000</b>. <b>LC = 1.500.000 / 600.000 = 2,50</b>. O ativo não muda — a liquidez melhora só porque a dívida saiu do curto prazo." },
+
+ { tag:"Ciclo de caixa", type:"mc",
+   stmt:"Uma empresa tem <b>prazo médio de recebimento de 50 dias</b>, <b>prazo médio de estoque de 80 dias</b> e <b>prazo médio de pagamento de 30 dias</b>. Assinale a correta:",
+   opts:["O ciclo de caixa é de 60 dias.","O ciclo de caixa é de 100 dias; quanto maior o ciclo, maior a necessidade de capital de giro.","O ciclo de caixa é de 160 dias.","O ciclo operacional é menor que o ciclo de caixa.","O ciclo de caixa independe do prazo de pagamento."], correct:1,
+   exp:"Ciclo de caixa = prazo de estoque + prazo de recebimento − prazo de pagamento = 80 + 50 − 30 = <b>100 dias</b>; quanto maior, mais capital de giro a empresa precisa financiar. A opção de 160 soma tudo sem subtrair o prazo de pagamento; o ciclo operacional (estoque + recebimento = 130) é <i>maior</i> que o de caixa; e o prazo de pagamento entra reduzindo o ciclo." },
+
+ { tag:"Juros", type:"mc",
+   stmt:"Empréstimo de <b>R$ 800.000</b> em 01/01, juros de <b>15% a.a.</b>, pagos apenas no vencimento (em 2 anos), com os juros <b>capitalizados</b>. Qual a despesa de juros na Demonstração do Resultado do <b>1º ano</b> e o efeito?",
+   opts:["R$ 120.000, como despesa financeira, com aumento do passivo e sem efeito no caixa.","R$ 240.000, reduzindo o caixa.","Zero, pois só há efeito quando pago.","R$ 120.000, reduzindo o caixa.","R$ 258.000 no 1º ano."], correct:0,
+   exp:"Por competência, a despesa do 1º ano = 15% × 800.000 = <b>120.000</b>, reconhecida com aumento do passivo (juros capitalizados) e <b>sem sair caixa</b> (só paga no vencimento). Os R$ 258.000 seriam o total de juros dos 2 anos (800.000 × 1,15² − 800.000), não a despesa do 1º ano; reduzir o caixa está errado porque nada foi pago ainda." },
+
+ { tag:"Análise do fluxo de caixa", type:"mc",
+   stmt:"Uma empresa teve <b>prejuízo líquido</b> no ano, mas o <b>Fluxo de Caixa das Operações (FCO) foi positivo</b>. Qual explica melhor?",
+   opts:["A empresa não teve despesas no período.","Houve despesas por competência que não saíram do caixa (somadas de volta) e/ou reduções de capital de giro que geraram caixa.","O prejuízo foi um erro contábil.","A empresa captou um empréstimo no período.","As vendas foram todas a prazo."], correct:1,
+   exp:"Competência ≠ caixa: o prejuízo inclui despesas que não consumiram caixa (ex.: juros capitalizados, perdas com créditos), somadas de volta no FCO, e a liberação de capital de giro (queda de estoques/recebíveis) entra como caixa. Captar empréstimo é <b>Financiamento (FCF)</b>, não Operacional; vendas a prazo <i>reduziriam</i> o FCO." },
+
+ { tag:"Impacto de operações", type:"mc",
+   stmt:"Considere: <b>(1)</b> pagamento de dividendos já declarados; <b>(2)</b> compra de estoque a prazo; <b>(3)</b> despesa de salários incorrida e paga no mês. Quais <b>NÃO afetam o resultado (lucro)</b> do período?",
+   opts:["Apenas 1","Apenas 3","1 e 2","2 e 3","Todas"], correct:2,
+   exp:"(1) o dividendo mexe no PL e no caixa, não no resultado. (2) comprar estoque só movimenta contas patrimoniais (estoque e fornecedores); vira despesa (CMV) apenas na venda. (3) salário incorrido é despesa e <b>reduz o lucro</b>. Logo, não afetam o resultado: <b>1 e 2</b>." },
+
+ { tag:"Competência × caixa", type:"mc",
+   stmt:"Uma empresa vende <b>R$ 300.000 a prazo</b> (recebimento em 60 dias), com CMV de <b>R$ 180.000</b>. No <b>período da venda</b>, o que acontece?",
+   opts:["O lucro e o caixa aumentam R$ 120.000.","O lucro aumenta R$ 120.000, mas o caixa não muda no período.","Não há lucro, porque não entrou caixa.","O lucro aumenta R$ 300.000.","O caixa aumenta R$ 300.000."], correct:1,
+   exp:"Pela competência, a receita e o lucro (300.000 − 180.000 = <b>120.000</b>) são reconhecidos na venda, mesmo sem receber. O caixa só entra no recebimento (60 dias). Dizer que 'não há lucro' confunde competência com caixa; o lucro é 120.000 (não 300.000, que é a receita)." },
+
+ { tag:"Prazos médios", type:"num", answer:30, tol:0.6, unit:"(dias)",
+   stmt:"Uma empresa teve <b>Receita de R$ 7.200.000</b> no ano e mantém <b>Contas a Receber</b> de <b>R$ 600.000</b>. Usando base de <b>360 dias</b>, qual o <b>Prazo Médio de Recebimento</b> (em dias)?",
+   exp:"Prazo médio de recebimento = (Contas a Receber ÷ Receita) × dias = (600.000 ÷ 7.200.000) × 360 = <b>30 dias</b> — em média, a empresa leva 30 dias para receber das vendas." },
+
+ { tag:"Reclassificação de dívida", type:"mc",
+   stmt:"Uma empresa tem <b>debêntures no passivo não circulante</b>. Durante o ano entra em <b>recuperação judicial</b> e passa a descumprir cláusulas contratuais (<i>covenants</i>). O que tende a acontecer com o saldo das debêntures?",
+   opts:["Continua no não circulante até o vencimento original.","Pode ser reclassificado para o circulante, porque o descumprimento pode tornar a dívida exigível em até 12 meses.","É baixado do passivo.","É transferido para o patrimônio líquido.","Reduz o ativo da empresa."], correct:1,
+   exp:"O descumprimento de covenant / a recuperação judicial pode disparar o <b>vencimento antecipado</b> (a dívida se torna exigível de imediato). Como passa a ser exigível em até 12 meses, é <b>reclassificada de não circulante para circulante</b>, o que piora a liquidez corrente. A obrigação continua existindo (não é baixada nem vira PL)." },
+
+ { tag:"Montagem dos demonstrativos", type:"num", answer:280000, tol:1, unit:"(R$, saldo final de caixa)",
+   stmt:"Uma empresa inicia com <b>Caixa 200.000</b> e <b>Capital 200.000</b>. No período: <b>(1)</b> compra estoque a prazo de R$ 120.000 (vencimento em 90 dias); <b>(2)</b> vende metade do estoque por R$ 100.000 à vista (CMV 60.000); <b>(3)</b> incorre e paga despesas de R$ 20.000; <b>(4)</b> declara dividendos de R$ 10.000 (a pagar). Qual o <b>saldo final de Caixa</b>?",
+   exp:"Compra a prazo não mexe no caixa; venda à vista <b>+100.000</b>; despesa paga <b>−20.000</b>; dividendo apenas <b>declarado</b> (a pagar) não sai do caixa. Caixa final = 200.000 + 100.000 − 20.000 = <b>280.000</b>. (O lucro do período seria 100.000 − 60.000 − 20.000 = 20.000, mas a pergunta é sobre caixa.)" },
+];
+
+var graded=false;
+var quiz=document.getElementById('quiz');
+document.getElementById('totq').textContent=Q.length;
+
+function render(){
+  quiz.innerHTML=Q.map(function(q,i){
+    var body;
+    if(q.type==='mc'){
+      body='<div class="opts" data-q="'+i+'">'+q.opts.map(function(o,j){
+        return '<label class="opt"><input type="radio" name="q'+i+'" value="'+j+'" onchange="pick()"><span><span class="lt">'+String.fromCharCode(65+j)+')</span> '+o+'</span></label>';
+      }).join('')+'</div>';
+    } else {
+      body='<div class="numin"><input type="text" inputmode="decimal" id="num'+i+'" oninput="pick()" placeholder="sua resposta"><span class="u">'+(q.unit||'')+'</span></div>';
+    }
+    return '<div class="q" id="q'+i+'"><div class="top"><span class="n">Questão '+(i+1)+'</span><span class="tag">'+q.tag+'</span></div>'+
+      '<div class="stmt">'+q.stmt+'</div>'+body+'<div class="exp" id="exp'+i+'"><b>Resolução.</b> '+q.exp+'</div></div>';
+  }).join('');
+  pick();
+}
+function getAns(i){
+  var q=Q[i];
+  if(q.type==='mc'){ var s=document.querySelector('input[name="q'+i+'"]:checked'); return s?+s.value:null; }
+  var v=document.getElementById('num'+i).value; return (v.trim()==='')?null:v;
+}
+function pick(){
+  if(graded) return;
+  var c=0;
+  Q.forEach(function(q,i){ if(getAns(i)!==null) c++; document.querySelectorAll('#q'+i+' .opt').forEach(function(l){ l.classList.toggle('sel', l.querySelector('input').checked); }); });
+  document.getElementById('ansc').textContent=c;
+}
+function parseNum(s){
+  s=String(s).trim().replace(/\s/g,''); if(s==='') return NaN;
+  if(s.indexOf(',')>=0){ s=s.replace(/\./g,'').replace(',','.'); }
+  else if(/^-?\d{1,3}(\.\d{3})+$/.test(s)){ s=s.replace(/\./g,''); }
+  return parseFloat(s);
+}
+function corrigir(){
+  if(graded) return; graded=true; stopTimer();
+  var hits=0;
+  Q.forEach(function(q,i){
+    var card=document.getElementById('q'+i), ans=getAns(i), ok=false;
+    if(q.type==='mc'){
+      var labels=card.querySelectorAll('.opt');
+      labels.forEach(function(l){ l.querySelector('input').disabled=true; });
+      if(ans!==null && ans===q.correct) ok=true;
+      labels[q.correct].classList.add('correct');
+      if(ans!==null && ans!==q.correct) labels[ans].classList.add('wrong');
+    } else {
+      document.getElementById('num'+i).disabled=true;
+      var val=ans===null?NaN:parseNum(ans);
+      ok = isFinite(val) && Math.abs(val-q.answer)<=q.tol;
+    }
+    if(ok) hits++;
+    card.classList.add(ok?'ok':'no');
+    var top=card.querySelector('.top');
+    var b=document.createElement('span'); b.className='badge '+(ok?'g':'r'); b.textContent=ok?'✓ Acertou':'✗ Reveja'; top.appendChild(b);
+    document.getElementById('exp'+i).classList.add('show');
+  });
+  var pct=Math.round(hits/Q.length*100);
+  var msg = pct>=80?'Mandou muito bem — pronto para a PI.' : pct>=50?'Bom caminho; revise as questões marcadas.' : 'Vale revisar os conceitos e refazer.';
+  var r=document.getElementById('result');
+  r.innerHTML='<h2>Resultado</h2><div class="score">'+hits+' / '+Q.length+'</div><p>'+pct+'% de acerto · '+document.getElementById('timer').textContent+' de prova. '+msg+'</p>';
+  r.classList.add('show');
+  document.getElementById('corrigir').style.display='none';
+  document.getElementById('refazer').style.display='inline-block';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function refazer(){
+  graded=false;
+  document.getElementById('result').classList.remove('show');
+  document.getElementById('corrigir').style.display='inline-block';
+  document.getElementById('refazer').style.display='none';
+  render(); resetTimer();
+}
+/* timer */
+var t0=Date.now?null:null, secs=0, tid=null;
+function tick(){ secs++; var m=Math.floor(secs/60), s=secs%60; document.getElementById('timer').textContent=(m<10?'0':'')+m+':'+(s<10?'0':'')+s; }
+function startTimer(){ tid=setInterval(tick,1000); }
+function stopTimer(){ if(tid){ clearInterval(tid); tid=null; } }
+function resetTimer(){ stopTimer(); secs=0; document.getElementById('timer').textContent='00:00'; startTimer(); }
+render(); startTimer();
+</script>
+<script>(function(){
+  try{
+    var u=(new URLSearchParams(location.search).get('u')||'').trim();
+    var mark = (u ? u+' · ' : '') + 'ESTÁGIO ZERO · uso pessoal';
+    mark = mark.replace(/[<>&"]/g,'');
+    var svg='<svg xmlns="http://www.w3.org/2000/svg" width="360" height="200"><text x="10" y="110" transform="rotate(-30 180 100)" font-family="Arial" font-size="14" fill="rgba(15,42,63,0.055)">'+mark+'</text></svg>';
+    var d=document.createElement('div'); d.setAttribute('aria-hidden','true');
+    d.style.cssText='position:fixed;inset:0;z-index:99999;pointer-events:none;overflow:hidden';
+    d.style.backgroundImage='url("data:image/svg+xml;utf8,'+encodeURIComponent(svg)+'")';
+    d.style.backgroundRepeat='repeat';
+    document.body.appendChild(d);
+  }catch(e){}
+})();</script>
+</body></html>
