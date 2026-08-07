@@ -1,0 +1,15 @@
+# Donos de cada parte do projeto Estágio Zero.
+# Quando alguém abre um PR que mexe num arquivo abaixo,
+# o GitHub pede a revisão do dono automaticamente.
+
+# --- Site (conteúdo, produtos, páginas) — Gabriel ---
+/index.html              @projetoestagio0-cloud
+/ferramentas/            @projetoestagio0-cloud
+
+# --- Radar de vagas — Pedro ---
+/vagas.js                @pedrobellonitedesco-star
+/vagas.css               @pedrobellonitedesco-star
+/data/                   @pedrobellonitedesco-star
+/scripts/                @pedrobellonitedesco-star
+/empresas_prioridade.csv @pedrobellonitedesco-star
+/.github/workflows/      @pedrobellonitedesco-star

@@ -1,26 +1,71 @@
 {
-  "_docs": "Fontes automatizáveis confirmadas por pesquisa manual em 2026-07-31 (ver histórico da conversa). Só entram aqui empresas com ATS público, sem login, sem robots.txt bloqueando o path de vagas. Empresas sem ATS público (recrutamento só por e-mail/indicação) foram deliberadamente deixadas de fora — não têm fonte automatizável.",
+  "_docs": "Fontes automatizáveis confirmadas por pesquisa manual em 2026-07-31 e 2026-08-03 (ver histórico da conversa). Só entram aqui empresas com ATS público, sem login, sem robots.txt bloqueando o path de vagas. Empresas sem ATS público (recrutamento só por e-mail/indicação) foram deliberadamente deixadas de fora — não têm fonte automatizável.",
   "greenhouse": [
     { "token": "xpinc", "area": "corretora-fintech", "empresa": "XP Inc.", "nota": "Funil único também para as marcas Rico e Clear" },
-    { "token": "btgpactual", "area": "banco", "empresa": "BTG Pactual" },
+    { "token": "btgpactual", "area": "banco", "empresa": "BTG Pactual", "nota": "Vagas de research da Empiricus também aparecem neste board (depto \"BTG Investimentos\")" },
     { "token": "nubank", "area": "corretora-fintech", "empresa": "Nubank", "nota": "Programa sazonal — costuma zerar entre ciclos" },
     { "token": "inter", "area": "corretora-fintech", "empresa": "Banco Inter" },
     { "token": "c6bank", "area": "corretora-fintech", "empresa": "C6 Bank" },
-    { "token": "generalatlantic", "area": "vc-pe", "empresa": "General Atlantic", "nota": "Board global — raramente tem vaga no Brasil" }
+    { "token": "generalatlantic", "area": "vc-pe", "empresa": "General Atlantic", "nota": "Board global — raramente tem vaga no Brasil" },
+    { "token": "bancopan", "area": "banco", "empresa": "Banco Pan" },
+    { "token": "stone", "area": "corretora-fintech", "empresa": "Stone" },
+    { "token": "ebanx", "area": "corretora-fintech", "empresa": "Ebanx" },
+    { "token": "getnet", "area": "corretora-fintech", "empresa": "Getnet" }
   ],
   "gupy": [
     { "subdomain": "vemproitau", "area": "banco", "empresa": "Itaú Unibanco" },
     { "subdomain": "venhasersafra", "area": "banco", "empresa": "Banco Safra" },
     { "subdomain": "kinea", "area": "asset", "empresa": "Kinea Investimentos" },
     { "subdomain": "jgpcarreira", "area": "asset", "empresa": "JGP Gestão de Recursos" },
-    { "subdomain": "vincipartners", "area": "asset", "empresa": "Vinci Partners" },
-    { "subdomain": "sunojobs", "area": "research", "empresa": "Suno Research" },
-    { "subdomain": "modalmais", "area": "corretora-fintech", "empresa": "Modalmais" },
-    { "subdomain": "picpay", "area": "corretora-fintech", "empresa": "PicPay" }
+    { "subdomain": "vincipartners", "area": "asset", "empresa": "Vinci Partners", "nota": "Mesmo board cobre também a marca Vinci Compass" },
+    { "subdomain": "sunojobs", "area": "research", "empresa": "Suno Research", "nota": "ALERTA: feed google_for_jobs com lastBuildDate de 2024-06-21 — provavelmente não retorna vagas reais, mas o board pode seguir ativo (não confirmado). Revisitar." },
+    { "subdomain": "modalmais", "area": "corretora-fintech", "empresa": "Modalmais", "nota": "ALERTA: feed google_for_jobs com lastBuildDate de 2023-08-01 — provavelmente não retorna vagas reais. Revisitar." },
+    { "subdomain": "pagseguro", "area": "corretora-fintech", "empresa": "PagBank" },
+    { "subdomain": "genial", "area": "corretora-fintech", "empresa": "Genial Investimentos" },
+    { "subdomain": "bancodaycoval", "area": "banco", "empresa": "Banco Daycoval" },
+    { "subdomain": "hsi", "area": "real-estate-infra", "empresa": "HSI - Hemisfério Sul Investimentos" },
+    { "subdomain": "creditas", "area": "corretora-fintech", "empresa": "Creditas" },
+    { "subdomain": "meliuz", "area": "corretora-fintech", "empresa": "Méliuz" },
+    { "subdomain": "contasimples", "area": "corretora-fintech", "empresa": "Conta Simples" },
+    { "subdomain": "stark", "area": "corretora-fintech", "empresa": "Stark Bank", "nota": "ALERTA: feed com lastBuildDate de 2026-04-08, moderadamente defasado" },
+    { "subdomain": "dock", "area": "corretora-fintech", "empresa": "Dock", "nota": "ALERTA: feed com lastBuildDate de 2025-09-09, defasado" },
+    { "subdomain": "cyrela", "area": "real-estate-infra", "empresa": "Cyrela", "filtroArea": true, "nota": "Board corporativo geral (incorporadora grande) — filtroArea ativo" },
+    { "subdomain": "jhsf", "area": "real-estate-infra", "empresa": "JHSF", "filtroArea": true, "nota": "Board corporativo geral (imóveis, malls, fashion retail, aeroporto, hotelaria) — filtroArea ativo" },
+    { "subdomain": "eztec", "area": "real-estate-infra", "empresa": "Eztec", "filtroArea": true, "nota": "Board corporativo geral (incorporadora) — filtroArea ativo" },
+    { "subdomain": "tegraincorporadora", "area": "real-estate-infra", "empresa": "Tegra Incorporadora", "filtroArea": true, "nota": "Board corporativo geral (incorporadora, subsidiária da Brookfield) — filtroArea ativo" },
+    { "subdomain": "vemserigua", "area": "real-estate-infra", "empresa": "Iguá Saneamento", "filtroArea": true, "nota": "Board corporativo geral (toda a empresa) — filtroArea exige também palavra-chave de função financeira/corporativa no título, senão entra vaga de operação/atendimento" },
+    { "subdomain": "motiva", "area": "real-estate-infra", "empresa": "Motiva (ex-CCR)", "filtroArea": true, "nota": "Idem Iguá — board corporativo geral, filtroArea ativo" },
+    { "subdomain": "ecorodovias", "area": "real-estate-infra", "empresa": "EcoRodovias", "filtroArea": true, "nota": "Idem Iguá/Motiva — board corporativo geral, filtroArea ativo. Existem boards separados de subsidiárias (ecovias, ecoriominas) não testados ainda" }
+  ],
+  "workday": [
+    { "tenant": "blackrock", "pod": "wd1", "site": "BlackRock_Professional", "area": "asset", "empresa": "BlackRock Brasil" },
+    { "tenant": "brookfield", "pod": "wd5", "site": "brookfield", "area": "vc-pe", "empresa": "Brookfield Asset Management Brasil" },
+    { "tenant": "barclays", "pod": "wd3", "site": "External_Career_Site_Barclays", "area": "banco", "empresa": "Barclays Brasil" },
+    { "tenant": "fticonsulting", "pod": "wd108", "site": "FTIConsultingCareers", "area": "research", "empresa": "FTI Consulting Brasil" },
+    { "tenant": "higcapital", "pod": "wd5", "site": "LinkedIn", "area": "vc-pe", "empresa": "H.I.G. Capital Brasil" },
+    { "tenant": "santander", "pod": "wd3", "site": "SantanderCareers", "area": "banco", "empresa": "Santander Brasil" },
+    { "tenant": "adventinternational", "pod": "wd12", "site": "AdventCareers", "area": "vc-pe", "empresa": "Advent International Brasil" },
+    { "tenant": "franklintempleton", "pod": "wd5", "site": "Primary-External-1", "area": "asset", "empresa": "Franklin Templeton / Western Asset Brasil" }
+  ],
+  "lever": [
+    { "slug": "neon", "area": "corretora-fintech", "empresa": "Neon Pagamentos" }
+  ],
+  "oraclecloud": [
+    { "slug": "jpmc", "host": "jpmc.fa.oraclecloud.com", "siteNumber": "CX_1001", "site": "CX_1001", "locale": "en", "area": "banco", "empresa": "JPMorgan Brasil" },
+    { "slug": "picpay", "host": "epdm.fa.la1.oraclecloud.com", "siteNumber": "CX_1", "site": "PicPay", "locale": "pt-BR", "area": "corretora-fintech", "empresa": "PicPay" }
+  ],
+  "citi": [
+    { "categoriaUrl": "https://jobs.citi.com/employment/sao-paulo-internship-jobs/287/9252656/3469034-3448433-3448439/4", "area": "banco", "empresa": "Citi Brasil", "cidade": "São Paulo, SP", "nota": "Categoria já filtrada pra estágio em São Paulo — página HTML estática, sem precisar de API do Workday" }
+  ],
+  "smartrecruiters": [
+    { "company": "DOMOInvest", "area": "vc-pe", "empresa": "DOMO Invest" }
+  ],
+  "zoho": [
+    { "subdomain": "spxcapital", "area": "asset", "empresa": "SPX Capital" }
   ],
   "bloqueadas_para_ia": {
-    "_docs": "Domínios cujo robots.txt bloqueia explicitamente bots de IA (ClaudeBot/GPTBot). Nunca coletar automaticamente, mesmo que uma vaga pareça acessível.",
-    "dominios": ["monashees.com.br", "warren.inhire.app"]
+    "_docs": "Domínios cujo robots.txt bloqueia explicitamente bots de IA (ClaudeBot/GPTBot). Nunca coletar automaticamente, mesmo que uma vaga pareça acessível. Confirmado em 2026-08-04: TODO domínio *.inhire.app bloqueia ClaudeBot/GPTBot via política padrão da plataforma (Cloudflare Content-Signal) — o domínio carreira.inhire.com.br (WordPress, página de perfil da empresa) permite bots, mas não tem os dados de vaga (é só uma landing page); os dados reais ficam em {empresa}.inhire.app, que bloqueia. Ou seja: qualquer empresa que use INHIRE está automaticamente inviável, não precisa checar de novo.",
+    "dominios": ["monashees.com.br", "warren.inhire.app", "toroinvestimentos.inhire.app", "bancopine.inhire.app", "avenue.inhire.app", "kpmg.inhire.app", "klavi.inhire.app"]
   },
   "sem_ats_publico": {
     "_docs": "Pesquisadas e confirmadas sem ATS público (recrutamento por e-mail/indicação). Fora do escopo de automação — não incluir sem checar de novo antes.",
@@ -30,20 +75,86 @@
       "Redpoint eventures", "Canary", "IG4 Capital", "Astella Investimentos (só portfólio)",
       "Kaszek Ventures (board é do portfólio, não da gestora)", "Valor Capital Group (board é do portfólio)",
       "Hedge Investments", "Eleven Financial Research", "Levante Ideias de Investimento",
-      "Gávea Investimentos (bloqueio WAF de infraestrutura)"
+      "Gávea Investimentos (bloqueio WAF de infraestrutura)",
+      "Banrisul (recrutamento via concurso CIEE/RS, não é ATS tradicional)",
+      "Sicredi (Gupy descentralizado por cooperativa singular, sem feed nacional único)",
+      "Sicoob (mesmo problema do Sicredi — múltiplos subdomains por cooperativa)",
+      "Banco Original (recrutamento via agregador vagas.com.br, sem API própria; cuidado: original.gupy.io é de outra empresa)",
+      "Tarpon Investimentos", "Dynamo Administração de Recursos", "Alaska Asset Management",
+      "Constellation Asset Management", "Moat Capital", "Vista Capital", "Truxt Investimentos",
+      "Occam Brasil Gestão de Recursos", "Trígono Capital", "ACE Capital", "AZ Quest",
+      "Angá Asset Management", "Sparta Fundos de Investimento", "Mont Asset",
+      "DXA Investments", "Igah Ventures", "Angra Partners (só formulário de contato)",
+      "Peninsula Participações", "DGF Investimentos", "Vectis Partners", "Perfin Investimentos",
+      "GP Investments", "Spectra Investments (referência antiga a Kenoby está morta)",
+      "Nord Research", "REC Gestão de Recursos", "TG Core Asset", "The Capital Advisor",
+      "Guide Investimentos (adquirida pelo Safra em 2024; possivelmente absorvida no board venhasersafra, não confirmado)",
+      "Vinland Capital (nenhuma página de carreiras/ATS encontrada)",
+      "Softbank Latin America Fund (careers.latinamericafund.com lista vagas do portfólio, não do fundo em si)",
+      "Genoa Capital (só e-mail/contato, sem ATS)",
+      "Navi Capital (só \"trabalhe conosco\" institucional, sem ATS)",
+      "Maya Capital (nenhuma página de carreiras encontrada)",
+      "JS Real Estate (não foi possível identificar com confiança qual entidade é — nome ambíguo, resultados de busca não bateram com uma gestora de real estate específica)",
+      "Necton (é uma corretora subsidiária do BTG Pactual — vagas aparecem no próprio board Greenhouse do BTG, não precisa fonte separada)",
+      "CM Capital (não foi possível identificar um ATS/portal de carreiras próprio com confiança)",
+      "Quest Investimentos (não foi possível identificar um ATS/portal de carreiras próprio com confiança)",
+      "ARX Investimentos (nenhum ATS próprio encontrado, só agregadores genéricos)",
+      "Claritas Investimentos (nenhum ATS próprio encontrado)",
+      "Bozano Investimentos (nenhum ATS próprio encontrado)",
+      "Aqua Capital (nenhum ATS próprio encontrado além de agregadores)",
+      "Upload Ventures (nenhuma informação de carreiras encontrada)",
+      "Alexia Ventures (só e-mail de contato: info@alexia.vc)",
+      "Bamboo Capital (nenhuma informação de carreiras encontrada)",
+      "PCP Capital Partners (nenhum ATS próprio encontrado — buscas retornaram vagas de PCP/Planejamento e Controle de Produção de outras empresas, não desta gestora)",
+      "GLP Capital Partners Brasil (rebatizada Marq Logistics no Brasil; recrutamento só por banco de talentos/e-mail)",
+      "Bresco Investimentos (nenhum ATS próprio encontrado)",
+      "TRX Real Estate (site trx.com.br existe mas sem link de carreiras na home; verificado só por fetch direto, sem WebSearch disponível — baixa confiança)"
     ]
   },
   "candidatos_fase_2": {
-    "_docs": "Têm ATS, mas exigem mais engenharia (auth, POST, formato não confirmado) ou têm confiança menor. Avaliar depois.",
+    "_docs": "Têm ATS, mas exigem mais engenharia (auth, POST, formato não confirmado, ou ATS ainda não suportado pelo coletor — ex: Lever, Workday, Quickin, vagas.com.br). Avaliar depois.",
     "empresas": [
-      "SPX Capital (Zoho Recruit)",
-      "Pátria Investimentos (Teamtailor geral + Across para estágio, programa anual formal)",
-      "RBR Asset Management (Quickin)",
-      "Santander Brasil (Workday — institucional bloqueou fetch, checar sitemap.xml do board Workday)",
-      "Bradesco (Cornerstone OnDemand + microsite sazonal Eureca, URL muda todo ano)",
+      "Pátria Investimentos (Teamtailor geral; programa de estágio via Across capturado manualmente em data/manual.json — Across é landing page estática por ciclo, não API, então precisa atualizar o link todo ano)",
+      "RBR Asset Management (Quickin: jobs.quickin.io/rbrasset/jobs — app Nuxt.js client-side, dados carregados via api.quickin.io mas endpoint exato não mapeado; tentativas de GET/POST em /jobs, /jobs/search, /search deram 404)",
+      "Bradesco (Cornerstone OnDemand confirmado em bradesco.csod.com, mas a API retorna 401 sem autenticação; programa de estágio via Eureca já capturado manualmente em data/manual.json — URL muda todo ano)",
       "Banco do Brasil (via CIEE + editais de concurso — não é ATS tradicional)",
-      "Advent International Brasil (Workday, extração exige POST)",
-      "CPP Investments (atrás de AWS WAF — respeitar, não contornar)"
+      "CPP Investments (atrás de AWS WAF — respeitar, não contornar)",
+      "Banco Votorantim/BV (programa de estágio ativo, ATS por trás não confirmado)",
+      "Banco ABC Brasil (página de carreiras retorna 403 para fetch automatizado)",
+      "Bahia Asset Management (vagas.com.br — plataforma ainda não suportada)",
+      "Actis/Actis Brasil (adquirida pela General Atlantic em out/2024; board Lever antigo jobs.lever.co/act foi desativado — se postar vaga, deve sair no board Greenhouse generalatlantic já coberto)",
+      "JiveMauá (subdomain Gupy \"jive\" existe mas parece abandonado — 1 vaga antiga de 2023; revisitar periodicamente)",
+      "Spiti/Grupo Primo (Quickin: jobs.quickin.io/grupo-primo — mesma plataforma da RBR, mesmo problema de endpoint não mapeado)",
+      "Goldman Sachs Brasil (plataforma própria higher.gs.com, client-side; robots.txt permite indexar /roles/ mas API JSON não mapeada)",
+      "Morgan Stanley Brasil (TalentLink: morganstanley.tal.net — sem JSON-LD nem API pública identificada)",
+      "McKinsey & Company Brasil (plataforma própria, client-side rendered, ATS não identificado)",
+      "Bain & Company Brasil (mesmo caso do McKinsey)",
+      "Boston Consulting Group Brasil (Phenom People, brand code BCG1US: careers.bcg.com — é SPA, chamada da API não aparece no HTML estático, tentativas de /api/apply/v2/jobs deram 404 idênticos à página normal)",
+      "Bradesco BBI (mesmo microsite sazonal Eureca do Bradesco — ver Bradesco)",
+      "Bank of America Brasil (careers.bankofamerica.com, plataforma não totalmente confirmada)",
+      "UBS BB (Cia de Talentos: vagas.ciadetalentos.com.br/hotsite/UBSestagio — app Angular, sem dados no HTML estático; parece ser hotsite único de um ciclo específico, não um board pesquisável — se for automatizar, provável candidato a curadoria manual como o Across)",
+      "BR Partners (portal próprio brpartners.com.br/careers, fetch automatizado bloqueado com 403)",
+      "Ágora Investimentos (mesmo funil do Bradesco/Cornerstone — não tem board próprio)",
+      "Carlyle Brasil (careers.carlyle.com bloqueado com 403 no fetch, ATS não confirmado)",
+      "CSHG Real Estate (fundo HGRE transferido para gestão da Pátria e administração da Genial em 2024 — sem board próprio, cai no candidato_fase_2 da Pátria)",
+      "PwC Brasil Deals (portal próprio pwc.com.br/pt/carreira-na-pwc, ATS não confirmado)",
+      "Deloitte Brasil Financial Advisory (usa Avature como plataforma global)",
+      "EY Brasil Strategy and Transactions (portal próprio ey.com/pt_br/careers, ATS não confirmado)",
+      "Oliver Wyman Brasil (Phenom People, hospedado em mmc.phenompeople.com — página real é oliverwyman.com/careers.html; mesmo problema do BCG, endpoint de API não encontrado via fetch estático)",
+      "Deutsche Bank Brasil (careers.db.com, plataforma não confirmada)",
+      "Caixa Asset Management (recrutamento de estágio via portal Super Estágios; efetivo via concurso público — mesmo padrão do Banco do Brasil)",
+      "Schroders Brasil (SelectMinds: schroders.referrals.selectminds.com — sem vagas específicas do Brasil localizadas)",
+      "Warburg Pincus Brasil (portal próprio warburgpincus.com/careers, sem vagas específicas do Brasil localizadas)",
+      "KKR Brasil (portal próprio kkr.com/careers, sem vagas específicas do Brasil localizadas)",
+      "Carlyle Brasil (careers.carlyle.com, ATS não confirmado)",
+      "Hash (README do GitHub hashlab/hiring aponta pra jobs.lever.co/hash, mas esse board Lever foi desativado — 404 tanto na página quanto na API — README parece desatualizado desde set/2025)",
+      "Conductor (Gupy \"conductor\" com feed abandonado desde 2021 — empresa se fundiu com Dock/Muxi, vagas provavelmente migraram pro board \"dock\")",
+      "Multiplan (programa de estágio via Across capturado manualmente em data/manual.json)",
+      "Iguatemi (portal próprio vemseriguatemi.com.br, não é Gupy, ATS não confirmado)",
+      "Roland Berger Brasil (portal próprio rolandberger.com/en/Join, ATS não confirmado)",
+      "Alvarez & Marsal Brasil (portal global careers.alvarezandmarsal.com + microsite específico do estágio Brasil: intern-platform.amlatam.digital, ATS não confirmado)",
+      "Will Bank (board Gupy vemserwill segue ativo e com vagas segundo buscas recentes, mas o feed google_for_jobs está com lastBuildDate de 2025-05-22 — parado há +1 ano; precisa de outro mecanismo de coleta do Gupy, não o feed do Google)",
+      "Órama Investimentos (mesmo problema do Will Bank: feed google_for_jobs com lastBuildDate de 2023-03-07, board pode seguir ativo mas este mecanismo não capta)"
     ]
   }
 }

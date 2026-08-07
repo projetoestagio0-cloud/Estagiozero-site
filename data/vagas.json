@@ -1,6 +1,347 @@
 {
-  "generated_at": "2026-08-03T17:18:52.874Z",
+  "generated_at": "2026-08-07T14:05:06.916Z",
   "vagas": [
+    {
+      "id": "gupy-bancodaycoval-eyJqb2JJZCI6MTE4NTIxOTUs",
+      "empresa": "BANCO DAYCOVAL",
+      "programa": "Estágio em Telecom",
+      "tipo": "estagio",
+      "area": "banco",
+      "cidade": "São Paulo, São Paulo",
+      "link": "https://bancodaycoval.gupy.io/job/eyJqb2JJZCI6MTE4NTIxOTUsInNvdXJjZSI6Imdvb2dsZV9mb3Jfam9icyJ9",
+      "fonte": "scraper:gupy:bancodaycoval",
+      "coletado_em": "2026-08-07"
+    },
+    {
+      "id": "gupy-bancodaycoval-eyJqb2JJZCI6MTE1NDI2NjIs",
+      "empresa": "BANCO DAYCOVAL",
+      "programa": "Estágio - Comercial Empresas",
+      "tipo": "estagio",
+      "area": "banco",
+      "cidade": "Goiânia, Goiás",
+      "link": "https://bancodaycoval.gupy.io/job/eyJqb2JJZCI6MTE1NDI2NjIsInNvdXJjZSI6Imdvb2dsZV9mb3Jfam9icyJ9",
+      "fonte": "scraper:gupy:bancodaycoval",
+      "coletado_em": "2026-08-07"
+    },
+    {
+      "id": "gupy-bancodaycoval-eyJqb2JJZCI6MTE1MDU4MTIs",
+      "empresa": "BANCO DAYCOVAL",
+      "programa": "Estágio em Social Media",
+      "tipo": "estagio",
+      "area": "banco",
+      "cidade": "São Paulo, São Paulo",
+      "link": "https://bancodaycoval.gupy.io/job/eyJqb2JJZCI6MTE1MDU4MTIsInNvdXJjZSI6Imdvb2dsZV9mb3Jfam9icyJ9",
+      "fonte": "scraper:gupy:bancodaycoval",
+      "coletado_em": "2026-08-07"
+    },
+    {
+      "id": "gh-inter-4685799005",
+      "empresa": "Banco Inter",
+      "programa": "BANCO DE TALENTOS (OPORTUNIDADES DE ESTÁGIO) | FINANCE",
+      "tipo": "estagio",
+      "area": "corretora-fintech",
+      "cidade": "Belo Horizonte, MG; São Paulo, SP",
+      "link": "https://boards.greenhouse.io/inter/jobs/4685799005?gh_jid=4685799005",
+      "fonte": "scraper:greenhouse:inter",
+      "coletado_em": "2026-08-07"
+    },
+    {
+      "id": "gh-inter-4612312005",
+      "empresa": "Banco Inter",
+      "programa": "[BANCO DE TALENTOS] OPORTUNIDADES DE ESTÁGIO | INTER",
+      "tipo": "estagio",
+      "area": "corretora-fintech",
+      "cidade": "Belo Horizonte, MG; São Paulo, SP",
+      "link": "https://boards.greenhouse.io/inter/jobs/4612312005?gh_jid=4612312005",
+      "fonte": "scraper:greenhouse:inter",
+      "coletado_em": "2026-08-07"
+    },
+    {
+      "id": "gh-inter-4711256005",
+      "empresa": "Banco Inter",
+      "programa": "INTERN",
+      "tipo": "estagio",
+      "area": "corretora-fintech",
+      "cidade": "São Paulo, SP",
+      "link": "https://boards.greenhouse.io/inter/jobs/4711256005?gh_jid=4711256005",
+      "fonte": "scraper:greenhouse:inter",
+      "coletado_em": "2026-08-07"
+    },
+    {
+      "id": "gh-inter-4713986005",
+      "empresa": "Banco Inter",
+      "programa": "INTERN | CRM & CONTENT",
+      "tipo": "estagio",
+      "area": "corretora-fintech",
+      "cidade": "Belo Horizonte, MG",
+      "link": "https://boards.greenhouse.io/inter/jobs/4713986005?gh_jid=4713986005",
+      "fonte": "scraper:greenhouse:inter",
+      "coletado_em": "2026-08-07"
+    },
+    {
+      "id": "gh-inter-4708096005",
+      "empresa": "Banco Inter",
+      "programa": "INTERN | CUSTOMER EXPERINCE",
+      "tipo": "estagio",
+      "area": "corretora-fintech",
+      "cidade": "Belo Horizonte, MG",
+      "link": "https://boards.greenhouse.io/inter/jobs/4708096005?gh_jid=4708096005",
+      "fonte": "scraper:greenhouse:inter",
+      "coletado_em": "2026-08-07"
+    },
+    {
+      "id": "gh-inter-4719615005",
+      "empresa": "Banco Inter",
+      "programa": "INTERN | CUSTOMER SUCCESS",
+      "tipo": "estagio",
+      "area": "corretora-fintech",
+      "cidade": "Belo Horizonte, MG",
+      "link": "https://boards.greenhouse.io/inter/jobs/4719615005?gh_jid=4719615005",
+      "fonte": "scraper:greenhouse:inter",
+      "coletado_em": "2026-08-07"
+    },
+    {
+      "id": "gh-inter-4705964005",
+      "empresa": "Banco Inter",
+      "programa": "INTERN | GRAFIC DESIGN",
+      "tipo": "estagio",
+      "area": "corretora-fintech",
+      "cidade": "Belo Horizonte, MG",
+      "link": "https://boards.greenhouse.io/inter/jobs/4705964005?gh_jid=4705964005",
+      "fonte": "scraper:greenhouse:inter",
+      "coletado_em": "2026-08-07"
+    },
+    {
+      "id": "gh-inter-4666808005",
+      "empresa": "Banco Inter",
+      "programa": "INTERN -  INTERNAL AUDIT PROCESS",
+      "tipo": "estagio",
+      "area": "corretora-fintech",
+      "cidade": "Belo Horizonte, MG",
+      "link": "https://boards.greenhouse.io/inter/jobs/4666808005?gh_jid=4666808005",
+      "fonte": "scraper:greenhouse:inter",
+      "coletado_em": "2026-08-07"
+    },
+    {
+      "id": "gh-inter-4717484005",
+      "empresa": "Banco Inter",
+      "programa": "Intern - TA Design",
+      "tipo": "estagio",
+      "area": "corretora-fintech",
+      "cidade": "Belo Horizonte, MG",
+      "link": "https://boards.greenhouse.io/inter/jobs/4717484005?gh_jid=4717484005",
+      "fonte": "scraper:greenhouse:inter",
+      "coletado_em": "2026-08-07"
+    },
+    {
+      "id": "gh-inter-4719625005",
+      "empresa": "Banco Inter",
+      "programa": "Pré Cadastro  —  Progama de Estágio GO INTERN 2027",
+      "tipo": "estagio",
+      "area": "corretora-fintech",
+      "cidade": "Belo Horizonte, MG",
+      "link": "https://boards.greenhouse.io/inter/jobs/4719625005?gh_jid=4719625005",
+      "fonte": "scraper:greenhouse:inter",
+      "coletado_em": "2026-08-07"
+    },
+    {
+      "id": "gh-inter-4697715005",
+      "empresa": "Banco Inter",
+      "programa": "SUMMER INTERNSHIP PROGRAM – 2027 (Miami, FL)",
+      "tipo": "estagio",
+      "area": "corretora-fintech",
+      "cidade": "Miami, FL",
+      "link": "https://boards.greenhouse.io/inter/jobs/4697715005?gh_jid=4697715005",
+      "fonte": "scraper:greenhouse:inter",
+      "coletado_em": "2026-08-07"
+    },
+    {
+      "id": "manual-eureca-bradesco-2026-2",
+      "empresa": "Bradesco",
+      "programa": "Programa de Estágio Bradesco 2026 (2º Semestre)",
+      "tipo": "estagio",
+      "area": "banco",
+      "cidade": "",
+      "link": "https://estagiobradesco2026.eureca.me",
+      "fonte": "manual",
+      "coletado_em": "2026-08-06"
+    },
+    {
+      "id": "gh-btgpactual-6019782004",
+      "empresa": "BTG Pactual",
+      "programa": "Estágio Comercial B2C (Necton)",
+      "tipo": "estagio",
+      "area": "banco",
+      "cidade": "São Paulo",
+      "link": "https://carreiras.btgpactual.com/vagas?gh_jid=6019782004",
+      "fonte": "scraper:greenhouse:btgpactual",
+      "coletado_em": "2026-08-07"
+    },
+    {
+      "id": "gh-btgpactual-6106172004",
+      "empresa": "BTG Pactual",
+      "programa": "Estágio em Capacitação e Treinamento",
+      "tipo": "estagio",
+      "area": "banco",
+      "cidade": "São Paulo",
+      "link": "https://carreiras.btgpactual.com/vagas?gh_jid=6106172004",
+      "fonte": "scraper:greenhouse:btgpactual",
+      "coletado_em": "2026-08-07"
+    },
+    {
+      "id": "gh-btgpactual-6109602004",
+      "empresa": "BTG Pactual",
+      "programa": "Estágio em Contabilidade",
+      "tipo": "estagio",
+      "area": "banco",
+      "cidade": "São Paulo",
+      "link": "https://carreiras.btgpactual.com/vagas?gh_jid=6109602004",
+      "fonte": "scraper:greenhouse:btgpactual",
+      "coletado_em": "2026-08-07"
+    },
+    {
+      "id": "gh-btgpactual-6117361004",
+      "empresa": "BTG Pactual",
+      "programa": "Estágio em Crédito PJ",
+      "tipo": "estagio",
+      "area": "banco",
+      "cidade": "São Paulo",
+      "link": "https://carreiras.btgpactual.com/vagas?gh_jid=6117361004",
+      "fonte": "scraper:greenhouse:btgpactual",
+      "coletado_em": "2026-08-07"
+    },
+    {
+      "id": "gh-btgpactual-6108285004",
+      "empresa": "BTG Pactual",
+      "programa": "Estágio em Daily Banker",
+      "tipo": "estagio",
+      "area": "banco",
+      "cidade": "São Paulo",
+      "link": "https://carreiras.btgpactual.com/vagas?gh_jid=6108285004",
+      "fonte": "scraper:greenhouse:btgpactual",
+      "coletado_em": "2026-08-07"
+    },
+    {
+      "id": "gh-btgpactual-6083202004",
+      "empresa": "BTG Pactual",
+      "programa": "Estágio em Data Analytics",
+      "tipo": "estagio",
+      "area": "banco",
+      "cidade": "São Paulo",
+      "link": "https://carreiras.btgpactual.com/vagas?gh_jid=6083202004",
+      "fonte": "scraper:greenhouse:btgpactual",
+      "coletado_em": "2026-08-07"
+    },
+    {
+      "id": "gh-btgpactual-6026246004",
+      "empresa": "BTG Pactual",
+      "programa": "Estágio em Execução Onshore | Commodities",
+      "tipo": "estagio",
+      "area": "banco",
+      "cidade": "São Paulo",
+      "link": "https://carreiras.btgpactual.com/vagas?gh_jid=6026246004",
+      "fonte": "scraper:greenhouse:btgpactual",
+      "coletado_em": "2026-08-07"
+    },
+    {
+      "id": "gh-btgpactual-5997807004",
+      "empresa": "BTG Pactual",
+      "programa": "Estágio em Fundos e Previdência",
+      "tipo": "estagio",
+      "area": "banco",
+      "cidade": "São Paulo",
+      "link": "https://carreiras.btgpactual.com/vagas?gh_jid=5997807004",
+      "fonte": "scraper:greenhouse:btgpactual",
+      "coletado_em": "2026-08-07"
+    },
+    {
+      "id": "gh-btgpactual-6121243004",
+      "empresa": "BTG Pactual",
+      "programa": "Estágio em Inteligência Artificial",
+      "tipo": "estagio",
+      "area": "banco",
+      "cidade": "Rio de Janeiro",
+      "link": "https://carreiras.btgpactual.com/vagas?gh_jid=6121243004",
+      "fonte": "scraper:greenhouse:btgpactual",
+      "coletado_em": "2026-08-07"
+    },
+    {
+      "id": "gh-btgpactual-6118814004",
+      "empresa": "BTG Pactual",
+      "programa": "Estágio em Inteligência Artificial",
+      "tipo": "estagio",
+      "area": "banco",
+      "cidade": "São Paulo ",
+      "link": "https://carreiras.btgpactual.com/vagas?gh_jid=6118814004",
+      "fonte": "scraper:greenhouse:btgpactual",
+      "coletado_em": "2026-08-07"
+    },
+    {
+      "id": "gh-btgpactual-6133074004",
+      "empresa": "BTG Pactual",
+      "programa": "Estágio em Macro Research",
+      "tipo": "estagio",
+      "area": "banco",
+      "cidade": "São Paulo",
+      "link": "https://carreiras.btgpactual.com/vagas?gh_jid=6133074004",
+      "fonte": "scraper:greenhouse:btgpactual",
+      "coletado_em": "2026-08-07"
+    },
+    {
+      "id": "gh-btgpactual-6017957004",
+      "empresa": "BTG Pactual",
+      "programa": "Estágio Jurídico | Contencioso",
+      "tipo": "estagio",
+      "area": "banco",
+      "cidade": "São Paulo",
+      "link": "https://carreiras.btgpactual.com/vagas?gh_jid=6017957004",
+      "fonte": "scraper:greenhouse:btgpactual",
+      "coletado_em": "2026-08-07"
+    },
+    {
+      "id": "gh-btgpactual-6105170004",
+      "empresa": "BTG Pactual",
+      "programa": "Estágio | Research – Fundos de Investimento e Renda Fixa",
+      "tipo": "estagio",
+      "area": "banco",
+      "cidade": "São Paulo",
+      "link": "https://carreiras.btgpactual.com/vagas?gh_jid=6105170004",
+      "fonte": "scraper:greenhouse:btgpactual",
+      "coletado_em": "2026-08-07"
+    },
+    {
+      "id": "gh-btgpactual-6133390004",
+      "empresa": "BTG Pactual",
+      "programa": "Estágio Short Job | Automation - Development",
+      "tipo": "estagio",
+      "area": "banco",
+      "cidade": "São Paulo, Rio de Janeiro e Remoto",
+      "link": "https://carreiras.btgpactual.com/vagas?gh_jid=6133390004",
+      "fonte": "scraper:greenhouse:btgpactual",
+      "coletado_em": "2026-08-07"
+    },
+    {
+      "id": "gh-btgpactual-6133602004",
+      "empresa": "BTG Pactual",
+      "programa": "Estágio Short Job | Automation - Discovery",
+      "tipo": "estagio",
+      "area": "banco",
+      "cidade": "São Paulo e Rio de Janeiro",
+      "link": "https://carreiras.btgpactual.com/vagas?gh_jid=6133602004",
+      "fonte": "scraper:greenhouse:btgpactual",
+      "coletado_em": "2026-08-07"
+    },
+    {
+      "id": "gh-btgpactual-6098755004",
+      "empresa": "BTG Pactual",
+      "programa": "Programa Estágio de Férias 2027.1",
+      "tipo": "estagio",
+      "area": "banco",
+      "cidade": "São Paulo",
+      "link": "https://carreiras.btgpactual.com/vagas?gh_jid=6098755004",
+      "fonte": "scraper:greenhouse:btgpactual",
+      "coletado_em": "2026-08-07"
+    },
     {
       "id": "gh-c6bank-4303200005",
       "empresa": "C6 Bank",
@@ -10,7 +351,7 @@
       "cidade": "São Paulo, Brazil",
       "link": "https://job-boards.greenhouse.io/c6bank/jobs/4303200005",
       "fonte": "scraper:greenhouse:c6bank",
-      "coletado_em": "2026-08-03"
+      "coletado_em": "2026-08-07"
     },
     {
       "id": "gh-c6bank-4706229005",
@@ -21,7 +362,51 @@
       "cidade": "São Paulo, Brazil",
       "link": "https://job-boards.greenhouse.io/c6bank/jobs/4706229005",
       "fonte": "scraper:greenhouse:c6bank",
-      "coletado_em": "2026-08-03"
+      "coletado_em": "2026-08-07"
+    },
+    {
+      "id": "gh-c6bank-4717126005",
+      "empresa": "C6 Bank",
+      "programa": "Pessoa Estagiária de Crédito Atacado",
+      "tipo": "estagio",
+      "area": "corretora-fintech",
+      "cidade": "São Paulo, Brazil",
+      "link": "https://job-boards.greenhouse.io/c6bank/jobs/4717126005",
+      "fonte": "scraper:greenhouse:c6bank",
+      "coletado_em": "2026-08-07"
+    },
+    {
+      "id": "gh-c6bank-4717144005",
+      "empresa": "C6 Bank",
+      "programa": "Pessoa Estagiária de Dados",
+      "tipo": "estagio",
+      "area": "corretora-fintech",
+      "cidade": "São Paulo, Brazil",
+      "link": "https://job-boards.greenhouse.io/c6bank/jobs/4717144005",
+      "fonte": "scraper:greenhouse:c6bank",
+      "coletado_em": "2026-08-07"
+    },
+    {
+      "id": "gh-c6bank-4718081005",
+      "empresa": "C6 Bank",
+      "programa": "Pessoa Estagiária | Economia",
+      "tipo": "estagio",
+      "area": "corretora-fintech",
+      "cidade": "São Paulo, Brazil",
+      "link": "https://job-boards.greenhouse.io/c6bank/jobs/4718081005",
+      "fonte": "scraper:greenhouse:c6bank",
+      "coletado_em": "2026-08-07"
+    },
+    {
+      "id": "gh-c6bank-4720746005",
+      "empresa": "C6 Bank",
+      "programa": "Pessoa Estagiária em Planejamento Estratégico",
+      "tipo": "estagio",
+      "area": "corretora-fintech",
+      "cidade": "São Paulo, Brazil",
+      "link": "https://job-boards.greenhouse.io/c6bank/jobs/4720746005",
+      "fonte": "scraper:greenhouse:c6bank",
+      "coletado_em": "2026-08-07"
     },
     {
       "id": "gh-c6bank-4712798005",
@@ -32,7 +417,7 @@
       "cidade": "São Paulo, Brazil",
       "link": "https://job-boards.greenhouse.io/c6bank/jobs/4712798005",
       "fonte": "scraper:greenhouse:c6bank",
-      "coletado_em": "2026-08-03"
+      "coletado_em": "2026-08-07"
     },
     {
       "id": "gh-c6bank-4718563005",
@@ -43,7 +428,326 @@
       "cidade": "São Paulo, Brazil",
       "link": "https://job-boards.greenhouse.io/c6bank/jobs/4718563005",
       "fonte": "scraper:greenhouse:c6bank",
-      "coletado_em": "2026-08-03"
+      "coletado_em": "2026-08-07"
+    },
+    {
+      "id": "citi-98534977872",
+      "empresa": "Citi Brasil",
+      "programa": "Markets – Sales and Trading, Internship, São Paulo - Brazil, 2026",
+      "tipo": "estagio",
+      "area": "banco",
+      "cidade": "São Paulo, SP",
+      "link": "https://jobs.citi.com/job/sao-paulo/markets-sales-and-trading-internship-sao-paulo-brazil-2026/287/98534977872",
+      "fonte": "scraper:citi",
+      "coletado_em": "2026-08-07"
+    },
+    {
+      "id": "citi-98363506752",
+      "empresa": "Citi Brasil",
+      "programa": "Banking – Commercial Banking, Internship, São Paulo – Brazil, 2026",
+      "tipo": "estagio",
+      "area": "banco",
+      "cidade": "São Paulo, SP",
+      "link": "https://jobs.citi.com/job/sao-paulo/banking-commercial-banking-internship-sao-paulo-brazil-2026/287/98363506752",
+      "fonte": "scraper:citi",
+      "coletado_em": "2026-08-07"
+    },
+    {
+      "id": "citi-97845650288",
+      "empresa": "Citi Brasil",
+      "programa": "Estágio Exclusivo PCD | Markets, Internship, São Paulo – Brazil, 2026",
+      "tipo": "estagio",
+      "area": "banco",
+      "cidade": "São Paulo, SP",
+      "link": "https://jobs.citi.com/job/sao-paulo/estagio-exclusivo-pcd-markets-internship-sao-paulo-brazil-2026/287/97845650288",
+      "fonte": "scraper:citi",
+      "coletado_em": "2026-08-07"
+    },
+    {
+      "id": "citi-97845637376",
+      "empresa": "Citi Brasil",
+      "programa": "Banking – Investment Banking, Internship, São Paulo – Brazil, 2026 ",
+      "tipo": "estagio",
+      "area": "banco",
+      "cidade": "São Paulo, SP",
+      "link": "https://jobs.citi.com/job/sao-paulo/banking-investment-banking-internship-sao-paulo-brazil-2026/287/97845637376",
+      "fonte": "scraper:citi",
+      "coletado_em": "2026-08-07"
+    },
+    {
+      "id": "gupy-creditas-eyJqb2JJZCI6MTEzODQwMDks",
+      "empresa": "Creditas Soluções Financeiras",
+      "programa": "Programa de Estágio 2026: Builders",
+      "tipo": "estagio",
+      "area": "corretora-fintech",
+      "cidade": "",
+      "link": "https://creditas.gupy.io/job/eyJqb2JJZCI6MTEzODQwMDksInNvdXJjZSI6Imdvb2dsZV9mb3Jfam9icyJ9",
+      "fonte": "scraper:gupy:creditas",
+      "coletado_em": "2026-08-07"
+    },
+    {
+      "id": "gupy-eztec-eyJqb2JJZCI6MTE2NDg4MzAs",
+      "empresa": "Eztec Carreiras",
+      "programa": "ESTÁGIO JURÍDICO",
+      "tipo": "estagio",
+      "area": "real-estate-infra",
+      "cidade": "São Paulo, São Paulo",
+      "link": "https://eztec.gupy.io/job/eyJqb2JJZCI6MTE2NDg4MzAsInNvdXJjZSI6Imdvb2dsZV9mb3Jfam9icyJ9",
+      "fonte": "scraper:gupy:eztec",
+      "coletado_em": "2026-08-07"
+    },
+    {
+      "id": "gupy-vemserigua-eyJqb2JJZCI6MTE1NTI2MDAs",
+      "empresa": "Iguá Saneamento",
+      "programa": "Estagiário(a) Jurídico Regulatório",
+      "tipo": "estagio",
+      "area": "real-estate-infra",
+      "cidade": "Arapiraca, Alagoas",
+      "link": "https://vemserigua.gupy.io/job/eyJqb2JJZCI6MTE1NTI2MDAsInNvdXJjZSI6Imdvb2dsZV9mb3Jfam9icyJ9",
+      "fonte": "scraper:gupy:vemserigua",
+      "coletado_em": "2026-08-07"
+    },
+    {
+      "id": "gupy-vemproitau-eyJqb2JJZCI6NTA4ODcwMCwi",
+      "empresa": "Itaú Unibanco",
+      "programa": "Estágio Comercial - Rede de Agências | Vagas em todo o Brasil 🤝🏽🚀",
+      "tipo": "estagio",
+      "area": "banco",
+      "cidade": "São Paulo, São Paulo",
+      "link": "https://vemproitau.gupy.io/job/eyJqb2JJZCI6NTA4ODcwMCwic291cmNlIjoiZ29vZ2xlX2Zvcl9qb2JzIn0=",
+      "fonte": "scraper:gupy:vemproitau",
+      "coletado_em": "2026-08-07"
+    },
+    {
+      "id": "oracle-jpmc-210776955",
+      "empresa": "JPMorgan Brasil",
+      "programa": "Programa de Estágio Brasil (Drive The Future): Payments Product Controller",
+      "tipo": "estagio",
+      "area": "banco",
+      "cidade": "Sao Paulo, SP, Brazil",
+      "link": "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210776955",
+      "fonte": "scraper:oraclecloud:jpmc",
+      "coletado_em": "2026-08-07"
+    },
+    {
+      "id": "oracle-jpmc-210767112",
+      "empresa": "JPMorgan Brasil",
+      "programa": "Programa de Estágio Brasil (Drive The Future): Ciclo de Novembro/26 - PcD (Pessoas com Deficiência)",
+      "tipo": "estagio",
+      "area": "banco",
+      "cidade": "Brazil",
+      "link": "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210767112",
+      "fonte": "scraper:oraclecloud:jpmc",
+      "coletado_em": "2026-08-07"
+    },
+    {
+      "id": "oracle-jpmc-210767083",
+      "empresa": "JPMorgan Brasil",
+      "programa": "Programa de Estágio Brasil (Drive The Future): Ciclo de Novembro/26 - Corporate Roles",
+      "tipo": "estagio",
+      "area": "banco",
+      "cidade": "Brazil",
+      "link": "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210767083",
+      "fonte": "scraper:oraclecloud:jpmc",
+      "coletado_em": "2026-08-07"
+    },
+    {
+      "id": "oracle-jpmc-210767097",
+      "empresa": "JPMorgan Brasil",
+      "programa": "Programa de Estágio Brasil (Drive The Future): Ciclo de Novembro/26 - Technology Roles",
+      "tipo": "estagio",
+      "area": "banco",
+      "cidade": "Brazil",
+      "link": "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210767097",
+      "fonte": "scraper:oraclecloud:jpmc",
+      "coletado_em": "2026-08-07"
+    },
+    {
+      "id": "oracle-jpmc-210767030",
+      "empresa": "JPMorgan Brasil",
+      "programa": "Programa de Estágio Brasil (Drive The Future): Ciclo de Novembro/26 - Front Office Roles",
+      "tipo": "estagio",
+      "area": "banco",
+      "cidade": "Brazil",
+      "link": "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210767030",
+      "fonte": "scraper:oraclecloud:jpmc",
+      "coletado_em": "2026-08-07"
+    },
+    {
+      "id": "oracle-jpmc-210767088",
+      "empresa": "JPMorgan Brasil",
+      "programa": "Programa de Estágio Brasil (Drive The Future): Ciclo de Novembro/26 - Finance & Operations Roles",
+      "tipo": "estagio",
+      "area": "banco",
+      "cidade": "Brazil",
+      "link": "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210767088",
+      "fonte": "scraper:oraclecloud:jpmc",
+      "coletado_em": "2026-08-07"
+    },
+    {
+      "id": "gupy-kinea-eyJqb2JJZCI6MTEwOTQwNDIs",
+      "empresa": "Kinea Investimentos",
+      "programa": "Estágio em Infraestrutura - Kinea Investimentos",
+      "tipo": "estagio",
+      "area": "asset",
+      "cidade": "São Paulo, São Paulo",
+      "link": "https://kinea.gupy.io/job/eyJqb2JJZCI6MTEwOTQwNDIsInNvdXJjZSI6Imdvb2dsZV9mb3Jfam9icyJ9",
+      "fonte": "scraper:gupy:kinea",
+      "coletado_em": "2026-08-07"
+    },
+    {
+      "id": "gupy-meliuz-eyJqb2JJZCI6MTE2MTI5MTgs",
+      "empresa": "Méliuz",
+      "programa": "Estágio em Brand Design (Vaga Remota)",
+      "tipo": "estagio",
+      "area": "corretora-fintech",
+      "cidade": "",
+      "link": "https://meliuz.gupy.io/job/eyJqb2JJZCI6MTE2MTI5MTgsInNvdXJjZSI6Imdvb2dsZV9mb3Jfam9icyJ9",
+      "fonte": "scraper:gupy:meliuz",
+      "coletado_em": "2026-08-07"
+    },
+    {
+      "id": "gupy-meliuz-eyJqb2JJZCI6MTE1OTE0Njcs",
+      "empresa": "Méliuz",
+      "programa": "Estágio em Suporte Comercial (Vaga Remota - BH e SP)",
+      "tipo": "estagio",
+      "area": "corretora-fintech",
+      "cidade": "",
+      "link": "https://meliuz.gupy.io/job/eyJqb2JJZCI6MTE1OTE0NjcsInNvdXJjZSI6Imdvb2dsZV9mb3Jfam9icyJ9",
+      "fonte": "scraper:gupy:meliuz",
+      "coletado_em": "2026-08-07"
+    },
+    {
+      "id": "gupy-meliuz-eyJqb2JJZCI6MTEzMTgzOTIs",
+      "empresa": "Méliuz",
+      "programa": "Estágio em Growth (IA e Automação) - Vaga Híbrida BH",
+      "tipo": "estagio",
+      "area": "corretora-fintech",
+      "cidade": "Belo Horizonte, Minas Gerais",
+      "link": "https://meliuz.gupy.io/job/eyJqb2JJZCI6MTEzMTgzOTIsInNvdXJjZSI6Imdvb2dsZV9mb3Jfam9icyJ9",
+      "fonte": "scraper:gupy:meliuz",
+      "coletado_em": "2026-08-07"
+    },
+    {
+      "id": "gupy-meliuz-eyJqb2JJZCI6MTE1MDgwNDUs",
+      "empresa": "Méliuz",
+      "programa": "Estágio em CRM (vaga remota)",
+      "tipo": "estagio",
+      "area": "corretora-fintech",
+      "cidade": "",
+      "link": "https://meliuz.gupy.io/job/eyJqb2JJZCI6MTE1MDgwNDUsInNvdXJjZSI6Imdvb2dsZV9mb3Jfam9icyJ9",
+      "fonte": "scraper:gupy:meliuz",
+      "coletado_em": "2026-08-07"
+    },
+    {
+      "id": "manual-across-multiplan-2026",
+      "empresa": "Multiplan",
+      "programa": "3º Programa de Estágio Multiplan 2026",
+      "tipo": "estagio",
+      "area": "real-estate-infra",
+      "cidade": "Diversas cidades (BH, Brasília, Porto Alegre, RJ, Ribeirão Preto, São Caetano, SP)",
+      "link": "https://multiplan.across.jobs/",
+      "fonte": "manual",
+      "coletado_em": "2026-08-04"
+    },
+    {
+      "id": "manual-across-patria-academy-2027",
+      "empresa": "Pátria Investimentos",
+      "programa": "Estágio Patria Academy 2027",
+      "tipo": "estagio",
+      "area": "vc-pe",
+      "cidade": "São Paulo, SP",
+      "link": "https://patria.across.jobs/",
+      "fonte": "manual",
+      "coletado_em": "2026-08-04"
+    },
+    {
+      "id": "wd-santander-Req1588450",
+      "empresa": "Santander Brasil",
+      "programa": "Estagiario J6",
+      "tipo": "estagio",
+      "area": "banco",
+      "cidade": "SAO PAULO",
+      "link": "https://santander.wd3.myworkdayjobs.com/SantanderCareers/job/SAO-PAULO/Estagiario-J6_Req1588450",
+      "fonte": "scraper:workday:santander",
+      "coletado_em": "2026-08-07"
+    },
+    {
+      "id": "wd-santander-Req1599247",
+      "empresa": "Santander Brasil",
+      "programa": "BRA Estagiario J6 (S3)",
+      "tipo": "estagio",
+      "area": "banco",
+      "cidade": "SAO PAULO",
+      "link": "https://santander.wd3.myworkdayjobs.com/SantanderCareers/job/SAO-PAULO/BRA-Estagiario-J6--S3-_Req1599247",
+      "fonte": "scraper:workday:santander",
+      "coletado_em": "2026-08-07"
+    },
+    {
+      "id": "wd-santander-Req1595870",
+      "empresa": "Santander Brasil",
+      "programa": "Estagiario J6",
+      "tipo": "estagio",
+      "area": "banco",
+      "cidade": "SAO PAULO",
+      "link": "https://santander.wd3.myworkdayjobs.com/SantanderCareers/job/SAO-PAULO/Estagiario-J6_Req1595870",
+      "fonte": "scraper:workday:santander",
+      "coletado_em": "2026-08-07"
+    },
+    {
+      "id": "zoho-spxcapital-822782000003953066",
+      "empresa": "SPX Capital",
+      "programa": "Estágio em ESG",
+      "tipo": "estagio",
+      "area": "asset",
+      "cidade": "Rio de Janeiro, Rio de Janeiro",
+      "link": "https://spxcapital.zohorecruit.com/jobs/Careers/822782000003953066",
+      "fonte": "scraper:zoho:spxcapital",
+      "coletado_em": "2026-08-07"
+    },
+    {
+      "id": "zoho-spxcapital-822782000003909172",
+      "empresa": "SPX Capital",
+      "programa": "Banco de Talentos - Vagas de Estágio",
+      "tipo": "estagio",
+      "area": "asset",
+      "cidade": "Rio de Janeiro, Rio de Janeiro",
+      "link": "https://spxcapital.zohorecruit.com/jobs/Careers/822782000003909172",
+      "fonte": "scraper:zoho:spxcapital",
+      "coletado_em": "2026-08-07"
+    },
+    {
+      "id": "zoho-spxcapital-822782000003395014",
+      "empresa": "SPX Capital",
+      "programa": "Estágio | Global Equities Desk",
+      "tipo": "estagio",
+      "area": "asset",
+      "cidade": "Rio de Janeiro, Rio de Janeiro",
+      "link": "https://spxcapital.zohorecruit.com/jobs/Careers/822782000003395014",
+      "fonte": "scraper:zoho:spxcapital",
+      "coletado_em": "2026-08-07"
+    },
+    {
+      "id": "zoho-spxcapital-822782000003725004",
+      "empresa": "SPX Capital",
+      "programa": "Estágio Legal & Compliance",
+      "tipo": "estagio",
+      "area": "asset",
+      "cidade": "Rio de Janeiro, Rio de Janeiro",
+      "link": "https://spxcapital.zohorecruit.com/jobs/Careers/822782000003725004",
+      "fonte": "scraper:zoho:spxcapital",
+      "coletado_em": "2026-08-07"
+    },
+    {
+      "id": "zoho-spxcapital-822782000003517005",
+      "empresa": "SPX Capital",
+      "programa": "Estágio em Private Equity",
+      "tipo": "estagio",
+      "area": "asset",
+      "cidade": "São Paulo, Sao Paulo",
+      "link": "https://spxcapital.zohorecruit.com/jobs/Careers/822782000003517005",
+      "fonte": "scraper:zoho:spxcapital",
+      "coletado_em": "2026-08-07"
     },
     {
       "id": "gh-xpinc-8622849002",
@@ -54,7 +758,7 @@
       "cidade": "São Paulo, SP",
       "link": "https://job-boards.greenhouse.io/xpinc/jobs/8622849002",
       "fonte": "scraper:greenhouse:xpinc",
-      "coletado_em": "2026-08-03"
+      "coletado_em": "2026-08-07"
     },
     {
       "id": "gh-xpinc-8639452002",
@@ -65,7 +769,7 @@
       "cidade": "São Paulo, SP",
       "link": "https://job-boards.greenhouse.io/xpinc/jobs/8639452002",
       "fonte": "scraper:greenhouse:xpinc",
-      "coletado_em": "2026-08-03"
+      "coletado_em": "2026-08-07"
     },
     {
       "id": "gh-xpinc-8632906002",
@@ -76,18 +780,18 @@
       "cidade": "São Paulo, SP",
       "link": "https://job-boards.greenhouse.io/xpinc/jobs/8632906002",
       "fonte": "scraper:greenhouse:xpinc",
-      "coletado_em": "2026-08-03"
+      "coletado_em": "2026-08-07"
     },
     {
-      "id": "gh-xpinc-8635616002",
+      "id": "gh-xpinc-8005975002",
       "empresa": "XP Inc.",
-      "programa": "Estagiário(a) em Diagnóstico Operacional",
+      "programa": "Estagiario(a) de Risco de Mercado Trading",
       "tipo": "estagio",
       "area": "corretora-fintech",
       "cidade": "São Paulo, SP",
-      "link": "https://job-boards.greenhouse.io/xpinc/jobs/8635616002",
+      "link": "https://job-boards.greenhouse.io/xpinc/jobs/8005975002",
       "fonte": "scraper:greenhouse:xpinc",
-      "coletado_em": "2026-08-03"
+      "coletado_em": "2026-08-07"
     },
     {
       "id": "gh-xpinc-8618202002",
@@ -98,7 +802,7 @@
       "cidade": "São Paulo",
       "link": "https://job-boards.greenhouse.io/xpinc/jobs/8618202002",
       "fonte": "scraper:greenhouse:xpinc",
-      "coletado_em": "2026-08-03"
+      "coletado_em": "2026-08-07"
     },
     {
       "id": "gh-xpinc-8628968002",
@@ -109,7 +813,7 @@
       "cidade": "São Paulo, SP",
       "link": "https://job-boards.greenhouse.io/xpinc/jobs/8628968002",
       "fonte": "scraper:greenhouse:xpinc",
-      "coletado_em": "2026-08-03"
+      "coletado_em": "2026-08-07"
     },
     {
       "id": "gh-xpinc-8575358002",
@@ -120,18 +824,7 @@
       "cidade": "São Paulo, SP",
       "link": "https://job-boards.greenhouse.io/xpinc/jobs/8575358002",
       "fonte": "scraper:greenhouse:xpinc",
-      "coletado_em": "2026-08-03"
-    },
-    {
-      "id": "gh-xpinc-8589211002",
-      "empresa": "XP Inc.",
-      "programa": "Estagiário | ESG",
-      "tipo": "estagio",
-      "area": "corretora-fintech",
-      "cidade": "São Paulo, SP",
-      "link": "https://job-boards.greenhouse.io/xpinc/jobs/8589211002",
-      "fonte": "scraper:greenhouse:xpinc",
-      "coletado_em": "2026-08-03"
+      "coletado_em": "2026-08-07"
     },
     {
       "id": "gh-xpinc-8618232002",
@@ -142,7 +835,18 @@
       "cidade": "São Paulo, SP",
       "link": "https://job-boards.greenhouse.io/xpinc/jobs/8618232002",
       "fonte": "scraper:greenhouse:xpinc",
-      "coletado_em": "2026-08-03"
+      "coletado_em": "2026-08-07"
+    },
+    {
+      "id": "gh-xpinc-8686076002",
+      "empresa": "XP Inc.",
+      "programa": "Estagiário | Product Ops",
+      "tipo": "estagio",
+      "area": "corretora-fintech",
+      "cidade": "São Paulo, SP",
+      "link": "https://job-boards.greenhouse.io/xpinc/jobs/8686076002",
+      "fonte": "scraper:greenhouse:xpinc",
+      "coletado_em": "2026-08-07"
     }
   ]
 }
