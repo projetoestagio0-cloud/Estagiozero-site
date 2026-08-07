@@ -309,6 +309,8 @@
   .tag.tipo-trainee{background:#e7f7ee;color:var(--ok)}
   .tag.tipo-junior{background:var(--surface-2);color:var(--ink-2);border:1px solid var(--line)}
   .vagas-empty{grid-column:1/-1;text-align:center;padding:44px 24px;color:var(--muted);font-size:14.5px;border:1px dashed var(--line);border-radius:var(--radius);line-height:1.6}
+  .vagas-toggle{display:flex;align-items:center;gap:8px;margin:-6px 0 16px;font-size:13.5px;color:var(--ink-2);cursor:pointer;user-select:none}
+  .vagas-toggle input{width:16px;height:16px;accent-color:var(--accent);cursor:pointer;flex:none}
   @media(max-width:900px){.vagas-filters{grid-template-columns:1fr}.vagas-grid{grid-template-columns:1fr 1fr}}
   @media(max-width:640px){.vagas-grid{grid-template-columns:1fr}}
 
@@ -1061,6 +1063,11 @@
           </select>
         </div>
 
+        <label class="vagas-toggle reveal">
+          <input type="checkbox" id="vagasTodasAreas">
+          Mostrar vagas de todas as áreas (por padrão, só mercado financeiro, consultoria e áreas financeiras — sem design, RH, jurídico, TI etc.)
+        </label>
+
         <div id="vagasStatus" class="mini-note reveal" style="margin-bottom:14px"></div>
         <div id="vagasList" class="vagas-grid reveal"></div>
 
@@ -1620,14 +1627,22 @@
   var TIPO_LABEL = {estagio:'Estágio', trainee:'Trainee', junior:'Júnior/Analista'};
   var AREA_LABEL = {'banco':'Banco','corretora-fintech':'Corretora/Fintech','asset':'Gestora/Hedge Fund','vc-pe':'VC/PE','real-estate-infra':'Real Estate/Infra','research':'Research'};
   function escapeHtml(s){ return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+  // Classificação por palavra-chave no título/programa — pensada pra ser restritiva:
+  // só marca como "área financeira" o que claramente bate com mercado financeiro,
+  // consultoria ou função financeira corporativa. Título genérico ou de outra área
+  // (design, RH, jurídico, TI, marketing, suporte) fica de fora por padrão — é melhor
+  // perder algum caso ambíguo do que misturar vaga fora do perfil do site.
+  var AREA_FINANCEIRA_RE = /m&a|\bdcm\b|\becm\b|investment banking|corporate finance|fus(õ|o)es e aquisi[çc][õo]es|societ[áa]rio|trading|sales and trading|\bmarkets?\b|mercado(s)? financeiro|renda fixa|c[âa]mbio|derivativos|commodities|\bequit(y|ies)\b|execu[çc][ãa]o onshore|\bresearch\b|cr[ée]dito|risco de (mercado|cr[ée]dito)|gest[ãa]o de (fundos|recursos|ativos|patrim[ôo]nio)|fundos e previd[êe]ncia|asset management|private equity|real estate (investment|advisory)|contabilidade|controladoria|tesouraria|planejamento (financeiro|or[çc]ament[áa]rio)|\bfp\s?&\s?a\b|auditoria|\baudit\b|consultoria|strategy consulting|\beconomia\b|econ[ôo]mic[oa]|corporate desk|daily banker|wealth management|structured products|\besg\b|\bbanker\b|financ|front office|corretora institucional/i;
+  function isAreaFinanceira(v){ return AREA_FINANCEIRA_RE.test(v.programa || ''); }
   function renderVagas(){
     var list = document.getElementById('vagasList');
     var status = document.getElementById('vagasStatus');
     if(!list || !status) return;
-    var searchEl = document.getElementById('vagasSearch'), tipoEl = document.getElementById('vagasTipo'), areaEl = document.getElementById('vagasArea'), empresaEl = document.getElementById('vagasEmpresa');
+    var searchEl = document.getElementById('vagasSearch'), tipoEl = document.getElementById('vagasTipo'), areaEl = document.getElementById('vagasArea'), empresaEl = document.getElementById('vagasEmpresa'), todasAreasEl = document.getElementById('vagasTodasAreas');
     var q = (searchEl.value || '').trim().toLowerCase();
     var tipo = tipoEl.value, area = areaEl.value, empresa = empresaEl.value;
     var filtered = VAGAS_DATA.filter(function(v){
+      if(!todasAreasEl.checked && !isAreaFinanceira(v)) return false;
       if(tipo && v.tipo !== tipo) return false;
       if(area && v.area !== area) return false;
       if(empresa && v.empresa !== empresa) return false;
@@ -1672,7 +1687,7 @@
       if(status) status.textContent = '';
       if(list) list.innerHTML = '<div class="vagas-empty">Não consegui carregar as vagas agora. Se você abriu este arquivo direto no navegador (file://), rode um servidor local — o fetch de data/vagas.json não funciona por file://.</div>';
     });
-  ['vagasSearch','vagasTipo','vagasArea','vagasEmpresa'].forEach(function(id){
+  ['vagasSearch','vagasTipo','vagasArea','vagasEmpresa','vagasTodasAreas'].forEach(function(id){
     var el = document.getElementById(id);
     if(el) el.addEventListener('input', renderVagas);
   });
