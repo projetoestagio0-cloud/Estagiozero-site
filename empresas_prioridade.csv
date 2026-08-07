@@ -1,0 +1,144 @@
+Empresa,Prioridade,Status,Nota
+Goldman Sachs Brasil,1,⚙️ candidato_fase_2,"Plataforma própria higher.gs.com, sem API pública mapeada"
+JPMorgan Brasil,1,✅ confirmado,"Oracle Cloud HCM — 6 vagas reais do Programa de Estágio Brasil (Drive The Future)"
+BTG Pactual,1,✅ confirmado,Greenhouse btgpactual
+Itaú BBA,1,✅ confirmado,"Mesmo board Gupy do Itaú Unibanco, via carreiras.itau.com.br"
+Bradesco BBI,1,⚙️ candidato_fase_2 (+ manual),"Cornerstone confirmado (bradesco.csod.com), API exige auth; estágio via Eureca já capturado manualmente"
+Morgan Stanley Brasil,1,⚙️ candidato_fase_2,Plataforma TalentLink (tal.net)
+Bank of America Brasil,2,⚙️ candidato_fase_2,"careers.bankofamerica.com, plataforma não confirmada"
+Citi Brasil,2,✅ confirmado,"jobs.citi.com — página de categoria com HTML estático, 5 vagas reais de estágio (Markets, Banking, PCD)"
+UBS BB,2,⚙️ candidato_fase_2,"Cia de Talentos — hotsite Angular, sem dados estáticos, provável candidato a curadoria manual"
+Santander Brasil,2,✅ confirmado,"Workday — filtro por faceta de país, 1 vaga real achada (Estagiario J6, São Paulo)"
+BR Partners,2,⚙️ candidato_fase_2,"Portal próprio, fetch automatizado bloqueado (403)"
+Safra,2,✅ confirmado,Gupy venhasersafra
+Banco Modal,3,✅ confirmado (ressalva),"Mesma empresa da Modalmais (Gupy modalmais) — feed defasado desde 2023"
+Banco ABC Brasil,3,⚙️ candidato_fase_2,Página de carreiras retorna 403
+Votorantim (BV),3,⚙️ candidato_fase_2,Programa ativo mas ATS não confirmado
+Barclays Brasil,3,✅ confirmado,Workday — sem vaga no Brasil agora
+Deutsche Bank Brasil,3,⚙️ candidato_fase_2,"careers.db.com, plataforma não confirmada"
+XP Investimentos,1,✅ confirmado,Greenhouse xpinc
+Genial Investimentos,1,✅ confirmado,Gupy genial
+Inter Invest,2,✅ confirmado,Mesmo board do Banco Inter
+Ágora Investimentos,2,⚙️ candidato_fase_2,Mesmo funil do Bradesco — sem board próprio
+Warren,2,⛔ bloqueado_ia,warren.inhire.app bloqueia ClaudeBot/GPTBot
+Avenue Securities,2,⛔ bloqueado_ia,avenue.inhire.app bloqueia ClaudeBot/GPTBot (plataforma INHIRE inteira é bloqueada)
+Rico,3,✅ confirmado,Mesmo board da XP
+Clear,3,✅ confirmado,Mesmo board da XP
+Órama,3,⚙️ candidato_fase_2,Board Gupy existe mas feed parado desde 2023
+Toro Investimentos,3,⛔ bloqueado_ia,toroinvestimentos.inhire.app bloqueia bots de IA
+Vitreo / Empiricus Investimentos,3,🔎 parcial,Vagas de research da Empiricus já aparecem no board do BTG
+CM Capital,3,🚫 sem_ats_publico,Nenhum ATS próprio identificado com confiança
+Necton,3,✅ confirmado,Subsidiária do BTG — vagas no próprio board Greenhouse do BTG
+Verde Asset Management,1,🚫 sem_ats_publico,
+SPX Capital,1,✅ confirmado,"Zoho Recruit — vagas embutidas no HTML, 5 vagas reais de estágio"
+Kinea Investimentos,1,✅ confirmado,Gupy kinea
+Adam Capital,1,🚫 sem_ats_publico,
+Vinland Capital,1,🚫 sem_ats_publico,Nenhuma página de carreiras/ATS encontrada
+Kapitalo Investimentos,1,🚫 sem_ats_publico,
+Legacy Capital,1,🚫 sem_ats_publico,
+Itaú Asset Management,1,✅ confirmado,Mesmo board do Itaú
+BTG Asset Management,1,✅ confirmado,Mesmo board do BTG
+XP Asset Management,1,✅ confirmado,Mesmo board da XP
+Absolute Investimentos,2,🚫 sem_ats_publico,
+Genoa Capital,2,🚫 sem_ats_publico,Só e-mail/contato
+Ibiuna Investimentos,2,🚫 sem_ats_publico,
+Navi Capital,2,🚫 sem_ats_publico,Só "trabalhe conosco" institucional
+AZ Quest,2,🚫 sem_ats_publico,
+Bradesco Asset Management (BRAM),2,⚙️ candidato_fase_2,Mesmo board do Bradesco
+Santander Asset Management,2,✅ confirmado,Mesmo board Workday do Santander
+Safra Asset Management,2,✅ confirmado,Mesmo board do Safra
+BlackRock Brasil,2,✅ confirmado,Workday — sem vaga no Brasil agora
+ARX Investimentos,3,🚫 sem_ats_publico,
+Claritas Investimentos,3,🚫 sem_ats_publico,
+Quest Investimentos,3,🚫 sem_ats_publico,Não identificado com confiança
+Tarpon Investimentos,3,🚫 sem_ats_publico,
+BB Asset Management,3,⚙️ candidato_fase_2,Mesmo funil do Banco do Brasil (CIEE/concurso)
+Caixa Asset Management,3,⚙️ candidato_fase_2,"Estágio via Super Estágios; efetivo via concurso público"
+Western Asset Brasil,3,✅ confirmado,Workday via Franklin Templeton — sem vaga no Brasil agora
+Franklin Templeton Brasil,3,✅ confirmado,Mesmo board Workday do Western Asset
+Schroders Brasil,3,⚙️ candidato_fase_2,"SelectMinds, sem vagas do Brasil localizadas"
+Pátria Investimentos,1,⚙️ candidato_fase_2 (+ manual),"Teamtailor geral; estágio via Across já capturado manualmente em data/manual.json"
+Vinci Partners,1,✅ confirmado,Gupy vincipartners
+Softbank Latin America Fund,1,🚫 sem_ats_publico,Portal lista vagas do portfólio; não do fundo em si
+Monashees,1,⛔ bloqueado_ia,robots.txt bloqueia bots de IA
+Kaszek Ventures,1,🚫 sem_ats_publico,Board é do portfólio; não da gestora
+Canary,1,🚫 sem_ats_publico,
+Advent International Brasil,2,✅ confirmado,Workday — sem vaga no Brasil agora
+Astella Investimentos,2,🚫 sem_ats_publico,Só portfólio
+Maya Capital,2,🚫 sem_ats_publico,
+Valor Capital Group,2,🚫 sem_ats_publico,Board é do portfólio
+Carlyle Brasil,2,⚙️ candidato_fase_2,"careers.carlyle.com bloqueado (403), ATS não confirmado"
+Igah Ventures,3,🚫 sem_ats_publico,
+DOMO Invest,3,✅ confirmado,"SmartRecruiters — sem estágio/trainee agora"
+KKR Brasil,3,⚙️ candidato_fase_2,"Portal próprio, sem vagas do Brasil localizadas"
+Warburg Pincus Brasil,3,⚙️ candidato_fase_2,"Portal próprio, sem vagas do Brasil localizadas"
+Actis Brasil,3,✅ confirmado (via General Atlantic),Adquirida pela General Atlantic em 2024; cai no board Greenhouse já coberto
+Bozano Investimentos,3,🚫 sem_ats_publico,
+GP Investimentos,3,🚫 sem_ats_publico,Recrutamento só por e-mail
+Aqua Capital,3,🚫 sem_ats_publico,
+Upload Ventures,3,🚫 sem_ats_publico,
+Alexia Ventures,3,🚫 sem_ats_publico,Só e-mail de contato
+Bamboo Capital,3,🚫 sem_ats_publico,
+Performa Investimentos,3,🚫 sem_ats_publico,Não identificado com confiança
+PCP Capital Partners,3,🚫 sem_ats_publico,
+Kinea Real Estate,1,✅ confirmado,Mesmo board do Kinea
+Vinci Real Estate,1,✅ confirmado,Mesmo board da Vinci Partners
+BTG Pactual Real Estate,1,✅ confirmado,Mesmo board do BTG
+XP Properties,1,✅ confirmado,Mesmo board da XP
+RBR Asset Management,2,⚙️ candidato_fase_2,"Quickin — API existe, endpoint exato não mapeado"
+TRX Real Estate,2,🚫 sem_ats_publico,"Site existe mas sem link de carreiras (baixa confiança, sem WebSearch disponível)"
+Hedge Investments,2,🚫 sem_ats_publico,
+Pátria Real Estate,2,⚙️ candidato_fase_2,Mesmo board da Pátria
+Brookfield Asset Management Brasil,2,✅ confirmado,Workday — sem vaga no Brasil agora
+JS Real Estate,2,🚫 sem_ats_publico,Nome ambíguo; não identificado com confiança
+CSHG Real Estate,2,⚙️ candidato_fase_2,Fundo transferido para gestão da Pátria + administração da Genial em 2024
+GLP Capital Partners Brasil,3,🚫 sem_ats_publico,Rebatizada Marq Logistics no Brasil
+Bresco Investimentos,3,🚫 sem_ats_publico,
+Mauá Capital,3,⚙️ candidato_fase_2,"Board Gupy jive (pós-fusão JiveMauá) existe mas parece abandonado"
+Cyrela,3,✅ confirmado,Gupy cyrela (com filtro de área)
+JHSF,3,✅ confirmado,Gupy jhsf (com filtro de área)
+Multiplan,3,⚙️ candidato_fase_2 (+ manual),Estágio via Across já capturado manualmente em data/manual.json
+Iguatemi,3,⚙️ candidato_fase_2,"Portal próprio, não é Gupy, ATS não confirmado"
+Eztec,3,✅ confirmado,Gupy eztec (com filtro de área)
+Tegra,3,✅ confirmado,Gupy tegraincorporadora (com filtro de área)
+BTG Pactual Research,1,✅ confirmado,Mesmo board do BTG
+XP Research,1,✅ confirmado,Mesmo board da XP
+Itaú BBA Research,1,✅ confirmado,Mesmo board do Itaú
+Bradesco BBI Research,1,⚙️ candidato_fase_2,Mesmo microsite Eureca do Bradesco
+Goldman Sachs Research,1,⚙️ candidato_fase_2,Mesma plataforma higher.gs.com
+JPMorgan Research,2,✅ confirmado,Mesmo board Oracle Cloud do JPMorgan Brasil
+Genial Research,2,✅ confirmado,Mesmo board da Genial
+Inter Research,2,✅ confirmado,Mesmo board do Banco Inter
+UBS BB Research,2,⚙️ candidato_fase_2,Mesmo hotsite Cia de Talentos do UBS BB
+Safra Research,2,✅ confirmado,Mesmo board do Safra
+Empiricus Research,3,✅ confirmado,Aparece dentro do board do BTG
+Nord Research,3,🚫 sem_ats_publico,
+Levante Investimentos,3,🚫 sem_ats_publico,
+Suno Research,3,✅ confirmado (ressalva),Gupy sunojobs — feed defasado desde 2024
+Eleven Financial,3,🚫 sem_ats_publico,
+Guide Investimentos Research,3,🚫 sem_ats_publico,Adquirida pelo Safra em 2024
+Nubank,1,✅ confirmado,Greenhouse nubank (programa sazonal)
+Banco Inter,1,✅ confirmado,Greenhouse inter
+Stone,1,✅ confirmado,Greenhouse stone
+McKinsey & Company Brasil,1,⚙️ candidato_fase_2,"Plataforma própria, ATS não identificado"
+Bain & Company Brasil,1,⚙️ candidato_fase_2,"Plataforma própria, ATS não identificado"
+Boston Consulting Group Brasil,1,⚙️ candidato_fase_2,"Phenom People (BCG1US) — SPA, endpoint de API não encontrado"
+C6 Bank,2,✅ confirmado,Greenhouse c6bank
+Creditas,2,✅ confirmado,Gupy creditas
+PagSeguro / PagBank,2,✅ confirmado,Gupy pagseguro
+PwC Brasil (Deals),2,⚙️ candidato_fase_2,"Portal próprio, ATS não confirmado"
+Deloitte Brasil (Financial Advisory),2,⚙️ candidato_fase_2,Usa Avature
+KPMG Brasil (Deal Advisory),2,⛔ bloqueado_ia,kpmg.inhire.app bloqueia ClaudeBot/GPTBot
+EY Brasil (Strategy and Transactions),2,⚙️ candidato_fase_2,"Portal próprio, ATS não confirmado"
+Oliver Wyman Brasil,2,⚙️ candidato_fase_2,"Phenom People (mmc.phenompeople.com) — mesmo problema do BCG"
+Neon,3,✅ confirmado,Lever — sem vaga de estágio/trainee agora
+Méliuz,3,✅ confirmado,Gupy meliuz
+Conta Simples,3,✅ confirmado,Gupy contasimples
+Stark Bank,3,✅ confirmado (ressalva),Gupy stark — feed moderadamente defasado
+Dock,3,✅ confirmado (ressalva),Gupy dock — feed defasado
+Conductor,3,⚙️ candidato_fase_2,Gupy abandonado desde 2021; fundiu com Dock/Muxi
+Klavi,3,⛔ bloqueado_ia,klavi.inhire.app bloqueia ClaudeBot/GPTBot
+Hash (Plataforma),3,⚙️ candidato_fase_2,"README do GitHub aponta pra Lever, mas board foi desativado (404)"
+Roland Berger Brasil,3,⚙️ candidato_fase_2,"Portal próprio, ATS não confirmado"
+FTI Consulting Brasil,3,✅ confirmado,Workday — sem vaga no Brasil agora
+Alvarez & Marsal Brasil,3,⚙️ candidato_fase_2,Portal global + microsite específico do Brasil

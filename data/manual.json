@@ -1,4 +1,38 @@
 {
-  "_docs": "Vagas cadastradas manualmente (empresas sem ATS público automatizável, ou correções pontuais). Mesmo formato de data/vagas.json. Em caso de 'id' repetido, uma entrada aqui sobrescreve a coletada automaticamente.",
-  "vagas": []
+  "_docs": "Vagas cadastradas manualmente (empresas sem ATS público automatizável, ou correções pontuais). Mesmo formato de data/vagas.json. Em caso de 'id' repetido, uma entrada aqui sobrescreve a coletada automaticamente. As entradas 'manual-across-*' vieram da plataforma Across (across.jobs) e 'manual-eureca-*' da plataforma Eureca (eureca.me) — em ambos os casos cada programa é uma landing page única por ciclo, sem API; precisam ser revisadas/atualizadas manualmente todo ano quando o ciclo mudar.",
+  "vagas": [
+    {
+      "id": "manual-across-patria-academy-2027",
+      "empresa": "Pátria Investimentos",
+      "programa": "Estágio Patria Academy 2027",
+      "tipo": "estagio",
+      "area": "vc-pe",
+      "cidade": "São Paulo, SP",
+      "link": "https://patria.across.jobs/",
+      "fonte": "manual",
+      "coletado_em": "2026-08-04"
+    },
+    {
+      "id": "manual-across-multiplan-2026",
+      "empresa": "Multiplan",
+      "programa": "3º Programa de Estágio Multiplan 2026",
+      "tipo": "estagio",
+      "area": "real-estate-infra",
+      "cidade": "Diversas cidades (BH, Brasília, Porto Alegre, RJ, Ribeirão Preto, São Caetano, SP)",
+      "link": "https://multiplan.across.jobs/",
+      "fonte": "manual",
+      "coletado_em": "2026-08-04"
+    },
+    {
+      "id": "manual-eureca-bradesco-2026-2",
+      "empresa": "Bradesco",
+      "programa": "Programa de Estágio Bradesco 2026 (2º Semestre)",
+      "tipo": "estagio",
+      "area": "banco",
+      "cidade": "",
+      "link": "https://estagiobradesco2026.eureca.me",
+      "fonte": "manual",
+      "coletado_em": "2026-08-06"
+    }
+  ]
 }
