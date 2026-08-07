@@ -1633,7 +1633,21 @@
   // (design, RH, jurídico, TI, marketing, suporte) fica de fora por padrão — é melhor
   // perder algum caso ambíguo do que misturar vaga fora do perfil do site.
   var AREA_FINANCEIRA_RE = /m&a|\bdcm\b|\becm\b|investment banking|corporate finance|fus(õ|o)es e aquisi[çc][õo]es|societ[áa]rio|trading|sales and trading|\bmarkets?\b|mercado(s)? financeiro|renda fixa|c[âa]mbio|derivativos|commodities|\bequit(y|ies)\b|execu[çc][ãa]o onshore|\bresearch\b|cr[ée]dito|risco de (mercado|cr[ée]dito)|gest[ãa]o de (fundos|recursos|ativos|patrim[ôo]nio)|fundos e previd[êe]ncia|asset management|private equity|real estate (investment|advisory)|contabilidade|controladoria|tesouraria|planejamento (financeiro|or[çc]ament[áa]rio)|\bfp\s?&\s?a\b|auditoria|\baudit\b|consultoria|strategy consulting|\beconomia\b|econ[ôo]mic[oa]|corporate desk|daily banker|wealth management|structured products|\besg\b|\bbanker\b|financ|front office|corretora institucional/i;
-  function isAreaFinanceira(v){ return AREA_FINANCEIRA_RE.test(v.programa || ''); }
+  // Termos de outras áreas — têm prioridade sobre a regra abaixo: mesmo numa
+  // gestora/fundo boutique, um estágio explicitamente de Jurídico, Design etc.
+  // continua fora.
+  var AREA_NAO_FINANCEIRA_RE = /jur[íi]dic|\blegal\b|\bdesign\b|\bcrm\b|marketing|comunica[çc][ãa]o|reda[çc][ãa]o|\bconte[úu]do\b|social media|recursos humanos|\brh\b|recrutamento|talent acquisition|customer (success|experience|experince)|suporte (comercial|ao cliente)|atendimento|desenvolvedor|\bengineering\b|\bgrowth\b|\bproduto\b|product ops|\bdados\b|data analytics|inteligência artificial/i;
+  // Gestoras, fundos de VC/PE e casas de research são, por natureza, empresas
+  // de mercado financeiro — não existe "departamento de design" numa boutique
+  // dessas, então um programa de estágio genérico ali já conta como relevante,
+  // mesmo sem palavra-chave específica no título (ex: "Estágio Patria Academy").
+  var AREAS_MERCADO_FINANCEIRO_PURO = {asset:1, 'vc-pe':1, research:1};
+  function isAreaFinanceira(v){
+    var titulo = v.programa || '';
+    if(AREA_NAO_FINANCEIRA_RE.test(titulo)) return false;
+    if(AREA_FINANCEIRA_RE.test(titulo)) return true;
+    return !!AREAS_MERCADO_FINANCEIRO_PURO[v.area];
+  }
   function renderVagas(){
     var list = document.getElementById('vagasList');
     var status = document.getElementById('vagasStatus');
