@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><style id="ezf-hide">body>*:not(#ezf-gate):not(#ezf-wm){visibility:hidden}</style>
 <title>Estágio Zero — Ferramenta interativa · Contabilidade Financeira</title>
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
@@ -415,7 +415,7 @@ fillOps(); buildConds(); calc3();
   var sb = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY) : null;
 
   function show(html){ box.innerHTML='<div class="brand">Estágio Zero</div>'+html; gate.classList.remove('ezf-hidden'); wm.style.display='none'; }
-  function libera(email){
+  function libera(email){var __hs=document.getElementById('ezf-hide'); if(__hs) __hs.remove();
     gate.classList.add('ezf-hidden');
     // marca d'água com o e-mail (repetida)
     var line=(email+'   ').repeat(6); var rows=[]; for(var i=0;i<40;i++) rows.push(line);
@@ -428,7 +428,7 @@ fillOps(); buildConds(); calc3();
       '<h2>Acesso exclusivo</h2>'+
       '<p>Esta ferramenta é liberada para quem comprou. Entre com o <b>mesmo e-mail da sua compra</b>:</p>'+
       '<input id="ezf-email" type="email" placeholder="voce@email.com" autocomplete="email">'+
-      '<button class="cta" id="ezf-send">Enviar link de acesso</button>'+
+      '<button class="cta" id="ezf-send">Enviar link de acesso</button>'+'<p style="font-size:12px;color:#8a93ab;line-height:1.5;margin:12px 0 0">O link chega de <b style=\'color:#c9d2e6\'>noreply@estagiozero.com.br</b> \u2014 se n\u00e3o achar, veja o <b style=\'color:#c9d2e6\'>spam</b>. Abra no navegador (n\u00e3o dentro do app do e-mail).</p>'+
       (msg?('<p style="margin-top:12px">'+msg+'</p>'):'')
     );
     var send=document.getElementById('ezf-send'), inp=document.getElementById('ezf-email');

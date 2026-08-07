@@ -294,23 +294,7 @@
   .tracker-cta span{font-size:14px;color:var(--ink-2)}
   @media(max-width:640px){.tr{grid-template-columns:1.6fr .9fr 1fr}.tr > div:nth-child(3),.tr > div:nth-child(4){display:none}}
 
-  /* ---------- Radar de vagas ---------- */
-  .vagas-filters{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:12px;margin-bottom:20px}
-  .vagas-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-  .vaga-card{display:flex;flex-direction:column;gap:10px}
-  .vaga-card .vc-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
-  .vaga-card .vc-empresa{font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
-  .vaga-card h4{font-size:17px;font-weight:700;letter-spacing:-.01em;line-height:1.3}
-  .vaga-card .vc-meta{display:flex;flex-wrap:wrap;gap:6px}
-  .vaga-card .vc-meta span{font-size:12px;font-weight:500;color:var(--ink-2);background:var(--surface-2);border:1px solid var(--line);padding:4px 10px;border-radius:999px}
-  .vaga-card .vc-foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:10px;padding-top:8px;border-top:1px solid var(--line)}
-  .vaga-card .vc-fonte{font-size:11.5px;color:var(--muted)}
-  .tag.tipo-estagio{background:var(--accent-soft);color:var(--accent-ink)}
-  .tag.tipo-trainee{background:#e7f7ee;color:var(--ok)}
-  .tag.tipo-junior{background:var(--surface-2);color:var(--ink-2);border:1px solid var(--line)}
-  .vagas-empty{grid-column:1/-1;text-align:center;padding:44px 24px;color:var(--muted);font-size:14.5px;border:1px dashed var(--line);border-radius:var(--radius);line-height:1.6}
-  @media(max-width:900px){.vagas-filters{grid-template-columns:1fr}.vagas-grid{grid-template-columns:1fr 1fr}}
-  @media(max-width:640px){.vagas-grid{grid-template-columns:1fr}}
+  /* Radar de vagas: estilos movidos para vagas.css */
 
   /* ---------- Indique fields ---------- */
   .field{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:12px;font-family:inherit;font-size:15px;color:var(--ink);background:var(--surface-2);transition:border-color .15s, box-shadow .15s, background .15s}
@@ -457,6 +441,7 @@
     })(window, document, "clarity", "script", "xu0cf6b5b4");
 </script>
 <!-- End Microsoft Clarity -->
+  <link rel="stylesheet" href="vagas.css">
 </head>
 <body>
 
@@ -532,7 +517,7 @@
               <div class="pkg-price"><span class="pill-price">R$ 249</span><span>As 2 provas + simulados</span></div>
               <h3>Kit Prova Intermediária</h3>
               <p>As duas provas (2024.2 e 2025.2) <b>resolvidas em vídeo</b> + <b>simulador de provas</b> com questões novas.</p>
-              <a href="https://pay.kiwify.com.br/Vtn5rra" target="_blank" rel="noopener" class="btn btn-accent" style="width:100%">Comprar agora</a>
+              <a href="#kit-pi" data-nav class="btn btn-accent" style="width:100%">Ver o kit</a>
             </div>
             <div class="card pkg reveal">
               <div class="pkg-top"><span class="badge open">● Disponível</span></div>
@@ -540,7 +525,7 @@
               <div class="pkg-price"><span class="pill-price">R$ 119</span><span>Vídeos + simuladores</span></div>
               <h3>Quizzes</h3>
               <p>Os quizzes da matéria com os simulados dos quizzes, pra fixar os conceitos que mais caem.</p>
-              <a href="https://pay.kiwify.com.br/Zgp3BQT" target="_blank" rel="noopener" class="btn btn-accent" style="width:100%">Comprar agora</a>
+              <a href="#quizzes" data-nav class="btn btn-accent" style="width:100%">Ver os quizzes</a>
             </div>
             <div class="card pkg reveal">
               <div class="pkg-top"><span class="badge soon">Em breve</span></div>
@@ -714,7 +699,7 @@
             <div class="pkg-price"><span class="pill-price">R$ 249</span><span>As 2 provas + simulados</span></div>
             <h3>Kit Prova Intermediária</h3>
             <p>As duas provas intermediárias (2024.2 e 2025.2) resolvidas em vídeo, <b>+ simulador de provas com questões novas</b>. Tudo pra você chegar seguro na prova.</p>
-            <a href="https://pay.kiwify.com.br/Vtn5rra" target="_blank" rel="noopener" class="btn btn-accent" style="width:100%">Comprar agora</a>
+            <a href="#kit-pi" data-nav class="btn btn-accent" style="width:100%">Ver o kit</a>
           </div>
           <div class="card pkg">
             <div class="pkg-top"><span class="badge open">● Disponível</span></div>
@@ -730,7 +715,7 @@
             <div class="pkg-price"><span class="pill-price">R$ 119</span><span>Vídeos + simuladores</span></div>
             <h3>Quizzes</h3>
             <p>Os quizzes da matéria com os simulados dos quizzes, pra fixar os conceitos que mais caem na prova.</p>
-            <a href="https://pay.kiwify.com.br/Zgp3BQT" target="_blank" rel="noopener" class="btn btn-accent" style="width:100%">Comprar agora</a>
+            <a href="#quizzes" data-nav class="btn btn-accent" style="width:100%">Ver os quizzes</a>
           </div>
           <div class="card pkg">
             <div class="pkg-top"><span class="badge soon">Em breve</span></div>
@@ -904,6 +889,151 @@
   </section>
 
   <!-- ===== PÁGINA — BANCO ILIMITADO ===== -->
+  <section class="view" id="view-kit-pi">
+    <section class="band">
+      <div class="wrap">
+        <a class="back" data-nav href="#materia-cf">← Contabilidade Financeira</a>
+
+        <div class="course-hero reveal">
+          <div class="ch-left">
+            <div class="kicker">Insper · Contabilidade Financeira</div>
+            <h2>Kit Prova <span class="hl">Intermediária</span></h2>
+            <p>As <b>duas provas intermediárias</b> (2024.2 e 2025.2) resolvidas passo a passo em vídeo, os <b>simulados com questões novas</b> no mesmo estilo e o <b>simulador de provas</b>. Você aprende com a prova real e treina com questões originais.</p>
+            <div class="ch-meta"><span>▶ 2 provas resolvidas em vídeo</span><span>🧩 Simulados com questões novas</span><span>🧮 Simulador de provas</span><span>🔓 Acesso por 6 meses</span></div>
+          </div>
+          <div class="ch-buy card">
+            <span class="pill-price">R$ 249</span>
+            <div class="ch-sub">As 2 provas + simulados · Pix ou cartão</div>
+            <a href="https://pay.kiwify.com.br/Vtn5rra" target="_blank" rel="noopener" class="btn btn-accent" style="width:100%">Comprar agora</a>
+            <div class="ch-guarantee">1ª aula grátis</div>
+            <div class="ch-legal">Ao finalizar a compra você concorda com os <a href="#termos" data-nav>Termos de Uso</a> e a <a href="#privacidade" data-nav>Política de Privacidade</a>.</div>
+          </div>
+        </div>
+
+        <div class="access-how reveal">
+          <div class="ah-title">Como funciona o acesso</div>
+          <ol>
+            <li><b class="n">1</b> Compre pelo botão acima (Pix ou cartão).</li>
+            <li><b class="n">2</b> Você recebe um <b>link de acesso por e-mail</b> — confira o spam.</li>
+            <li><b class="n">3</b> Entre com o <b>mesmo e-mail da compra</b>. Acesso por 6 meses.</li>
+          </ol>
+        </div>
+
+        <h3 class="curr-title reveal">Veja o simulador em ação</h3>
+        <div class="lab-block reveal">
+          <div class="lab-copy">
+            <p>Mais que resolução comentada: você muda os números e as condições de cada operação e vê o Balanço, a DRE e a DFC recalcularem na hora — inclusive os demonstrativos montados em formato contábil.</p>
+            <p class="lab-note">Simulador de provas completo <b>incluso no kit</b>.</p>
+          </div>
+          <div class="lab-frame">
+            <video src="media/ferramenta-demo-1.mp4" autoplay muted loop playsinline></video>
+          </div>
+        </div>
+
+        <h3 class="curr-title reveal" style="margin-top:34px">O que está incluído no kit</h3>
+        <div class="curriculum reveal">
+          <div class="mod-head"><span>Prova 2025.2 — resolvida em vídeo</span><span class="mod-count">questões 1 a 17</span></div>
+          <div class="lesson"><span class="l-ico">▶</span><div class="l-body"><b>Toda a PI 2025.2 resolvida passo a passo</b><span>Reclassificação de dívida, DRE, liquidez, margens, lançamento de eventos e montagem de BP, DRE e DFC</span></div><span class="l-tag">Com a compra</span></div>
+          <div class="mod-head"><span>Prova 2024.2 — resolvida em vídeo</span><span class="mod-count">questões 1 a 14</span></div>
+          <div class="lesson"><span class="l-ico">▶</span><div class="l-body"><b>Toda a PI 2024.2 resolvida passo a passo</b><span>DFC, índices, impacto de operações em ativo/lucro/passivo, juros, liquidez e capital de giro</span></div><span class="l-tag">Com a compra</span></div>
+          <div class="mod-head"><span>Simulados — questões novas</span><span class="mod-count">interativo</span></div>
+          <div class="lesson"><span class="l-ico">🧩</span><div class="l-body"><b>Simulados no formato da prova</b><span>Questões originais suas, com correção e resolução na hora</span></div><span class="l-tag">Com a compra</span></div>
+          <div class="mod-head"><span>Simulador de provas</span><span class="mod-count">interativo</span></div>
+          <div class="lesson"><span class="l-ico">🧮</span><div class="l-body"><b>Ferramenta que monta Balanço, DRE e DFC</b><span>Mude os números de cada operação e veja tudo recalcular na hora</span></div><span class="l-tag">Com a compra</span></div>
+        </div>
+
+        <div class="tracker-cta reveal">
+          <div><b>As duas provas resolvidas + simulados, num kit só.</b><span>Acesso imediato por 6 meses. 1ª aula grátis.</span></div>
+          <a href="https://pay.kiwify.com.br/Vtn5rra" target="_blank" rel="noopener" class="btn btn-accent">Comprar por R$ 249</a>
+        </div>
+      </div>
+    </section>
+  </section>
+
+  <section class="view" id="view-quizzes">
+    <section class="band">
+      <div class="wrap">
+        <a class="back" data-nav href="#materia-cf">← Contabilidade Financeira</a>
+
+        <div class="course-hero reveal">
+          <div class="ch-left">
+            <div class="kicker">Insper · Contabilidade Financeira</div>
+            <h2>Quizzes <span class="hl">+ Simuladores</span></h2>
+            <p>Os quizzes da matéria com a <b>resolução comentada em vídeo</b> — incluindo os quizzes da <b>2025.2</b> — e os <b>simuladores</b> que treinam os conceitos que mais caem. Você resolve, o simulador corrige na hora e mostra o passo a passo; cada rodada muda os números, então é treino de raciocínio, não decoreba.</p>
+            <div class="ch-meta"><span>🎥 Resolução comentada em vídeo</span><span>🧪 3 simuladores interativos</span><span>✅ Correção e resolução na hora</span><span>🔓 Acesso na área do aluno</span></div>
+          </div>
+          <div class="ch-buy card">
+            <span class="pill-price">R$ 119</span>
+            <div class="ch-sub">Vídeos + simuladores · Pix ou cartão</div>
+            <a href="https://pay.kiwify.com.br/Zgp3BQT" target="_blank" rel="noopener" class="btn btn-accent" style="width:100%">Comprar agora</a>
+            <div class="ch-guarantee">Acesso imediato</div>
+            <div class="ch-legal">Ao finalizar a compra você concorda com os <a href="#termos" data-nav>Termos de Uso</a> e a <a href="#privacidade" data-nav>Política de Privacidade</a>.</div>
+          </div>
+        </div>
+
+        <div class="access-how reveal">
+          <div class="ah-title">Como funciona o acesso</div>
+          <ol>
+            <li><b class="n">1</b> Compre pelo botão acima (Pix ou cartão).</li>
+            <li><b class="n">2</b> Você recebe um <b>link de acesso por e-mail</b> — confira o spam.</li>
+            <li><b class="n">3</b> Entre com o <b>mesmo e-mail da compra</b>. Acesso por 6 meses.</li>
+          </ol>
+        </div>
+
+        <h3 class="curr-title reveal">Resolução comentada</h3>
+        <div class="curriculum reveal">
+          <div class="lesson"><span class="l-ico">🎥</span><div class="l-body"><b>Quizzes resolvidos e explicados em vídeo</b><span>Todos os quizzes comentados passo a passo — inclusive os da prova 2025.2</span></div><span class="l-tag">Com a compra</span></div>
+        </div>
+
+        <h3 class="curr-title reveal" style="margin-top:34px">Os 3 simuladores</h3>
+        <div class="curriculum reveal">
+          <div class="lesson"><span class="l-ico">🧪</span><div class="l-body"><b>Margem Bruta × Liquidez Corrente</b><span>Calcule os índices com dados novos e classifique estratégias: melhora a margem? a liquidez? o simulador te diz.</span></div><span class="l-tag">Interativo</span></div>
+          <div class="lesson"><span class="l-ico">🧪</span><div class="l-body"><b>Lançamento de Eventos</b><span>Contabilize os eventos e monte os saldos e a DRE — com gabarito completo por evento.</span></div><span class="l-tag">Interativo</span></div>
+          <div class="lesson"><span class="l-ico">🧪</span><div class="l-body"><b>DFC — método direto e indireto</b><span>Monte a DFC pelos dois métodos e confira a resolução passo a passo.</span></div><span class="l-tag">Interativo</span></div>
+        </div>
+
+        <div class="tracker-cta reveal">
+          <div><b>Fixe os conceitos que mais caem — treinando de verdade.</b><span>Vídeos + os 3 simuladores, com correção e resolução na hora.</span></div>
+          <a href="https://pay.kiwify.com.br/Zgp3BQT" target="_blank" rel="noopener" class="btn btn-accent">Comprar por R$ 119</a>
+        </div>
+      </div>
+    </section>
+  </section>
+
+  <section class="view" id="view-faq">
+    <section class="band">
+      <div class="wrap faq-wrap">
+        <a class="back" data-nav href="#home">← Início</a>
+        <div class="sec-head reveal">
+          <div class="kicker">FAQ · Alunos</div>
+          <h2>FAQ dos Alunos — acesso &amp; dúvidas</h2>
+          <p>Como acessar o que você comprou e as respostas rápidas para as dúvidas mais comuns.</p>
+        </div>
+
+        <div class="access-how reveal" style="margin-bottom:24px">
+          <div class="ah-title">Acessar minhas ferramentas</div>
+          <p style="font-size:14px;color:var(--ink-2);margin-bottom:10px">Entre com o <b>mesmo e-mail da compra</b> — o acesso abre com um link enviado por e-mail (sem senha).</p>
+          <div class="access-cta">
+            <a href="https://estagiozero.com.br/ferramentas/banco/" target="_blank" rel="noopener">Banco de questões →</a>
+            <a href="https://estagiozero.com.br/ferramentas/pi-2025-2/" target="_blank" rel="noopener">Simulador de provas →</a>
+            <a href="https://estagiozero.com.br/ferramentas/quiz-1/" target="_blank" rel="noopener">Simuladores dos quizzes →</a>
+            <a href="https://banco.estagiozero.com.br" target="_blank" rel="noopener">Banco técnico (assinatura) →</a>
+          </div>
+        </div>
+
+        <div class="faq reveal">
+          <details><summary>Comprei — como acesso?</summary><div class="a">Você recebe um <b>link de acesso por e-mail</b> logo após a compra. Abra a ferramenta (botões acima), digite o <b>mesmo e-mail que usou na compra</b> e clique no link que chega no seu e-mail. Não precisa de senha.</div></details>
+          <details><summary>Não recebi o e-mail de acesso</summary><div class="a">O e-mail chega de <b>noreply@estagiozero.com.br</b>. Confira o <b>spam / lixo eletrônico</b> e a aba "Promoções", e marque como "não é spam". Confirme que digitou o e-mail certo e clique em "enviar link" de novo. Se não chegar em alguns minutos, fale com <a href="mailto:contato@estagiozero.com.br">contato@estagiozero.com.br</a>.</div></details>
+          <details><summary>Cliquei no link e voltou pra tela de login</summary><div class="a">Isso costuma acontecer quando o link é aberto <b>dentro do app</b> do Gmail/Instagram. Abra no <b>navegador</b> (Chrome/Safari) — normalmente há uma opção "abrir no navegador" nos "…". Use o link assim que chegar, pois ele expira.</div></details>
+          <details><summary>"Comprei e diz que não tenho acesso"</summary><div class="a">Quase sempre é login com um <b>e-mail diferente</b> do da compra. Saia e entre com o e-mail exato usado no checkout. Se persistir, mande seu e-mail para <a href="mailto:contato@estagiozero.com.br">contato@estagiozero.com.br</a> que a gente libera.</div></details>
+          <details><summary>Funciona no celular e no computador?</summary><div class="a">Sim. Em cada aparelho, entre uma vez com o <b>mesmo e-mail</b> (recebe o link e acessa). Seu acesso é pessoal.</div></details>
+          <details><summary>Por quanto tempo tenho acesso?</summary><div class="a">Os produtos de contabilidade têm acesso por <b>6 meses</b> a partir da compra. O Banco Técnico é <b>assinatura mensal</b> — enquanto estiver ativa.</div></details>
+          <details><summary>Paguei e o status está pendente</summary><div class="a">O acesso libera <b>automaticamente</b> quando o pagamento é aprovado (Pix costuma ser minutos; boleto pode demorar mais). Assim que aprovar, é só entrar com seu e-mail.</div></details>
+        </div>
+      </div>
+    </section>
+  </section>
+
   <section class="view" id="view-banco">
     <section class="band">
       <div class="wrap">
@@ -1056,7 +1186,15 @@
             <option value="real-estate-infra">Real Estate &amp; Infra</option>
             <option value="research">Research</option>
           </select>
+          <select class="field" id="vagasEmpresa">
+            <option value="">Todas as empresas</option>
+          </select>
         </div>
+
+        <label class="vagas-toggle reveal">
+          <input type="checkbox" id="vagasTodasAreas">
+          Mostrar vagas de todas as áreas (por padrão, só mercado financeiro, consultoria e áreas financeiras — sem design, RH, jurídico, TI etc.)
+        </label>
 
         <div id="vagasStatus" class="mini-note reveal" style="margin-bottom:14px"></div>
         <div id="vagasList" class="vagas-grid reveal"></div>
@@ -1466,6 +1604,7 @@
         </div>
         <div class="foot-col">
           <h5>Mais</h5>
+          <a href="#faq" data-nav>FAQ Alunos</a>
           <a href="#contato" data-nav>Contato</a>
           <a href="#sobre" data-nav>Quem faz</a>
           <a href="#termos" data-nav>Termos de Uso</a>
@@ -1532,7 +1671,7 @@
     var fi = document.getElementById('fIndicado'); if(fi) fi.value = REF;
   }
 
-  var VALID = ['home','sobre','oneone','aulas','materia-cf','pacote-pi','pacote-pi-2024','banco','banco-tecnico','procsel','processos','conteudo','carreiras','contato','termos','privacidade'];
+  var VALID = ['home','faq','sobre','oneone','aulas','materia-cf','kit-pi','quizzes','pacote-pi','pacote-pi-2024','banco','banco-tecnico','procsel','processos','conteudo','carreiras','contato','termos','privacidade'];
   function showView(name){
     if(VALID.indexOf(name) < 0) name = 'home';
     document.querySelectorAll('.view').forEach(function(v){ v.classList.remove('active'); });
@@ -1612,56 +1751,7 @@
     });
   }
 
-  // ---- Radar de vagas ----
-  var VAGAS_DATA = [];
-  var TIPO_LABEL = {estagio:'Estágio', trainee:'Trainee', junior:'Júnior/Analista'};
-  var AREA_LABEL = {'banco':'Banco','corretora-fintech':'Corretora/Fintech','asset':'Gestora/Hedge Fund','vc-pe':'VC/PE','real-estate-infra':'Real Estate/Infra','research':'Research'};
-  function escapeHtml(s){ return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
-  function renderVagas(){
-    var list = document.getElementById('vagasList');
-    var status = document.getElementById('vagasStatus');
-    if(!list || !status) return;
-    var searchEl = document.getElementById('vagasSearch'), tipoEl = document.getElementById('vagasTipo'), areaEl = document.getElementById('vagasArea');
-    var q = (searchEl.value || '').trim().toLowerCase();
-    var tipo = tipoEl.value, area = areaEl.value;
-    var filtered = VAGAS_DATA.filter(function(v){
-      if(tipo && v.tipo !== tipo) return false;
-      if(area && v.area !== area) return false;
-      if(q && ((v.empresa || '') + ' ' + (v.programa || '')).toLowerCase().indexOf(q) < 0) return false;
-      return true;
-    });
-    if(!VAGAS_DATA.length){
-      status.textContent = '';
-      list.innerHTML = '<div class="vagas-empty">O radar de vagas está sendo montado. Em breve, vagas reais de bancos, corretoras, gestoras, fundos e casas de research vão aparecer aqui automaticamente.<br>Quer indicar uma vaga ou uma empresa? <a href="#contato" data-nav style="color:var(--accent);font-weight:600">fala com a gente</a>.</div>';
-      return;
-    }
-    status.textContent = filtered.length + (filtered.length === 1 ? ' vaga encontrada' : ' vagas encontradas');
-    if(!filtered.length){
-      list.innerHTML = '<div class="vagas-empty">Nenhuma vaga com esse filtro agora. Tente limpar a busca ou volte em breve — o radar é atualizado periodicamente.</div>';
-      return;
-    }
-    list.innerHTML = filtered.map(function(v){
-      var tipoCls = 'tipo-' + (v.tipo || '');
-      return '<div class="card vaga-card">' +
-        '<div class="vc-top"><span class="vc-empresa">' + escapeHtml(v.empresa) + '</span><span class="tag ' + tipoCls + '">' + escapeHtml(TIPO_LABEL[v.tipo] || v.tipo) + '</span></div>' +
-        '<h4>' + escapeHtml(v.programa) + '</h4>' +
-        '<div class="vc-meta"><span>' + escapeHtml(AREA_LABEL[v.area] || v.area) + '</span>' + (v.cidade ? '<span>' + escapeHtml(v.cidade) + '</span>' : '') + '</div>' +
-        '<div class="vc-foot"><span class="vc-fonte">' + (v.coletado_em ? 'Coletado em ' + escapeHtml(v.coletado_em) : '') + '</span><a href="' + encodeURI(v.link || '#') + '" target="_blank" rel="noopener" class="btn btn-ghost">Ver vaga →</a></div>' +
-      '</div>';
-    }).join('');
-  }
-  fetch('data/vagas.json').then(function(r){ if(!r.ok) throw new Error('http ' + r.status); return r.json(); })
-    .then(function(data){ VAGAS_DATA = (data && data.vagas) || []; renderVagas(); })
-    .catch(function(){
-      var status = document.getElementById('vagasStatus');
-      var list = document.getElementById('vagasList');
-      if(status) status.textContent = '';
-      if(list) list.innerHTML = '<div class="vagas-empty">Não consegui carregar as vagas agora. Se você abriu este arquivo direto no navegador (file://), rode um servidor local — o fetch de data/vagas.json não funciona por file://.</div>';
-    });
-  ['vagasSearch','vagasTipo','vagasArea'].forEach(function(id){
-    var el = document.getElementById(id);
-    if(el) el.addEventListener('input', renderVagas);
-  });
+  // Radar de vagas: código movido para vagas.js
 
   // ---- Carreiras: buy-side / sell-side / outras ----
   var CARR = {
@@ -1857,5 +1947,6 @@
 <!-- Cloudflare Web Analytics -->
 <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "9e3c8053a956440684711b4a1abaabf2"}'></script>
 <!-- End Cloudflare Web Analytics -->
+<script defer src="vagas.js"></script>
 </body>
 </html> 
