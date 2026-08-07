@@ -426,6 +426,27 @@
     .hero .wrap{padding:64px 24px 52px}.band{padding:52px 0}.cta-final{padding:40px 24px}
     .lesson{flex-wrap:wrap}.l-tag{margin-left:48px}
   }
+
+  /* ---- 1a aula: cadeado ---- */
+  .free-wrap{margin:8px 0 4px}
+  .free-unlock{display:flex;align-items:center;gap:16px;width:100%;text-align:left;cursor:pointer;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:18px 22px;box-shadow:var(--shadow);transition:transform .16s,border-color .16s}
+  .free-unlock:hover{transform:translateY(-2px);border-color:var(--accent)}
+  .fu-lock{font-size:30px;line-height:1}
+  .fu-txt{flex:1;display:flex;flex-direction:column;gap:2px}
+  .fu-txt b{font-size:16px;color:var(--ink)}
+  .fu-txt small{font-size:13px;color:var(--muted)}
+  .fu-cta{font-weight:700;color:var(--accent);white-space:nowrap}
+  .fv-player{position:relative;width:100%;aspect-ratio:16/9;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);background:#0e1116;box-shadow:var(--shadow);margin-top:6px}
+  .fv-player iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+  .free-soon{display:flex;align-items:center;gap:14px;width:100%;background:var(--surface-2);border:1px dashed var(--line);border-radius:var(--radius);padding:18px 22px;color:var(--muted);font-size:14px;line-height:1.4}
+  .free-soon .fu-lock{opacity:.5}
+  /* ---- ferramenta (amostra) ---- */
+  .lab-block{display:grid;grid-template-columns:.85fr 1.15fr;gap:22px;align-items:center;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);padding:22px;box-shadow:var(--shadow)}
+  .lab-copy p{font-size:14.5px;color:var(--ink-2);line-height:1.6;margin-bottom:12px}
+  .lab-copy .lab-note{font-size:13px;color:var(--muted);background:var(--accent-soft);border-radius:12px;padding:10px 12px;margin-bottom:0}
+  .lab-frame{position:relative;width:100%;aspect-ratio:820/716;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:#0e1116;box-shadow:var(--shadow)}
+  .lab-frame video{width:100%;height:100%;object-fit:cover;display:block}
+  @media(max-width:820px){.lab-block{grid-template-columns:1fr}}
 </style>
 <!-- Microsoft Clarity -->
 <script type="text/javascript">
@@ -448,6 +469,7 @@
       <a href="#processos" data-nav>Vagas</a>
       <a href="#conteudo" data-nav>Conteúdo</a>
       <a href="#oneone" data-nav>Serviços</a>
+      <a href="#procsel" data-nav>Processos seletivos</a>
       <a href="#oneone" class="btn btn-accent" data-cal>Agendar 30 min</a>
     </nav>
     <button class="menu-toggle" id="menuToggle" aria-label="Menu"><span></span><span></span><span></span></button>
@@ -486,11 +508,11 @@
         <div class="sec-head center reveal" style="margin-bottom:30px"><div class="kicker">Explore</div><h2>Por onde você quer começar?</h2></div>
         <div class="hub-grid">
           <a href="#sobre" data-nav class="card hub-card reveal"><div class="hk">Sobre</div><h3>O que é o Estágio Zero</h3><p>A ideia, para quem é e como pode te ajudar.</p><div class="arw">Ver →</div></a>
-          <a href="#aulas" data-nav class="card hub-card reveal"><div class="hk">Aulas</div><h3>As matérias da faculdade</h3><p><b>Insper</b> (disponível) · <b>FGV</b> (em breve). Foco em resolução de provas.</p><div class="arw">Ver →</div></a>
+          <a href="#aulas" data-nav class="card hub-card reveal"><div class="hk">Aulas</div><h3>As matérias da faculdade</h3><p><b>Insper</b> (disponível). Foco em resolução de provas.</p><div class="arw">Ver →</div></a>
           <a href="#processos" data-nav class="card hub-card reveal"><div class="hk">Vagas</div><h3>Radar de vagas</h3><p>Estágio e trainee em bancos, gestoras, fundos e corretoras, num lugar só.</p><div class="arw">Ver →</div></a>
           <a href="#conteudo" data-nav class="card hub-card reveal"><div class="hk">Conteúdo</div><h3>Conteúdo grátis</h3><p>Leituras e histórias de carreira para você se aproximar do lado de lá.</p><div class="arw">Ver →</div></a>
           <a href="#oneone" data-nav class="card hub-card reveal"><div class="hk">1:1</div><h3>Pergunte o que quiser</h3><p>30 minutos, 1 a 1, sobre o que você quiser.</p><div class="arw">Ver →</div></a>
-          <a href="#contato" data-nav class="card hub-card reveal"><div class="hk">Preparação · em breve</div><h3>Processos seletivos</h3><p>Foco na parte técnica de finanças — testes, cases e entrevista. Em produção.</p><div class="arw">Em breve</div></a>
+          <a href="#procsel" data-nav class="card hub-card reveal"><div class="hk">Processos seletivos · novo</div><h3>Banco de Questões de Finanças</h3><p>Prep técnico de finanças (IB, PE, asset) treinado um pouco por dia — modelagem, valuation e as perguntas que caem.</p><div class="arw">Ver →</div></a>
           <a href="#contato" data-nav class="card hub-card reveal"><div class="hk">Comunidade · em breve</div><h3>Quem já está no mercado</h3><p>Conexões com estudantes e profissionais pra você não trilhar sozinho. Em produção.</p><div class="arw">Em breve</div></a>
         </div>
       </div>
@@ -506,40 +528,31 @@
           <div class="grid-3">
             <div class="card pkg reveal">
               <div class="pkg-top"><span class="badge open">● Disponível</span></div>
-              <div class="pkg-art"><span>📊</span></div>
-              <div class="pkg-price"><span class="pill-price">R$ 127</span><span>Acesso 6 meses</span></div>
-              <h3>Pacote Prova Intermediária 2025.2</h3>
-              <p><b>Resolução comentada</b>, passo a passo, da PI 2025.2: BP, DRE, DFC e análise das demonstrações — em vídeo, com gabaritos comentados.</p>
-              <a href="#pacote-pi" data-nav class="btn btn-accent" style="width:100%">Ver o pacote</a>
+              <div class="pkg-art"><span>🏆</span></div>
+              <div class="pkg-price"><span class="pill-price">R$ 249</span><span>As 2 provas + simulados</span></div>
+              <h3>Kit Prova Intermediária</h3>
+              <p>As duas provas (2024.2 e 2025.2) <b>resolvidas em vídeo</b> + <b>simulador de provas</b> com questões novas.</p>
+              <a href="https://pay.kiwify.com.br/Vtn5rra" target="_blank" rel="noopener" class="btn btn-accent" style="width:100%">Comprar agora</a>
+            </div>
+            <div class="card pkg reveal">
+              <div class="pkg-top"><span class="badge open">● Disponível</span></div>
+              <div class="pkg-art"><span>❓</span></div>
+              <div class="pkg-price"><span class="pill-price">R$ 119</span><span>Vídeos + simuladores</span></div>
+              <h3>Quizzes</h3>
+              <p>Os quizzes da matéria com os simulados dos quizzes, pra fixar os conceitos que mais caem.</p>
+              <a href="https://pay.kiwify.com.br/Zgp3BQT" target="_blank" rel="noopener" class="btn btn-accent" style="width:100%">Comprar agora</a>
             </div>
             <div class="card pkg reveal">
               <div class="pkg-top"><span class="badge soon">Em breve</span></div>
               <div class="pkg-art"><span>📝</span></div>
               <div class="pkg-price"><span>Prova Final</span><span>Preço em breve</span></div>
-              <h3>Pacote Prova Final</h3>
+              <h3>Kit Prova Final</h3>
               <p>Resolução completa das PFs e simulados para a reta final da matéria.</p>
-              <a href="#aulas" data-nav class="btn btn-ghost" style="width:100%">Em produção</a>
-            </div>
-            <div class="card pkg reveal">
-              <div class="pkg-top"><span class="badge soon">Em breve</span></div>
-              <div class="pkg-art"><span>🎯</span></div>
-              <div class="pkg-price"><span>Semestre completo</span><span>Preço em breve</span></div>
-              <h3>Combo do Semestre</h3>
-              <p>Todas as provas e quizzes da matéria num pacote só, com desconto.</p>
               <a href="#aulas" data-nav class="btn btn-ghost" style="width:100%">Em produção</a>
             </div>
           </div>
         </div>
 
-        <div class="course-group reveal">
-          <div class="group-head"><span class="group-name">FGV</span><span class="group-tag soon">Em breve</span></div>
-          <div class="grid-3">
-            <div class="card pkg soon-card reveal" style="grid-column:1/-1">
-              <div class="pkg-top"><span class="badge soon">Em breve</span></div>
-              <p class="soon-line">Os pacotes da FGV estão em produção — em breve por aqui.</p>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
 
@@ -691,32 +704,40 @@
         <a class="back" data-nav href="#aulas">← Aulas</a>
         <div class="sec-head reveal">
           <div class="kicker">Insper · Contabilidade Financeira</div>
-          <h2>Contabilidade Financeira, <span class="hl">pela prova que você vai encarar</span>.</h2>
-          <p>Escolha o pacote pelo seu objetivo na matéria. Aulas gravadas, resolução passo a passo e quizzes.</p>
+          <h2>Contabilidade Financeira, <span class="hl">resolvida de verdade</span>.</h2>
+          <p>Treine com as provas reais já resolvidas — as mesmas que já caíram, resolvidas questão por questão em vídeo — e pratique no simulador de provas e no banco de questões.</p>
         </div>
         <div class="grid-3 reveal">
           <div class="card pkg">
             <div class="pkg-top"><span class="badge open">● Disponível</span></div>
-            <div class="pkg-art"><span>📊</span></div>
-            <div class="pkg-price"><span class="pill-price">R$ 127</span><span>Acesso 6 meses</span></div>
-            <h3>Pacote Prova Intermediária 2025.2</h3>
-            <p><b>Resolução comentada</b>, passo a passo, da PI 2025.2: BP, DRE, DFC e análise das demonstrações — em vídeo, com gabaritos comentados.</p>
-            <a href="#pacote-pi" data-nav class="btn btn-accent" style="width:100%">Ver o pacote</a>
+            <div class="pkg-art"><span>🏆</span></div>
+            <div class="pkg-price"><span class="pill-price">R$ 249</span><span>As 2 provas + simulados</span></div>
+            <h3>Kit Prova Intermediária</h3>
+            <p>As duas provas intermediárias (2024.2 e 2025.2) resolvidas em vídeo, <b>+ simulador de provas com questões novas</b>. Tudo pra você chegar seguro na prova.</p>
+            <a href="https://pay.kiwify.com.br/Vtn5rra" target="_blank" rel="noopener" class="btn btn-accent" style="width:100%">Comprar agora</a>
+          </div>
+          <div class="card pkg">
+            <div class="pkg-top"><span class="badge open">● Disponível</span></div>
+            <div class="pkg-art"><span>♾️</span></div>
+            <div class="pkg-price"><span class="pill-price">R$ 149</span><span>Área de membros</span></div>
+            <h3>Banco Ilimitado de Questões</h3>
+            <p>Questões do curso inteiro (PI e PF), geradas na hora e que nunca acabam — filtros, dificuldade e mesclar. Inclui também a ferramenta de demonstrativos: mude os números de cada operação e veja o Balanço, a DRE e a DFC recalcularem na hora.</p>
+            <a href="#banco" data-nav class="btn btn-accent" style="width:100%">Ver o banco</a>
+          </div>
+          <div class="card pkg">
+            <div class="pkg-top"><span class="badge open">● Disponível</span></div>
+            <div class="pkg-art"><span>❓</span></div>
+            <div class="pkg-price"><span class="pill-price">R$ 119</span><span>Vídeos + simuladores</span></div>
+            <h3>Quizzes</h3>
+            <p>Os quizzes da matéria com os simulados dos quizzes, pra fixar os conceitos que mais caem na prova.</p>
+            <a href="https://pay.kiwify.com.br/Zgp3BQT" target="_blank" rel="noopener" class="btn btn-accent" style="width:100%">Comprar agora</a>
           </div>
           <div class="card pkg">
             <div class="pkg-top"><span class="badge soon">Em breve</span></div>
             <div class="pkg-art"><span>📝</span></div>
             <div class="pkg-price"><span>Prova Final</span><span>Preço em breve</span></div>
-            <h3>Pacote Prova Final</h3>
-            <p>Resolução completa das PFs e simulados para a reta final da matéria.</p>
-            <span class="btn btn-ghost" style="width:100%">Em produção</span>
-          </div>
-          <div class="card pkg">
-            <div class="pkg-top"><span class="badge soon">Em breve</span></div>
-            <div class="pkg-art"><span>🎯</span></div>
-            <div class="pkg-price"><span>Semestre completo</span><span>Preço em breve</span></div>
-            <h3>Combo do Semestre</h3>
-            <p>Todas as provas e quizzes da matéria num pacote só, com desconto.</p>
+            <h3>Kit Prova Final</h3>
+            <p>Resolução das provas finais para a reta final da matéria.</p>
             <span class="btn btn-ghost" style="width:100%">Em produção</span>
           </div>
         </div>
@@ -733,22 +754,39 @@
         <div class="course-hero reveal">
           <div class="ch-left">
             <div class="kicker">Insper · Contabilidade Financeira</div>
-            <h2>Pacote <span class="hl">Prova Intermediária 2025.2</span></h2>
-            <p><b>Resolução comentada</b>, passo a passo, de tudo o que cai na PI 2025.2: montar BP, DRE e DFC a partir de eventos, regime de competência × caixa, liquidez, margens, ciclo de caixa e análise por índices. Aulas gravadas, com gabaritos comentados.</p>
-            <div class="ch-meta"><span>▶ 13 aulas gravadas</span><span>📄 Gabaritos comentados</span><span>💬 Resolução passo a passo</span><span>🔓 Acesso por 6 meses</span></div>
+            <h2>Pacote da Prova <span class="hl">2025.2</span></h2>
+            <p>A prova intermediária de 2025.2 <b>resolvida passo a passo em vídeo</b> + <b>simulados com questões novas</b> no mesmo estilo pra treinar + o <b>simulador de provas</b>. Você aprende com a prova real e testa com questões originais.</p>
+            <div class="ch-meta"><span>▶ Prova resolvida em vídeo</span><span>🧩 Simulados com questões novas</span><span>🧮 Ferramenta interativa</span><span>🔓 Acesso por 6 meses</span></div>
           </div>
           <div class="ch-buy card">
-            <span class="pill-price">R$ 127</span>
+            <span class="pill-price">R$ 147</span>
             <div class="ch-sub">Acesso por 6 meses · Pix ou cartão</div>
             <a data-buy class="btn btn-accent" style="width:100%">Comprar agora</a>
             <div class="ch-guarantee">1ª aula grátis</div>
+            <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--line);font-size:13px;color:var(--ink-2);text-align:center">Quer as <b>duas provas + simulados</b>? <a href="https://pay.kiwify.com.br/Vtn5rra" target="_blank" rel="noopener" style="color:var(--accent);font-weight:700;white-space:nowrap">Kit Prova Intermediária por R$ 249 →</a></div>
             <div class="ch-legal">Ao finalizar a compra você concorda com os <a href="#termos" data-nav>Termos de Uso</a> e a <a href="#privacidade" data-nav>Política de Privacidade</a>.</div>
           </div>
         </div>
 
         <h3 class="curr-title reveal">Comece agora — a 1ª aula é liberada</h3>
-        <div class="video-embed reveal" id="freeVideo">
-          <div class="video-ph">▶ Prévia da 1ª aula<small>Em breve por aqui</small></div>
+        <div class="free-wrap reveal" id="freeVideo">
+          <button class="free-unlock" type="button">
+            <span class="fu-lock">🔓</span>
+            <span class="fu-txt"><b>Introdução — assista à 1ª aula de graça</b><small>Amostra liberada, sem compromisso</small></span>
+            <span class="fu-cta">▶ Assistir</span>
+          </button>
+          <div class="fv-player" hidden></div>
+        </div>
+
+        <h3 class="curr-title reveal" style="margin-top:34px">Veja a ferramenta em ação</h3>
+        <div class="lab-block reveal">
+          <div class="lab-copy">
+            <p>Mais que resolução comentada: você muda os números e as condições de cada operação e vê o Balanço, a DRE e a DFC recalcularem na hora — inclusive os demonstrativos montados em formato contábil.</p>
+            <p class="lab-note">Ferramenta interativa completa <b>inclusa no curso</b>.</p>
+          </div>
+          <div class="lab-frame">
+            <video src="media/ferramenta-demo-1.mp4" autoplay muted loop playsinline></video>
+          </div>
         </div>
 
         <h3 class="curr-title reveal" style="margin-top:34px">O que está incluído no pacote</h3>
@@ -763,7 +801,7 @@
 
           <div class="mod-head"><span>Módulo 1 · PI 2025.2 — Questões 1 a 5</span><span class="mod-count">5 aulas</span></div>
           <div class="lesson"><span class="l-ico">🔒</span><div class="l-body"><b>Questão 1 — Reclassificação de Dívida</b></div><span class="l-tag">Com a compra</span></div>
-          <div class="lesson"><span class="l-ico">🔒</span><div class="l-body"><b>Questão 2 — Análise da DRE (Springs Global em recuperação judicial)</b></div><span class="l-tag">Com a compra</span></div>
+          <div class="lesson"><span class="l-ico">🔒</span><div class="l-body"><b>Questão 2 — Análise da DRE (empresa em recuperação judicial)</b></div><span class="l-tag">Com a compra</span></div>
           <div class="lesson"><span class="l-ico">🔒</span><div class="l-body"><b>Questão 3 — Análise de Liquidez entre Empresas</b></div><span class="l-tag">Com a compra</span></div>
           <div class="lesson"><span class="l-ico">🔒</span><div class="l-body"><b>Questão 4 — Análise de Margens em Varejistas</b></div><span class="l-tag">Com a compra</span></div>
           <div class="lesson"><span class="l-ico">🔒</span><div class="l-body"><b>Questão 5 — Efeito do Parcelamento na Liquidez</b></div><span class="l-tag">Com a compra</span></div>
@@ -774,17 +812,223 @@
           <div class="mod-head"><span>Módulo 3 · Revisão</span><span class="mod-count">1 aula</span></div>
           <div class="lesson"><span class="l-ico">🔒</span><div class="l-body"><b>Como não perder pontos na PI</b></div><span class="l-tag">Com a compra</span></div>
 
+          <div class="mod-head"><span>Simulados — questões novas</span><span class="mod-count">interativo</span></div>
+          <div class="lesson"><span class="l-ico">🧩</span><div class="l-body"><b>Simulados no formato da prova</b><span>Questões originais suas, com correção e resolução na hora</span></div><span class="l-tag">Com a compra</span></div>
+
         </div>
 
         <div class="tracker-cta reveal">
-          <div><b>Pronto pra mandar bem na PI?</b><span>Acesso imediato por 6 meses. 1ª aula grátis.</span></div>
-          <a data-buy class="btn btn-accent">Comprar por R$ 127</a>
+          <div><b>Pronto para treinar com a prova toda resolvida?</b><span>Acesso imediato por 6 meses. 1ª aula grátis.</span></div>
+          <a data-buy class="btn btn-accent">Comprar por R$ 147</a>
+        </div>
+      </div>
+    </section>
+  </section>
+
+  <!-- ===== PÁGINA DO PACOTE (PI 2024.2) ===== -->
+  <section class="view" id="view-pacote-pi-2024">
+    <section class="band">
+      <div class="wrap">
+        <a class="back" data-nav href="#materia-cf">← Contabilidade Financeira</a>
+
+        <div class="course-hero reveal">
+          <div class="ch-left">
+            <div class="kicker">Insper · Contabilidade Financeira</div>
+            <h2>Pacote da Prova <span class="hl">2024.2</span></h2>
+            <p>A prova intermediária de 2024.2 <b>resolvida passo a passo em vídeo</b> + <b>simulados com questões novas</b> pra treinar + o <b>simulador de provas</b>. Você aprende com a prova real e testa com questões originais.</p>
+            <div class="ch-meta"><span>▶ Prova resolvida em vídeo</span><span>🧩 Simulados com questões novas</span><span>🧮 Ferramenta interativa</span><span>🔓 Acesso por 6 meses</span></div>
+          </div>
+          <div class="ch-buy card">
+            <span class="pill-price">R$ 147</span>
+            <div class="ch-sub">Acesso por 6 meses · Pix ou cartão</div>
+            <a data-buy2024 class="btn btn-accent" style="width:100%">Comprar agora</a>
+            <div class="ch-guarantee">Acesso imediato</div>
+            <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--line);font-size:13px;color:var(--ink-2);text-align:center">Quer as <b>duas provas + simulados</b>? <a href="https://pay.kiwify.com.br/Vtn5rra" target="_blank" rel="noopener" style="color:var(--accent);font-weight:700;white-space:nowrap">Kit Prova Intermediária por R$ 249 →</a></div>
+            <div class="ch-legal">Ao finalizar a compra você concorda com os <a href="#termos" data-nav>Termos de Uso</a> e a <a href="#privacidade" data-nav>Política de Privacidade</a>.</div>
+          </div>
+        </div>
+
+        <h3 class="curr-title reveal">A 1ª aula é liberada</h3>
+        <div class="free-wrap reveal" id="freeVideo2024">
+          <button class="free-unlock" type="button">
+            <span class="fu-lock">🔓</span>
+            <span class="fu-txt"><b>Introdução — assista à 1ª aula de graça</b><small>Amostra liberada, sem compromisso</small></span>
+            <span class="fu-cta">▶ Assistir</span>
+          </button>
+          <div class="fv-player" hidden></div>
+        </div>
+
+        <h3 class="curr-title reveal" style="margin-top:34px">Veja a ferramenta em ação</h3>
+        <div class="lab-block reveal">
+          <div class="lab-copy">
+            <p>Você muda os números e as condições de cada operação e vê o Balanço, a DRE e a DFC recalcularem na hora — inclusive os demonstrativos montados em formato contábil. Na segunda aba, o ciclo de caixa e o capital de giro.</p>
+            <p class="lab-note">Ferramenta interativa completa <b>inclusa no curso</b>.</p>
+          </div>
+          <div class="lab-frame">
+            <video src="media/ferramenta-demo-2.mp4" autoplay muted loop playsinline></video>
+          </div>
+        </div>
+
+        <h3 class="curr-title reveal" style="margin-top:34px">O que está incluído no pacote</h3>
+        <div class="curriculum reveal">
+
+          <div class="mod-head"><span>Módulo 0 · Comece por aqui</span><span class="mod-count">1 aula</span></div>
+          <div class="lesson free">
+            <span class="l-ico">▶</span>
+            <div class="l-body"><b>Introdução — Visão Geral da PI</b><span>Amostra grátis — assista antes de comprar</span></div>
+            <span class="l-tag free">Grátis</span>
+          </div>
+
+          <div class="mod-head"><span>Módulo 1 · DFC, índices e demonstrativos</span><span class="mod-count">4 aulas</span></div>
+          <div class="lesson"><span class="l-ico">🔒</span><div class="l-body"><b>DFC: por que sobra caixa mesmo com prejuízo</b><span>Questões 1 a 3</span></div><span class="l-tag">Com a compra</span></div>
+          <div class="lesson"><span class="l-ico">🔒</span><div class="l-body"><b>Estratégia conjunta de índices</b><span>Questão 4</span></div><span class="l-tag">Com a compra</span></div>
+          <div class="lesson"><span class="l-ico">🔒</span><div class="l-body"><b>Impacto de operações em Ativo, Lucro e Passivo</b><span>Questões 5 a 8</span></div><span class="l-tag">Com a compra</span></div>
+          <div class="lesson"><span class="l-ico">🔒</span><div class="l-body"><b>PL, resultado e caixa</b><span>Questões 9 a 11</span></div><span class="l-tag">Com a compra</span></div>
+
+          <div class="mod-head"><span>Módulo 2 · Juros, liquidez e capital de giro</span><span class="mod-count">3 aulas</span></div>
+          <div class="lesson"><span class="l-ico">🔒</span><div class="l-body"><b>Juros compostos capitalizados</b><span>Questão 12</span></div><span class="l-tag">Com a compra</span></div>
+          <div class="lesson"><span class="l-ico">🔒</span><div class="l-body"><b>Liquidez da empresa × setor</b><span>Questão 13</span></div><span class="l-tag">Com a compra</span></div>
+          <div class="lesson"><span class="l-ico">🔒</span><div class="l-body"><b>Ciclo de caixa e capital de giro</b><span>Questão 14</span></div><span class="l-tag">Com a compra</span></div>
+
+          <div class="mod-head"><span>Simulados — questões novas</span><span class="mod-count">interativo</span></div>
+          <div class="lesson"><span class="l-ico">🧩</span><div class="l-body"><b>Simulados no formato da prova</b><span>Questões originais suas, com correção e resolução na hora</span></div><span class="l-tag">Com a compra</span></div>
+
+        </div>
+
+        <div class="tracker-cta reveal">
+          <div><b>Pronto para treinar com a prova toda resolvida?</b><span>Acesso imediato por 6 meses.</span></div>
+          <a data-buy2024 class="btn btn-accent">Comprar por R$ 147</a>
+        </div>
+      </div>
+    </section>
+  </section>
+
+  <!-- ===== PÁGINA — BANCO ILIMITADO ===== -->
+  <section class="view" id="view-banco">
+    <section class="band">
+      <div class="wrap">
+        <a class="back" data-nav href="#materia-cf">← Contabilidade Financeira</a>
+
+        <div class="course-hero reveal">
+          <div class="ch-left">
+            <div class="kicker">Insper · Contabilidade Financeira</div>
+            <h2>Banco Ilimitado <span class="hl">de Questões</span></h2>
+            <p>Questões do <b>curso inteiro</b> — Prova Intermediária <b>e</b> Prova Final —, geradas na hora e com números sempre diferentes, então <b>nunca acabam</b>. Escolha a prova, o tema, quantas quer, a dificuldade (dá pra <b>mesclar</b>: 2 fáceis, 3 médias, 1 difícil), o cronômetro, e no fim refaça só os erros. Vem junto o <b>Demonstrativos Completos</b>, pra explorar como cada operação monta o Balanço, a DRE e a DFC.</p>
+            <div class="ch-meta"><span>♾️ Questões ilimitadas (PI + PF)</span><span>🎚️ Filtros e dificuldade</span><span>🧮 Demonstrativos Completos</span><span>🔓 Acesso na área do aluno</span></div>
+          </div>
+          <div class="ch-buy card">
+            <span class="pill-price">R$ 149</span>
+            <div class="ch-sub">Acesso pela área de membros</div>
+            <a href="https://pay.kiwify.com.br/0knR9J4" target="_blank" rel="noopener" class="btn btn-accent" style="width:100%">Comprar agora</a>
+            <div class="ch-guarantee">Acesso imediato</div>
+            <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--line);font-size:13px;color:var(--ink-2);text-align:center">Quer as <b>duas provas</b> também? <a href="https://pay.kiwify.com.br/Vtn5rra" target="_blank" rel="noopener" style="color:var(--accent);font-weight:700;white-space:nowrap">Kit Prova Intermediária por R$ 249 →</a></div>
+            <div class="ch-legal">Ao finalizar a compra você concorda com os <a href="#termos" data-nav>Termos de Uso</a> e a <a href="#privacidade" data-nav>Política de Privacidade</a>.</div>
+          </div>
+        </div>
+
+        <h3 class="curr-title reveal">Veja o Banco em ação</h3>
+        <p class="reveal" style="color:var(--muted);font-size:14.5px;margin:-4px 0 12px;max-width:640px;line-height:1.5">O Banco: monte o seu treino do curso inteiro e corrija na hora.</p>
+        <div class="reveal" style="border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow);background:#0e1116;margin-bottom:26px">
+          <video controls preload="metadata" playsinline style="width:100%;display:block;aspect-ratio:16/9;background:#0e1116" src="media/banco-demo.mp4"></video>
+        </div>
+
+        <h3 class="curr-title reveal">Veja o Demonstrativos Completos</h3>
+        <p class="reveal" style="color:var(--muted);font-size:14.5px;margin:-4px 0 12px;max-width:640px;line-height:1.5">O Demonstrativos: explore como cada operação impacta as três demonstrações.</p>
+        <div class="reveal" style="border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow);background:#0e1116">
+          <video controls preload="metadata" playsinline style="width:100%;display:block;aspect-ratio:16/9;background:#0e1116" src="media/demonstrativos-demo.mp4"></video>
+        </div>
+
+        <h3 class="curr-title reveal" style="margin-top:34px">O que está incluído</h3>
+        <div class="curriculum reveal">
+          <div class="mod-head"><span>Ferramentas</span><span class="mod-count">2 ferramentas</span></div>
+          <div class="lesson"><span class="l-ico">🔒</span><div class="l-body"><b>Banco Ilimitado de Questões</b><span>Curso inteiro (PI e PF) · filtros, mesclar dificuldades, refazer erros</span></div><span class="l-tag">Na área do aluno</span></div>
+          <div class="lesson"><span class="l-ico">🔒</span><div class="l-body"><b>Demonstrativos Completos</b><span>Balanço, DRE e DFC montando em formato contábil</span></div><span class="l-tag">Na área do aluno</span></div>
+        </div>
+
+        <div class="tracker-cta reveal">
+          <div><b>Pronto para treinar até dominar?</b><span>Questões que nunca acabam.</span></div>
+          <a href="https://pay.kiwify.com.br/0knR9J4" target="_blank" rel="noopener" class="btn btn-accent">Comprar agora</a>
         </div>
       </div>
     </section>
   </section>
 
   <!-- ===== PROCESSOS (Radar de vagas) ===== -->
+  <!-- ===== PROCESSOS SELETIVOS (landing) ===== -->
+  <section class="view" id="view-procsel">
+    <section class="band">
+      <div class="wrap">
+        <a class="back" data-nav href="#home">← Início</a>
+        <div class="sec-head reveal">
+          <div class="kicker">Estágio Zero · Processos seletivos</div>
+          <h2>Preparação técnica para os <span class="hl">processos seletivos</span> de finanças.</h2>
+          <p>A parte técnica que decide entrevista de estágio e trainee em banco, gestora e fundo — treinada um pouco por dia. Comece pelo Banco de Questões de Finanças; em breve, mais por aqui.</p>
+        </div>
+        <div class="course-group reveal">
+          <div class="group-head"><span class="group-name">Finanças</span><span class="group-tag">Disponível</span></div>
+          <div class="grid-3">
+            <a href="#banco-tecnico" data-nav class="card course">
+              <div class="tag live">● Disponível</div>
+              <h3>Banco de Questões de Finanças</h3>
+              <p>Contabilidade, valuation, DCF, LBO, M&amp;A e private equity — as perguntas que caem em IB, PE e asset. Cinco por dia, com modelagem em Excel. Constância, não véspera.</p>
+              <div class="modules"><span>Treino diário</span><span>Modelagem em Excel</span><span>Simulado cronometrado</span><span>PT · EN</span></div>
+              <div class="foot">Ver o banco →</div>
+            </a>
+            <div class="card course soon-card">
+              <div class="tag soon">Em breve</div>
+              <p class="soon-line">Mais preparação para processos seletivos chegando por aqui.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </section>
+
+  <section class="view" id="view-banco-tecnico">
+    <section class="band">
+      <div class="wrap">
+        <a class="back" data-nav href="#procsel">← Processos seletivos</a>
+
+        <div class="course-hero reveal">
+          <div class="ch-left">
+            <div class="kicker">Processos seletivos · Finanças</div>
+            <h2>O banco de questões de finanças que você treina <span class="hl">um pouco por dia</span>.</h2>
+            <p>Contabilidade, valuation, DCF, LBO, M&amp;A e private equity — as perguntas que caem de verdade nos processos de <b>IB, PE e asset</b>. Cinco questões por dia, geradas na hora e corrigidas na hora, com <b>modelagem em Excel</b> embutida. Não é maratona de véspera: é constância. Bilíngue PT/EN.</p>
+            <div class="ch-meta"><span>🔥 Treino diário (5 por dia)</span><span>📊 DCF · LBO · M&amp;A · PE</span><span>🧮 Modelagem em Excel</span><span>🇧🇷 / 🇬🇧 PT · EN</span></div>
+          </div>
+          <div class="ch-buy card">
+            <span class="pill-price">R$ 39,90<span style="font-size:14px;font-weight:600">/mês</span></span>
+            <div class="ch-sub">Assinatura · acesso em banco.estagiozero.com.br</div>
+            <a href="https://pay.kiwify.com.br/3yK6RaC" target="_blank" rel="noopener" class="btn btn-accent" style="width:100%">Assinar</a>
+            <div class="ch-guarantee">Cancele quando quiser</div>
+            <div class="ch-legal">Ao assinar você concorda com os <a href="#termos" data-nav>Termos de Uso</a> e a <a href="#privacidade" data-nav>Política de Privacidade</a>.</div>
+          </div>
+        </div>
+
+        <h3 class="curr-title reveal">Veja em ação</h3>
+        <p class="reveal" style="color:var(--muted);font-size:14.5px;margin:-4px 0 12px;max-width:640px;line-height:1.5">O treino diário: cinco questões, com correção e explicação na hora.</p>
+        <div class="reveal" style="border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow);background:#0e1116;margin-bottom:26px">
+          <video controls preload="metadata" playsinline style="width:100%;display:block;aspect-ratio:16/9;background:#0e1116" src="media/banco-tecnico-demo.mp4"></video>
+        </div>
+
+        <h3 class="curr-title reveal">O que você treina</h3>
+        <div class="curriculum reveal">
+          <div class="mod-head"><span>Dentro do banco</span><span class="mod-count">Treino diário + áreas</span></div>
+          <div class="lesson"><span class="l-ico">🔥</span><div class="l-body"><b>Treino diário</b><span>5 questões por dia de temas diferentes · streak, XP e ranking semanal</span></div><span class="l-tag">Todo dia</span></div>
+          <div class="lesson"><span class="l-ico">🧮</span><div class="l-body"><b>Modelagem em Excel</b><span>DCF célula a célula, Accretion/Dilution e Paper LBO, com as fórmulas à mostra</span></div><span class="l-tag">Interativo</span></div>
+          <div class="lesson"><span class="l-ico">📊</span><div class="l-body"><b>Valuation e contabilidade</b><span>DCF &amp; WACC, EV vs Equity, M&amp;A, Private Equity e as 3 demonstrações</span></div><span class="l-tag">Geradores</span></div>
+          <div class="lesson"><span class="l-ico">⏱️</span><div class="l-body"><b>Simulado cronometrado</b><span>Monte por tema, dificuldade e tempo — do jeito que cai no processo</span></div><span class="l-tag">Na hora</span></div>
+        </div>
+
+        <div class="tracker-cta reveal">
+          <div><b>Constância vence intensidade.</b><span>A preparação do dia a dia é o que aparece na entrevista. Um pouco por dia, e o técnico deixa de ser o que derruba você.</span></div>
+          <a href="https://pay.kiwify.com.br/3yK6RaC" target="_blank" rel="noopener" class="btn btn-accent">Assinar por R$ 39,90/mês</a>
+        </div>
+
+      </div>
+    </section>
+  </section>
+
   <section class="view" id="view-processos">
     <section class="band">
       <div class="wrap">
@@ -961,7 +1205,7 @@
               <span class="cb-side cb-sell">Sell-side</span>
             </div>
             <div class="cb-txt">
-              <h3>O mapa do mercado financeiro</h3>
+              <h3>O mapa do mercado</h3>
               <p>Buy-side, sell-side e os outros caminhos possíveis — o que cada área faz, como é o dia a dia e como entrar.</p>
               <span class="cb-cta">Explorar o mapa →</span>
             </div>
@@ -988,7 +1232,7 @@
       <div class="wrap" style="max-width:820px;padding-bottom:24px">
         <a class="back" data-nav href="#conteudo">← Conteúdo</a>
         <p class="eyebrow reveal">Conteúdo · Carreiras</p>
-        <h1 class="reveal" style="font-size:clamp(32px,5vw,52px);font-weight:700;letter-spacing:-.03em;line-height:1.06;margin:18px 0 20px">O mapa do mercado financeiro, <span class="hl">sem mistério</span>.</h1>
+        <h1 class="reveal" style="font-size:clamp(32px,5vw,52px);font-weight:700;letter-spacing:-.03em;line-height:1.06;margin:18px 0 20px">O mapa do mercado, <span class="hl">sem mistério</span>.</h1>
         <p class="lead reveal" style="font-size:clamp(16px,2.1vw,19px);color:var(--ink-2);max-width:60ch;margin:0 auto">Quase toda carreira em finanças cai em um de dois lados: o <b>buy-side</b>, que decide onde o dinheiro é investido, e o <b>sell-side</b>, que presta os serviços que fazem o mercado girar. Entender esse mapa é o primeiro passo pra saber pra onde você quer ir.</p>
 
         <div class="ruler reveal">
@@ -1240,9 +1484,11 @@
   var CAL_LINK      = "https://cal.com/gabriel-kon/30min";
   var LINKEDIN      = "https://www.linkedin.com/in/gabriel-kon/";
   var GROUP_LINK    = "https://chat.whatsapp.com/SEU-LINK-DO-GRUPO";
-  var KIWIFY_LINK   = "https://pay.kiwify.com.br/3ayazp2"; // link de checkout da Kiwify (Pacote PI)
+  var KIWIFY_LINK   = "https://pay.kiwify.com.br/3ayazp2"; // checkout Kiwify — PI 2025.2
+  var KIWIFY_LINK_2024 = "https://pay.kiwify.com.br/dygrtBG"; // checkout Kiwify — PI 2024.2
   // 1ª aula grátis: cole aqui o link de EMBED do vídeo (YouTube: https://www.youtube.com/embed/ID  ·  Vimeo: https://player.vimeo.com/video/ID). Deixe "" para mostrar o aviso "em breve".
-  var FREE_VIDEO_EMBED = "https://www.youtube.com/embed/26KMfasHJgE";
+  var FREE_VIDEO_EMBED = "https://www.youtube.com/embed/26KMfasHJgE"; // PI 2025.2
+  var FREE_VIDEO_EMBED_2024 = ""; // PI 2024.2 — cole aqui o EMBED da introducao quando gravar; vazio = "em breve"
 
   var REF = (new URLSearchParams(window.location.search).get('ref') || "").trim();
   function calHref(){ return REF ? CAL_LINK + "?notes=" + encodeURIComponent("Indicado por: " + REF) : CAL_LINK; }
@@ -1252,11 +1498,32 @@
     if(KIWIFY_LINK){ el.setAttribute('href', KIWIFY_LINK); el.setAttribute('target','_blank'); el.setAttribute('rel','noopener'); }
     else { el.setAttribute('href', '#contato'); el.removeAttribute('target'); }
   });
+  document.querySelectorAll('[data-buy2024]').forEach(function(el){
+    if(KIWIFY_LINK_2024){ el.setAttribute('href', KIWIFY_LINK_2024); el.setAttribute('target','_blank'); el.setAttribute('rel','noopener'); }
+    else { el.setAttribute('href', '#contato'); el.removeAttribute('target'); }
+  });
   document.querySelectorAll('[data-group]').forEach(function(el){ el.setAttribute('href', GROUP_LINK); el.setAttribute('target','_blank'); el.setAttribute('rel','noopener'); });
-  if(FREE_VIDEO_EMBED){
-    var fv = document.getElementById('freeVideo');
-    if(fv){ fv.innerHTML = '<iframe src="' + FREE_VIDEO_EMBED + '" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe>'; }
-  }
+  // 1a aula: cadeado que so abre no clique. Troque a URL de EMBED na variavel de cada prova.
+  var fv25 = document.getElementById('freeVideo');       if(fv25){ fv25.setAttribute('data-embed', FREE_VIDEO_EMBED || ''); }
+  var fv24 = document.getElementById('freeVideo2024');   if(fv24){ fv24.setAttribute('data-embed', FREE_VIDEO_EMBED_2024 || ''); }
+  document.querySelectorAll('.free-wrap').forEach(function(w){
+    var embed = (w.getAttribute('data-embed') || '').trim();
+    var btn = w.querySelector('.free-unlock');
+    var player = w.querySelector('.fv-player');
+    if(!embed){
+      if(btn){ btn.outerHTML = '<div class="free-soon"><span class="fu-lock">🔒</span><span><b>1ª aula em breve por aqui.</b> A introdução desta prova está sendo finalizada.</span></div>'; }
+      if(player){ player.remove(); }
+      return;
+    }
+    if(btn && player){
+      btn.addEventListener('click', function(){
+        var sep = embed.indexOf('?') > -1 ? '&' : '?';
+        player.innerHTML = '<iframe src="' + embed + sep + 'autoplay=1" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe>';
+        player.hidden = false;
+        btn.style.display = 'none';
+      });
+    }
+  });
 
   if(REF){
     var bn = document.getElementById('refBanner');
@@ -1265,7 +1532,7 @@
     var fi = document.getElementById('fIndicado'); if(fi) fi.value = REF;
   }
 
-  var VALID = ['home','sobre','oneone','aulas','materia-cf','pacote-pi','processos','conteudo','carreiras','contato','termos','privacidade'];
+  var VALID = ['home','sobre','oneone','aulas','materia-cf','pacote-pi','pacote-pi-2024','banco','banco-tecnico','procsel','processos','conteudo','carreiras','contato','termos','privacidade'];
   function showView(name){
     if(VALID.indexOf(name) < 0) name = 'home';
     document.querySelectorAll('.view').forEach(function(v){ v.classList.remove('active'); });

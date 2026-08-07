@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Estágio Zero — Demonstrativos Completos · Balanço · DRE · DFC</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#F4F7F9;font-family:'Segoe UI',Arial,sans-serif;color:#22303a;padding:20px}
+  .wrap{max-width:1040px;margin:0 auto}
+  .brand{font-size:13px;font-weight:700;color:#1C7293;letter-spacing:2px;text-transform:uppercase}
+  h1{font-size:23px;color:#0F2A3F;margin:2px 0 4px}
+  .lead{font-size:14px;color:#5B6B76;margin-bottom:16px}
+  .controls{background:#fff;border:1px solid #E1E8EC;border-radius:12px;padding:16px 18px;display:flex;gap:20px;align-items:center;flex-wrap:wrap;margin-bottom:8px}
+  .controls > span{font-size:13.5px;color:#3a4a54;display:inline-flex;align-items:center;gap:8px}
+  select{padding:7px 9px;border:1px solid #C9D6DD;border-radius:6px;font-size:14px}
+  input[type=number]{width:120px;padding:6px 8px;border:1px solid #C9D6DD;border-radius:6px;font-size:14px;text-align:right}
+  .conds{display:inline-flex;gap:8px;flex-wrap:wrap}
+  .conds label{display:inline-flex;align-items:center;gap:6px;background:#EEF4F6;border:1px solid #D3E0E5;border-radius:20px;padding:6px 14px;font-size:13.5px;cursor:pointer;user-select:none}
+  .conds label.on{background:#1C7293;color:#fff;border-color:#1C7293;font-weight:700}
+  .txt{background:#EAF2F6;border:1px solid #C9DEE8;border-radius:8px;padding:10px 14px;font-size:13.5px;color:#0F2A3F;margin:8px 0 14px;line-height:1.5}
+  .grid{display:grid;grid-template-columns:1.25fr 1fr;gap:16px}
+  .stmt{background:#fff;border:1px solid #E1E8EC;border-radius:12px;overflow:hidden}
+  .stmt h2{font-size:13px;text-transform:uppercase;letter-spacing:1px;color:#fff;padding:10px 14px}
+  .stmt.bp h2{background:#1F4E5F}.stmt.dre h2{background:#5B6B76}.stmt.dfc h2{background:#1C7293}
+  table{border-collapse:collapse;width:100%;font-size:14px}
+  td{padding:6px 14px;border-bottom:1px solid #F0F4F6}
+  .lab{color:#3a4a54}
+  .ind{padding-left:30px}
+  .num{text-align:right;font-variant-numeric:tabular-nums;width:120px;white-space:nowrap}
+  thead td, .col-h{background:#F8FBFC;font-size:11.5px;text-transform:uppercase;letter-spacing:.5px;color:#8494a0;text-align:right}
+  .grp{font-weight:700;color:#0F2A3F;background:#FbFdFe}
+  .sub{font-weight:700;color:#0F2A3F;border-top:1px solid #DCE6EA}
+  .tot{font-weight:700;color:#0F2A3F;background:#F0F5F8;border-top:2px solid #1F4E5F}
+  .chg{background:#FFF6E6 !important}
+  .chg .num{color:#9A6A12;font-weight:700}
+  .neg{color:#C0392B}
+  .check{margin:14px 0 0;font-size:13.5px;font-weight:700;padding:9px 13px;border-radius:8px;background:#EAF6F1;color:#0B5563;border:1px solid #B9E2D3}
+  .stack{display:flex;flex-direction:column;gap:16px}
+  .foot{margin-top:16px;font-size:12px;color:#93a0a8;line-height:1.5}
+  @media(max-width:820px){.grid{grid-template-columns:1fr}}
+</style></head>
+<body><div class="wrap">
+  <div class="brand">Estágio Zero · Demonstrativos Completos</div>
+  <h1>Demonstrativos completos — Balanço · DRE · DFC</h1>
+  <div class="lead">Parte de um balanço de abertura, aplica a operação escolhida e mostra os três demonstrativos <b>completos</b>, em formato contábil. Mude a operação, o valor e a condição e veja cada linha do Balanço, da DRE e da DFC mudar na hora — com a equação Ativo = Passivo + PL sempre fechando.</div>
+
+  <div class="controls">
+    <span>Operação: <select id="op" onchange="buildConds()" style="min-width:260px"></select></span>
+    <span>Valor (R$): <input type="number" id="val" value="100000" oninput="render()"></span>
+    <span id="cmvwrap">CMV (% da venda): <input type="number" id="cmv" value="60" style="width:66px" oninput="render()">%</span>
+    <span id="condwrapo">Condição: <span id="condwrap" class="conds"></span></span>
+  </div>
+  <div class="txt" id="txt"></div>
+
+  <div class="grid">
+    <div class="stmt bp">
+      <h2>Balanço Patrimonial</h2>
+      <table>
+        <tr class="col-h"><td class="lab" style="text-align:left">Contas</td><td class="num">Início</td><td class="num">Depois</td></tr>
+        <tbody id="bp"></tbody>
+      </table>
+    </div>
+    <div class="stack">
+      <div class="stmt dre">
+        <h2>DRE — Demonstração do Resultado</h2>
+        <table><tbody id="dre"></tbody></table>
+      </div>
+      <div class="stmt dfc">
+        <h2>DFC — Fluxo de Caixa</h2>
+        <table><tbody id="dfc"></tbody></table>
+      </div>
+    </div>
+  </div>
+  <div class="check" id="chk"></div>
+  <div class="foot">Os saldos de abertura são fixos para deixar o exemplo limpo — o foco é ver o efeito de cada operação isolada nos três demonstrativos. Formato contábil: despesas e saídas de caixa aparecem entre parênteses, e as linhas alteradas ficam destacadas. Juros pagos entram em Financiamentos (FCF); em IFRS também podem ir em Operacional.</div>
+</div>
+
+<script>
+/* ---- saldos de abertura ---- */
+var OPEN = { caixa:100000, receber:50000, estoque:80000, imob:120000,
+             fornec:40000, cpagar:0, div:0, emprest:60000, capital:200000, lucros:50000 };
+
+/* ---- formatação contábil ---- */
+function f(x){ if(Math.abs(x)<0.5) return '—'; var s=Math.abs(Math.round(x)).toLocaleString('pt-BR'); return x<0 ? '('+s+')' : s; }
+function n(id){ return +document.getElementById(id).value||0; }
+
+/* ---- operações: efeito linha a linha ---- */
+var OPS = {
+  venda:{ label:'Venda de mercadoria', cmv:true, conds:[['vista','à vista'],['prazo','a prazo']], calc:function(V,c,k){
+      var lu=V*(1-c), cm=V*c; var d=z(); d.receita=V; d.cmv=-cm; d.lucros=lu; d.estoque=-cm;
+      if(k==='vista'){ d.caixa=V; d.fco=V; d.txt='Vendeu à vista: entra caixa '+mm(V)+', baixa estoque '+mm(cm)+' e reconhece lucro '+mm(lu)+'.'; }
+      else { d.receber=V; d.txt='Vendeu a prazo: cria contas a receber '+mm(V)+' e lucro '+mm(lu)+' pela competência — o caixa ainda não entrou.'; }
+      return d; }},
+  compra:{ label:'Compra de estoque', cmv:false, conds:[['vista','à vista'],['prazo','a prazo']], calc:function(V,c,k){
+      var d=z(); d.estoque=V;
+      if(k==='vista'){ d.caixa=-V; d.fco=-V; d.txt='Comprou à vista: estoque sobe '+mm(V)+' e o caixa cai '+mm(V)+'. Não há lucro (vira CMV só na venda).'; }
+      else { d.fornec=V; d.txt='Comprou a prazo: estoque e fornecedores sobem '+mm(V)+' juntos. Caixa e lucro não mudam agora.'; }
+      return d; }},
+  despesa:{ label:'Despesa operacional', cmv:false, conds:[['paga','paga'],['prov','provisionada']], calc:function(V,c,k){
+      var d=z(); d.despop=-V; d.lucros=-V;
+      if(k==='paga'){ d.caixa=-V; d.fco=-V; d.txt='Despesa paga: reduz o lucro '+mm(V)+' e o caixa '+mm(V)+'.'; }
+      else { d.cpagar=V; d.txt='Despesa provisionada: reduz o lucro '+mm(V)+' agora; o caixa só sai quando pagar (contas a pagar +'+mm(V)+').'; }
+      return d; }},
+  recebimento:{ label:'Recebimento de cliente', cmv:false, conds:[], calc:function(V){
+      var d=z(); d.caixa=V; d.receber=-V; d.fco=V; d.txt='Recebeu de cliente: caixa +'+mm(V)+' e contas a receber −'+mm(V)+'. O lucro já foi reconhecido na venda.'; return d; }},
+  pagfor:{ label:'Pagamento a fornecedor', cmv:false, conds:[], calc:function(V){
+      var d=z(); d.caixa=-V; d.fornec=-V; d.fco=-V; d.txt='Pagou fornecedor: caixa −'+mm(V)+' e fornecedores −'+mm(V)+'. Não é despesa (já era passivo).'; return d; }},
+  juros:{ label:'Juros de empréstimo (pagos)', cmv:false, conds:[], calc:function(V){
+      var d=z(); d.despfin=-V; d.lucros=-V; d.caixa=-V; d.fcf=-V; d.txt='Juros pagos: despesa financeira '+mm(V)+' na DRE e saída em Financiamentos na DFC.'; return d; }},
+  imob:{ label:'Aquisição de imobilizado', cmv:false, conds:[['vista','à vista'],['fin','financiado']], calc:function(V,c,k){
+      var d=z(); d.imob=V;
+      if(k==='vista'){ d.caixa=-V; d.fci=-V; d.txt='Comprou imobilizado à vista: investimento (FCI) −'+mm(V)+'. Não é despesa; não altera o lucro.'; }
+      else { d.emprest=V; d.txt='Imobilizado financiado: imobilizado e empréstimos sobem '+mm(V)+'. Não passa pelo caixa agora.'; }
+      return d; }},
+  emprestimo:{ label:'Empréstimo (captação)', cmv:false, conds:[], calc:function(V){
+      var d=z(); d.caixa=V; d.emprest=V; d.fcf=V; d.txt='Captou empréstimo: caixa +'+mm(V)+' e empréstimos +'+mm(V)+'. Entrada de Financiamentos. Não é receita.'; return d; }},
+  dividendo:{ label:'Distribuição de lucro', cmv:false, conds:[['paga','declara e paga'],['declara','só declara']], calc:function(V,c,k){
+      var d=z(); d.lucros=-V;
+      if(k==='paga'){ d.caixa=-V; d.fcf=-V; d.txt='Dividendo declarado e pago: reduz o PL '+mm(V)+' e o caixa '+mm(V)+'. Dividendo NÃO é despesa.'; }
+      else { d.div=V; d.txt='Dividendo só declarado: cria a obrigação (dividendos a pagar +'+mm(V)+') e reduz o PL. O caixa só sai quando pagar.'; }
+      return d; }},
+  aporte:{ label:'Aporte de capital', cmv:false, conds:[], calc:function(V){
+      var d=z(); d.caixa=V; d.capital=V; d.fcf=V; d.txt='Aporte dos sócios: caixa +'+mm(V)+' e capital +'+mm(V)+'. Aumenta o PL; não é receita.'; return d; }},
+  deprec:{ label:'Depreciação do período', cmv:false, conds:[], calc:function(V){
+      var d=z(); d.despop=-V; d.lucros=-V; d.imob=-V; d.txt='Depreciação: reduz o lucro '+mm(V)+' e o imobilizado '+mm(V)+', mas NÃO sai caixa.'; return d; }}
+};
+function z(){ return {caixa:0,receber:0,estoque:0,imob:0,fornec:0,cpagar:0,div:0,emprest:0,capital:0,lucros:0,receita:0,cmv:0,despop:0,despfin:0,fco:0,fci:0,fcf:0,txt:''}; }
+function mm(v){ return 'R$ '+Math.abs(Math.round(v)).toLocaleString('pt-BR'); }
+
+function fillOps(){ document.getElementById('op').innerHTML=Object.keys(OPS).map(function(k){ return '<option value="'+k+'">'+OPS[k].label+'</option>'; }).join(''); }
+function buildConds(){
+  var o=OPS[document.getElementById('op').value], wrap=document.getElementById('condwrap'), box=document.getElementById('condwrapo');
+  if(!o.conds.length){ wrap.innerHTML=''; box.style.display='none'; }
+  else { box.style.display='inline-flex';
+    wrap.innerHTML=o.conds.map(function(c,i){ return '<label class="'+(i===0?'on':'')+'"><input type="radio" name="cond" value="'+c[0]+'" '+(i===0?'checked':'')+' onchange="render()"> '+c[1]+'</label>'; }).join('');
+  }
+  document.getElementById('cmvwrap').style.display=o.cmv?'inline-flex':'none';
+  render();
+}
+function row(lab,ini,dep,ind,cls){
+  var chg = Math.abs((dep||0)-(ini==null?0:ini))>0.5;
+  var c=(cls||'')+(chg?' chg':'');
+  var iniC = ini<0?'num neg':'num', depC=dep<0?'num neg':'num';
+  var iniCell = ini==null ? '' : '<td class="'+iniC+'">'+f(ini)+'</td>';
+  return '<tr class="'+c+'"><td class="lab '+(ind?'ind':'')+'">'+lab+'</td>'+iniCell+'<td class="'+depC+'">'+f(dep)+'</td></tr>';
+}
+function line(lab,val,cls,ind){ var c=(cls||'')+((Math.abs(val)>0.5&&cls!=='tot'&&cls!=='sub')?' chg':''); var vc=val<0?'num neg':'num';
+  return '<tr class="'+c+'"><td class="lab '+(ind?'ind':'')+'">'+lab+'</td><td class="'+vc+'">'+f(val)+'</td></tr>'; }
+
+function render(){
+  var o=OPS[document.getElementById('op').value], V=n('val'), c=n('cmv')/100;
+  var sel=document.querySelector('input[name=cond]:checked'); var k=sel?sel.value:null;
+  document.querySelectorAll('#condwrap label').forEach(function(l){ l.classList.toggle('on', l.querySelector('input').checked); });
+  var d=o.calc(V,c,k);
+  document.getElementById('txt').innerHTML='<b>'+o.label+(sel?' — '+sel.parentNode.textContent.trim():'')+':</b> '+d.txt;
+
+  // fechamento
+  var C={}; ['caixa','receber','estoque','imob','fornec','cpagar','div','emprest','capital','lucros'].forEach(function(a){ C[a]=OPEN[a]+d[a]; });
+  var ativo0=OPEN.caixa+OPEN.receber+OPEN.estoque+OPEN.imob, ativoF=C.caixa+C.receber+C.estoque+C.imob;
+  var pnc0=OPEN.emprest, pncF=C.emprest;
+  var pc0=OPEN.fornec+OPEN.cpagar+OPEN.div, pcF=C.fornec+C.cpagar+C.div;
+  var pl0=OPEN.capital+OPEN.lucros, plF=C.capital+C.lucros;
+
+  var bp='';
+  bp+=row('ATIVO','','','', 'grp');
+  bp+=row('Ativo Circulante','','','', '');
+  bp+=row('Caixa e equivalentes',OPEN.caixa,C.caixa,true);
+  bp+=row('Contas a receber',OPEN.receber,C.receber,true);
+  bp+=row('Estoques',OPEN.estoque,C.estoque,true);
+  bp+=row('Ativo Não Circulante','','','', '');
+  bp+=row('Imobilizado',OPEN.imob,C.imob,true);
+  bp+=row('TOTAL DO ATIVO',ativo0,ativoF,false,'tot');
+  bp+=row('PASSIVO + PL','','','', 'grp');
+  bp+=row('Passivo Circulante','','','', '');
+  bp+=row('Fornecedores',OPEN.fornec,C.fornec,true);
+  bp+=row('Contas a pagar',OPEN.cpagar,C.cpagar,true);
+  bp+=row('Dividendos a pagar',OPEN.div,C.div,true);
+  bp+=row('Passivo Não Circulante','','','', '');
+  bp+=row('Empréstimos',OPEN.emprest,C.emprest,true);
+  bp+=row('Patrimônio Líquido','','','', '');
+  bp+=row('Capital social',OPEN.capital,C.capital,true);
+  bp+=row('Lucros acumulados',OPEN.lucros,C.lucros,true);
+  bp+=row('TOTAL DO PASSIVO + PL',pl0+pc0+pnc0,plF+pcF+pncF,false,'tot');
+  document.getElementById('bp').innerHTML=bp;
+
+  var lb=d.receita+d.cmv, ebit=lb+d.despop, ll=ebit+d.despfin;
+  var dre='';
+  dre+=line('Receita de vendas',d.receita,'',false);
+  dre+=line('(−) CMV',d.cmv,'',true);
+  dre+=line('(=) Lucro bruto',lb,'sub',false);
+  dre+=line('(−) Despesas operacionais',d.despop,'',true);
+  dre+=line('(=) Resultado operacional (EBIT)',ebit,'sub',false);
+  dre+=line('(−) Despesas financeiras',d.despfin,'',true);
+  dre+=line('(=) Lucro líquido do período',ll,'tot',false);
+  document.getElementById('dre').innerHTML=dre;
+
+  var dcx=d.fco+d.fci+d.fcf;
+  var dfc='';
+  dfc+=line('Fluxo das Operações (FCO)',d.fco,'',false);
+  dfc+=line('Fluxo dos Investimentos (FCI)',d.fci,'',false);
+  dfc+=line('Fluxo dos Financiamentos (FCF)',d.fcf,'',false);
+  dfc+=line('(=) Variação de caixa',dcx,'sub',false);
+  dfc+=line('Saldo inicial de caixa',OPEN.caixa,'',false);
+  dfc+=line('(=) Saldo final de caixa',OPEN.caixa+dcx,'tot',false);
+  document.getElementById('dfc').innerHTML=dfc;
+
+  var okBP=Math.abs(ativoF-(plF+pcF+pncF))<0.5, okCx=Math.abs((OPEN.caixa+dcx)-C.caixa)<0.5, okLL=Math.abs(d.lucros-ll)<0.5 || ll===0;
+  document.getElementById('chk').textContent = (okBP&&okCx) ?
+    '✓ Ativo = Passivo + PL ('+f(ativoF)+' = '+f(plF+pcF+pncF)+')   ·   a DFC fecha com o caixa do Balanço ('+f(OPEN.caixa+dcx)+')' :
+    '⚠ conferir';
+}
+fillOps(); buildConds();
+</script>
+<script>(function(){
+  try{
+    var u=(new URLSearchParams(location.search).get('u')||'').trim();
+    var mark = (u ? u+' · ' : '') + 'ESTÁGIO ZERO · uso pessoal';
+    mark = mark.replace(/[<>&"]/g,'');
+    var svg='<svg xmlns="http://www.w3.org/2000/svg" width="360" height="200"><text x="10" y="110" transform="rotate(-30 180 100)" font-family="Arial" font-size="14" fill="rgba(15,42,63,0.055)">'+mark+'</text></svg>';
+    var d=document.createElement('div'); d.setAttribute('aria-hidden','true');
+    d.style.cssText='position:fixed;inset:0;z-index:99999;pointer-events:none;overflow:hidden';
+    d.style.backgroundImage='url("data:image/svg+xml;utf8,'+encodeURIComponent(svg)+'")';
+    d.style.backgroundRepeat='repeat';
+    document.body.appendChild(d);
+  }catch(e){}
+})();</script>
+<!-- ===== TRAVA DE ACESSO — FERRAMENTAS ESTÁGIO ZERO =====
+     Configuração por ferramenta: troque EZ_TOOL / EZ_PRODUTO / EZ_CHECKOUT.
+     Depende do supabase-js (carregado do CDN abaixo). -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+  #ezf-gate{position:fixed;inset:0;z-index:2147483000;display:flex;align-items:center;justify-content:center;
+    background:rgba(10,12,20,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Inter,Arial,sans-serif;padding:20px}
+  #ezf-gate.ezf-hidden{display:none}
+  #ezf-gate .box{max-width:430px;width:100%;background:#141826;border:1px solid #2a3350;border-radius:18px;
+    padding:32px 28px;text-align:center;color:#e8ecf5;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+  #ezf-gate .brand{font-size:12px;font-weight:800;letter-spacing:.12em;color:#8b93f8;text-transform:uppercase;margin-bottom:10px}
+  #ezf-gate h2{margin:4px 0 6px;font-size:21px;font-weight:800;color:#fff}
+  #ezf-gate p{margin:8px 0;font-size:14px;line-height:1.5;color:#aeb7cc}
+  #ezf-gate input{width:100%;box-sizing:border-box;margin:14px 0 4px;padding:13px 14px;border-radius:11px;
+    background:#0e1220;border:1px solid #333c5c;color:#fff;font-size:15px;outline:none}
+  #ezf-gate input:focus{border-color:#6366f1}
+  #ezf-gate .cta{display:block;width:100%;box-sizing:border-box;margin:14px 0 0;padding:14px 18px;border-radius:12px;
+    background:linear-gradient(135deg,#6366f1,#8b5cf6);color:#fff;font-weight:800;font-size:15px;text-decoration:none;
+    border:none;cursor:pointer;transition:transform .1s}
+  #ezf-gate .cta:hover{transform:translateY(-1px)} #ezf-gate .cta:disabled{opacity:.6;cursor:default;transform:none}
+  #ezf-gate .row{display:flex;gap:10px;margin-top:12px}
+  #ezf-gate .ghost{flex:1;padding:11px;border-radius:10px;background:transparent;border:1px solid #333c5c;
+    color:#aeb7cc;font-weight:600;font-size:13px;cursor:pointer}
+  #ezf-gate .ghost:hover{border-color:#4a5578;color:#fff}
+  #ezf-gate .who{font-size:12px;color:#6b7590;margin-top:16px;word-break:break-all}
+  #ezf-gate .ok{color:#34d399;font-weight:700}
+  #ezf-wm{position:fixed;inset:0;z-index:2147482000;pointer-events:none;display:none;
+    font-family:-apple-system,Arial,sans-serif;color:rgba(120,130,160,.10);font-weight:700;
+    font-size:15px;overflow:hidden;white-space:nowrap;transform:rotate(-24deg) scale(1.4);transform-origin:center}
+</style>
+<div id="ezf-wm"></div>
+<div id="ezf-gate">
+  <div class="box" id="ezf-box"><div class="brand">Estágio Zero</div><p>Carregando…</p></div>
+</div>
+<script>
+(function(){
+  // ===== CONFIG (troque por ferramenta) =====
+  var EZ_TOOL     = "banco";          // ex.: 'banco','pi','quizzes'
+  var EZ_PRODUTO  = "Banco Ilimitado de Questões";       // rótulo humano p/ tela de "sem acesso"
+  var EZ_CHECKOUT = "https://pay.kiwify.com.br/0knR9J4";      // link de compra do produto
+  var SUPABASE_URL = "https://rbxlzltcfxlsqobvefzl.supabase.co";
+  var SUPABASE_KEY = "sb_publishable_9PE0q-j5s57TJxJfUrYz-g_3uapl4n7";
+
+  var gate=document.getElementById('ezf-gate'), box=document.getElementById('ezf-box'), wm=document.getElementById('ezf-wm');
+  var sb = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY) : null;
+
+  function show(html){ box.innerHTML='<div class="brand">Estágio Zero</div>'+html; gate.classList.remove('ezf-hidden'); wm.style.display='none'; }
+  function libera(email){
+    gate.classList.add('ezf-hidden');
+    // marca d'água com o e-mail (repetida)
+    var line=(email+'   ').repeat(6); var rows=[]; for(var i=0;i<40;i++) rows.push(line);
+    wm.innerHTML=rows.map(function(r){return '<div style="line-height:2.6em">'+r+'</div>';}).join('');
+    wm.style.display='block';
+  }
+
+  function viewLogin(msg){
+    show(
+      '<h2>Acesso exclusivo</h2>'+
+      '<p>Esta ferramenta é liberada para quem comprou. Entre com o <b>mesmo e-mail da sua compra</b>:</p>'+
+      '<input id="ezf-email" type="email" placeholder="voce@email.com" autocomplete="email">'+
+      '<button class="cta" id="ezf-send">Enviar link de acesso</button>'+
+      (msg?('<p style="margin-top:12px">'+msg+'</p>'):'')
+    );
+    var send=document.getElementById('ezf-send'), inp=document.getElementById('ezf-email');
+    inp.focus();
+    send.addEventListener('click', async function(){
+      var email=(inp.value||'').trim().toLowerCase();
+      if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){ inp.focus(); inp.style.borderColor='#ef4444'; return; }
+      send.disabled=true; send.textContent='Enviando…';
+      try{
+        var r=await sb.auth.signInWithOtp({ email:email, options:{ emailRedirectTo: location.href.split('#')[0] } });
+        if(r.error) throw r.error;
+        show('<h2>Confira seu e-mail 📩</h2><p>Enviamos um link de acesso para <b>'+email+'</b>. Abra o e-mail e clique em <b>"Confirmar e acessar"</b> para entrar. Pode fechar esta aba.</p>');
+      }catch(e){ send.disabled=false; send.textContent='Enviar link de acesso'; show('<h2>Ops</h2><p>Não consegui enviar agora. Tente de novo em instantes.</p>'); setTimeout(function(){viewLogin();},1800); }
+    });
+    inp.addEventListener('keydown',function(e){ if(e.key==='Enter') send.click(); });
+  }
+
+  function viewSemAcesso(email){
+    show(
+      '<div style="font-size:38px;margin-bottom:4px">🔒</div>'+
+      '<h2>Você ainda não tem acesso</h2>'+
+      '<p>Esta ferramenta faz parte de <b>'+EZ_PRODUTO+'</b>. Garanta o seu acesso:</p>'+
+      '<a class="cta" href="'+EZ_CHECKOUT+'" target="_blank" rel="noopener">Comprar agora →</a>'+
+      '<div class="row">'+
+        '<button class="ghost" id="ezf-recheck">Já comprei — atualizar</button>'+
+        '<button class="ghost" id="ezf-logout">Sair / trocar e-mail</button>'+
+      '</div>'+
+      '<div class="who">Conta: '+email+'<br>Use o <b>mesmo e-mail da compra</b>.</div>'
+    );
+    document.getElementById('ezf-recheck').addEventListener('click', check);
+    document.getElementById('ezf-logout').addEventListener('click', async function(){ try{ await sb.auth.signOut(); }catch(e){} location.reload(); });
+  }
+
+  async function check(){
+    if(!sb){ show('<h2>Erro</h2><p>Não consegui iniciar o acesso. Recarregue a página.</p>'); return; }
+    var s = (await sb.auth.getSession()).data.session;
+    if(!s || !s.user){ viewLogin(); return; }
+    var email = (s.user.email||'').toLowerCase();
+    try{
+      var q = await sb.from('tool_access').select('active').eq('tool', EZ_TOOL).eq('active', true).limit(1);
+      if(q.error) throw q.error;
+      if(q.data && q.data.length){ libera(email); } else { viewSemAcesso(email); }
+    }catch(e){ viewSemAcesso(email); }
+  }
+
+  // reage ao retorno do link mágico e a login/logout
+  if(sb){ sb.auth.onAuthStateChange(function(_ev,_sess){ check(); }); }
+  check();
+})();
+</script>
+<!-- ===== FIM TRAVA ===== -->
+
+</body></html>

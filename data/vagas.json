@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-06T18:51:38.389Z",
+  "generated_at": "2026-08-07T14:05:06.916Z",
   "vagas": [
     {
       "id": "gupy-bancodaycoval-eyJqb2JJZCI6MTE4NTIxOTUs",
@@ -10,7 +10,7 @@
       "cidade": "São Paulo, São Paulo",
       "link": "https://bancodaycoval.gupy.io/job/eyJqb2JJZCI6MTE4NTIxOTUsInNvdXJjZSI6Imdvb2dsZV9mb3Jfam9icyJ9",
       "fonte": "scraper:gupy:bancodaycoval",
-      "coletado_em": "2026-08-06"
+      "coletado_em": "2026-08-07"
     },
     {
       "id": "gupy-bancodaycoval-eyJqb2JJZCI6MTE1NDI2NjIs",
@@ -21,7 +21,7 @@
       "cidade": "Goiânia, Goiás",
       "link": "https://bancodaycoval.gupy.io/job/eyJqb2JJZCI6MTE1NDI2NjIsInNvdXJjZSI6Imdvb2dsZV9mb3Jfam9icyJ9",
       "fonte": "scraper:gupy:bancodaycoval",
-      "coletado_em": "2026-08-06"
+      "coletado_em": "2026-08-07"
     },
     {
       "id": "gupy-bancodaycoval-eyJqb2JJZCI6MTE1MDU4MTIs",
@@ -32,7 +32,7 @@
       "cidade": "São Paulo, São Paulo",
       "link": "https://bancodaycoval.gupy.io/job/eyJqb2JJZCI6MTE1MDU4MTIsInNvdXJjZSI6Imdvb2dsZV9mb3Jfam9icyJ9",
       "fonte": "scraper:gupy:bancodaycoval",
-      "coletado_em": "2026-08-06"
+      "coletado_em": "2026-08-07"
     },
     {
       "id": "gh-inter-4685799005",
@@ -43,7 +43,7 @@
       "cidade": "Belo Horizonte, MG; São Paulo, SP",
       "link": "https://boards.greenhouse.io/inter/jobs/4685799005?gh_jid=4685799005",
       "fonte": "scraper:greenhouse:inter",
-      "coletado_em": "2026-08-06"
+      "coletado_em": "2026-08-07"
     },
     {
       "id": "gh-inter-4612312005",
@@ -54,7 +54,7 @@
       "cidade": "Belo Horizonte, MG; São Paulo, SP",
       "link": "https://boards.greenhouse.io/inter/jobs/4612312005?gh_jid=4612312005",
       "fonte": "scraper:greenhouse:inter",
-      "coletado_em": "2026-08-06"
+      "coletado_em": "2026-08-07"
     },
     {
       "id": "gh-inter-4711256005",
@@ -65,18 +65,18 @@
       "cidade": "São Paulo, SP",
       "link": "https://boards.greenhouse.io/inter/jobs/4711256005?gh_jid=4711256005",
       "fonte": "scraper:greenhouse:inter",
-      "coletado_em": "2026-08-06"
+      "coletado_em": "2026-08-07"
     },
     {
       "id": "gh-inter-4713986005",
       "empresa": "Banco Inter",
-      "programa": "INTERN - CRM & CONTENT",
+      "programa": "INTERN | CRM & CONTENT",
       "tipo": "estagio",
       "area": "corretora-fintech",
       "cidade": "Belo Horizonte, MG",
       "link": "https://boards.greenhouse.io/inter/jobs/4713986005?gh_jid=4713986005",
       "fonte": "scraper:greenhouse:inter",
-      "coletado_em": "2026-08-06"
+      "coletado_em": "2026-08-07"
     },
     {
       "id": "gh-inter-4708096005",
@@ -87,18 +87,18 @@
       "cidade": "Belo Horizonte, MG",
       "link": "https://boards.greenhouse.io/inter/jobs/4708096005?gh_jid=4708096005",
       "fonte": "scraper:greenhouse:inter",
-      "coletado_em": "2026-08-06"
+      "coletado_em": "2026-08-07"
     },
     {
-      "id": "gh-inter-4716601005",
+      "id": "gh-inter-4719615005",
       "empresa": "Banco Inter",
       "programa": "INTERN | CUSTOMER SUCCESS",
       "tipo": "estagio",
       "area": "corretora-fintech",
       "cidade": "Belo Horizonte, MG",
-      "link": "https://boards.greenhouse.io/inter/jobs/4716601005?gh_jid=4716601005",
+      "link": "https://boards.greenhouse.io/inter/jobs/4719615005?gh_jid=4719615005",
       "fonte": "scraper:greenhouse:inter",
-      "coletado_em": "2026-08-06"
+      "coletado_em": "2026-08-07"
     },
     {
       "id": "gh-inter-4705964005",
@@ -109,7 +109,7 @@
       "cidade": "Belo Horizonte, MG",
       "link": "https://boards.greenhouse.io/inter/jobs/4705964005?gh_jid=4705964005",
       "fonte": "scraper:greenhouse:inter",
-      "coletado_em": "2026-08-06"
+      "coletado_em": "2026-08-07"
     },
     {
       "id": "gh-inter-4666808005",
@@ -120,40 +120,7 @@
       "cidade": "Belo Horizonte, MG",
       "link": "https://boards.greenhouse.io/inter/jobs/4666808005?gh_jid=4666808005",
       "fonte": "scraper:greenhouse:inter",
-      "coletado_em": "2026-08-06"
-    },
-    {
-      "id": "gh-inter-4712768005",
-      "empresa": "Banco Inter",
-      "programa": "INTERN - Lifecycle Data Science",
-      "tipo": "estagio",
-      "area": "corretora-fintech",
-      "cidade": "Belo Horizonte, MG",
-      "link": "https://boards.greenhouse.io/inter/jobs/4712768005?gh_jid=4712768005",
-      "fonte": "scraper:greenhouse:inter",
-      "coletado_em": "2026-08-06"
-    },
-    {
-      "id": "gh-inter-4705184005",
-      "empresa": "Banco Inter",
-      "programa": "INTERN - PEOPLE DEVELOPMENT",
-      "tipo": "estagio",
-      "area": "corretora-fintech",
-      "cidade": "Belo Horizonte, MG",
-      "link": "https://boards.greenhouse.io/inter/jobs/4705184005?gh_jid=4705184005",
-      "fonte": "scraper:greenhouse:inter",
-      "coletado_em": "2026-08-06"
-    },
-    {
-      "id": "gh-inter-4710419005",
-      "empresa": "Banco Inter",
-      "programa": "INTERN - REGULATORY COMPLIANCE",
-      "tipo": "estagio",
-      "area": "corretora-fintech",
-      "cidade": "Belo Horizonte, MG",
-      "link": "https://boards.greenhouse.io/inter/jobs/4710419005?gh_jid=4710419005",
-      "fonte": "scraper:greenhouse:inter",
-      "coletado_em": "2026-08-06"
+      "coletado_em": "2026-08-07"
     },
     {
       "id": "gh-inter-4717484005",
@@ -164,7 +131,7 @@
       "cidade": "Belo Horizonte, MG",
       "link": "https://boards.greenhouse.io/inter/jobs/4717484005?gh_jid=4717484005",
       "fonte": "scraper:greenhouse:inter",
-      "coletado_em": "2026-08-06"
+      "coletado_em": "2026-08-07"
     },
     {
       "id": "gh-inter-4719625005",
@@ -175,7 +142,7 @@
       "cidade": "Belo Horizonte, MG",
       "link": "https://boards.greenhouse.io/inter/jobs/4719625005?gh_jid=4719625005",
       "fonte": "scraper:greenhouse:inter",
-      "coletado_em": "2026-08-06"
+      "coletado_em": "2026-08-07"
     },
     {
       "id": "gh-inter-4697715005",
@@ -186,7 +153,7 @@
       "cidade": "Miami, FL",
       "link": "https://boards.greenhouse.io/inter/jobs/4697715005?gh_jid=4697715005",
       "fonte": "scraper:greenhouse:inter",
-      "coletado_em": "2026-08-06"
+      "coletado_em": "2026-08-07"
     },
     {
       "id": "manual-eureca-bradesco-2026-2",
@@ -208,7 +175,7 @@
       "cidade": "São Paulo",
       "link": "https://carreiras.btgpactual.com/vagas?gh_jid=6019782004",
       "fonte": "scraper:greenhouse:btgpactual",
-      "coletado_em": "2026-08-06"
+      "coletado_em": "2026-08-07"
     },
     {
       "id": "gh-btgpactual-6106172004",
@@ -219,7 +186,7 @@
       "cidade": "São Paulo",
       "link": "https://carreiras.btgpactual.com/vagas?gh_jid=6106172004",
       "fonte": "scraper:greenhouse:btgpactual",
-      "coletado_em": "2026-08-06"
+      "coletado_em": "2026-08-07"
     },
     {
       "id": "gh-btgpactual-6109602004",
@@ -230,7 +197,7 @@
       "cidade": "São Paulo",
       "link": "https://carreiras.btgpactual.com/vagas?gh_jid=6109602004",
       "fonte": "scraper:greenhouse:btgpactual",
-      "coletado_em": "2026-08-06"
+      "coletado_em": "2026-08-07"
     },
     {
       "id": "gh-btgpactual-6117361004",
@@ -241,7 +208,7 @@
       "cidade": "São Paulo",
       "link": "https://carreiras.btgpactual.com/vagas?gh_jid=6117361004",
       "fonte": "scraper:greenhouse:btgpactual",
-      "coletado_em": "2026-08-06"
+      "coletado_em": "2026-08-07"
     },
     {
       "id": "gh-btgpactual-6108285004",
@@ -252,7 +219,7 @@
       "cidade": "São Paulo",
       "link": "https://carreiras.btgpactual.com/vagas?gh_jid=6108285004",
       "fonte": "scraper:greenhouse:btgpactual",
-      "coletado_em": "2026-08-06"
+      "coletado_em": "2026-08-07"
     },
     {
       "id": "gh-btgpactual-6083202004",
@@ -263,7 +230,7 @@
       "cidade": "São Paulo",
       "link": "https://carreiras.btgpactual.com/vagas?gh_jid=6083202004",
       "fonte": "scraper:greenhouse:btgpactual",
-      "coletado_em": "2026-08-06"
+      "coletado_em": "2026-08-07"
     },
     {
       "id": "gh-btgpactual-6026246004",
@@ -274,7 +241,7 @@
       "cidade": "São Paulo",
       "link": "https://carreiras.btgpactual.com/vagas?gh_jid=6026246004",
       "fonte": "scraper:greenhouse:btgpactual",
-      "coletado_em": "2026-08-06"
+      "coletado_em": "2026-08-07"
     },
     {
       "id": "gh-btgpactual-5997807004",
@@ -285,7 +252,7 @@
       "cidade": "São Paulo",
       "link": "https://carreiras.btgpactual.com/vagas?gh_jid=5997807004",
       "fonte": "scraper:greenhouse:btgpactual",
-      "coletado_em": "2026-08-06"
+      "coletado_em": "2026-08-07"
     },
     {
       "id": "gh-btgpactual-6121243004",
@@ -296,7 +263,7 @@
       "cidade": "Rio de Janeiro",
       "link": "https://carreiras.btgpactual.com/vagas?gh_jid=6121243004",
       "fonte": "scraper:greenhouse:btgpactual",
-      "coletado_em": "2026-08-06"
+      "coletado_em": "2026-08-07"
     },
     {
       "id": "gh-btgpactual-6118814004",
@@ -307,7 +274,7 @@
       "cidade": "São Paulo ",
       "link": "https://carreiras.btgpactual.com/vagas?gh_jid=6118814004",
       "fonte": "scraper:greenhouse:btgpactual",
-      "coletado_em": "2026-08-06"
+      "coletado_em": "2026-08-07"
     },
     {
       "id": "gh-btgpactual-6133074004",
@@ -318,7 +285,7 @@
       "cidade": "São Paulo",
       "link": "https://carreiras.btgpactual.com/vagas?gh_jid=6133074004",
       "fonte": "scraper:greenhouse:btgpactual",
-      "coletado_em": "2026-08-06"
+      "coletado_em": "2026-08-07"
     },
     {
       "id": "gh-btgpactual-6017957004",
@@ -329,7 +296,7 @@
       "cidade": "São Paulo",
       "link": "https://carreiras.btgpactual.com/vagas?gh_jid=6017957004",
       "fonte": "scraper:greenhouse:btgpactual",
-      "coletado_em": "2026-08-06"
+      "coletado_em": "2026-08-07"
     },
     {
       "id": "gh-btgpactual-6105170004",
@@ -340,7 +307,7 @@
       "cidade": "São Paulo",
       "link": "https://carreiras.btgpactual.com/vagas?gh_jid=6105170004",
       "fonte": "scraper:greenhouse:btgpactual",
-      "coletado_em": "2026-08-06"
+      "coletado_em": "2026-08-07"
     },
     {
       "id": "gh-btgpactual-6133390004",
@@ -351,7 +318,7 @@
       "cidade": "São Paulo, Rio de Janeiro e Remoto",
       "link": "https://carreiras.btgpactual.com/vagas?gh_jid=6133390004",
       "fonte": "scraper:greenhouse:btgpactual",
-      "coletado_em": "2026-08-06"
+      "coletado_em": "2026-08-07"
     },
     {
       "id": "gh-btgpactual-6133602004",
@@ -362,7 +329,7 @@
       "cidade": "São Paulo e Rio de Janeiro",
       "link": "https://carreiras.btgpactual.com/vagas?gh_jid=6133602004",
       "fonte": "scraper:greenhouse:btgpactual",
-      "coletado_em": "2026-08-06"
+      "coletado_em": "2026-08-07"
     },
     {
       "id": "gh-btgpactual-6098755004",
@@ -373,7 +340,7 @@
       "cidade": "São Paulo",
       "link": "https://carreiras.btgpactual.com/vagas?gh_jid=6098755004",
       "fonte": "scraper:greenhouse:btgpactual",
-      "coletado_em": "2026-08-06"
+      "coletado_em": "2026-08-07"
     },
     {
       "id": "gh-c6bank-4303200005",
@@ -384,7 +351,7 @@
       "cidade": "São Paulo, Brazil",
       "link": "https://job-boards.greenhouse.io/c6bank/jobs/4303200005",
       "fonte": "scraper:greenhouse:c6bank",
-      "coletado_em": "2026-08-06"
+      "coletado_em": "2026-08-07"
     },
     {
       "id": "gh-c6bank-4706229005",
@@ -395,7 +362,7 @@
       "cidade": "São Paulo, Brazil",
       "link": "https://job-boards.greenhouse.io/c6bank/jobs/4706229005",
       "fonte": "scraper:greenhouse:c6bank",
-      "coletado_em": "2026-08-06"
+      "coletado_em": "2026-08-07"
     },
     {
       "id": "gh-c6bank-4717126005",
@@ -406,7 +373,7 @@
       "cidade": "São Paulo, Brazil",
       "link": "https://job-boards.greenhouse.io/c6bank/jobs/4717126005",
       "fonte": "scraper:greenhouse:c6bank",
-      "coletado_em": "2026-08-06"
+      "coletado_em": "2026-08-07"
     },
     {
       "id": "gh-c6bank-4717144005",
@@ -417,7 +384,7 @@
       "cidade": "São Paulo, Brazil",
       "link": "https://job-boards.greenhouse.io/c6bank/jobs/4717144005",
       "fonte": "scraper:greenhouse:c6bank",
-      "coletado_em": "2026-08-06"
+      "coletado_em": "2026-08-07"
     },
     {
       "id": "gh-c6bank-4718081005",
@@ -428,7 +395,7 @@
       "cidade": "São Paulo, Brazil",
       "link": "https://job-boards.greenhouse.io/c6bank/jobs/4718081005",
       "fonte": "scraper:greenhouse:c6bank",
-      "coletado_em": "2026-08-06"
+      "coletado_em": "2026-08-07"
     },
     {
       "id": "gh-c6bank-4720746005",
@@ -439,7 +406,7 @@
       "cidade": "São Paulo, Brazil",
       "link": "https://job-boards.greenhouse.io/c6bank/jobs/4720746005",
       "fonte": "scraper:greenhouse:c6bank",
-      "coletado_em": "2026-08-06"
+      "coletado_em": "2026-08-07"
     },
     {
       "id": "gh-c6bank-4712798005",
@@ -450,7 +417,7 @@
       "cidade": "São Paulo, Brazil",
       "link": "https://job-boards.greenhouse.io/c6bank/jobs/4712798005",
       "fonte": "scraper:greenhouse:c6bank",
-      "coletado_em": "2026-08-06"
+      "coletado_em": "2026-08-07"
     },
     {
       "id": "gh-c6bank-4718563005",
@@ -461,18 +428,7 @@
       "cidade": "São Paulo, Brazil",
       "link": "https://job-boards.greenhouse.io/c6bank/jobs/4718563005",
       "fonte": "scraper:greenhouse:c6bank",
-      "coletado_em": "2026-08-06"
-    },
-    {
-      "id": "citi-96037286928",
-      "empresa": "Citi Brasil",
-      "programa": "Markets – Sales and Trading, Internship, São Paulo - Brazil, 2026",
-      "tipo": "estagio",
-      "area": "banco",
-      "cidade": "São Paulo, SP",
-      "link": "https://jobs.citi.com/job/sao-paulo/markets-sales-and-trading-internship-sao-paulo-brazil-2026/287/96037286928",
-      "fonte": "scraper:citi",
-      "coletado_em": "2026-08-06"
+      "coletado_em": "2026-08-07"
     },
     {
       "id": "citi-98534977872",
@@ -483,7 +439,7 @@
       "cidade": "São Paulo, SP",
       "link": "https://jobs.citi.com/job/sao-paulo/markets-sales-and-trading-internship-sao-paulo-brazil-2026/287/98534977872",
       "fonte": "scraper:citi",
-      "coletado_em": "2026-08-06"
+      "coletado_em": "2026-08-07"
     },
     {
       "id": "citi-98363506752",
@@ -494,7 +450,7 @@
       "cidade": "São Paulo, SP",
       "link": "https://jobs.citi.com/job/sao-paulo/banking-commercial-banking-internship-sao-paulo-brazil-2026/287/98363506752",
       "fonte": "scraper:citi",
-      "coletado_em": "2026-08-06"
+      "coletado_em": "2026-08-07"
     },
     {
       "id": "citi-97845650288",
@@ -505,7 +461,7 @@
       "cidade": "São Paulo, SP",
       "link": "https://jobs.citi.com/job/sao-paulo/estagio-exclusivo-pcd-markets-internship-sao-paulo-brazil-2026/287/97845650288",
       "fonte": "scraper:citi",
-      "coletado_em": "2026-08-06"
+      "coletado_em": "2026-08-07"
     },
     {
       "id": "citi-97845637376",
@@ -516,7 +472,7 @@
       "cidade": "São Paulo, SP",
       "link": "https://jobs.citi.com/job/sao-paulo/banking-investment-banking-internship-sao-paulo-brazil-2026/287/97845637376",
       "fonte": "scraper:citi",
-      "coletado_em": "2026-08-06"
+      "coletado_em": "2026-08-07"
     },
     {
       "id": "gupy-creditas-eyJqb2JJZCI6MTEzODQwMDks",
@@ -527,7 +483,7 @@
       "cidade": "",
       "link": "https://creditas.gupy.io/job/eyJqb2JJZCI6MTEzODQwMDksInNvdXJjZSI6Imdvb2dsZV9mb3Jfam9icyJ9",
       "fonte": "scraper:gupy:creditas",
-      "coletado_em": "2026-08-06"
+      "coletado_em": "2026-08-07"
     },
     {
       "id": "gupy-eztec-eyJqb2JJZCI6MTE2NDg4MzAs",
@@ -538,7 +494,7 @@
       "cidade": "São Paulo, São Paulo",
       "link": "https://eztec.gupy.io/job/eyJqb2JJZCI6MTE2NDg4MzAsInNvdXJjZSI6Imdvb2dsZV9mb3Jfam9icyJ9",
       "fonte": "scraper:gupy:eztec",
-      "coletado_em": "2026-08-06"
+      "coletado_em": "2026-08-07"
     },
     {
       "id": "gupy-vemserigua-eyJqb2JJZCI6MTE1NTI2MDAs",
@@ -549,7 +505,7 @@
       "cidade": "Arapiraca, Alagoas",
       "link": "https://vemserigua.gupy.io/job/eyJqb2JJZCI6MTE1NTI2MDAsInNvdXJjZSI6Imdvb2dsZV9mb3Jfam9icyJ9",
       "fonte": "scraper:gupy:vemserigua",
-      "coletado_em": "2026-08-06"
+      "coletado_em": "2026-08-07"
     },
     {
       "id": "gupy-vemproitau-eyJqb2JJZCI6NTA4ODcwMCwi",
@@ -560,7 +516,7 @@
       "cidade": "São Paulo, São Paulo",
       "link": "https://vemproitau.gupy.io/job/eyJqb2JJZCI6NTA4ODcwMCwic291cmNlIjoiZ29vZ2xlX2Zvcl9qb2JzIn0=",
       "fonte": "scraper:gupy:vemproitau",
-      "coletado_em": "2026-08-06"
+      "coletado_em": "2026-08-07"
     },
     {
       "id": "oracle-jpmc-210776955",
@@ -571,7 +527,7 @@
       "cidade": "Sao Paulo, SP, Brazil",
       "link": "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210776955",
       "fonte": "scraper:oraclecloud:jpmc",
-      "coletado_em": "2026-08-06"
+      "coletado_em": "2026-08-07"
     },
     {
       "id": "oracle-jpmc-210767112",
@@ -582,7 +538,7 @@
       "cidade": "Brazil",
       "link": "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210767112",
       "fonte": "scraper:oraclecloud:jpmc",
-      "coletado_em": "2026-08-06"
+      "coletado_em": "2026-08-07"
     },
     {
       "id": "oracle-jpmc-210767083",
@@ -593,7 +549,7 @@
       "cidade": "Brazil",
       "link": "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210767083",
       "fonte": "scraper:oraclecloud:jpmc",
-      "coletado_em": "2026-08-06"
+      "coletado_em": "2026-08-07"
     },
     {
       "id": "oracle-jpmc-210767097",
@@ -604,7 +560,7 @@
       "cidade": "Brazil",
       "link": "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210767097",
       "fonte": "scraper:oraclecloud:jpmc",
-      "coletado_em": "2026-08-06"
+      "coletado_em": "2026-08-07"
     },
     {
       "id": "oracle-jpmc-210767030",
@@ -615,7 +571,7 @@
       "cidade": "Brazil",
       "link": "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210767030",
       "fonte": "scraper:oraclecloud:jpmc",
-      "coletado_em": "2026-08-06"
+      "coletado_em": "2026-08-07"
     },
     {
       "id": "oracle-jpmc-210767088",
@@ -626,7 +582,7 @@
       "cidade": "Brazil",
       "link": "https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210767088",
       "fonte": "scraper:oraclecloud:jpmc",
-      "coletado_em": "2026-08-06"
+      "coletado_em": "2026-08-07"
     },
     {
       "id": "gupy-kinea-eyJqb2JJZCI6MTEwOTQwNDIs",
@@ -637,7 +593,7 @@
       "cidade": "São Paulo, São Paulo",
       "link": "https://kinea.gupy.io/job/eyJqb2JJZCI6MTEwOTQwNDIsInNvdXJjZSI6Imdvb2dsZV9mb3Jfam9icyJ9",
       "fonte": "scraper:gupy:kinea",
-      "coletado_em": "2026-08-06"
+      "coletado_em": "2026-08-07"
     },
     {
       "id": "gupy-meliuz-eyJqb2JJZCI6MTE2MTI5MTgs",
@@ -648,7 +604,7 @@
       "cidade": "",
       "link": "https://meliuz.gupy.io/job/eyJqb2JJZCI6MTE2MTI5MTgsInNvdXJjZSI6Imdvb2dsZV9mb3Jfam9icyJ9",
       "fonte": "scraper:gupy:meliuz",
-      "coletado_em": "2026-08-06"
+      "coletado_em": "2026-08-07"
     },
     {
       "id": "gupy-meliuz-eyJqb2JJZCI6MTE1OTE0Njcs",
@@ -659,7 +615,7 @@
       "cidade": "",
       "link": "https://meliuz.gupy.io/job/eyJqb2JJZCI6MTE1OTE0NjcsInNvdXJjZSI6Imdvb2dsZV9mb3Jfam9icyJ9",
       "fonte": "scraper:gupy:meliuz",
-      "coletado_em": "2026-08-06"
+      "coletado_em": "2026-08-07"
     },
     {
       "id": "gupy-meliuz-eyJqb2JJZCI6MTEzMTgzOTIs",
@@ -670,7 +626,7 @@
       "cidade": "Belo Horizonte, Minas Gerais",
       "link": "https://meliuz.gupy.io/job/eyJqb2JJZCI6MTEzMTgzOTIsInNvdXJjZSI6Imdvb2dsZV9mb3Jfam9icyJ9",
       "fonte": "scraper:gupy:meliuz",
-      "coletado_em": "2026-08-06"
+      "coletado_em": "2026-08-07"
     },
     {
       "id": "gupy-meliuz-eyJqb2JJZCI6MTE1MDgwNDUs",
@@ -681,7 +637,7 @@
       "cidade": "",
       "link": "https://meliuz.gupy.io/job/eyJqb2JJZCI6MTE1MDgwNDUsInNvdXJjZSI6Imdvb2dsZV9mb3Jfam9icyJ9",
       "fonte": "scraper:gupy:meliuz",
-      "coletado_em": "2026-08-06"
+      "coletado_em": "2026-08-07"
     },
     {
       "id": "manual-across-multiplan-2026",
@@ -706,6 +662,17 @@
       "coletado_em": "2026-08-04"
     },
     {
+      "id": "wd-santander-Req1588450",
+      "empresa": "Santander Brasil",
+      "programa": "Estagiario J6",
+      "tipo": "estagio",
+      "area": "banco",
+      "cidade": "SAO PAULO",
+      "link": "https://santander.wd3.myworkdayjobs.com/SantanderCareers/job/SAO-PAULO/Estagiario-J6_Req1588450",
+      "fonte": "scraper:workday:santander",
+      "coletado_em": "2026-08-07"
+    },
+    {
       "id": "wd-santander-Req1599247",
       "empresa": "Santander Brasil",
       "programa": "BRA Estagiario J6 (S3)",
@@ -714,7 +681,7 @@
       "cidade": "SAO PAULO",
       "link": "https://santander.wd3.myworkdayjobs.com/SantanderCareers/job/SAO-PAULO/BRA-Estagiario-J6--S3-_Req1599247",
       "fonte": "scraper:workday:santander",
-      "coletado_em": "2026-08-06"
+      "coletado_em": "2026-08-07"
     },
     {
       "id": "wd-santander-Req1595870",
@@ -725,40 +692,7 @@
       "cidade": "SAO PAULO",
       "link": "https://santander.wd3.myworkdayjobs.com/SantanderCareers/job/SAO-PAULO/Estagiario-J6_Req1595870",
       "fonte": "scraper:workday:santander",
-      "coletado_em": "2026-08-06"
-    },
-    {
-      "id": "wd-santander-Req1596485",
-      "empresa": "Santander Brasil",
-      "programa": "BRA Estagiario J6",
-      "tipo": "estagio",
-      "area": "banco",
-      "cidade": "SAO PAULO",
-      "link": "https://santander.wd3.myworkdayjobs.com/SantanderCareers/job/SAO-PAULO/BRA-Estagiario-J6_Req1596485",
-      "fonte": "scraper:workday:santander",
-      "coletado_em": "2026-08-06"
-    },
-    {
-      "id": "wd-santander-Req1596480",
-      "empresa": "Santander Brasil",
-      "programa": "Estagiario J6",
-      "tipo": "estagio",
-      "area": "banco",
-      "cidade": "SAO PAULO",
-      "link": "https://santander.wd3.myworkdayjobs.com/SantanderCareers/job/SAO-PAULO/Estagiario-J6_Req1596480",
-      "fonte": "scraper:workday:santander",
-      "coletado_em": "2026-08-06"
-    },
-    {
-      "id": "wd-santander-Req1594996",
-      "empresa": "Santander Brasil",
-      "programa": "Estagiario J6",
-      "tipo": "estagio",
-      "area": "banco",
-      "cidade": "SAO PAULO",
-      "link": "https://santander.wd3.myworkdayjobs.com/SantanderCareers/job/SAO-PAULO/Estagiario-J6_Req1594996",
-      "fonte": "scraper:workday:santander",
-      "coletado_em": "2026-08-06"
+      "coletado_em": "2026-08-07"
     },
     {
       "id": "zoho-spxcapital-822782000003953066",
@@ -769,7 +703,7 @@
       "cidade": "Rio de Janeiro, Rio de Janeiro",
       "link": "https://spxcapital.zohorecruit.com/jobs/Careers/822782000003953066",
       "fonte": "scraper:zoho:spxcapital",
-      "coletado_em": "2026-08-06"
+      "coletado_em": "2026-08-07"
     },
     {
       "id": "zoho-spxcapital-822782000003909172",
@@ -780,7 +714,7 @@
       "cidade": "Rio de Janeiro, Rio de Janeiro",
       "link": "https://spxcapital.zohorecruit.com/jobs/Careers/822782000003909172",
       "fonte": "scraper:zoho:spxcapital",
-      "coletado_em": "2026-08-06"
+      "coletado_em": "2026-08-07"
     },
     {
       "id": "zoho-spxcapital-822782000003395014",
@@ -791,7 +725,7 @@
       "cidade": "Rio de Janeiro, Rio de Janeiro",
       "link": "https://spxcapital.zohorecruit.com/jobs/Careers/822782000003395014",
       "fonte": "scraper:zoho:spxcapital",
-      "coletado_em": "2026-08-06"
+      "coletado_em": "2026-08-07"
     },
     {
       "id": "zoho-spxcapital-822782000003725004",
@@ -802,7 +736,7 @@
       "cidade": "Rio de Janeiro, Rio de Janeiro",
       "link": "https://spxcapital.zohorecruit.com/jobs/Careers/822782000003725004",
       "fonte": "scraper:zoho:spxcapital",
-      "coletado_em": "2026-08-06"
+      "coletado_em": "2026-08-07"
     },
     {
       "id": "zoho-spxcapital-822782000003517005",
@@ -813,7 +747,7 @@
       "cidade": "São Paulo, Sao Paulo",
       "link": "https://spxcapital.zohorecruit.com/jobs/Careers/822782000003517005",
       "fonte": "scraper:zoho:spxcapital",
-      "coletado_em": "2026-08-06"
+      "coletado_em": "2026-08-07"
     },
     {
       "id": "gh-xpinc-8622849002",
@@ -824,7 +758,7 @@
       "cidade": "São Paulo, SP",
       "link": "https://job-boards.greenhouse.io/xpinc/jobs/8622849002",
       "fonte": "scraper:greenhouse:xpinc",
-      "coletado_em": "2026-08-06"
+      "coletado_em": "2026-08-07"
     },
     {
       "id": "gh-xpinc-8639452002",
@@ -835,7 +769,7 @@
       "cidade": "São Paulo, SP",
       "link": "https://job-boards.greenhouse.io/xpinc/jobs/8639452002",
       "fonte": "scraper:greenhouse:xpinc",
-      "coletado_em": "2026-08-06"
+      "coletado_em": "2026-08-07"
     },
     {
       "id": "gh-xpinc-8632906002",
@@ -846,7 +780,7 @@
       "cidade": "São Paulo, SP",
       "link": "https://job-boards.greenhouse.io/xpinc/jobs/8632906002",
       "fonte": "scraper:greenhouse:xpinc",
-      "coletado_em": "2026-08-06"
+      "coletado_em": "2026-08-07"
     },
     {
       "id": "gh-xpinc-8005975002",
@@ -857,7 +791,7 @@
       "cidade": "São Paulo, SP",
       "link": "https://job-boards.greenhouse.io/xpinc/jobs/8005975002",
       "fonte": "scraper:greenhouse:xpinc",
-      "coletado_em": "2026-08-06"
+      "coletado_em": "2026-08-07"
     },
     {
       "id": "gh-xpinc-8618202002",
@@ -868,7 +802,7 @@
       "cidade": "São Paulo",
       "link": "https://job-boards.greenhouse.io/xpinc/jobs/8618202002",
       "fonte": "scraper:greenhouse:xpinc",
-      "coletado_em": "2026-08-06"
+      "coletado_em": "2026-08-07"
     },
     {
       "id": "gh-xpinc-8628968002",
@@ -879,7 +813,7 @@
       "cidade": "São Paulo, SP",
       "link": "https://job-boards.greenhouse.io/xpinc/jobs/8628968002",
       "fonte": "scraper:greenhouse:xpinc",
-      "coletado_em": "2026-08-06"
+      "coletado_em": "2026-08-07"
     },
     {
       "id": "gh-xpinc-8575358002",
@@ -890,18 +824,7 @@
       "cidade": "São Paulo, SP",
       "link": "https://job-boards.greenhouse.io/xpinc/jobs/8575358002",
       "fonte": "scraper:greenhouse:xpinc",
-      "coletado_em": "2026-08-06"
-    },
-    {
-      "id": "gh-xpinc-8658926002",
-      "empresa": "XP Inc.",
-      "programa": "Estagiário em Segurança da Informação",
-      "tipo": "estagio",
-      "area": "corretora-fintech",
-      "cidade": "São Paulo, SP",
-      "link": "https://job-boards.greenhouse.io/xpinc/jobs/8658926002",
-      "fonte": "scraper:greenhouse:xpinc",
-      "coletado_em": "2026-08-06"
+      "coletado_em": "2026-08-07"
     },
     {
       "id": "gh-xpinc-8618232002",
@@ -912,7 +835,7 @@
       "cidade": "São Paulo, SP",
       "link": "https://job-boards.greenhouse.io/xpinc/jobs/8618232002",
       "fonte": "scraper:greenhouse:xpinc",
-      "coletado_em": "2026-08-06"
+      "coletado_em": "2026-08-07"
     },
     {
       "id": "gh-xpinc-8686076002",
@@ -923,7 +846,7 @@
       "cidade": "São Paulo, SP",
       "link": "https://job-boards.greenhouse.io/xpinc/jobs/8686076002",
       "fonte": "scraper:greenhouse:xpinc",
-      "coletado_em": "2026-08-06"
+      "coletado_em": "2026-08-07"
     }
   ]
 }

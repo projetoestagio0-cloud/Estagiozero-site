@@ -1,0 +1,475 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Estágio Zero — Banco Ilimitado de Questões · PI</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#F4F7F9;font-family:'Segoe UI',Arial,sans-serif;color:#22303a;padding:20px}
+  .wrap{max-width:760px;margin:0 auto}
+  .brand{font-size:13px;font-weight:700;color:#4f46e5;letter-spacing:2px;text-transform:uppercase}
+  h1{font-size:24px;color:#0F2A3F;margin:2px 0 4px}
+  .lead{font-size:14px;color:#5B6B76;margin-bottom:16px}
+  .card{background:#fff;border:1px solid #E1E8EC;border-radius:12px;padding:20px 22px;box-shadow:0 4px 14px rgba(15,42,63,.04);margin-bottom:14px}
+  .fld{margin-bottom:18px}
+  .fld > label{display:block;font-size:13px;font-weight:700;color:#0F2A3F;text-transform:uppercase;letter-spacing:.5px;margin-bottom:9px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{border:1px solid #D9E2E7;background:#fff;border-radius:20px;padding:8px 15px;font-size:13.5px;font-weight:600;color:#3a4a54;cursor:pointer;user-select:none}
+  .chip.on{background:#4f46e5;color:#fff;border-color:#4f46e5}
+  .chip.tema.on{background:#0B7A63;border-color:#0B7A63}
+  .seg{display:inline-flex;border:1px solid #D9E2E7;border-radius:9px;overflow:hidden}
+  .seg span{padding:8px 16px;font-size:13.5px;font-weight:600;color:#3a4a54;cursor:pointer;border-right:1px solid #D9E2E7}
+  .seg span:last-child{border-right:none}
+  .seg span.on{background:#0F2A3F;color:#fff}
+  details.guide{background:#fff;border:1px solid #E1E8EC;border-radius:12px;padding:4px 18px;margin-bottom:14px}
+  details.guide summary{cursor:pointer;font-weight:700;color:#0F2A3F;font-size:14px;padding:12px 0;list-style:none}
+  details.guide summary::-webkit-details-marker{display:none}
+  details.guide summary::before{content:"▾  ";color:#4f46e5}
+  .guide .gg{display:grid;grid-template-columns:1fr 1fr;gap:6px 22px;padding:2px 0 14px;font-size:13px;color:#3a4a54;line-height:1.45}
+  .guide .gg span b{color:#0F2A3F}
+  @media(max-width:640px){.guide .gg{grid-template-columns:1fr}}
+  .stats{display:flex;gap:16px;align-items:center;background:#0F2A3F;color:#fff;border-radius:12px;padding:11px 18px;margin-bottom:14px;font-size:13.5px}
+  .stats b{color:#fff} .stats .g{color:#8be3c6;font-weight:700} .stats .sp{margin-left:auto;color:#c7d6e0;font-variant-numeric:tabular-nums}
+  .tag{display:inline-flex;gap:8px;align-items:center;margin-bottom:10px}
+  .tag .t{font-size:11px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:#4338ca;background:#EEF0FF;border-radius:20px;padding:3px 10px}
+  .tag .d{font-size:11px;font-weight:700;border-radius:20px;padding:3px 10px}
+  .d.facil{background:#EAF6F1;color:#0B7A63} .d.medio{background:#FDF1DD;color:#8a5a12} .d.dificil{background:#FDECEA;color:#C0392B}
+  .stmt{font-size:15.5px;line-height:1.6;color:#22303a;margin-bottom:14px} .stmt b{color:#0F2A3F}
+  .opts{display:flex;flex-direction:column;gap:8px}
+  .opt{display:flex;gap:10px;align-items:flex-start;border:1px solid #D9E2E7;border-radius:9px;padding:11px 14px;cursor:pointer;font-size:14.5px;line-height:1.4}
+  .opt:hover{border-color:#4f46e5} .opt.sel{border-color:#4f46e5;background:#F5F5FF} .opt .lt{font-weight:700;color:#4338ca}
+  .opt.correct{border-color:#0B7A63;background:#EAF6F1} .opt.wrong{border-color:#C0392B;background:#FDECEA}
+  .numin{display:flex;align-items:center;gap:10px}
+  .numin input{width:200px;padding:10px 12px;border:1px solid #C9D6DD;border-radius:8px;font-size:16px;text-align:right}
+  .numin input.ok{border-color:#0B7A63;background:#EAF6F1} .numin input.no{border-color:#C0392B;background:#FDECEA}
+  .numin .u{font-size:13px;color:#5B6B76}
+  .actions{display:flex;gap:12px;align-items:center;margin-top:16px;flex-wrap:wrap}
+  .btn{border:none;border-radius:10px;padding:13px 24px;font-size:15px;font-weight:700;cursor:pointer}
+  .btn.p{background:#4f46e5;color:#fff}.btn.p:hover{background:#4338ca} .btn.g{background:#EDF1F4;color:#0F2A3F} .btn.big{width:100%;padding:15px}
+  .fb{margin-top:16px;border-radius:10px;overflow:hidden;display:none} .fb.show{display:block}
+  .fb-h{padding:11px 16px;font-weight:700;font-size:15px} .fb-h.ok{background:#EAF6F1;color:#0B5563} .fb-h.no{background:#FDECEA;color:#8a2216}
+  .fb-b{padding:13px 16px;background:#FBFCFE;border:1px solid #E6EDF1;border-top:none;font-size:14px;line-height:1.6;color:#3a4a54} .fb-b b{color:#0F2A3F}
+  .score{font-size:38px;font-weight:800;color:#4f46e5}
+  .rev{border:1px solid #EAF0F3;border-radius:10px;padding:12px 14px;margin-bottom:10px;font-size:13.5px;line-height:1.5}
+  .rev.ok{border-left:3px solid #0B7A63} .rev.no{border-left:3px solid #C0392B}
+  .rev .q{color:#22303a;margin-bottom:4px} .rev .a{font-size:12.5px;color:#5B6B76}
+  .foot{font-size:12px;color:#93a0a8;line-height:1.5;margin-top:8px}
+  .hidden{display:none}
+  .tgroup{margin-bottom:8px} .tgroup:last-child{margin-bottom:0}
+  .tglabel{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:#8494a0;margin:2px 0 7px}
+  .tgroup:nth-child(2) .tglabel{margin-top:12px}
+</style></head>
+<body><div class="wrap">
+  <div class="brand">Estágio Zero · Banco Ilimitado</div>
+  <h1>Banco Ilimitado de Questões — Contabilidade Financeira</h1>
+  <div class="lead">Cobre o curso inteiro: <b>Prova Intermediária</b> e <b>Prova Final</b>. Monte sua sessão de treino — escolha a prova, os temas, quantas questões, a dificuldade e como quer corrigir. As questões são geradas na hora e nunca acabam.</div>
+
+  <details class="guide" open>
+    <summary>Guia rápido de siglas</summary>
+    <div class="gg">
+      <span><b>Liquidez Corrente</b> = Ativo Circulante ÷ Passivo Circulante</span>
+      <span><b>Liquidez Seca</b> = (Ativo Circulante − Estoques) ÷ Passivo Circulante</span>
+      <span><b>Liquidez Imediata</b> = Disponível ÷ Passivo Circulante</span>
+      <span><b>Margem Bruta</b> = Lucro Bruto ÷ Receita</span>
+      <span><b>Ciclo de caixa</b> = prazo de estoque + prazo de recebimento − prazo de pagamento</span>
+      <span><b>CMV</b> = Custo da Mercadoria Vendida</span>
+      <span><b>Patrimônio Líquido</b> = Capital + Reservas de lucro</span>
+      <span><b>Competência × caixa</b> = reconhecer no fato gerador, não no pagamento</span>
+      <span><b>EBITDA</b> = Lucro líquido + Impostos + Despesas financeiras + Depreciação/Amortização</span>
+      <span><b>Dívida Líquida</b> = Dívida bruta − Caixa</span>
+      <span><b>Valor recuperável</b> = maior entre valor em uso e valor de venda (impairment)</span>
+      <span><b>ROE</b> = Lucro líquido ÷ Patrimônio Líquido (DuPont = margem × giro × alavancagem)</span>
+      <span><b>Equivalência patrimonial</b> = reconhecer a % do lucro da coligada no investimento</span>
+    </div>
+  </details>
+
+  <!-- ===== CONFIG ===== -->
+  <div class="card" id="scr-config">
+    <div class="fld" id="fld-num"><label>Quantas questões?</label>
+      <div class="chips" id="c-num"></div>
+      <div style="margin-top:9px;font-size:13.5px;color:#5B6B76">Ou digite a quantidade que quiser: <input type="number" min="1" max="100" id="numcustom" oninput="setNumCustom(this.value)" placeholder="ex.: 17" style="width:90px;padding:7px 9px;border:1px solid #C9D6DD;border-radius:7px;font-size:14px;text-align:center"></div></div>
+    <div class="fld"><label>Estudar para</label>
+      <div class="seg" id="c-prova"></div></div>
+    <div class="fld"><label>Temas <span style="font-weight:400;text-transform:none;color:#8494a0">(escolha um ou vários)</span></label>
+      <div id="c-temas"></div></div>
+    <div class="fld"><label>Dificuldade</label>
+      <div class="seg" id="c-dif"></div>
+      <div id="c-mix" style="display:none;margin-top:11px;background:#F7FAFB;border:1px solid #E3EBEF;border-radius:9px;padding:11px 13px">
+        <div style="font-size:13px;color:#5B6B76;margin-bottom:9px">Quantas questões de cada nível? (a ordem vem embaralhada)</div>
+        <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-end">
+          <label style="display:flex;flex-direction:column;gap:5px;font-size:12px;color:#0B7A63;font-weight:600">Fáceis<input type="number" min="0" max="50" id="mx-facil" oninput="setMix('facil',this.value)" style="width:76px;padding:7px;border:1px solid #C9D6DD;border-radius:7px;font-size:14px;text-align:center"></label>
+          <label style="display:flex;flex-direction:column;gap:5px;font-size:12px;color:#8a5a12;font-weight:600">Médias<input type="number" min="0" max="50" id="mx-medio" oninput="setMix('medio',this.value)" style="width:76px;padding:7px;border:1px solid #C9D6DD;border-radius:7px;font-size:14px;text-align:center"></label>
+          <label style="display:flex;flex-direction:column;gap:5px;font-size:12px;color:#C0392B;font-weight:600">Difíceis<input type="number" min="0" max="50" id="mx-dificil" oninput="setMix('dificil',this.value)" style="width:76px;padding:7px;border:1px solid #C9D6DD;border-radius:7px;font-size:14px;text-align:center"></label>
+          <span style="margin-left:auto;font-size:13.5px;color:#0F2A3F;font-weight:600">Total: <b id="mix-total">5</b></span>
+        </div>
+      </div></div>
+    <div class="fld"><label>Cronômetro</label>
+      <div class="seg" id="c-timer"></div></div>
+    <div class="fld"><label>Ver o gabarito</label>
+      <div class="seg" id="c-reveal"></div></div>
+    <button class="btn p big" onclick="startSession()">Começar treino →</button>
+  </div>
+
+  <!-- ===== QUIZ ===== -->
+  <div class="card hidden" id="scr-quiz">
+    <div class="stats"><span>Questão <b id="qn">0</b><span id="qtot"></span></span><span>Acertos <b class="g" id="hit">0</b></span><span class="sp" id="clock"></span></div>
+    <div class="tag"><span class="t" id="tag"></span><span class="d" id="dbadge"></span></div>
+    <div class="stmt" id="stmt"></div>
+    <div id="answer"></div>
+    <div class="actions">
+      <button class="btn p" id="resp" onclick="responder()">Responder</button>
+      <button class="btn g" id="prox" onclick="proxima()" style="display:none">Próxima →</button>
+    </div>
+    <div class="fb" id="fb"><div class="fb-h" id="fbh"></div><div class="fb-b" id="fbb"></div></div>
+  </div>
+
+  <!-- ===== RESULTS ===== -->
+  <div class="card hidden" id="scr-results">
+    <h2 style="font-size:20px;color:#0F2A3F;margin-bottom:4px">Resultado</h2>
+    <div class="score" id="r-score"></div>
+    <p id="r-sub" style="font-size:14px;color:#5B6B76;margin:2px 0 16px"></p>
+    <div id="r-review"></div>
+    <div class="actions">
+      <button class="btn p" id="r-redo" onclick="refazerErros()">Refazer só os erros</button>
+      <button class="btn g" onclick="show('config')">Nova sessão</button>
+    </div>
+  </div>
+
+  <div class="foot">Banco Ilimitado do Estágio Zero. Cada questão é gerada na hora e o gabarito é calculado por fórmula — nunca uma resposta fixa.</div>
+</div>
+
+<script>
+function R(a,b){ return a+Math.floor(Math.random()*(b-a+1)); }
+function pick(a){ return a[Math.floor(Math.random()*a.length)]; }
+function shuffle(a){ for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=a[i];a[i]=a[j];a[j]=t; } return a; }
+function m(v){ return 'R$ '+Math.abs(Math.round(v)).toLocaleString('pt-BR'); }
+function r2(v){ return (Math.round(v*100)/100).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2}); }
+function r1(v){ return (Math.round(v*10)/10).toLocaleString('pt-BR',{minimumFractionDigits:1,maximumFractionDigits:1}); }
+
+/* ===== motor de operações ===== */
+var OPS={
+ compra:{label:'comprou estoque',conds:[['vista','à vista'],['prazo','a prazo']],f:function(v,k){ return k==='vista'?{A:0,P:0,PL:0,Luc:0,Cx:-v,txt:'Estoque +'+m(v)+' e Caixa −'+m(v)+'. Comprar não gera lucro.'}:{A:v,P:v,PL:0,Luc:0,Cx:0,txt:'Estoque +'+m(v)+' e Fornecedores +'+m(v)+'. A prazo: ativo e passivo sobem juntos.'}; }},
+ venda:{label:'vendeu mercadoria',cmv:true,conds:[['vista','à vista'],['prazo','a prazo']],f:function(v,k,c){ var lu=v*(1-c); return k==='vista'?{A:lu,P:0,PL:lu,Luc:lu,Cx:v,txt:'Caixa +'+m(v)+', Estoque −'+m(v*c)+', Lucro +'+m(lu)+'.'}:{A:lu,P:0,PL:lu,Luc:lu,Cx:0,txt:'A receber +'+m(v)+', Estoque −'+m(v*c)+', Lucro +'+m(lu)+' pela competência (caixa não entrou).'}; }},
+ despesa:{label:'incorreu em despesa operacional',conds:[['paga','paga'],['prov','provisionada']],f:function(v,k){ return k==='paga'?{A:-v,P:0,PL:-v,Luc:-v,Cx:-v,txt:'Caixa −'+m(v)+' e Lucro −'+m(v)+'.'}:{A:0,P:v,PL:-v,Luc:-v,Cx:0,txt:'Contas a pagar +'+m(v)+' e Lucro −'+m(v)+'. Provisionada: reduz o lucro, caixa só quando pagar.'}; }},
+ recebimento:{label:'recebeu de cliente (venda a prazo anterior)',conds:[],f:function(v){ return {A:0,P:0,PL:0,Luc:0,Cx:v,txt:'Caixa +'+m(v)+' e A receber −'+m(v)+'.'}; }},
+ pagfor:{label:'pagou fornecedor (compra a prazo anterior)',conds:[],f:function(v){ return {A:-v,P:-v,PL:0,Luc:0,Cx:-v,txt:'Caixa −'+m(v)+' e Fornecedores −'+m(v)+'. Não é despesa.'}; }},
+ juros:{label:'apropriou juros de empréstimo',conds:[['cap','capitalizados (não pagos)'],['pago','pagos']],f:function(v,k){ return k==='cap'?{A:0,P:v,PL:-v,Luc:-v,Cx:0,txt:'Empréstimo +'+m(v)+' e Lucro −'+m(v)+'. Despesa sem sair caixa.'}:{A:-v,P:0,PL:-v,Luc:-v,Cx:-v,txt:'Caixa −'+m(v)+' e Lucro −'+m(v)+'.'}; }},
+ imob:{label:'adquiriu imobilizado',conds:[['vista','à vista'],['fin','financiado']],f:function(v,k){ return k==='vista'?{A:0,P:0,PL:0,Luc:0,Cx:-v,txt:'Imobilizado +'+m(v)+' e Caixa −'+m(v)+'. Investimento.'}:{A:v,P:v,PL:0,Luc:0,Cx:0,txt:'Imobilizado +'+m(v)+' e Financiamento +'+m(v)+'.'}; }},
+ dividendo:{label:'distribuiu dividendos',conds:[['paga','declara e paga'],['declara','só declara']],f:function(v,k){ return k==='paga'?{A:-v,P:0,PL:-v,Luc:0,Cx:-v,txt:'Caixa −'+m(v)+' e PL −'+m(v)+'. Dividendo reduz o PL, não o lucro.'}:{A:0,P:v,PL:-v,Luc:0,Cx:0,txt:'Dividendos a pagar +'+m(v)+' e PL −'+m(v)+'.'}; }},
+ aporte:{label:'recebeu aporte de capital',conds:[],f:function(v){ return {A:v,P:0,PL:v,Luc:0,Cx:v,txt:'Caixa +'+m(v)+' e Capital +'+m(v)+'.'}; }}
+};
+var DIMS=[['A','Ativo'],['Luc','Lucro'],['P','Passivo'],['Cx','Caixa']];
+
+/* ===== geradores (recebem dif) ===== */
+var GEN={
+ impacto:function(dif){
+   var pool = dif==='facil'?['compra','venda','despesa','recebimento','aporte','pagfor'] : dif==='dificil'?['juros','dividendo','imob','venda','despesa'] : Object.keys(OPS);
+   var k=pick(pool), o=OPS[k]; var v=R(2,40)*5000, c=o.cmv?pick([0.4,0.5,0.6]):0;
+   var cond=null; if(o.conds.length){ cond = dif==='facil'?o.conds[0] : dif==='dificil'?o.conds[o.conds.length-1] : pick(o.conds); }
+   var r=o.f(v,cond?cond[0]:null,c);
+   var frase='A empresa '+o.label+(cond?' <b>'+cond[1]+'</b>':'')+' no valor de <b>'+m(v)+'</b>'+(o.cmv?' (margem bruta de '+Math.round((1-c)*100)+'%)':'')+'.';
+   var expc='<b>Ativo = Passivo + PL sempre fecha.</b> '+r.txt;
+   var d = dif==='dificil' ? pick([['Cx','Caixa'],['P','Passivo'],['Luc','Lucro']]) : pick(DIMS);
+   var mcMode = dif==='facil' ? Math.random()<0.6 : (dif==='medio' ? Math.random()<0.4 : false);
+   if(!mcMode){
+     return {tag:'Impacto de eventos',stmt:frase+' Qual a <b>variação do '+d[1]+'</b>? (sinal negativo para reduções; 0 se não altera)',kind:'num',answer:r[d[0]],tol:0.5,unit:'(R$)',exp:expc};
+   }
+   var corr=Math.abs(r[d[0]])<0.5?2:(r[d[0]]>0?0:1);
+   return {tag:'Impacto de eventos',stmt:frase+' O que acontece com o <b>'+d[1]+'</b>?',kind:'mc',opts:['Aumenta','Diminui','Não altera'],correct:corr,exp:expc+' Aqui o '+d[1]+' '+(corr===0?'aumenta '+m(r[d[0]]):corr===1?'diminui '+m(r[d[0]]):'não se altera')+'.'};
+ },
+ liquidez:function(dif){
+   var caixa=R(2,10)*10000, receber=R(3,12)*10000, estoque=R(3,12)*10000, PC=R(15,35)*10000;
+   var LC=(caixa+receber+estoque)/PC, LS=(caixa+receber)/PC, LI=caixa/PC;
+   var opt = dif==='facil' ? ['corrente',LC,'Liquidez Corrente'] : dif==='dificil' ? pick([['seca',LS,'Liquidez Seca'],['imediata',LI,'Liquidez Imediata']]) : pick([['corrente',LC,'Liquidez Corrente'],['seca',LS,'Liquidez Seca'],['imediata',LI,'Liquidez Imediata']]);
+   return {tag:'Liquidez',stmt:'Uma empresa tem Caixa <b>'+m(caixa)+'</b>, Contas a receber <b>'+m(receber)+'</b>, Estoques <b>'+m(estoque)+'</b> e Passivo Circulante <b>'+m(PC)+'</b>. Qual a <b>'+opt[2]+'</b>?',kind:'num',answer:opt[1],tol:0.02,unit:'(2 casas, use vírgula)',exp:'Ativo Circulante = '+m(caixa+receber+estoque)+'. '+opt[2]+' = <b>'+r2(opt[1])+'</b>. Referência: Corrente '+r2(LC)+' · Seca '+r2(LS)+' · Imediata '+r2(LI)+'.'};
+ },
+ ciclo:function(dif){
+   var pmr=R(20,70), pme=R(30,90), pmp=R(15,50);
+   if(dif==='dificil'){
+     return {tag:'Ciclo de caixa',stmt:'Com prazo médio de estoque de <b>'+pme+' dias</b> e prazo médio de recebimento de <b>'+pmr+' dias</b>, qual o <b>ciclo operacional</b>?',kind:'num',answer:pme+pmr,tol:0.5,unit:'(dias)',exp:'Ciclo operacional = prazo de estoque + prazo de recebimento = '+pme+' + '+pmr+' = <b>'+(pme+pmr)+' dias</b>. Ele NÃO desconta o prazo de pagamento — isso é o ciclo de caixa.'};
+   }
+   return {tag:'Ciclo de caixa',stmt:'Uma empresa tem prazo médio de recebimento de <b>'+pmr+' dias</b>, prazo médio de estoque de <b>'+pme+' dias</b> e prazo médio de pagamento de <b>'+pmp+' dias</b>. Qual o <b>ciclo de caixa</b>?',kind:'num',answer:pme+pmr-pmp,tol:0.5,unit:'(dias)',exp:'Ciclo de caixa = prazo de estoque + prazo de recebimento − prazo de pagamento = '+pme+' + '+pmr+' − '+pmp+' = <b>'+(pme+pmr-pmp)+' dias</b>.'};
+ },
+ prazos:function(dif){
+   var base = dif==='facil'?360:pick([360,365]);
+   var t = dif==='facil'?'pmr' : dif==='dificil'?pick(['pme','pmp']) : pick(['pmr','pme','pmp']);
+   if(t==='pmr'){ var rec=R(4,12)*1000000, cr=R(3,9)*100000; var v=cr/rec*base;
+     return {tag:'Prazos médios',stmt:'A empresa teve Receita de <b>'+m(rec)+'</b> e mantém Contas a Receber de <b>'+m(cr)+'</b>. Base de <b>'+base+' dias</b>. Qual o <b>prazo médio de recebimento</b>?',kind:'num',answer:v,tol:1,unit:'(dias)',exp:'Prazo médio de recebimento = (Contas a Receber ÷ Receita) × dias = ('+m(cr)+' ÷ '+m(rec)+') × '+base+' = <b>'+Math.round(v)+' dias</b>.'};
+   } else if(t==='pme'){ var cmv=R(3,10)*1000000, est=R(3,9)*100000; var v2=est/cmv*base;
+     return {tag:'Prazos médios',stmt:'A empresa teve Custo da Mercadoria Vendida de <b>'+m(cmv)+'</b> e mantém Estoque de <b>'+m(est)+'</b>. Base de <b>'+base+' dias</b>. Qual o <b>prazo médio de estoque</b>?',kind:'num',answer:v2,tol:1,unit:'(dias)',exp:'Prazo médio de estoque = (Estoque ÷ Custo da Mercadoria Vendida) × dias = ('+m(est)+' ÷ '+m(cmv)+') × '+base+' = <b>'+Math.round(v2)+' dias</b>.'};
+   } else { var cmv2=R(3,10)*1000000, forn=R(2,8)*100000; var v3=forn/cmv2*base;
+     return {tag:'Prazos médios',stmt:'A empresa teve Custo da Mercadoria Vendida de <b>'+m(cmv2)+'</b> (proxy das compras) e Fornecedores de <b>'+m(forn)+'</b>. Base de <b>'+base+' dias</b>. Qual o <b>prazo médio de pagamento</b>?',kind:'num',answer:v3,tol:1,unit:'(dias)',exp:'Prazo médio de pagamento = (Fornecedores ÷ Custo da Mercadoria Vendida) × dias = ('+m(forn)+' ÷ '+m(cmv2)+') × '+base+' = <b>'+Math.round(v3)+' dias</b>.'};
+   }
+ },
+ juros:function(dif){
+   var pr=R(3,12)*100000, tx=pick([8,10,12,15]); var d1=pr*tx/100; var tot=pr*Math.pow(1+tx/100,2)-pr;
+   if(dif==='facil'){
+     return {tag:'Juros / empréstimo',stmt:'Empréstimo de <b>'+m(pr)+'</b>, juros de <b>'+tx+'% a.a.</b>. Qual a <b>despesa de juros do 1º ano</b>?',kind:'num',answer:d1,tol:0.5,unit:'(R$)',exp:'Despesa de juros do 1º ano = '+tx+'% × '+m(pr)+' = <b>'+m(d1)+'</b>, reconhecida por competência.'};
+   }
+   var opts=[{t:m(d1)+', como despesa financeira, com aumento do passivo e sem efeito no caixa.',ok:true},{t:m(tot)+', reduzindo o caixa.',ok:false},{t:'Zero, pois só há efeito quando pago.',ok:false},{t:m(d1)+', reduzindo o caixa.',ok:false},{t:m(d1*2)+', no 1º ano.',ok:false}];
+   for(var i=opts.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var tmp=opts[i];opts[i]=opts[j];opts[j]=tmp; }
+   var corr=opts.findIndex(function(o){return o.ok;});
+   return {tag:'Juros / empréstimo',stmt:'Empréstimo de <b>'+m(pr)+'</b> em 01/01, juros de <b>'+tx+'% a.a.</b>, pagos apenas no vencimento (em 2 anos), com os juros <b>capitalizados</b>. Qual a despesa de juros na Demonstração do Resultado do <b>1º ano</b> e o efeito?',kind:'mc',opts:opts.map(function(o){return o.t;}),correct:corr,exp:'Por competência, a despesa do 1º ano = '+tx+'% × '+m(pr)+' = <b>'+m(d1)+'</b>, com aumento do passivo e <b>sem sair caixa</b>. Os '+m(tot)+' seriam o total dos 2 anos.'};
+ },
+ reclass:function(dif){
+   var parcelas = dif==='facil'?pick([12,24]) : dif==='dificil'?pick([48,60]) : pick([24,36,48]);
+   var divida=R(6,18)*100000; var PC=divida+R(2,8)*100000; var AC=PC+R(0,7)*100000;
+   var noPC=divida/parcelas*12; var newPC=PC-divida+noPC; var newLC=AC/newPC;
+   return {tag:'Reclassificação de dívida',stmt:'Uma empresa tinha uma dívida de <b>'+m(divida)+'</b> toda no passivo circulante e a parcelou em <b>'+parcelas+' vezes</b> iguais. Antes tinha Ativo Circulante de <b>'+m(AC)+'</b> e Passivo Circulante de <b>'+m(PC)+'</b>. Qual a nova <b>Liquidez Corrente</b>?',kind:'num',answer:newLC,tol:0.02,unit:'(2 casas, use vírgula)',exp:'As 12 parcelas do próximo ano ('+m(noPC)+') ficam no circulante; o resto vai ao não circulante. Novo Passivo Circulante = '+m(PC)+' − '+m(divida)+' + '+m(noPC)+' = <b>'+m(newPC)+'</b>. Nova Liquidez Corrente = '+m(AC)+' ÷ '+m(newPC)+' = <b>'+r2(newLC)+'</b>.'};
+ },
+ margens:function(dif){
+   var rec=R(5,20)*100000; var cmvpct = dif==='dificil'?pick([0.45,0.55,0.62]):pick([0.40,0.50,0.60]); var cmv=rec*cmvpct; var mb=(rec-cmv)/rec*100;
+   return {tag:'Margens',stmt:'Uma empresa teve Receita de <b>'+m(rec)+'</b> e Custo da Mercadoria Vendida de <b>'+m(cmv)+'</b>. Qual a <b>margem bruta</b>?',kind:'num',answer:mb,tol:0.2,unit:'(%, 1 casa)',exp:'Lucro Bruto = '+m(rec)+' − '+m(cmv)+' = '+m(rec-cmv)+'. Margem Bruta = Lucro Bruto ÷ Receita = <b>'+r1(mb)+'%</b>.'};
+ },
+ depreciacao:function(dif){ var N=pick(dif==='facil'?[5,10]:[4,6,8,9]); var anual=R(2,20)*5000; var VR=dif==='facil'?0:pick([0,R(2,10)*10000]); var C=anual*N+VR; if(dif==='facil'){ return {tag:'Depreciação',stmt:'Um equipamento custou <b>'+m(C)+'</b>, vida útil de <b>'+N+' anos</b> e valor residual de <b>'+m(VR)+'</b> (método linear). Qual a <b>despesa de depreciação anual</b>?',kind:'num',answer:anual,tol:1,unit:'(R$)',exp:'Depreciação anual = (custo − valor residual) ÷ vida útil = ('+m(C)+' − '+m(VR)+') ÷ '+N+' = <b>'+m(anual)+'</b>. Reduz lucro e ativo; não sai caixa.'}; } var t=pick([2,3]); var vc=C-anual*t; return {tag:'Depreciação',stmt:'Um equipamento custou <b>'+m(C)+'</b>, vida útil de <b>'+N+' anos</b>, valor residual de <b>'+m(VR)+'</b> (linear). Após <b>'+t+' anos</b>, qual o <b>valor contábil líquido</b>?',kind:'num',answer:vc,tol:1,unit:'(R$)',exp:'Depreciação anual = ('+m(C)+' − '+m(VR)+') ÷ '+N+' = '+m(anual)+'. Acumulada em '+t+' anos = '+m(anual*t)+'. Valor contábil = '+m(C)+' − '+m(anual*t)+' = <b>'+m(vc)+'</b>.'}; },
+ impairment:function(dif){ var VC=R(6,18)*100000; var uso=VC-R(1,6)*50000; var venda=VC-R(0,5)*50000; var rec=Math.max(uso,venda); var desp=rec<VC?VC-rec:0; return {tag:'Impairment',stmt:'Um imobilizado está registrado por <b>'+m(VC)+'</b> (líquido de depreciação). No teste de recuperabilidade: valor em uso <b>'+m(uso)+'</b>, valor de venda <b>'+m(venda)+'</b>. Qual a <b>despesa de impairment</b>? (0 se não houver)',kind:'num',answer:desp,tol:1,unit:'(R$)',exp:'Valor recuperável = maior entre uso ('+m(uso)+') e venda ('+m(venda)+') = '+m(rec)+'. '+(desp>0?('Como é menor que o contábil '+m(VC)+', despesa = '+m(VC)+' − '+m(rec)+' = <b>'+m(desp)+'</b>'):('Como é maior ou igual ao contábil, não há impairment: <b>0</b>'))+'. Reduz lucro e ativo; não sai caixa.'}; },
+ avj:function(dif){ var vj0=R(5,15)*100000; var delta=(dif==='facil'?1:pick([1,-1]))*R(1,6)*50000; var vj1=vj0+delta; return {tag:'Valor justo (AVJ)',stmt:'Uma propriedade para investimento está registrada pelo valor justo de <b>'+m(vj0)+'</b> (modelo de valor justo). Nova avaliação: valor justo de <b>'+m(vj1)+'</b>. Qual o <b>efeito no resultado</b>? (negativo se reduz)',kind:'num',answer:delta,tol:1,unit:'(R$)',exp:'No modelo de valor justo, a variação vai ao resultado: '+m(vj1)+' − '+m(vj0)+' = <b>'+(delta>=0?'+ ':'− ')+m(delta)+'</b>. '+(delta>=0?'Ganho':'Perda')+' de valor justo, sem efeito no caixa.'}; },
+ provisao:function(dif){ var a=R(1,6)*10000, b=R(1,6)*10000, c=R(1,6)*10000; return {tag:'Provisões',stmt:'Três processos: (I) trabalhista de <b>'+m(a)+'</b>, perda <b>provável</b> e mensurável; (II) fiscal de <b>'+m(b)+'</b>, perda <b>possível</b>; (III) ambiental de <b>'+m(c)+'</b>, perda <b>remota</b>. Quanto deve ser <b>provisionado</b>?',kind:'num',answer:a,tol:0.5,unit:'(R$)',exp:'Só se provisiona a perda <b>provável e mensurável</b> (I) = <b>'+m(a)+'</b>. A possível (II) é apenas divulgada; a remota (III) não gera nada. Provisão reduz o lucro e cria passivo; não sai caixa agora.'}; },
+ ebitda:function(dif){ var ll=R(4,14)*1000, ir=R(2,6)*500, df=R(2,8)*500, da=R(3,10)*500; var eb=ll+ir+df+da; if(dif!=='dificil'){ return {tag:'EBITDA',stmt:'A empresa apresentou: Lucro líquido <b>'+m(ll)+'</b>, Imposto de renda <b>'+m(ir)+'</b>, Despesas financeiras líquidas <b>'+m(df)+'</b>, Depreciação e amortização <b>'+m(da)+'</b>. Qual o <b>EBITDA</b> (simples)?',kind:'num',answer:eb,tol:1,unit:'(R$)',exp:'EBITDA = Lucro líquido + Imposto + Despesas financeiras + Depreciação/Amortização = '+m(ll)+' + '+m(ir)+' + '+m(df)+' + '+m(da)+' = <b>'+m(eb)+'</b>.'}; } var nr=R(1,5)*500; var aj=eb-nr; return {tag:'EBITDA',stmt:'O EBITDA simples é <b>'+m(eb)+'</b> e inclui um <b>ganho não recorrente</b> de <b>'+m(nr)+'</b> (venda de ativo). Qual o <b>EBITDA ajustado</b> (recorrente)?',kind:'num',answer:aj,tol:1,unit:'(R$)',exp:'O EBITDA ajustado exclui itens não recorrentes: '+m(eb)+' − '+m(nr)+' = <b>'+m(aj)+'</b>. Ganho não recorrente é subtraído.'}; },
+ dlebitda:function(dif){ var db=R(20,60)*1000, cx=R(2,12)*1000, eb=R(4,15)*1000; var dl=db-cx; var r=dl/eb; return {tag:'Dívida Líq./EBITDA',stmt:'Dívida bruta <b>'+m(db)+'</b>, Caixa <b>'+m(cx)+'</b>, EBITDA <b>'+m(eb)+'</b>. Qual o índice <b>Dívida Líquida / EBITDA</b>?',kind:'num',answer:r,tol:0.05,unit:'(x, 2 casas)',exp:'Dívida líquida = dívida bruta − caixa = '+m(db)+' − '+m(cx)+' = '+m(dl)+'. Índice = '+m(dl)+' ÷ '+m(eb)+' = <b>'+r2(r)+'x</b>.'}; },
+ dupont:function(dif){ var rec=R(4,12)*100000, ll=R(2,10)*10000, ativo=R(8,20)*100000, pl=R(3,8)*100000; var roe=ll/pl; if(dif==='facil'){ return {tag:'DuPont / ROE',stmt:'Lucro líquido <b>'+m(ll)+'</b> e Patrimônio Líquido <b>'+m(pl)+'</b>. Qual o <b>ROE</b>?',kind:'num',answer:roe*100,tol:0.2,unit:'(%, 1 casa)',exp:'ROE = Lucro líquido ÷ Patrimônio Líquido = '+m(ll)+' ÷ '+m(pl)+' = <b>'+r1(roe*100)+'%</b>.'}; } return {tag:'DuPont / ROE',stmt:'Receita <b>'+m(rec)+'</b>, Lucro líquido <b>'+m(ll)+'</b>, Ativo total <b>'+m(ativo)+'</b>, Patrimônio Líquido <b>'+m(pl)+'</b>. Pelo modelo DuPont, qual o <b>ROE</b>?',kind:'num',answer:roe*100,tol:0.3,unit:'(%, 1 casa)',exp:'ROE = margem ('+r2(ll/rec)+') × giro ('+r2(rec/ativo)+') × alavancagem ('+r2(ativo/pl)+') = <b>'+r1(roe*100)+'%</b> = Lucro ÷ PL.'}; },
+ mep:function(dif){ var pct=pick([20,25,30,40]); var saldo=R(4,12)*50000, lucro=R(4,16)*10000, div=R(1,6)*10000; var equiv=lucro*pct/100, recDiv=div*pct/100, novo=saldo+equiv-recDiv; if(dif==='facil'){ return {tag:'Equivalência patrimonial',stmt:'A empresa tem <b>'+pct+'%</b> de uma coligada, que teve lucro de <b>'+m(lucro)+'</b> no ano. Qual o <b>resultado de equivalência patrimonial</b>?',kind:'num',answer:equiv,tol:1,unit:'(R$)',exp:'Equivalência = '+pct+'% × '+m(lucro)+' = <b>'+m(equiv)+'</b>. Aumenta o investimento e o resultado; não é caixa.'}; } return {tag:'Equivalência patrimonial',stmt:'Investimento em coligada (<b>'+pct+'%</b>) com saldo de <b>'+m(saldo)+'</b>. No ano a coligada teve lucro de <b>'+m(lucro)+'</b> e distribuiu dividendos de <b>'+m(div)+'</b>. Qual o <b>novo saldo do investimento</b>?',kind:'num',answer:novo,tol:1,unit:'(R$)',exp:'Saldo + '+pct+'% do lucro − '+pct+'% dos dividendos = '+m(saldo)+' + '+m(equiv)+' − '+m(recDiv)+' = <b>'+m(novo)+'</b>.'}; },
+ agio:function(dif){ var plJusto=R(6,20)*50000; var pct=dif==='facil'?100:pick([100,80,60]); var parte=plJusto*pct/100; var pago=parte+R(2,10)*20000; var ag=pago-parte; return {tag:'Ágio (combinação)',stmt:'Uma empresa comprou <b>'+pct+'%</b> de outra por <b>'+m(pago)+'</b>. O patrimônio líquido a valor justo '+(pct===100?'':'total ')+'da adquirida era <b>'+m(plJusto)+'</b>. Qual o <b>ágio</b> apurado?',kind:'num',answer:ag,tol:1,unit:'(R$)',exp:(pct===100?'':'Parte adquirida = '+pct+'% × '+m(plJusto)+' = '+m(parte)+'. ')+'Ágio = valor pago − patrimônio líquido a valor justo adquirido = '+m(pago)+' − '+m(parte)+' = <b>'+m(ag)+'</b>.'}; }
+};
+var TEMAS=[['impacto','Impacto de eventos','pi'],['liquidez','Liquidez','pi'],['ciclo','Ciclo de caixa','pi'],['prazos','Prazos médios','pi'],['juros','Juros','pi'],['reclass','Reclassificação','pi'],['margens','Margens','pi'],['depreciacao','Depreciação','pf'],['impairment','Impairment','pf'],['avj','Valor justo (AVJ)','pf'],['provisao','Provisões','pf'],['ebitda','EBITDA','pf'],['dlebitda','Dívida Líq./EBITDA','pf'],['dupont','DuPont / ROE','pf'],['mep','Equivalência patrimonial','pf'],['agio','Ágio','pf']];
+function temasFor(p){ return TEMAS.filter(function(t){ return p==='tudo'||t[2]===p; }).map(function(t){ return t[0]; }); }
+
+/* ===== config UI ===== */
+var cfg={n:10, prova:'tudo', temas:temasFor('tudo'), dif:'medio', mix:{facil:2,medio:2,dificil:1}, timer:false, reveal:'each'};
+function setProva(p){ cfg.prova=p; cfg.temas=temasFor(p); renderConfig(); }
+function renderConfig(){
+  document.getElementById('c-num').innerHTML=[5,10,15,20,'Livre'].map(function(x){ var v=(x==='Livre')?'livre':x; return '<span class="chip'+(cfg.n===v?' on':'')+'" onclick="setNum(\''+v+'\')">'+x+'</span>'; }).join('');
+  document.getElementById('c-prova').innerHTML=[['pi','Prova Intermediária'],['tudo','Prova Final (cobra tudo)'],['pf','Só temas novos da PF']].map(function(d){ return '<span class="'+(cfg.prova===d[0]?'on':'')+'" onclick="setProva(\''+d[0]+'\')">'+d[1]+'</span>'; }).join('');
+  document.getElementById('c-temas').innerHTML=[['pi','Prova Intermediária'],['pf','Prova Final — temas novos']].map(function(g){ var chips=TEMAS.filter(function(t){ return t[2]===g[0]; }).map(function(t){ return '<span class="chip tema'+(cfg.temas.indexOf(t[0])>=0?' on':'')+'" onclick="toggleTema(\''+t[0]+'\')">'+t[1]+'</span>'; }).join(''); return '<div class="tgroup"><div class="tglabel">'+g[1]+'</div><div class="chips">'+chips+'</div></div>'; }).join('');
+  document.getElementById('c-dif').innerHTML=[['facil','Fácil'],['medio','Médio'],['dificil','Difícil'],['todas','Todas'],['mix','Mesclar']].map(function(d){ return '<span class="'+(cfg.dif===d[0]?'on':'')+'" onclick="cfg.dif=\''+d[0]+'\';renderConfig()">'+d[1]+'</span>'; }).join('');
+  var mixOn=cfg.dif==='mix';
+  document.getElementById('c-mix').style.display=mixOn?'':'none';
+  document.getElementById('fld-num').style.display=mixOn?'none':'';
+  if(mixOn){ ['facil','medio','dificil'].forEach(function(k){ var el=document.getElementById('mx-'+k); if(el&&document.activeElement!==el) el.value=cfg.mix[k]; }); document.getElementById('mix-total').textContent=cfg.mix.facil+cfg.mix.medio+cfg.mix.dificil; }
+  document.getElementById('c-timer').innerHTML=[['n','Sem tempo'],['s','Com tempo']].map(function(d){ var on=(d[0]==='s')===cfg.timer; return '<span class="'+(on?'on':'')+'" onclick="cfg.timer='+(d[0]==='s')+';renderConfig()">'+d[1]+'</span>'; }).join('');
+  document.getElementById('c-reveal').innerHTML=[['each','Após cada questão'],['end','Só no fim']].map(function(d){ return '<span class="'+(cfg.reveal===d[0]?'on':'')+'" onclick="cfg.reveal=\''+d[0]+'\';renderConfig()">'+d[1]+'</span>'; }).join('');
+}
+function setNum(v){ cfg.n=(v==='livre')?'livre':+v; if(cfg.n==='livre') cfg.reveal='each'; var ci=document.getElementById('numcustom'); if(ci) ci.value=''; renderConfig(); }
+function setNumCustom(v){ var n=parseInt(v,10); if(n>=1&&n<=100){ cfg.n=n; document.querySelectorAll('#c-num .chip').forEach(function(c){ c.classList.remove('on'); }); } }
+function toggleTema(t){ var i=cfg.temas.indexOf(t); if(i>=0){ if(cfg.temas.length>1) cfg.temas.splice(i,1); } else cfg.temas.push(t); cfg.prova='custom'; renderConfig(); }
+function setMix(k,v){ var n=parseInt(v,10); if(isNaN(n)||n<0)n=0; if(n>50)n=50; cfg.mix[k]=n; var el=document.getElementById('mx-'+k); if(el&&String(v)!==String(n)) el.value=n; document.getElementById('mix-total').textContent=cfg.mix.facil+cfg.mix.medio+cfg.mix.dificil; }
+
+/* ===== session ===== */
+var S=null, secs=0, tid=null;
+function difFor(){ return (cfg.dif==='todas'||cfg.dif==='mix')?pick(['facil','medio','dificil']):cfg.dif; }
+function makeQ(){ var t=pick(cfg.temas); var d=(S&&S.difSeq)?S.difSeq[S.idx]:difFor(); var q=GEN[t](d); q.dif=d; q.tema=t; return q; }
+function show(scr){ ['config','quiz','results'].forEach(function(s){ document.getElementById('scr-'+s).classList.toggle('hidden', s!==scr); }); if(scr==='config'){ stopTimer(); renderConfig(); } }
+function startSession(){
+  if(cfg.dif==='mix'){
+    var seq=[]; ['facil','medio','dificil'].forEach(function(k){ for(var i=0;i<cfg.mix[k];i++) seq.push(k); });
+    if(seq.length<1){ alert('Escolha pelo menos 1 questão na mescla.'); return; }
+    shuffle(seq);
+    S={items:[], idx:0, hits:0, answered:false, livre:false, n:seq.length, difSeq:seq};
+  } else {
+    S={items:[], idx:0, hits:0, answered:false, livre:(cfg.n==='livre'), n:(cfg.n==='livre'?Infinity:cfg.n)};
+  }
+  document.getElementById('hit').textContent='0';
+  document.getElementById('qtot').textContent = S.livre?'' : ' / '+S.n;
+  secs=0; if(cfg.timer){ startTimer(); document.getElementById('clock').style.display=''; } else { stopTimer(); document.getElementById('clock').style.display='none'; }
+  show('quiz'); loadQ(makeQ());
+}
+function loadQ(q){
+  S.cur=q; S.answered=false;
+  document.getElementById('qn').textContent=S.idx+1;
+  document.getElementById('tag').textContent=q.tag;
+  var db=document.getElementById('dbadge'); db.textContent=({facil:'Fácil',medio:'Médio',dificil:'Difícil'})[q.dif]; db.className='d '+q.dif;
+  document.getElementById('stmt').innerHTML=q.stmt;
+  var a=document.getElementById('answer');
+  if(q.kind==='mc'){ a.innerHTML='<div class="opts">'+q.opts.map(function(o,i){ return '<label class="opt"><input type="radio" name="opt" value="'+i+'" onchange="selOpt()"><span><span class="lt">'+String.fromCharCode(65+i)+')</span> '+o+'</span></label>'; }).join('')+'</div>'; }
+  else { a.innerHTML='<div class="numin"><input type="text" inputmode="decimal" id="na" placeholder="sua resposta"><span class="u">'+(q.unit||'')+'</span></div>'; }
+  document.getElementById('fb').classList.remove('show');
+  document.getElementById('resp').style.display='inline-block';
+  document.getElementById('prox').style.display='none';
+}
+function selOpt(){ document.querySelectorAll('#answer .opt').forEach(function(l){ l.classList.toggle('sel', l.querySelector('input').checked); }); }
+function parseNum(s){ s=String(s).trim().replace(/\s/g,''); if(s==='')return NaN; var neg=/[-−]/.test(s); s=s.replace(/[-−]/g,'');
+  if(s.indexOf(',')>=0){s=s.replace(/\./g,'').replace(',','.');} else if(/^\d{1,3}(\.\d{3})+$/.test(s)){s=s.replace(/\./g,'');}
+  var v=parseFloat(s); return neg?-v:v; }
+function fmtAns(q){ return (q.unit&&q.unit.indexOf('casa')>=0)?r2(q.answer):(Math.abs(q.answer)>=1000?Math.round(q.answer).toLocaleString('pt-BR'):Math.round(q.answer).toLocaleString('pt-BR')); }
+function responder(){
+  if(S.answered) return; S.answered=true; var q=S.cur, ok=false, given='';
+  if(q.kind==='mc'){ var sel=document.querySelector('input[name=opt]:checked'); var idx=sel?+sel.value:-1; given=idx>=0?String.fromCharCode(65+idx):'—';
+    ok = idx===q.correct;
+    if(cfg.reveal==='each'){ var labels=document.querySelectorAll('#answer .opt'); labels.forEach(function(l){l.querySelector('input').disabled=true;}); labels[q.correct].classList.add('correct'); if(idx>=0&&!ok) labels[idx].classList.add('wrong'); }
+  } else { var inp=document.getElementById('na'); var v=parseNum(inp.value); given=inp.value||'—'; ok=isFinite(v)&&Math.abs(v-q.answer)<=q.tol;
+    if(cfg.reveal==='each'){ inp.disabled=true; inp.classList.add(ok?'ok':'no'); } }
+  if(ok) S.hits++;
+  S.items.push({q:q, given:given, ok:ok});
+  document.getElementById('hit').textContent=S.hits;
+  if(cfg.reveal==='each'){
+    var h=document.getElementById('fbh'), bd=document.getElementById('fbb');
+    h.className='fb-h '+(ok?'ok':'no'); h.textContent=ok?'✓ Acertou!':'✗ Reveja';
+    bd.innerHTML='<b>Resolução.</b> '+q.exp+((!ok&&q.kind==='num')?'<br><b>Resposta:</b> '+fmtAns(q)+' '+(q.unit||''):'');
+    document.getElementById('fb').classList.add('show');
+    document.getElementById('resp').style.display='none';
+    document.getElementById('prox').style.display='inline-block';
+  } else { proxima(); }
+}
+function proxima(){
+  S.idx++;
+  if(!S.livre && S.idx>=S.n){ finish(); return; }
+  loadQ(makeQ());
+}
+function finish(){
+  stopTimer();
+  var tot=S.items.length, hits=S.hits, pct=Math.round(hits/tot*100);
+  document.getElementById('r-score').textContent=hits+' / '+tot;
+  document.getElementById('r-sub').textContent=pct+'% de acerto'+(cfg.timer?' · tempo '+fmtClock(secs):'')+'. '+(pct>=80?'Mandou muito bem.':pct>=50?'Bom caminho; revise os erros.':'Vale revisar e refazer.');
+  document.getElementById('r-review').innerHTML=S.items.map(function(it,i){
+    return '<div class="rev '+(it.ok?'ok':'no')+'"><div class="q"><b>'+(i+1)+'.</b> ['+it.q.tag+'] '+it.q.stmt+'</div><div class="a">Sua resposta: '+it.given+' · '+(it.ok?'✓ correto':'✗ — '+ (it.q.kind==='num'?('correto: '+fmtAns(it.q)+' '+(it.q.unit||'')):('correta: '+String.fromCharCode(65+it.q.correct))))+'</div><div class="a" style="margin-top:5px">'+it.q.exp+'</div></div>';
+  }).join('');
+  var errs=S.items.filter(function(it){return !it.ok;});
+  document.getElementById('r-redo').style.display= errs.length? 'inline-block':'none';
+  show('results');
+}
+function refazerErros(){
+  var errs=S.items.filter(function(it){return !it.ok;}).map(function(it){return it.q;});
+  if(!errs.length) return;
+  S={items:[], idx:0, hits:0, answered:false, livre:false, n:errs.length, queue:errs};
+  document.getElementById('hit').textContent='0'; document.getElementById('qtot').textContent=' / '+errs.length;
+  secs=0; if(cfg.timer){ startTimer(); }
+  show('quiz'); loadFromQueue();
+}
+function loadFromQueue(){ loadQ(S.queue[S.idx]); }
+/* override proxima when in queue mode */
+var _proxima=proxima;
+proxima=function(){ if(S && S.queue){ S.idx++; if(S.idx>=S.n){ finish(); return; } loadFromQueue(); } else { _proxima(); } };
+
+function fmtClock(s){ var m=Math.floor(s/60),x=s%60; return (m<10?'0':'')+m+':'+(x<10?'0':'')+x; }
+function tick(){ secs++; document.getElementById('clock').textContent='⏱ '+fmtClock(secs); }
+function startTimer(){ stopTimer(); document.getElementById('clock').textContent='⏱ 00:00'; tid=setInterval(tick,1000); }
+function stopTimer(){ if(tid){clearInterval(tid);tid=null;} }
+
+renderConfig(); show('config');
+</script>
+<script>(function(){
+  try{
+    var u=(new URLSearchParams(location.search).get('u')||'').trim();
+    var mark = (u ? u+' · ' : '') + 'ESTÁGIO ZERO · uso pessoal';
+    mark = mark.replace(/[<>&"]/g,'');
+    var svg='<svg xmlns="http://www.w3.org/2000/svg" width="360" height="200"><text x="10" y="110" transform="rotate(-30 180 100)" font-family="Arial" font-size="14" fill="rgba(15,42,63,0.055)">'+mark+'</text></svg>';
+    var d=document.createElement('div'); d.setAttribute('aria-hidden','true');
+    d.style.cssText='position:fixed;inset:0;z-index:99999;pointer-events:none;overflow:hidden';
+    d.style.backgroundImage='url("data:image/svg+xml;utf8,'+encodeURIComponent(svg)+'")';
+    d.style.backgroundRepeat='repeat';
+    document.body.appendChild(d);
+  }catch(e){}
+})();</script>
+<!-- ===== TRAVA DE ACESSO — FERRAMENTAS ESTÁGIO ZERO =====
+     Configuração por ferramenta: troque EZ_TOOL / EZ_PRODUTO / EZ_CHECKOUT.
+     Depende do supabase-js (carregado do CDN abaixo). -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+  #ezf-gate{position:fixed;inset:0;z-index:2147483000;display:flex;align-items:center;justify-content:center;
+    background:rgba(10,12,20,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Inter,Arial,sans-serif;padding:20px}
+  #ezf-gate.ezf-hidden{display:none}
+  #ezf-gate .box{max-width:430px;width:100%;background:#141826;border:1px solid #2a3350;border-radius:18px;
+    padding:32px 28px;text-align:center;color:#e8ecf5;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+  #ezf-gate .brand{font-size:12px;font-weight:800;letter-spacing:.12em;color:#8b93f8;text-transform:uppercase;margin-bottom:10px}
+  #ezf-gate h2{margin:4px 0 6px;font-size:21px;font-weight:800;color:#fff}
+  #ezf-gate p{margin:8px 0;font-size:14px;line-height:1.5;color:#aeb7cc}
+  #ezf-gate input{width:100%;box-sizing:border-box;margin:14px 0 4px;padding:13px 14px;border-radius:11px;
+    background:#0e1220;border:1px solid #333c5c;color:#fff;font-size:15px;outline:none}
+  #ezf-gate input:focus{border-color:#6366f1}
+  #ezf-gate .cta{display:block;width:100%;box-sizing:border-box;margin:14px 0 0;padding:14px 18px;border-radius:12px;
+    background:linear-gradient(135deg,#6366f1,#8b5cf6);color:#fff;font-weight:800;font-size:15px;text-decoration:none;
+    border:none;cursor:pointer;transition:transform .1s}
+  #ezf-gate .cta:hover{transform:translateY(-1px)} #ezf-gate .cta:disabled{opacity:.6;cursor:default;transform:none}
+  #ezf-gate .row{display:flex;gap:10px;margin-top:12px}
+  #ezf-gate .ghost{flex:1;padding:11px;border-radius:10px;background:transparent;border:1px solid #333c5c;
+    color:#aeb7cc;font-weight:600;font-size:13px;cursor:pointer}
+  #ezf-gate .ghost:hover{border-color:#4a5578;color:#fff}
+  #ezf-gate .who{font-size:12px;color:#6b7590;margin-top:16px;word-break:break-all}
+  #ezf-gate .ok{color:#34d399;font-weight:700}
+  #ezf-wm{position:fixed;inset:0;z-index:2147482000;pointer-events:none;display:none;
+    font-family:-apple-system,Arial,sans-serif;color:rgba(120,130,160,.10);font-weight:700;
+    font-size:15px;overflow:hidden;white-space:nowrap;transform:rotate(-24deg) scale(1.4);transform-origin:center}
+</style>
+<div id="ezf-wm"></div>
+<div id="ezf-gate">
+  <div class="box" id="ezf-box"><div class="brand">Estágio Zero</div><p>Carregando…</p></div>
+</div>
+<script>
+(function(){
+  // ===== CONFIG (troque por ferramenta) =====
+  var EZ_TOOL     = "banco";          // ex.: 'banco','pi','quizzes'
+  var EZ_PRODUTO  = "Banco Ilimitado de Questões";       // rótulo humano p/ tela de "sem acesso"
+  var EZ_CHECKOUT = "https://pay.kiwify.com.br/0knR9J4";      // link de compra do produto
+  var SUPABASE_URL = "https://rbxlzltcfxlsqobvefzl.supabase.co";
+  var SUPABASE_KEY = "sb_publishable_9PE0q-j5s57TJxJfUrYz-g_3uapl4n7";
+
+  var gate=document.getElementById('ezf-gate'), box=document.getElementById('ezf-box'), wm=document.getElementById('ezf-wm');
+  var sb = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY) : null;
+
+  function show(html){ box.innerHTML='<div class="brand">Estágio Zero</div>'+html; gate.classList.remove('ezf-hidden'); wm.style.display='none'; }
+  function libera(email){
+    gate.classList.add('ezf-hidden');
+    // marca d'água com o e-mail (repetida)
+    var line=(email+'   ').repeat(6); var rows=[]; for(var i=0;i<40;i++) rows.push(line);
+    wm.innerHTML=rows.map(function(r){return '<div style="line-height:2.6em">'+r+'</div>';}).join('');
+    wm.style.display='block';
+  }
+
+  function viewLogin(msg){
+    show(
+      '<h2>Acesso exclusivo</h2>'+
+      '<p>Esta ferramenta é liberada para quem comprou. Entre com o <b>mesmo e-mail da sua compra</b>:</p>'+
+      '<input id="ezf-email" type="email" placeholder="voce@email.com" autocomplete="email">'+
+      '<button class="cta" id="ezf-send">Enviar link de acesso</button>'+
+      (msg?('<p style="margin-top:12px">'+msg+'</p>'):'')
+    );
+    var send=document.getElementById('ezf-send'), inp=document.getElementById('ezf-email');
+    inp.focus();
+    send.addEventListener('click', async function(){
+      var email=(inp.value||'').trim().toLowerCase();
+      if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){ inp.focus(); inp.style.borderColor='#ef4444'; return; }
+      send.disabled=true; send.textContent='Enviando…';
+      try{
+        var r=await sb.auth.signInWithOtp({ email:email, options:{ emailRedirectTo: location.href.split('#')[0] } });
+        if(r.error) throw r.error;
+        show('<h2>Confira seu e-mail 📩</h2><p>Enviamos um link de acesso para <b>'+email+'</b>. Abra o e-mail e clique em <b>"Confirmar e acessar"</b> para entrar. Pode fechar esta aba.</p>');
+      }catch(e){ send.disabled=false; send.textContent='Enviar link de acesso'; show('<h2>Ops</h2><p>Não consegui enviar agora. Tente de novo em instantes.</p>'); setTimeout(function(){viewLogin();},1800); }
+    });
+    inp.addEventListener('keydown',function(e){ if(e.key==='Enter') send.click(); });
+  }
+
+  function viewSemAcesso(email){
+    show(
+      '<div style="font-size:38px;margin-bottom:4px">🔒</div>'+
+      '<h2>Você ainda não tem acesso</h2>'+
+      '<p>Esta ferramenta faz parte de <b>'+EZ_PRODUTO+'</b>. Garanta o seu acesso:</p>'+
+      '<a class="cta" href="'+EZ_CHECKOUT+'" target="_blank" rel="noopener">Comprar agora →</a>'+
+      '<div class="row">'+
+        '<button class="ghost" id="ezf-recheck">Já comprei — atualizar</button>'+
+        '<button class="ghost" id="ezf-logout">Sair / trocar e-mail</button>'+
+      '</div>'+
+      '<div class="who">Conta: '+email+'<br>Use o <b>mesmo e-mail da compra</b>.</div>'
+    );
+    document.getElementById('ezf-recheck').addEventListener('click', check);
+    document.getElementById('ezf-logout').addEventListener('click', async function(){ try{ await sb.auth.signOut(); }catch(e){} location.reload(); });
+  }
+
+  async function check(){
+    if(!sb){ show('<h2>Erro</h2><p>Não consegui iniciar o acesso. Recarregue a página.</p>'); return; }
+    var s = (await sb.auth.getSession()).data.session;
+    if(!s || !s.user){ viewLogin(); return; }
+    var email = (s.user.email||'').toLowerCase();
+    try{
+      var q = await sb.from('tool_access').select('active').eq('tool', EZ_TOOL).eq('active', true).limit(1);
+      if(q.error) throw q.error;
+      if(q.data && q.data.length){ libera(email); } else { viewSemAcesso(email); }
+    }catch(e){ viewSemAcesso(email); }
+  }
+
+  // reage ao retorno do link mágico e a login/logout
+  if(sb){ sb.auth.onAuthStateChange(function(_ev,_sess){ check(); }); }
+  check();
+})();
+</script>
+<!-- ===== FIM TRAVA ===== -->
+
+</body></html>

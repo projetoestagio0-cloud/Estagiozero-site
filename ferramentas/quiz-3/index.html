@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Quiz 3 — Simulador (DFC: direto e indireto)</title>
+<style>
+  :root{--ink:#0F2A3F;--ink2:#41576b;--muted:#6b7f8f;--line:#e2e8ec;--surface:#fff;--bg:#f4f7f9;--accent:#4F46E5;--accent-soft:#eef2ff;--pos:#0B8457;--posbg:#e9f7f0;--neg:#C0392B;--negbg:#fdeceb;--warn:#B4791A;--warnbg:#FDF6E9;--grey:#eef1f4}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);font-family:'Segoe UI',system-ui,Arial,sans-serif;color:var(--ink);padding:16px;line-height:1.45}
+  .wrap{max-width:1080px;margin:0 auto}
+  h1{font-size:20px} .sub{font-size:13px;color:var(--muted);margin:2px 0 14px}
+  .grid{display:grid;grid-template-columns:1fr 1.15fr;gap:16px}
+  @media(max-width:860px){.grid{grid-template-columns:1fr}}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;box-shadow:0 4px 14px rgba(15,42,63,.05)}
+  .pt{font-size:12px;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);font-weight:700;margin:0 0 8px}
+  .bp{display:grid;grid-template-columns:1fr 1fr;gap:14px} @media(max-width:520px){.bp{grid-template-columns:1fr}}
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th{font-size:11px;color:var(--muted);text-transform:uppercase;text-align:right;padding:2px} th.l{text-align:left}
+  td{padding:2px} td.v{text-align:right;font-variant-numeric:tabular-nums}
+  tr.t td{border-top:2px solid var(--ink);font-weight:800}
+  .dre td:first-child{color:var(--ink2)} .dre tr.tot td{border-top:1px solid var(--line);font-weight:800}
+  .rules{background:var(--warnbg);border:1px solid #f0e0bd;border-radius:10px;padding:10px 12px;font-size:12.5px;color:#7a5410;margin-bottom:12px} .rules b{color:#5f4109}
+  .dfc{border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-bottom:12px}
+  .dfc .hd{background:var(--accent);color:#fff;font-weight:800;font-size:12.5px;padding:7px 10px;display:flex;justify-content:space-between}
+  .dfc table{font-size:13px}
+  .dfc td{padding:0;border-bottom:1px solid #eef1f4}
+  .dfc td.lab{padding:5px 10px;color:var(--ink2)}
+  .dfc tr.act td.lab{background:var(--grey);font-weight:800;color:var(--ink);text-transform:uppercase;font-size:12px;letter-spacing:.3px}
+  .dfc tr.act td.inp{background:var(--grey)}
+  .dfc tr.big td.lab{background:#e6e2fb;font-weight:800;color:#2a2394}
+  .dfc tr.big td.inp{background:#e6e2fb}
+  .dfc td.inp{width:120px;padding:3px 8px 3px 4px;text-align:right}
+  .dfc input{width:108px;font:inherit;text-align:right;padding:5px 7px;border:1px solid var(--line);border-radius:7px;font-variant-numeric:tabular-nums;background:#fff}
+  .dfc input.ok{background:var(--posbg);border-color:#bfe6d3;color:var(--pos);font-weight:700}
+  .dfc input.bad{background:var(--negbg);border-color:#f2c9c6;color:var(--neg);font-weight:700}
+  .dfc td.cor{width:52px;font-size:11px;color:var(--neg);font-weight:700;padding-right:8px;text-align:right}
+  .btns{display:flex;gap:8px;margin-top:6px;flex-wrap:wrap}
+  button{font:inherit;font-weight:700;border-radius:10px;padding:10px 16px;border:1px solid var(--line);background:#fff;color:var(--ink);cursor:pointer}
+  button.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+  .score{margin-top:12px;font-size:15px;font-weight:800;text-align:center;padding:10px;border-radius:10px;display:none}
+  .score.show{display:block} .score.win{background:var(--posbg);color:var(--pos)} .score.mid{background:var(--warnbg);color:var(--warn)}
+  .hint{font-size:12.5px;color:var(--muted);margin-top:8px}
+  .reso{margin-top:12px;display:none} .reso.show{display:block}
+  .rd{font-size:12.5px;color:var(--ink2);background:var(--accent-soft);border-radius:10px;padding:10px 12px}
+</style></head>
+<body><div class="wrap">
+  <h1>Quiz 3 — Simulador: DFC (método direto e indireto)</h1>
+  <div class="sub">Com base no Balanço (2 anos) e na DRE, <b>monte a DFC de 2026 pelos dois métodos</b>, preenchendo cada linha e os subtotais (linhas em cinza). Deixe claro o sinal: 0, positivo (100) ou negativo (-15). Cada "Novo exercício" muda números e sinais.</div>
+  <div class="grid">
+    <div class="card">
+      <div class="pt">Balanço Patrimonial (R$)</div>
+      <div class="bp"><table id="ativoTbl"></table><table id="passTbl"></table></div>
+      <div class="pt" style="margin-top:14px">DRE 2026 (R$)</div>
+      <table class="dre" id="dreTbl"></table>
+      <div class="rules" style="margin-top:14px"><b>Regras (professora):</b> sem casas decimais · sem símbolos ($, %) · sinal "-" para negativos · separador de milhar · deixe 0 quando nulo.</div>
+      <div class="hint">Operacional: recebimento/pagamento = valor da DRE ajustado pela variação da conta. Investimento = variação dos Terrenos. Financiamento = dividendos (Lucro − aumento das Reservas).</div>
+    </div>
+    <div class="card">
+      <div class="pt">Sua DFC — preencha os dois métodos</div>
+      <div class="dfc" id="indBox"></div>
+      <div class="dfc" id="dirBox"></div>
+      <div class="btns">
+        <button class="primary" id="corrigir">Corrigir</button>
+        <button id="novo">Novo exercício</button>
+        <button id="verReso">Ver resolução</button>
+      </div>
+      <div class="score" id="score"></div>
+      <div class="reso" id="reso"></div>
+    </div>
+  </div>
+</div>
+<script>
+const ri=(a,b)=>a+Math.floor(Math.random()*(b-a+1));
+const pick=a=>a[Math.floor(Math.random()*a.length)];
+const fmt=n=>(n<0?'-':'')+Math.abs(Math.round(n)).toLocaleString('pt-BR');
+const sgn=n=>(n>0?'+':'')+fmt(n);
+const parseNum=s=>{s=(s||'').replace(/[^\d-]/g,'');return s===''||s==='-'?NaN:parseInt(s,10);};
+let S=null;
+function build(){
+ for(let t=0;t<500;t++){
+  const capital=ri(15,25)*10, res23=ri(0,6)*10;
+  const receita=ri(80,140), despSal=ri(10,25), despCom=ri(5,15);
+  const lucro=receita-despSal-despCom; if(lucro<15) continue;
+  const dividends=(ri(0,3)===0)?0:ri(1,lucro);
+  const res24=res23+(lucro-dividends);
+  const cr23=ri(40,80), dCR=ri(-30,40), cr24=cr23+dCR; if(cr24<10||receita-dCR<0) continue;
+  const salpag23=ri(20,50), dSal=ri(-15,despSal), salpag24=salpag23+dSal; if(salpag24<0||despSal-dSal<0) continue;
+  const compag23=ri(20,50), dCom=ri(-15,despCom), compag24=compag23+dCom; if(compag24<0||despCom-dCom<0) continue;
+  const ter23=ri(30,70), dTer=pick([ri(4,12),-ri(4,12)]), ter24=ter23+dTer; if(ter24<5) continue;
+  const caixa23=(salpag23+compag23+res23+capital)-(cr23+ter23); if(caixa23<0) continue;
+  const recebCli=receita-dCR, pagSal=-(despSal-dSal), pagCom=-(despCom-dCom);
+  const fluxoOp=recebCli+pagSal+pagCom, inv=-dTer, fin=-dividends, varCaixa=fluxoOp+inv+fin;
+  const caixa24=caixa23+varCaixa; if(caixa24<0) continue;
+  if(caixa24+cr24+ter24!==salpag24+compag24+res24+capital) continue;
+  if(lucro-dCR+dSal+dCom!==fluxoOp) continue;
+  return {capital,res23,res24,receita,despSal,despCom,lucro,dividends,cr23,cr24,dCR,salpag23,salpag24,dSal,compag23,compag24,dCom,ter23,ter24,dTer,caixa23,caixa24,recebCli,pagSal,pagCom,fluxoOp,inv,fin,varCaixa};
+ }
+}
+const terLabel=()=>S.dTer>0?'Compra de terreno':'Venda de terreno';
+function indRows(){return [
+  ['act','ATIVIDADE OPERACIONAL',S.fluxoOp],
+  ['','Lucro líquido',S.lucro],
+  ['','(±) Variação Contas a Receber',-S.dCR],
+  ['','(±) Variação Salários a Pagar',S.dSal],
+  ['','(±) Variação Comissões a Pagar',S.dCom],
+  ['act','ATIVIDADE DE INVESTIMENTO',S.inv],
+  ['',terLabel(),S.inv],
+  ['act','ATIVIDADE DE FINANCIAMENTO',S.fin],
+  ['','Dividendos pagos',S.fin],
+  ['big','VARIAÇÃO DE CAIXA',S.varCaixa],
+];}
+function dirRows(){return [
+  ['act','ATIVIDADE OPERACIONAL',S.fluxoOp],
+  ['','Recebimento de clientes',S.recebCli],
+  ['','(-) Pagamento de salários',S.pagSal],
+  ['','(-) Pagamento de comissões',S.pagCom],
+];}
+function tbl(rows,pfx,title){
+  let h=`<div class="hd"><span>${title}</span><span>2026</span></div><table>`;
+  rows.forEach((r,i)=>{h+=`<tr class="${r[0]}"><td class="lab">${r[1]}</td><td class="inp"><input type="text" inputmode="numeric" data-k="${pfx}${i}" placeholder="0"></td><td class="cor" data-cor="${pfx}${i}"></td></tr>`;});
+  return h+'</table>';
+}
+function render(){
+  S=build();
+  document.getElementById('ativoTbl').innerHTML=`<tr><th class="l">Ativo</th><th>2025</th><th>2026</th></tr>`+[['Caixa',S.caixa23,S.caixa24],['Contas a receber',S.cr23,S.cr24],['Terrenos',S.ter23,S.ter24]].map(r=>`<tr><td>${r[0]}</td><td class="v">${fmt(r[1])}</td><td class="v">${fmt(r[2])}</td></tr>`).join('')+`<tr class="t"><td>Total</td><td class="v">${fmt(S.caixa23+S.cr23+S.ter23)}</td><td class="v">${fmt(S.caixa24+S.cr24+S.ter24)}</td></tr>`;
+  document.getElementById('passTbl').innerHTML=`<tr><th class="l">Passivo + PL</th><th>2025</th><th>2026</th></tr>`+[['Salários a pagar',S.salpag23,S.salpag24],['Comissões a pagar',S.compag23,S.compag24],['Reservas de lucro',S.res23,S.res24],['Capital',S.capital,S.capital]].map(r=>`<tr><td>${r[0]}</td><td class="v">${fmt(r[1])}</td><td class="v">${fmt(r[2])}</td></tr>`).join('')+`<tr class="t"><td>Total</td><td class="v">${fmt(S.salpag23+S.compag23+S.res23+S.capital)}</td><td class="v">${fmt(S.salpag24+S.compag24+S.res24+S.capital)}</td></tr>`;
+  document.getElementById('dreTbl').innerHTML=[['Receita',S.receita],['(-) Despesa de salário',-S.despSal],['(-) Despesa de comissões',-S.despCom]].map(r=>`<tr><td>${r[0]}</td><td class="v">${fmt(r[1])}</td></tr>`).join('')+`<tr class="tot"><td>(=) Lucro</td><td class="v">${fmt(S.lucro)}</td></tr>`;
+  document.getElementById('indBox').innerHTML=tbl(indRows(),'i','DFC — Método Indireto');
+  document.getElementById('dirBox').innerHTML=tbl(dirRows(),'d','DFC — Método Direto');
+  document.getElementById('score').className='score';
+  document.getElementById('reso').className='reso';document.getElementById('reso').innerHTML='';
+}
+function corrigir(){
+  const all=[...indRows().map((r,i)=>['i'+i,r[2]]),...dirRows().map((r,i)=>['d'+i,r[2]])];
+  let ok=0;
+  all.forEach(([k,cor])=>{const inp=document.querySelector(`input[data-k="${k}"]`);const cel=document.querySelector(`[data-cor="${k}"]`);const val=parseNum(inp.value);
+    if(val===cor){inp.className='ok';ok++;cel.textContent='✓';cel.style.color='var(--pos)';}
+    else{inp.className='bad';cel.textContent=(cor===0?'0':fmt(cor));cel.style.color='var(--neg)';}});
+  const sc=document.getElementById('score');sc.textContent=`Você acertou ${ok} de ${all.length}.`+(ok===all.length?' 🎯 DFC completa e os dois métodos batem!':' Confira os valores em vermelho e a resolução.');sc.className='score show '+(ok===all.length?'win':'mid');
+}
+function resolucao(){
+  const r=document.getElementById('reso'); if(r.className.includes('show')){r.className='reso';return;}
+  r.innerHTML=`<div class="rd">Como chega cada número:<br>
+   • <b>Recebimento de clientes</b> = Receita ${fmt(S.receita)} − variação das Contas a Receber (${sgn(S.dCR)}) = <b>${fmt(S.recebCli)}</b><br>
+   • <b>Pagamento de salários</b> = −(Despesa ${fmt(S.despSal)} − aumento de Salários a Pagar ${sgn(S.dSal)}) = <b>${sgn(S.pagSal)}</b><br>
+   • <b>Pagamento de comissões</b> = −(Despesa ${fmt(S.despCom)} − aumento de Comissões a Pagar ${sgn(S.dCom)}) = <b>${sgn(S.pagCom)}</b><br>
+   • <b>Indireto (operacional)</b> = Lucro ${fmt(S.lucro)} − ΔCR ${fmt(S.dCR)} + ΔSal.a pagar ${fmt(S.dSal)} + ΔCom.a pagar ${fmt(S.dCom)} = <b>${fmt(S.fluxoOp)}</b> (igual ao direto ✓)<br>
+   • <b>Investimento</b> = variação dos Terrenos ${sgn(S.dTer)} → ${sgn(S.inv)} (${S.dTer>0?'comprou = saída':'vendeu = entrada'})<br>
+   • <b>Financiamento (dividendos)</b> = −(Lucro ${fmt(S.lucro)} − aumento das Reservas ${fmt(S.res24-S.res23)}) = <b>${sgn(S.fin)}</b>${S.dividends===0?' (lucro todo virou reserva → dividendo 0)':''}<br>
+   • <b>Variação de caixa</b> = ${fmt(S.fluxoOp)} ${sgn(S.inv)} ${sgn(S.fin)} = <b>${fmt(S.varCaixa)}</b> — e o Caixa foi ${fmt(S.caixa23)} → ${fmt(S.caixa24)} ✓</div>`;
+  r.className='reso show';
+}
+document.getElementById('corrigir').onclick=corrigir;
+document.getElementById('novo').onclick=render;
+document.getElementById('verReso').onclick=resolucao;
+render();
+</script>
+<!-- ===== TRAVA DE ACESSO — FERRAMENTAS ESTÁGIO ZERO =====
+     Configuração por ferramenta: troque EZ_TOOL / EZ_PRODUTO / EZ_CHECKOUT.
+     Depende do supabase-js (carregado do CDN abaixo). -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+  #ezf-gate{position:fixed;inset:0;z-index:2147483000;display:flex;align-items:center;justify-content:center;
+    background:rgba(10,12,20,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Inter,Arial,sans-serif;padding:20px}
+  #ezf-gate.ezf-hidden{display:none}
+  #ezf-gate .box{max-width:430px;width:100%;background:#141826;border:1px solid #2a3350;border-radius:18px;
+    padding:32px 28px;text-align:center;color:#e8ecf5;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+  #ezf-gate .brand{font-size:12px;font-weight:800;letter-spacing:.12em;color:#8b93f8;text-transform:uppercase;margin-bottom:10px}
+  #ezf-gate h2{margin:4px 0 6px;font-size:21px;font-weight:800;color:#fff}
+  #ezf-gate p{margin:8px 0;font-size:14px;line-height:1.5;color:#aeb7cc}
+  #ezf-gate input{width:100%;box-sizing:border-box;margin:14px 0 4px;padding:13px 14px;border-radius:11px;
+    background:#0e1220;border:1px solid #333c5c;color:#fff;font-size:15px;outline:none}
+  #ezf-gate input:focus{border-color:#6366f1}
+  #ezf-gate .cta{display:block;width:100%;box-sizing:border-box;margin:14px 0 0;padding:14px 18px;border-radius:12px;
+    background:linear-gradient(135deg,#6366f1,#8b5cf6);color:#fff;font-weight:800;font-size:15px;text-decoration:none;
+    border:none;cursor:pointer;transition:transform .1s}
+  #ezf-gate .cta:hover{transform:translateY(-1px)} #ezf-gate .cta:disabled{opacity:.6;cursor:default;transform:none}
+  #ezf-gate .row{display:flex;gap:10px;margin-top:12px}
+  #ezf-gate .ghost{flex:1;padding:11px;border-radius:10px;background:transparent;border:1px solid #333c5c;
+    color:#aeb7cc;font-weight:600;font-size:13px;cursor:pointer}
+  #ezf-gate .ghost:hover{border-color:#4a5578;color:#fff}
+  #ezf-gate .who{font-size:12px;color:#6b7590;margin-top:16px;word-break:break-all}
+  #ezf-gate .ok{color:#34d399;font-weight:700}
+  #ezf-wm{position:fixed;inset:0;z-index:2147482000;pointer-events:none;display:none;
+    font-family:-apple-system,Arial,sans-serif;color:rgba(120,130,160,.10);font-weight:700;
+    font-size:15px;overflow:hidden;white-space:nowrap;transform:rotate(-24deg) scale(1.4);transform-origin:center}
+</style>
+<div id="ezf-wm"></div>
+<div id="ezf-gate">
+  <div class="box" id="ezf-box"><div class="brand">Estágio Zero</div><p>Carregando…</p></div>
+</div>
+<script>
+(function(){
+  // ===== CONFIG (troque por ferramenta) =====
+  var EZ_TOOL     = "quizzes";          // ex.: 'banco','pi','quizzes'
+  var EZ_PRODUTO  = "Quizzes";       // rótulo humano p/ tela de "sem acesso"
+  var EZ_CHECKOUT = "https://pay.kiwify.com.br/Zgp3BQT";      // link de compra do produto
+  var SUPABASE_URL = "https://rbxlzltcfxlsqobvefzl.supabase.co";
+  var SUPABASE_KEY = "sb_publishable_9PE0q-j5s57TJxJfUrYz-g_3uapl4n7";
+
+  var gate=document.getElementById('ezf-gate'), box=document.getElementById('ezf-box'), wm=document.getElementById('ezf-wm');
+  var sb = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY) : null;
+
+  function show(html){ box.innerHTML='<div class="brand">Estágio Zero</div>'+html; gate.classList.remove('ezf-hidden'); wm.style.display='none'; }
+  function libera(email){
+    gate.classList.add('ezf-hidden');
+    // marca d'água com o e-mail (repetida)
+    var line=(email+'   ').repeat(6); var rows=[]; for(var i=0;i<40;i++) rows.push(line);
+    wm.innerHTML=rows.map(function(r){return '<div style="line-height:2.6em">'+r+'</div>';}).join('');
+    wm.style.display='block';
+  }
+
+  function viewLogin(msg){
+    show(
+      '<h2>Acesso exclusivo</h2>'+
+      '<p>Esta ferramenta é liberada para quem comprou. Entre com o <b>mesmo e-mail da sua compra</b>:</p>'+
+      '<input id="ezf-email" type="email" placeholder="voce@email.com" autocomplete="email">'+
+      '<button class="cta" id="ezf-send">Enviar link de acesso</button>'+
+      (msg?('<p style="margin-top:12px">'+msg+'</p>'):'')
+    );
+    var send=document.getElementById('ezf-send'), inp=document.getElementById('ezf-email');
+    inp.focus();
+    send.addEventListener('click', async function(){
+      var email=(inp.value||'').trim().toLowerCase();
+      if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){ inp.focus(); inp.style.borderColor='#ef4444'; return; }
+      send.disabled=true; send.textContent='Enviando…';
+      try{
+        var r=await sb.auth.signInWithOtp({ email:email, options:{ emailRedirectTo: location.href.split('#')[0] } });
+        if(r.error) throw r.error;
+        show('<h2>Confira seu e-mail 📩</h2><p>Enviamos um link de acesso para <b>'+email+'</b>. Abra o e-mail e clique em <b>"Confirmar e acessar"</b> para entrar. Pode fechar esta aba.</p>');
+      }catch(e){ send.disabled=false; send.textContent='Enviar link de acesso'; show('<h2>Ops</h2><p>Não consegui enviar agora. Tente de novo em instantes.</p>'); setTimeout(function(){viewLogin();},1800); }
+    });
+    inp.addEventListener('keydown',function(e){ if(e.key==='Enter') send.click(); });
+  }
+
+  function viewSemAcesso(email){
+    show(
+      '<div style="font-size:38px;margin-bottom:4px">🔒</div>'+
+      '<h2>Você ainda não tem acesso</h2>'+
+      '<p>Esta ferramenta faz parte de <b>'+EZ_PRODUTO+'</b>. Garanta o seu acesso:</p>'+
+      '<a class="cta" href="'+EZ_CHECKOUT+'" target="_blank" rel="noopener">Comprar agora →</a>'+
+      '<div class="row">'+
+        '<button class="ghost" id="ezf-recheck">Já comprei — atualizar</button>'+
+        '<button class="ghost" id="ezf-logout">Sair / trocar e-mail</button>'+
+      '</div>'+
+      '<div class="who">Conta: '+email+'<br>Use o <b>mesmo e-mail da compra</b>.</div>'
+    );
+    document.getElementById('ezf-recheck').addEventListener('click', check);
+    document.getElementById('ezf-logout').addEventListener('click', async function(){ try{ await sb.auth.signOut(); }catch(e){} location.reload(); });
+  }
+
+  async function check(){
+    if(!sb){ show('<h2>Erro</h2><p>Não consegui iniciar o acesso. Recarregue a página.</p>'); return; }
+    var s = (await sb.auth.getSession()).data.session;
+    if(!s || !s.user){ viewLogin(); return; }
+    var email = (s.user.email||'').toLowerCase();
+    try{
+      var q = await sb.from('tool_access').select('active').eq('tool', EZ_TOOL).eq('active', true).limit(1);
+      if(q.error) throw q.error;
+      if(q.data && q.data.length){ libera(email); } else { viewSemAcesso(email); }
+    }catch(e){ viewSemAcesso(email); }
+  }
+
+  // reage ao retorno do link mágico e a login/logout
+  if(sb){ sb.auth.onAuthStateChange(function(_ev,_sess){ check(); }); }
+  check();
+})();
+</script>
+<!-- ===== FIM TRAVA ===== -->
+
+</body></html>

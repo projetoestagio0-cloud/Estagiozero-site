@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Quiz 1 — Simulador (Margem Bruta × Liquidez Corrente)</title>
+<style>
+  :root{--ink:#0F2A3F;--ink2:#41576b;--muted:#6b7f8f;--line:#e2e8ec;--surface:#fff;--bg:#f4f7f9;--accent:#4F46E5;--accent-soft:#eef2ff;--pos:#0B8457;--posbg:#e9f7f0;--neg:#C0392B;--negbg:#fdeceb;--warn:#B4791A;--warnbg:#FDF6E9;--grey:#eef1f4}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--bg);font-family:'Segoe UI',system-ui,Arial,sans-serif;color:var(--ink);padding:16px;line-height:1.45}
+  .wrap{max-width:1080px;margin:0 auto}
+  h1{font-size:20px} .sub{font-size:13px;color:var(--muted);margin:2px 0 14px}
+  .grid{display:grid;grid-template-columns:1fr 1.05fr;gap:16px}
+  @media(max-width:860px){.grid{grid-template-columns:1fr}}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;box-shadow:0 4px 14px rgba(15,42,63,.05)}
+  .pt{font-size:12px;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);font-weight:700;margin:0 0 10px}
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th{font-size:11px;color:var(--muted);text-transform:uppercase;text-align:right;padding:3px} th.l{text-align:left}
+  td{padding:3px} td.v{text-align:right;font-variant-numeric:tabular-nums}
+  tr.t td{border-top:2px solid var(--ink);font-weight:800}
+  .co{color:var(--muted);font-size:12px}
+  .frm{display:grid;grid-template-columns:1fr auto auto;gap:8px 10px;align-items:center;margin-top:8px}
+  .frm label{font-size:13px;color:var(--ink2)}
+  .frm input{width:120px;font:inherit;text-align:right;padding:6px 8px;border:1px solid var(--line);border-radius:8px;font-variant-numeric:tabular-nums}
+  .frm .u{font-size:12px;color:var(--muted)}
+  .frm input.ok{background:var(--posbg);border-color:#bfe6d3;color:var(--pos);font-weight:700}
+  .frm input.bad{background:var(--negbg);border-color:#f2c9c6;color:var(--neg);font-weight:700}
+  .cor{font-size:12px;color:var(--neg);font-weight:700}
+  .rules{background:var(--warnbg);border:1px solid #f0e0bd;border-radius:10px;padding:10px 12px;font-size:12.5px;color:#7a5410;margin:12px 0} .rules b{color:#5f4109}
+  .strat{background:var(--accent-soft);border:1px solid #dfe3fb;border-radius:12px;padding:13px 14px;font-size:15px;font-weight:600;color:var(--ink);min-height:64px;display:flex;align-items:center}
+  .qrow{margin-top:14px}
+  .qlab{font-size:13px;font-weight:700;color:var(--ink2);margin-bottom:6px}
+  .opts{display:flex;gap:8px;flex-wrap:wrap}
+  .opt{font:inherit;font-weight:700;font-size:13px;border-radius:999px;padding:8px 14px;border:1.5px solid var(--line);background:#fff;color:var(--ink2);cursor:pointer}
+  .opt.sel{border-color:var(--accent);background:var(--accent);color:#fff}
+  .opt.good{border-color:var(--pos);background:var(--posbg);color:var(--pos)}
+  .opt.wrong{border-color:var(--neg);background:var(--negbg);color:var(--neg)}
+  .btns{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap}
+  button{font:inherit;font-weight:700;border-radius:10px;padding:10px 16px;border:1px solid var(--line);background:#fff;color:var(--ink);cursor:pointer}
+  button.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+  .verd{margin-top:14px;font-size:13.5px;border-radius:10px;padding:11px 13px;display:none}
+  .verd.show{display:block}
+  .verd.q1{background:var(--posbg);color:#0a6b48;border:1px solid #bfe6d3}
+  .verd.q2{background:#eef2ff;color:#2a2394;border:1px solid #dfe3fb}
+  .verd.no{background:var(--negbg);color:#8f2b21;border:1px solid #f2c9c6}
+  .verd b{font-weight:800}
+  .tag{display:inline-block;font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.4px;padding:2px 8px;border-radius:999px;margin-bottom:6px}
+  .tag.q1{background:var(--pos);color:#fff} .tag.q2{background:var(--accent);color:#fff} .tag.no{background:var(--neg);color:#fff}
+  .hint{font-size:12.5px;color:var(--muted);margin-top:8px}
+  .score{margin-top:10px;font-size:13px;font-weight:700;color:var(--ink2)}
+</style></head>
+<body><div class="wrap">
+  <h1>Quiz 1 — Simulador: Margem Bruta × Liquidez Corrente</h1>
+  <div class="sub">Dois treinos que variam a cada rodada: <b>(A)</b> calcule os índices com dados novos e <b>(B)</b> classifique estratégias — o simulador diz se cada uma responde à <b>Questão 1</b> (melhorar margem sem cair a liquidez) ou à <b>Questão 2</b> (melhorar liquidez sem cair a margem) da prova.</div>
+
+  <div class="grid">
+    <!-- PARTE A -->
+    <div class="card">
+      <div class="pt">A) Calcule os índices — <span id="empNome"></span></div>
+      <table id="dadosTbl"></table>
+      <div class="rules">Margem Bruta (%) = (Receita − Custo) ÷ Receita × 100 · Liquidez Corrente = Ativo Circulante ÷ Passivo Circulante (2 casas).</div>
+      <div class="frm">
+        <label>Margem Bruta (%)</label>
+        <input id="mbIn" type="text" inputmode="decimal" placeholder="ex: 30,5"><span class="u">%</span>
+        <div></div><div class="cor" id="mbCor"></div><div></div>
+        <label>Liquidez Corrente</label>
+        <input id="lcIn" type="text" inputmode="decimal" placeholder="ex: 0,27"><span class="u">x</span>
+        <div></div><div class="cor" id="lcCor"></div><div></div>
+      </div>
+      <div class="btns">
+        <button class="primary" id="conferir">Conferir índices</button>
+        <button id="novoA">Novos dados</button>
+      </div>
+      <div class="score" id="scoreA"></div>
+    </div>
+
+    <!-- PARTE B -->
+    <div class="card">
+      <div class="pt">B) Classifique a estratégia</div>
+      <div class="strat" id="stratBox"></div>
+      <div class="qrow">
+        <div class="qlab">Efeito na <b>Margem Bruta</b>:</div>
+        <div class="opts" id="mbOpts">
+          <button class="opt" data-g="mb" data-v="up">Sobe</button>
+          <button class="opt" data-g="mb" data-v="down">Desce</button>
+          <button class="opt" data-g="mb" data-v="eq">Não muda</button>
+        </div>
+      </div>
+      <div class="qrow">
+        <div class="qlab">Efeito na <b>Liquidez Corrente</b>:</div>
+        <div class="opts" id="lcOpts">
+          <button class="opt" data-g="lc" data-v="up">Sobe</button>
+          <button class="opt" data-g="lc" data-v="down">Desce</button>
+          <button class="opt" data-g="lc" data-v="eq">Não muda</button>
+        </div>
+      </div>
+      <div class="btns">
+        <button class="primary" id="verificar">Verificar</button>
+        <button id="novoB">Nova estratégia</button>
+      </div>
+      <div class="verd" id="verd"></div>
+      <div class="hint">Lembre: a <b>Margem Bruta</b> só muda com <b>preço de venda</b> ou <b>custo do produto/serviço</b>. Despesas financeiras, dividendos e marketing não entram nela. A <b>Liquidez Corrente</b> muda com <b>caixa, recebíveis, estoque</b> (circulante) e <b>dívidas de curto prazo</b>.</div>
+    </div>
+  </div>
+</div>
+<script>
+const ri=(a,b)=>a+Math.floor(Math.random()*(b-a+1));
+const pick=a=>a[Math.floor(Math.random()*a.length)];
+const fmtBR=n=>n.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2});
+const parseDec=s=>{s=(s||'').trim().replace(/\./g,'').replace(',', '.').replace(/[^\d.\-]/g,'');const v=parseFloat(s);return isNaN(v)?NaN:v;};
+
+/* ---------- PARTE A ---------- */
+let A=null;
+function buildA(){
+  const nomes=[['GOL','milhões'],['ESTRELA','milhares'],['AZULINDO','milhões'],['MARÍTIMA','milhares'],['SERRANA','milhões']];
+  const emp=pick(nomes);
+  const receita=ri(400,2000)*10;               // inteiro "cheio"
+  const custo=Math.round(receita*ri(45,80)/100);
+  const ac=ri(15,90)*10, pc=ri(60,260)*10;     // liquidez tipicamente <1, como nas empresas do quiz
+  const mb=(receita-custo)/receita*100;
+  const lc=ac/pc;
+  return {emp:emp[0],un:emp[1],receita,custo,ac,pc,mb,lc};
+}
+function renderA(){
+  A=buildA();
+  document.getElementById('empNome').textContent=A.emp+' (R$ '+A.un+')';
+  document.getElementById('dadosTbl').innerHTML=
+    `<tr><th class="l">Conta</th><th>Valor</th></tr>`+
+    [['Receita líquida',A.receita],['(-) Custo do produto/serviço',A.custo],
+     ['Ativo Circulante',A.ac],['Passivo Circulante',A.pc]].map(r=>
+      `<tr><td>${r[0]}</td><td class="v">${r[1].toLocaleString('pt-BR')}</td></tr>`).join('');
+  document.getElementById('mbIn').value='';document.getElementById('mbIn').className='';
+  document.getElementById('lcIn').value='';document.getElementById('lcIn').className='';
+  document.getElementById('mbCor').textContent='';document.getElementById('lcCor').textContent='';
+  document.getElementById('scoreA').textContent='';
+}
+function conferir(){
+  const mbV=parseDec(document.getElementById('mbIn').value);
+  const lcV=parseDec(document.getElementById('lcIn').value);
+  let ok=0;
+  const mbEl=document.getElementById('mbIn'),lcEl=document.getElementById('lcIn');
+  if(!isNaN(mbV)&&Math.abs(mbV-A.mb)<=0.15){mbEl.className='ok';document.getElementById('mbCor').textContent='';ok++;}
+  else{mbEl.className='bad';document.getElementById('mbCor').textContent='Correto: '+fmtBR(A.mb)+'%  =  ('+A.receita.toLocaleString('pt-BR')+' − '+A.custo.toLocaleString('pt-BR')+') ÷ '+A.receita.toLocaleString('pt-BR');}
+  if(!isNaN(lcV)&&Math.abs(lcV-A.lc)<=0.005){lcEl.className='ok';document.getElementById('lcCor').textContent='';ok++;}
+  else{lcEl.className='bad';document.getElementById('lcCor').textContent='Correto: '+fmtBR(A.lc)+'  =  '+A.ac.toLocaleString('pt-BR')+' ÷ '+A.pc.toLocaleString('pt-BR');}
+  document.getElementById('scoreA').textContent=ok===2?'✓ Acertou os dois índices.':(ok+' de 2 — confira em vermelho.');
+}
+
+/* ---------- PARTE B ---------- */
+// mb/lc: 'up' sobe, 'down' desce, 'eq' não muda
+// tipo: 'q1' (melhora margem sem cair liquidez), 'q2' (melhora liquidez sem cair margem), 'no' (não serve / trade-off)
+const STRATS=[
+ {t:'Reduzir o custo do serviço com mais eficiência operacional — menos desperdício, rotas e frota otimizadas.',mb:'up',lc:'eq',
+  why:'Mexe no custo do produto/serviço → a margem sobe. Não usa caixa nem cria dívida de curto prazo → a liquidez fica igual.'},
+ {t:'Trocar de fornecedor por um mais barato, mantendo o preço de venda.',mb:'up',lc:'eq',
+  why:'Custo menor com mesma receita → margem sobe. Não afeta circulante → liquidez igual.'},
+ {t:'Aumentar o preço de venda mantendo o mesmo custo do produto.',mb:'up',lc:'eq',
+  why:'Receita maior sobre o mesmo custo → margem sobe. Por si só não mexe no circulante → liquidez igual.'},
+ {t:'Criar receitas extras de alta margem que não exigem caixa (bagagem, lounge, serviços premium).',mb:'up',lc:'eq',
+  why:'Agrega margem alta sem consumir caixa → margem sobe, liquidez igual.'},
+ {t:'Fidelizar clientes e cobrar preço premium em nichos de menor concorrência.',mb:'up',lc:'eq',
+  why:'Preço premium eleva a margem; não drena caixa → liquidez igual.'},
+ {t:'Renegociar dívidas de curto prazo, alongando-as para o longo prazo.',mb:'eq',lc:'up',
+  why:'Sai do passivo circulante → liquidez sobe. Não toca em receita nem custo → margem igual.'},
+ {t:'Fazer campanhas em períodos de baixa demanda para girar vendas e receber mais rápido (sem baixar preço).',mb:'eq',lc:'up',
+  why:'Entra caixa mais rápido → liquidez sobe. Sem cortar preço, a margem fica igual.'},
+ {t:'Vender um terreno (ativo não circulante) à vista.',mb:'eq',lc:'up',
+  why:'Vira caixa no circulante → liquidez sobe. Não é operação de venda de produto → margem bruta igual.'},
+ {t:'Dar desconto agressivo para queimar estoque rapidamente.',mb:'down',lc:'up',
+  why:'Entra caixa (liquidez sobe), MAS o preço menor derruba a margem. Serve para liquidez, não para a Questão 2 (que pede sem cair a margem).'},
+ {t:'Comprar frota/equipamento novo à vista, usando o caixa.',mb:'eq',lc:'down',
+  why:'Caixa sai do circulante → liquidez cai. Não altera preço nem custo unitário agora → margem igual.'},
+ {t:'Distribuir dividendos em dinheiro aos sócios.',mb:'eq',lc:'down',
+  why:'Sai caixa do circulante → liquidez cai. Não tem efeito na margem bruta.'},
+ {t:'Gastar caixa numa grande campanha de marketing.',mb:'eq',lc:'down',
+  why:'Consome caixa → liquidez cai. Marketing é despesa, não custo do produto → não muda a margem bruta.'},
+];
+function classify(s){
+  if(s.mb==='up'&&s.lc!=='down') return 'q1';
+  if(s.lc==='up'&&s.mb!=='down') return 'q2';
+  return 'no';
+}
+let B=null,pickMb=null,pickLc=null;
+function renderB(){
+  B=pick(STRATS);pickMb=null;pickLc=null;
+  document.getElementById('stratBox').textContent=B.t;
+  document.querySelectorAll('.opt').forEach(o=>o.className='opt');
+  document.getElementById('verd').className='verd';
+}
+document.querySelectorAll('.opt').forEach(o=>o.onclick=()=>{
+  const g=o.dataset.g;
+  document.querySelectorAll(`.opt[data-g="${g}"]`).forEach(x=>x.classList.remove('sel'));
+  o.classList.add('sel');
+  if(g==='mb')pickMb=o.dataset.v; else pickLc=o.dataset.v;
+});
+const LBL={up:'Sobe',down:'Desce',eq:'Não muda'};
+function verificar(){
+  if(!pickMb||!pickLc){const v=document.getElementById('verd');v.className='verd show no';v.innerHTML='Marque o efeito na margem <b>e</b> na liquidez antes de verificar.';return;}
+  document.querySelectorAll('.opt[data-g="mb"]').forEach(o=>{o.classList.remove('sel');if(o.dataset.v===B.mb)o.classList.add('good');else if(o.dataset.v===pickMb)o.classList.add('wrong');});
+  document.querySelectorAll('.opt[data-g="lc"]').forEach(o=>{o.classList.remove('sel');if(o.dataset.v===B.lc)o.classList.add('good');else if(o.dataset.v===pickLc)o.classList.add('wrong');});
+  const acertou=(pickMb===B.mb&&pickLc===B.lc);
+  const cls=classify(B);
+  const v=document.getElementById('verd');
+  const tagTxt={q1:'Responde a Questão 1',q2:'Responde a Questão 2',no:'Não serve como resposta'};
+  const linha=acertou?'✓ Você classificou certo.':`✗ O correto é: Margem <b>${LBL[B.mb]}</b>, Liquidez <b>${LBL[B.lc]}</b>.`;
+  const enquadre = cls==='q1' ? 'Melhora a <b>margem</b> sem cair a liquidez → é uma resposta válida da <b>Questão 1</b>.'
+                 : cls==='q2' ? 'Melhora a <b>liquidez</b> sem cair a margem → é uma resposta válida da <b>Questão 2</b>.'
+                 : 'Melhora um índice à custa do outro (ou piora um deles) → <b>não</b> atende ao que a Questão 1/2 pede.';
+  v.className='verd show '+cls;
+  v.innerHTML=`<span class="tag ${cls}">${tagTxt[cls]}</span><br>${linha}<br>${B.why}<br><span style="opacity:.85">${enquadre}</span>`;
+}
+document.getElementById('conferir').onclick=conferir;
+document.getElementById('novoA').onclick=renderA;
+document.getElementById('verificar').onclick=verificar;
+document.getElementById('novoB').onclick=renderB;
+renderA();renderB();
+</script>
+<!-- ===== TRAVA DE ACESSO — FERRAMENTAS ESTÁGIO ZERO =====
+     Configuração por ferramenta: troque EZ_TOOL / EZ_PRODUTO / EZ_CHECKOUT.
+     Depende do supabase-js (carregado do CDN abaixo). -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+  #ezf-gate{position:fixed;inset:0;z-index:2147483000;display:flex;align-items:center;justify-content:center;
+    background:rgba(10,12,20,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Inter,Arial,sans-serif;padding:20px}
+  #ezf-gate.ezf-hidden{display:none}
+  #ezf-gate .box{max-width:430px;width:100%;background:#141826;border:1px solid #2a3350;border-radius:18px;
+    padding:32px 28px;text-align:center;color:#e8ecf5;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+  #ezf-gate .brand{font-size:12px;font-weight:800;letter-spacing:.12em;color:#8b93f8;text-transform:uppercase;margin-bottom:10px}
+  #ezf-gate h2{margin:4px 0 6px;font-size:21px;font-weight:800;color:#fff}
+  #ezf-gate p{margin:8px 0;font-size:14px;line-height:1.5;color:#aeb7cc}
+  #ezf-gate input{width:100%;box-sizing:border-box;margin:14px 0 4px;padding:13px 14px;border-radius:11px;
+    background:#0e1220;border:1px solid #333c5c;color:#fff;font-size:15px;outline:none}
+  #ezf-gate input:focus{border-color:#6366f1}
+  #ezf-gate .cta{display:block;width:100%;box-sizing:border-box;margin:14px 0 0;padding:14px 18px;border-radius:12px;
+    background:linear-gradient(135deg,#6366f1,#8b5cf6);color:#fff;font-weight:800;font-size:15px;text-decoration:none;
+    border:none;cursor:pointer;transition:transform .1s}
+  #ezf-gate .cta:hover{transform:translateY(-1px)} #ezf-gate .cta:disabled{opacity:.6;cursor:default;transform:none}
+  #ezf-gate .row{display:flex;gap:10px;margin-top:12px}
+  #ezf-gate .ghost{flex:1;padding:11px;border-radius:10px;background:transparent;border:1px solid #333c5c;
+    color:#aeb7cc;font-weight:600;font-size:13px;cursor:pointer}
+  #ezf-gate .ghost:hover{border-color:#4a5578;color:#fff}
+  #ezf-gate .who{font-size:12px;color:#6b7590;margin-top:16px;word-break:break-all}
+  #ezf-gate .ok{color:#34d399;font-weight:700}
+  #ezf-wm{position:fixed;inset:0;z-index:2147482000;pointer-events:none;display:none;
+    font-family:-apple-system,Arial,sans-serif;color:rgba(120,130,160,.10);font-weight:700;
+    font-size:15px;overflow:hidden;white-space:nowrap;transform:rotate(-24deg) scale(1.4);transform-origin:center}
+</style>
+<div id="ezf-wm"></div>
+<div id="ezf-gate">
+  <div class="box" id="ezf-box"><div class="brand">Estágio Zero</div><p>Carregando…</p></div>
+</div>
+<script>
+(function(){
+  // ===== CONFIG (troque por ferramenta) =====
+  var EZ_TOOL     = "quizzes";          // ex.: 'banco','pi','quizzes'
+  var EZ_PRODUTO  = "Quizzes";       // rótulo humano p/ tela de "sem acesso"
+  var EZ_CHECKOUT = "https://pay.kiwify.com.br/Zgp3BQT";      // link de compra do produto
+  var SUPABASE_URL = "https://rbxlzltcfxlsqobvefzl.supabase.co";
+  var SUPABASE_KEY = "sb_publishable_9PE0q-j5s57TJxJfUrYz-g_3uapl4n7";
+
+  var gate=document.getElementById('ezf-gate'), box=document.getElementById('ezf-box'), wm=document.getElementById('ezf-wm');
+  var sb = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY) : null;
+
+  function show(html){ box.innerHTML='<div class="brand">Estágio Zero</div>'+html; gate.classList.remove('ezf-hidden'); wm.style.display='none'; }
+  function libera(email){
+    gate.classList.add('ezf-hidden');
+    // marca d'água com o e-mail (repetida)
+    var line=(email+'   ').repeat(6); var rows=[]; for(var i=0;i<40;i++) rows.push(line);
+    wm.innerHTML=rows.map(function(r){return '<div style="line-height:2.6em">'+r+'</div>';}).join('');
+    wm.style.display='block';
+  }
+
+  function viewLogin(msg){
+    show(
+      '<h2>Acesso exclusivo</h2>'+
+      '<p>Esta ferramenta é liberada para quem comprou. Entre com o <b>mesmo e-mail da sua compra</b>:</p>'+
+      '<input id="ezf-email" type="email" placeholder="voce@email.com" autocomplete="email">'+
+      '<button class="cta" id="ezf-send">Enviar link de acesso</button>'+
+      (msg?('<p style="margin-top:12px">'+msg+'</p>'):'')
+    );
+    var send=document.getElementById('ezf-send'), inp=document.getElementById('ezf-email');
+    inp.focus();
+    send.addEventListener('click', async function(){
+      var email=(inp.value||'').trim().toLowerCase();
+      if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){ inp.focus(); inp.style.borderColor='#ef4444'; return; }
+      send.disabled=true; send.textContent='Enviando…';
+      try{
+        var r=await sb.auth.signInWithOtp({ email:email, options:{ emailRedirectTo: location.href.split('#')[0] } });
+        if(r.error) throw r.error;
+        show('<h2>Confira seu e-mail 📩</h2><p>Enviamos um link de acesso para <b>'+email+'</b>. Abra o e-mail e clique em <b>"Confirmar e acessar"</b> para entrar. Pode fechar esta aba.</p>');
+      }catch(e){ send.disabled=false; send.textContent='Enviar link de acesso'; show('<h2>Ops</h2><p>Não consegui enviar agora. Tente de novo em instantes.</p>'); setTimeout(function(){viewLogin();},1800); }
+    });
+    inp.addEventListener('keydown',function(e){ if(e.key==='Enter') send.click(); });
+  }
+
+  function viewSemAcesso(email){
+    show(
+      '<div style="font-size:38px;margin-bottom:4px">🔒</div>'+
+      '<h2>Você ainda não tem acesso</h2>'+
+      '<p>Esta ferramenta faz parte de <b>'+EZ_PRODUTO+'</b>. Garanta o seu acesso:</p>'+
+      '<a class="cta" href="'+EZ_CHECKOUT+'" target="_blank" rel="noopener">Comprar agora →</a>'+
+      '<div class="row">'+
+        '<button class="ghost" id="ezf-recheck">Já comprei — atualizar</button>'+
+        '<button class="ghost" id="ezf-logout">Sair / trocar e-mail</button>'+
+      '</div>'+
+      '<div class="who">Conta: '+email+'<br>Use o <b>mesmo e-mail da compra</b>.</div>'
+    );
+    document.getElementById('ezf-recheck').addEventListener('click', check);
+    document.getElementById('ezf-logout').addEventListener('click', async function(){ try{ await sb.auth.signOut(); }catch(e){} location.reload(); });
+  }
+
+  async function check(){
+    if(!sb){ show('<h2>Erro</h2><p>Não consegui iniciar o acesso. Recarregue a página.</p>'); return; }
+    var s = (await sb.auth.getSession()).data.session;
+    if(!s || !s.user){ viewLogin(); return; }
+    var email = (s.user.email||'').toLowerCase();
+    try{
+      var q = await sb.from('tool_access').select('active').eq('tool', EZ_TOOL).eq('active', true).limit(1);
+      if(q.error) throw q.error;
+      if(q.data && q.data.length){ libera(email); } else { viewSemAcesso(email); }
+    }catch(e){ viewSemAcesso(email); }
+  }
+
+  // reage ao retorno do link mágico e a login/logout
+  if(sb){ sb.auth.onAuthStateChange(function(_ev,_sess){ check(); }); }
+  check();
+})();
+</script>
+<!-- ===== FIM TRAVA ===== -->
+
+</body></html>

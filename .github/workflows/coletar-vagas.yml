@@ -2,7 +2,7 @@ name: Coletar vagas
 
 on:
   schedule:
-    - cron: '0 9 * * *' # todo dia às 09:00 UTC (~06:00 no horário de Brasília)
+    - cron: '0 9 * * 1' # Roda às 09:00 UTC às segundas-feiras (~06:00 no horário de Brasília)
   workflow_dispatch: {} # permite rodar manualmente pela aba Actions do GitHub
 
 permissions:
