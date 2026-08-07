@@ -212,4 +212,118 @@ document.getElementById('verificar').onclick=verificar;
 document.getElementById('novoB').onclick=renderB;
 renderA();renderB();
 </script>
+<!-- ===== TRAVA DE ACESSO — FERRAMENTAS ESTÁGIO ZERO =====
+     Configuração por ferramenta: troque EZ_TOOL / EZ_PRODUTO / EZ_CHECKOUT.
+     Depende do supabase-js (carregado do CDN abaixo). -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+  #ezf-gate{position:fixed;inset:0;z-index:2147483000;display:flex;align-items:center;justify-content:center;
+    background:rgba(10,12,20,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Inter,Arial,sans-serif;padding:20px}
+  #ezf-gate.ezf-hidden{display:none}
+  #ezf-gate .box{max-width:430px;width:100%;background:#141826;border:1px solid #2a3350;border-radius:18px;
+    padding:32px 28px;text-align:center;color:#e8ecf5;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+  #ezf-gate .brand{font-size:12px;font-weight:800;letter-spacing:.12em;color:#8b93f8;text-transform:uppercase;margin-bottom:10px}
+  #ezf-gate h2{margin:4px 0 6px;font-size:21px;font-weight:800;color:#fff}
+  #ezf-gate p{margin:8px 0;font-size:14px;line-height:1.5;color:#aeb7cc}
+  #ezf-gate input{width:100%;box-sizing:border-box;margin:14px 0 4px;padding:13px 14px;border-radius:11px;
+    background:#0e1220;border:1px solid #333c5c;color:#fff;font-size:15px;outline:none}
+  #ezf-gate input:focus{border-color:#6366f1}
+  #ezf-gate .cta{display:block;width:100%;box-sizing:border-box;margin:14px 0 0;padding:14px 18px;border-radius:12px;
+    background:linear-gradient(135deg,#6366f1,#8b5cf6);color:#fff;font-weight:800;font-size:15px;text-decoration:none;
+    border:none;cursor:pointer;transition:transform .1s}
+  #ezf-gate .cta:hover{transform:translateY(-1px)} #ezf-gate .cta:disabled{opacity:.6;cursor:default;transform:none}
+  #ezf-gate .row{display:flex;gap:10px;margin-top:12px}
+  #ezf-gate .ghost{flex:1;padding:11px;border-radius:10px;background:transparent;border:1px solid #333c5c;
+    color:#aeb7cc;font-weight:600;font-size:13px;cursor:pointer}
+  #ezf-gate .ghost:hover{border-color:#4a5578;color:#fff}
+  #ezf-gate .who{font-size:12px;color:#6b7590;margin-top:16px;word-break:break-all}
+  #ezf-gate .ok{color:#34d399;font-weight:700}
+  #ezf-wm{position:fixed;inset:0;z-index:2147482000;pointer-events:none;display:none;
+    font-family:-apple-system,Arial,sans-serif;color:rgba(120,130,160,.10);font-weight:700;
+    font-size:15px;overflow:hidden;white-space:nowrap;transform:rotate(-24deg) scale(1.4);transform-origin:center}
+</style>
+<div id="ezf-wm"></div>
+<div id="ezf-gate">
+  <div class="box" id="ezf-box"><div class="brand">Estágio Zero</div><p>Carregando…</p></div>
+</div>
+<script>
+(function(){
+  // ===== CONFIG (troque por ferramenta) =====
+  var EZ_TOOL     = "quizzes";          // ex.: 'banco','pi','quizzes'
+  var EZ_PRODUTO  = "Quizzes";       // rótulo humano p/ tela de "sem acesso"
+  var EZ_CHECKOUT = "https://pay.kiwify.com.br/Zgp3BQT";      // link de compra do produto
+  var SUPABASE_URL = "https://rbxlzltcfxlsqobvefzl.supabase.co";
+  var SUPABASE_KEY = "sb_publishable_9PE0q-j5s57TJxJfUrYz-g_3uapl4n7";
+
+  var gate=document.getElementById('ezf-gate'), box=document.getElementById('ezf-box'), wm=document.getElementById('ezf-wm');
+  var sb = window.supabase ? window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY) : null;
+
+  function show(html){ box.innerHTML='<div class="brand">Estágio Zero</div>'+html; gate.classList.remove('ezf-hidden'); wm.style.display='none'; }
+  function libera(email){
+    gate.classList.add('ezf-hidden');
+    // marca d'água com o e-mail (repetida)
+    var line=(email+'   ').repeat(6); var rows=[]; for(var i=0;i<40;i++) rows.push(line);
+    wm.innerHTML=rows.map(function(r){return '<div style="line-height:2.6em">'+r+'</div>';}).join('');
+    wm.style.display='block';
+  }
+
+  function viewLogin(msg){
+    show(
+      '<h2>Acesso exclusivo</h2>'+
+      '<p>Esta ferramenta é liberada para quem comprou. Entre com o <b>mesmo e-mail da sua compra</b>:</p>'+
+      '<input id="ezf-email" type="email" placeholder="voce@email.com" autocomplete="email">'+
+      '<button class="cta" id="ezf-send">Enviar link de acesso</button>'+
+      (msg?('<p style="margin-top:12px">'+msg+'</p>'):'')
+    );
+    var send=document.getElementById('ezf-send'), inp=document.getElementById('ezf-email');
+    inp.focus();
+    send.addEventListener('click', async function(){
+      var email=(inp.value||'').trim().toLowerCase();
+      if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){ inp.focus(); inp.style.borderColor='#ef4444'; return; }
+      send.disabled=true; send.textContent='Enviando…';
+      try{
+        var r=await sb.auth.signInWithOtp({ email:email, options:{ emailRedirectTo: location.href.split('#')[0] } });
+        if(r.error) throw r.error;
+        show('<h2>Confira seu e-mail 📩</h2><p>Enviamos um link de acesso para <b>'+email+'</b>. Abra o e-mail e clique em <b>"Confirmar e acessar"</b> para entrar. Pode fechar esta aba.</p>');
+      }catch(e){ send.disabled=false; send.textContent='Enviar link de acesso'; show('<h2>Ops</h2><p>Não consegui enviar agora. Tente de novo em instantes.</p>'); setTimeout(function(){viewLogin();},1800); }
+    });
+    inp.addEventListener('keydown',function(e){ if(e.key==='Enter') send.click(); });
+  }
+
+  function viewSemAcesso(email){
+    show(
+      '<div style="font-size:38px;margin-bottom:4px">🔒</div>'+
+      '<h2>Você ainda não tem acesso</h2>'+
+      '<p>Esta ferramenta faz parte de <b>'+EZ_PRODUTO+'</b>. Garanta o seu acesso:</p>'+
+      '<a class="cta" href="'+EZ_CHECKOUT+'" target="_blank" rel="noopener">Comprar agora →</a>'+
+      '<div class="row">'+
+        '<button class="ghost" id="ezf-recheck">Já comprei — atualizar</button>'+
+        '<button class="ghost" id="ezf-logout">Sair / trocar e-mail</button>'+
+      '</div>'+
+      '<div class="who">Conta: '+email+'<br>Use o <b>mesmo e-mail da compra</b>.</div>'
+    );
+    document.getElementById('ezf-recheck').addEventListener('click', check);
+    document.getElementById('ezf-logout').addEventListener('click', async function(){ try{ await sb.auth.signOut(); }catch(e){} location.reload(); });
+  }
+
+  async function check(){
+    if(!sb){ show('<h2>Erro</h2><p>Não consegui iniciar o acesso. Recarregue a página.</p>'); return; }
+    var s = (await sb.auth.getSession()).data.session;
+    if(!s || !s.user){ viewLogin(); return; }
+    var email = (s.user.email||'').toLowerCase();
+    try{
+      var q = await sb.from('tool_access').select('active').eq('tool', EZ_TOOL).eq('active', true).limit(1);
+      if(q.error) throw q.error;
+      if(q.data && q.data.length){ libera(email); } else { viewSemAcesso(email); }
+    }catch(e){ viewSemAcesso(email); }
+  }
+
+  // reage ao retorno do link mágico e a login/logout
+  if(sb){ sb.auth.onAuthStateChange(function(_ev,_sess){ check(); }); }
+  check();
+})();
+</script>
+<!-- ===== FIM TRAVA ===== -->
+
 </body></html>
